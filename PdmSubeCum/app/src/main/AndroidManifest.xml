@@ -28,7 +28,11 @@
         </activity>
         -->
         <activity android:name=".Carnets" />
-        <activity android:name=".am15005.AM15005"></activity>
+        <activity android:name=".am15005.AM15005" />
+        <activity android:name=".mm14031.MM14031" />
+        <activity android:name=".pm15007.PM15007" />
+        <activity android:name=".rl08017.RL08017" />
+        <activity android:name=".ts14004.TS14004"></activity>
     </application>
 
 </manifest>

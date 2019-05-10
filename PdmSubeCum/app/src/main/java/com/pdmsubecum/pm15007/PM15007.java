@@ -1,19 +1,20 @@
-package com.pdmsubecum.am15005;
+package com.pdmsubecum.pm15007;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.pdmsubecum.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pdmsubecum.R;
+public class PM15007 extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-public class AM15005 extends AppCompatActivity implements AdapterView.OnItemClickListener{
     ListView lista;
 
     List<String> tablasCrud;
@@ -21,10 +22,10 @@ public class AM15005 extends AppCompatActivity implements AdapterView.OnItemClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_am15005);
-        this.setTitle(R.string.crud_am15005);
+        setContentView(R.layout.activity_pm15007);
+        this.setTitle(R.string.crud_pm15007);
 
-        lista = findViewById(R.id.menu_am15005);
+        lista = findViewById(R.id.menu_pm15007);
 
         //agregando los item de la tabla
         tablasCrud = new ArrayList<>();
@@ -32,7 +33,7 @@ public class AM15005 extends AppCompatActivity implements AdapterView.OnItemClic
         tablasCrud.add("segunda tabla");
 
         ArrayAdapter adapter = new ArrayAdapter(
-          this, android.R.layout.simple_list_item_1,tablasCrud
+                this, android.R.layout.simple_list_item_1,tablasCrud
         );
 
 
