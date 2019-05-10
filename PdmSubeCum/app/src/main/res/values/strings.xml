@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">PdmSubeCum</string>
+    <string name="login_usuario">Usuario</string>
+    <string name="login_password">Contraseña</string>
+    <string name="title_activity_menu_carnet">MenuCarnet</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="am15005">AM15007</string>
+    <string name="nombre_sistema">SISTEMA DE INVENTARIO</string>
+    <string name="grupo">Grupo 01</string>
+    <string name="pm15007">PM15007</string>
+    <string name="mm14031">MM14031</string>
+    <string name="rl08017">RL08017</string>
+    <string name="ts14004">TS14004</string>
+
+
 </resources>
