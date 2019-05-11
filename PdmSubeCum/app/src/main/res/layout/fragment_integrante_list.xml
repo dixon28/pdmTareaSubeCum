@@ -10,4 +10,7 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.pdmsubecum.IntegranteFragment"
-    tools:listitem="@layout/fragment_integrante" />
+    tools:listitem="@layout/fragment_integrante"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    />
