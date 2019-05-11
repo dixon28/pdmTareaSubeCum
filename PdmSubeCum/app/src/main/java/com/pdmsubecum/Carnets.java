@@ -19,8 +19,10 @@ public class Carnets extends AppCompatActivity implements IntegranteFragment.OnL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_carnets);
         getSupportActionBar().hide();
+
 
     }
 

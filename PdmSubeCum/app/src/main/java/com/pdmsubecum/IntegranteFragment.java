@@ -9,6 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.pdmsubecum.DB.DataBase;
+import com.pdmsubecum.DB.modelo.RolUsuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +27,8 @@ public class IntegranteFragment extends Fragment {
 
     RecyclerView recyclerView;
     List<Integrante> integranteList;
+    String usuario;
+    DataBase dataBase;
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
@@ -39,7 +45,8 @@ public class IntegranteFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        usuario = getActivity().getIntent().getExtras().getString("usuario");
+        dataBase = new DataBase(getActivity());
     }
 
     @Override
@@ -57,20 +64,41 @@ public class IntegranteFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            //lista de integrantes
             integranteList = new ArrayList<>();
-            integranteList.add(new Integrante("Edilson Argueta Medina","AM15005","muchas tablas", R.drawable.man1));
-            integranteList.add(new Integrante("Nelson Miranda Miranda","MM14031","varias tablas",R.drawable.man2));
-            integranteList.add(new Integrante("Rodrigo Presa Mariona","PM15007","algunas tablas",R.drawable.man1));
-            integranteList.add(new Integrante("Joel Ramos Lopez","RL08017","bastantes tablas",R.drawable.man2));
-            integranteList.add(new Integrante("Raul Trigueros Santamaria","TS14004","tablas tablas tablas",R.drawable.man1));
-
-
+            //lista de integrantes
+            RolUsuario rolUsuario = dataBase.getRolUsuario(usuario);
+            switch (rolUsuario.getNombre_rol()){
+                case "admin":
+                    integranteList.add(new Integrante("Edilson Argueta Medina","AM15005","muchas tablas", R.drawable.man1));
+                    integranteList.add(new Integrante("Nelson Miranda Miranda","MM14031","varias tablas",R.drawable.man2));
+                    integranteList.add(new Integrante("Rodrigo Presa Mariona","PM15007","algunas tablas",R.drawable.man1));
+                    integranteList.add(new Integrante("Joel Ramos Lopez","RL08017","bastantes tablas",R.drawable.man2));
+                    integranteList.add(new Integrante("Raul Trigueros Santamaria","TS14004","tablas tablas tablas",R.drawable.man1));
+                    break;
+                case "usuario":
+                    switch (rolUsuario.getUsuario()){
+                        case "am15005":
+                            integranteList.add(new Integrante("Edilson Argueta Medina","AM15005","muchas tablas", R.drawable.man1));
+                            break;
+                        case "mm14031":
+                            integranteList.add(new Integrante("Nelson Miranda Miranda","MM14031","varias tablas",R.drawable.man2));
+                            break;
+                        case "pm15007":
+                            integranteList.add(new Integrante("Rodrigo Presa Mariona","PM15007","algunas tablas",R.drawable.man1));
+                            break;
+                        case "rl08017":
+                            integranteList.add(new Integrante("Joel Ramos Lopez","RL08017","bastantes tablas",R.drawable.man2));
+                            break;
+                        case "ts14004":
+                            integranteList.add(new Integrante("Raul Trigueros Santamaria","TS14004","tablas tablas tablas",R.drawable.man1));
+                            break;
+                    }
+                    break;
+            }
             recyclerView.setAdapter(new MyIntegranteRecyclerViewAdapter(integranteList, mListener));
         }
         return view;
     }
-
 
     @Override
     public void onAttach(Context context) {

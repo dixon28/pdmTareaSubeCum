@@ -6,15 +6,24 @@ package com.pdmsubecum.DB;
 
 public class ConstantesDB {
 
-    //nombre base de datos
+    //----------------------------------------------------
+    // nombre base de datos
+    //----------------------------------------------------
     public static  final String DATABASE ="inventario.s3db";
 
-    //nombre de las tablas
+
+
+    //-----------------------------------------------------
+    // nombre de las tablas
+    // ----------------------------------------------------
     public static  final String TABLA_USUARIO ="usuario";
     public static  final String TABLA_ROL_USUARIO ="rol_usuario";
 
-    //querys para crear las tablas
 
+
+    //-----------------------------------------------------
+    // queries para crear las tablas
+    // ----------------------------------------------------
     public static final String SQL_CREATE_TABLE_USUARIO="CREATE TABLE " +TABLA_USUARIO +
             "( usuario VARCHAR(20) NOT NULL PRIMARY KEY," +
             "password VARCHAR(30) NOT NULL )";
@@ -25,14 +34,20 @@ public class ConstantesDB {
 
 
 
-    //query para borrar toda la DB
+    //-----------------------------------------------------
+    // query para borrar toda la DB
+    // ----------------------------------------------------
     public static  final String SQL_DELETE_USUARIO = "DROP TABLE "+TABLA_USUARIO;
     public static  final String SQL_DELETE_ROL_USUARIO = "DROP TABLE "+TABLA_ROL_USUARIO;
 
 
-    //campos de las tablas
-    public static final String[] CAMPOS_ALUMNO = {"usuario","password"};
 
+
+    //-----------------------------------------------------
+    // campos de las tablas
+    // ----------------------------------------------------
+    public static final String[] CAMPOS_USUARIO = {"usuario","password"};
+    public static final String[] CAMPOS_ROL_USUARIO = {"nombre_rol","usuario"};
 
 
 

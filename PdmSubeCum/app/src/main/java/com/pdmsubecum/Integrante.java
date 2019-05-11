@@ -50,4 +50,6 @@ public class Integrante {
     public void setImagen(int imagen) {
         this.imagen = imagen;
     }
+
+
 }
