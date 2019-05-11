@@ -52,94 +52,19 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_am15005"
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.pdmsubecum.IntegranteFragment"
         android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:background="@android:color/holo_red_light"
-        android:text="@string/am15005"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_mm14031"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_chainStyle="spread" />
-
-    <Button
-        android:id="@+id/btn_mm14031"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/holo_red_light"
-        android:text="@string/mm14031"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_pm15007"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_am15005" />
-
-    <Button
-        android:id="@+id/btn_pm15007"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/holo_red_light"
-        android:text="@string/pm15007"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_rl08017"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_mm14031" />
-
-    <Button
-        android:id="@+id/btn_rl08017"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/holo_red_light"
-        android:text="@string/rl08017"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_ts14004"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_pm15007" />
-
-    <Button
-        android:id="@+id/btn_ts14004"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/holo_red_light"
-        android:text="@string/ts14004"
-        android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_rl08017" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
 </android.support.constraint.ConstraintLayout>
