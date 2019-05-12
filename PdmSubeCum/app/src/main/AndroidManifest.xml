@@ -32,7 +32,12 @@
         <activity android:name=".mm14031.MM14031" />
         <activity android:name=".pm15007.PM15007" />
         <activity android:name=".rl08017.RL08017" />
-        <activity android:name=".ts14004.TS14004"></activity>
+        <activity android:name=".ts14004.TS14004" />
+        <activity android:name=".pm15007.unidad_administrativa.CrudUnidadAdministrativa" />
+        <activity android:name=".pm15007.equipo_existencia.CrudEquipoExistencia" />
+        <activity android:name=".pm15007.equipo_movimiento.CrudEquipoMovimiento" />
+        <activity android:name=".pm15007.equipo_movimiento_detalle.CrudEquipoMovimientoDetalle" />
+        <activity android:name=".pm15007.tipo_movimiento_equipo.CrudTipoMovimientoEquipo"></activity>
     </application>
 
 </manifest>

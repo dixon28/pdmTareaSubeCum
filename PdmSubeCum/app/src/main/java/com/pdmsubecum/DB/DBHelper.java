@@ -22,6 +22,12 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_USUARIO);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_ROL_USUARIO);
 
+        //pm15007
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_EQUIPO_EXISTENCIA);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_EQUIPO_MOVIMIENTO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_EQUIPO_MOVIMIENTO_DETALLE);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_TIPO_MOVIMIENTO_EQUIPO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_UNIDAD_ADMINISTRATIVA);
 
     }
 
@@ -29,6 +35,13 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(ConstantesDB.SQL_DELETE_USUARIO);
         db.execSQL(ConstantesDB.SQL_DELETE_ROL_USUARIO);
+
+        //pm15007
+        db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO_EXISTENCIA);
+        db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO_MOVIMIENTO);
+        db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO_MOVIMIENTO_DETALLE);
+        db.execSQL(ConstantesDB.SQL_DELETE_TIPO_MOVIMIENTO_EQUIPO);
+        db.execSQL(ConstantesDB.SQL_DELETE_UNIDAD_ADMINISTRATIVA);
 
         onCreate(db);
     }

@@ -34,4 +34,12 @@
     <string name="crud_ts14004">TS14004</string>
 
 
+    <!--PM15007-->
+    <string name="crud_unidad_administrativa">Unidad Administrativa</string>
+    <string name="crud_equipo_existencia">Equipo Existencia</string>
+    <string name="crud_equipo_movimiento">Equipo Movimiento</string>
+    <string name="crud_equipo_movimiento_detalle">Equipo Movimiento Detalle</string>
+    <string name="crud_tipo_movimiento_equipo">Tipo Movimiento</string>
+
+
 </resources>
