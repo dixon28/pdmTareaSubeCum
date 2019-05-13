@@ -9,6 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".rl08017.DocumentoExisActualizarActivity"></activity>
+        <activity android:name=".rl08017.DocumentoExisConsultarActivity" />
+        <activity android:name=".rl08017.DocumentoExisEliminarActivity" />
+        <activity android:name=".rl08017.DocumentoExisInsertarActivity" />
+        <activity android:name=".rl08017.DocumentoMovActualizarActivity" />
+        <activity android:name=".rl08017.DocumentoMovConsultarActivity" />
+        <activity android:name=".rl08017.DocumentoMovEliminarActivity" />
+        <activity android:name=".rl08017.DocumentoMovInsertarActivity" />
+        <activity android:name=".rl08017.TiMovDocumentoActualizarActivity" />
+        <activity android:name=".rl08017.TiMovDocumentoConsultarActivity" />
+        <activity android:name=".rl08017.TiMovDocumentoEliminarActivity" />
+        <activity android:name=".rl08017.TiMovDocumentoInsertarActivity" />
+        <activity android:name=".rl08017.DocumentoExistenciaMenuActivity" />
+        <activity android:name=".rl08017.DocumentoMovimientoMenuActivity" />
+        <activity android:name=".rl08017.TiposDeMovimientoParaDocumentoMenuActivity" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +47,7 @@
         <activity android:name=".mm14031.MM14031" />
         <activity android:name=".pm15007.PM15007" />
         <activity android:name=".rl08017.RL08017" />
-        <activity android:name=".ts14004.TS14004"></activity>
+        <activity android:name=".ts14004.TS14004" />
     </application>
 
 </manifest>
