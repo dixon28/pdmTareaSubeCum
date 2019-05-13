@@ -4,22 +4,22 @@
     <item
         android:id="@+id/navigation_marca"
         android:icon="@drawable/ic_marca"
-        android:title="marca"/>
+        android:title="@string/marca"/>
 
     <item
         android:id="@+id/navigation_equipo"
         android:icon="@drawable/ic_equipo"
-        android:title="equipo"/>
+        android:title="@string/equipo"/>
 
     <item
         android:id="@+id/navigation_tipo"
         android:icon="@drawable/ic_tiposequipo"
-        android:title="tipo_equipo"/>
+        android:title="@string/tipo_equipo"/>
 
     <item
         android:id="@+id/navigation_mas"
         android:icon="@drawable/ic_add_black_24dp"
-        android:title="mas"
+        android:title="@string/mas"
 
 
         />

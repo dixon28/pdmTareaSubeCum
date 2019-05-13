@@ -40,6 +40,10 @@
     <string name="crud_equipo_movimiento">Equipo Movimiento</string>
     <string name="crud_equipo_movimiento_detalle">Equipo Movimiento Detalle</string>
     <string name="crud_tipo_movimiento_equipo">Tipo Movimiento</string>
+    <string name="marca">marca</string>
+    <string name="equipo">equipo</string>
+    <string name="tipo_equipo">tipo equipo</string>
+    <string name="mas">mas</string>
 
 
 </resources>
