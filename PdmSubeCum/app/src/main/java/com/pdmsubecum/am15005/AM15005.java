@@ -1,19 +1,25 @@
 package com.pdmsubecum.am15005;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.pdmsubecum.R;
+import com.pdmsubecum.am15005.fragmentos.EquipoFragment;
+import com.pdmsubecum.am15005.fragmentos.MarcaFragment;
+import com.pdmsubecum.am15005.fragmentos.TipoFragment;
 
-public class AM15005 extends AppCompatActivity implements AdapterView.OnItemClickListener{
+import static android.app.PendingIntent.getActivity;
+
+public class AM15005 extends AppCompatActivity {
     ListView lista;
 
     List<String> tablasCrud;
@@ -22,32 +28,54 @@ public class AM15005 extends AppCompatActivity implements AdapterView.OnItemClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_am15005);
-        this.setTitle(R.string.crud_am15005);
 
-        lista = findViewById(R.id.menu_am15005);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case  R.id.navigation_marca:
+                        MarcaFragment homeFragment= new MarcaFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, homeFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack(null).commit();
+                        break;
 
-        //agregando los item de la tabla
-        tablasCrud = new ArrayList<>();
-        tablasCrud.add("primera tabla");
-        tablasCrud.add("segunda tabla");
+                    case R.id.navigation_equipo:
+                        EquipoFragment searchFragment= new EquipoFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, searchFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack(null).commit();
+                        break;
+                    case R.id.navigation_tipo:
+                        TipoFragment tipo= new TipoFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, tipo).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack(null).commit();
+                        break;
 
-        ArrayAdapter adapter = new ArrayAdapter(
-          this, android.R.layout.simple_list_item_1,tablasCrud
-        );
+                    case R.id.navigation_mas:
+                        Intent intent= new Intent(AM15005.this, DocActivity.class);
+                        startActivity(intent);
+                        break;
 
 
-        lista.setAdapter(adapter);
 
-        //agregandole el evento click a los items de la list
-        lista.setOnItemClickListener(this);
+
+
+
+
+
+                }
+
+
+                return true;
+
+            }
+        });
+
+
+
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //obteniendo la fila clickeada
-        String nombreTablaClick = tablasCrud.get(position);
+    public void goDoc(View view) {
+        Intent intent= new Intent(this, DocActivity.class);
+        startActivity(intent);
 
-        //hacer llamar a activities segun click
-        Toast.makeText(this, "Click a tabla: "+nombreTablaClick, Toast.LENGTH_SHORT).show();
+
     }
 }

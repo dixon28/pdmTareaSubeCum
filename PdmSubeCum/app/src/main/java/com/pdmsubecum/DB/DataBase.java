@@ -11,6 +11,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.pdmsubecum.DB.modelo.RolUsuario;
 import com.pdmsubecum.DB.modelo.Usuario;
+import com.pdmsubecum.DB.modelo.am15005.Marca;
+import com.pdmsubecum.DB.modelo.pm15007.EquipoExistencia;
+import com.pdmsubecum.DB.modelo.pm15007.EquipoMovimiento;
+import com.pdmsubecum.DB.modelo.pm15007.EquipoMovimientoDetalle;
+import com.pdmsubecum.DB.modelo.pm15007.TipoMovimientoEquipo;
+import com.pdmsubecum.DB.modelo.pm15007.UnidadAdministrativa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,18 +55,75 @@ public class DataBase {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_ROL_USUARIO);
     }
 
+    //PM15007
+    public long getItemsEquipoExistencia(){
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_EQUIPO_EXISTENCIA);
+    }
+    public long getItemsEquipoMovimiento(){
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_EQUIPO_MOVIMIENTO);
+    }
+    public long getItemsEquipoMovimientoDetalle(){
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_EQUIPO_MOVIMIENTO_DETALLE);
+    }
+    public long getItemsTipoMovimientoEquipo(){
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_TIPO_MOVIMIENTO_EQUIPO);
+    }
+    public long getItemsUnidadAdministrativa(){
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA);
+    }
+
+
+
+    //AM15005
+    public long getItemsMarca(){
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_MARCA);
+    }
+
+
     /* ------------------------------------------------------
      -------------   INSERCIONES EN TABLAS -------------------
      -------------------------------------------------------*/
     public void insertar(Usuario usuario){
         ContentValues contentValues = usuario.toValues();
         sqLiteDatabase.insert(ConstantesDB.TABLA_USUARIO, null, contentValues);
+
     }
 
     public void insertar(RolUsuario rolUsuario){
         ContentValues contentValues = rolUsuario.toValues();
         sqLiteDatabase.insert(ConstantesDB.TABLA_ROL_USUARIO, null,contentValues);
     }
+
+
+    //pm15007
+    public void insertar(EquipoExistencia equipoExistencia){
+        ContentValues contentValues = equipoExistencia.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_EQUIPO_EXISTENCIA,null,contentValues);
+    }
+    public void insertar(EquipoMovimiento equipoMovimiento){
+        ContentValues contentValues = equipoMovimiento.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO, null, contentValues);
+    }
+    public void insertar(EquipoMovimientoDetalle equipoMovimientoDetalle){
+        ContentValues contentValues = equipoMovimientoDetalle.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO_DETALLE, null, contentValues);
+    }
+    public void insertar(TipoMovimientoEquipo tipoMovimientoEquipo){
+        ContentValues contentValues = tipoMovimientoEquipo.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_TIPO_MOVIMIENTO_EQUIPO, null, contentValues);
+    }
+    public void insertar(UnidadAdministrativa unidadAdministrativa){
+        ContentValues contentValues = unidadAdministrativa.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA, null, contentValues);
+    }
+
+
+    //am15005
+    public void insertar(Marca marca){
+        ContentValues contentValues = marca.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_MARCA, null, contentValues);
+    }
+
 
 
 
@@ -96,13 +159,89 @@ public class DataBase {
     }
     public RolUsuario getRolUsuario(String user){
         String[] id = {user};
-            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_ROL_USUARIO, ConstantesDB.CAMPOS_ROL_USUARIO,"usuario = ?",
-                id,null,null,null);
+            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_ROL_USUARIO, ConstantesDB.CAMPOS_ROL_USUARIO,
+                    "usuario = ?", id,null,null,null);
         if(cursor.moveToFirst()){
             RolUsuario rolUsuario = new RolUsuario();
             rolUsuario.setNombre_rol(cursor.getString(0));
             rolUsuario.setUsuario(cursor.getString(1));
             return rolUsuario;
+        }else{
+            return null;
+        }
+    }
+
+
+    //PM15007
+    public EquipoExistencia getEquipoExistencia(int id_equipo_existencia){
+        String[] id = {String.valueOf(id_equipo_existencia)};
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_EQUIPO_EXISTENCIA, ConstantesDB.CAMPOS_EQUIPO_EXISTENCIA,
+                "id_equipo_existencia = ?",id,null,null,null);
+        if(cursor.moveToNext()){
+            EquipoExistencia equipoExistencia = new EquipoExistencia();
+            equipoExistencia.setId_equipo_existencia(cursor.getInt(0));
+            equipoExistencia.setId_equipo(cursor.getInt(1));
+            equipoExistencia.setId_docente(cursor.getInt(2));
+            equipoExistencia.setId_unidad_administrativa(cursor.getInt(3));
+            equipoExistencia.setActual(cursor.getInt(4));
+            return equipoExistencia;
+        }else{
+            return null;
+        }
+    }
+    public EquipoMovimiento getEquipoMovimiento(int id_equipo_movimiento){
+        String[] id = {String.valueOf(id_equipo_movimiento)};
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO, ConstantesDB.CAMPOS_EQUIPO_MOVIMIENTO,
+                "id_equipo_movimiento = ?",id,null,null,null);
+        if(cursor.moveToNext()){
+            EquipoMovimiento equipoMovimiento = new EquipoMovimiento();
+            equipoMovimiento.setId_equipo_movimiento(cursor.getInt(0));
+            equipoMovimiento.setId_tipo_movimiento_equipo(cursor.getInt(1));
+            equipoMovimiento.setId_u_administrativa_origen(cursor.getInt(2));
+            equipoMovimiento.setId_u_administrativa_destino(cursor.getInt(3));
+            equipoMovimiento.setComentario(cursor.getString(4));
+            equipoMovimiento.setFecha_movimiento(cursor.getString(5));
+            return equipoMovimiento;
+        }else{
+            return null;
+        }
+    }
+    public EquipoMovimientoDetalle getEquipoMovimientoDetalle(int id_equipo_movimiento_detalle){
+        String[] id = {String.valueOf(id_equipo_movimiento_detalle)};
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO_DETALLE, ConstantesDB.CAMPOS_EQUIPO_MOVIMIENTO_DETALLE,
+                "id_equipo_movimiento_detalle = ?",id, null, null, null);
+        if(cursor.moveToNext()){
+            EquipoMovimientoDetalle equipoMovimientoDetalle = new EquipoMovimientoDetalle();
+            equipoMovimientoDetalle.setId_equipo_movimiento_detalle(cursor.getInt(0));
+            equipoMovimientoDetalle.setId_equipo(cursor.getInt(1));
+            equipoMovimientoDetalle.setId_equipo_movimiento(cursor.getInt(2));
+            return equipoMovimientoDetalle;
+        }else{
+            return null;
+        }
+    }
+    public TipoMovimientoEquipo getTipoMovimientoEquipo(int id_tipo_movimiento_equipo){
+        String[] id = {String.valueOf(id_tipo_movimiento_equipo)};
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_TIPO_MOVIMIENTO_EQUIPO,ConstantesDB.CAMPOS_TIPO_MOVIMIENTO_EQUIPO,
+                "id_tipo_movimiento_equipo = ? ", id, null, null, null);
+        if(cursor.moveToNext()){
+            TipoMovimientoEquipo tipoMovimientoEquipo = new TipoMovimientoEquipo();
+            tipoMovimientoEquipo.setId_tipo_movimiento_equipo(cursor.getInt(0));
+            tipoMovimientoEquipo.setDescripcion(cursor.getString(1));
+            return tipoMovimientoEquipo;
+        }else{
+            return null;
+        }
+    }
+    public UnidadAdministrativa getUnidadAdministrativa(int id_unidad_administrativa){
+        String[] id = {String.valueOf(id_unidad_administrativa)};
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA, ConstantesDB.CAMPOS_UNIDAD_ADMINISTRATIVA,
+                "id_unidad_administrativa = ? ", id, null, null, null);
+        if(cursor.moveToNext()){
+            UnidadAdministrativa unidadAdministrativa = new UnidadAdministrativa();
+            unidadAdministrativa.setId_unidad_administrativa(cursor.getInt(0));
+            unidadAdministrativa.setDescripcion(cursor.getString(1));
+            return unidadAdministrativa;
         }else{
             return null;
         }

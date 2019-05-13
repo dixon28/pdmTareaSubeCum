@@ -1,5 +1,6 @@
 package com.pdmsubecum.pm15007;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.pdmsubecum.R;
+import com.pdmsubecum.pm15007.equipo_existencia.CrudEquipoExistencia;
+import com.pdmsubecum.pm15007.equipo_movimiento.CrudEquipoMovimiento;
+import com.pdmsubecum.pm15007.equipo_movimiento_detalle.CrudEquipoMovimientoDetalle;
+import com.pdmsubecum.pm15007.tipo_movimiento_equipo.CrudTipoMovimientoEquipo;
+import com.pdmsubecum.pm15007.unidad_administrativa.CrudUnidadAdministrativa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +35,11 @@ public class PM15007 extends AppCompatActivity implements AdapterView.OnItemClic
 
         //agregando los item de la tabla
         tablasCrud = new ArrayList<>();
-        tablasCrud.add("primera tabla");
-        tablasCrud.add("segunda tabla");
+        tablasCrud.add("Unidad Administrativa");
+        tablasCrud.add("Equipo Movimiento");
+        tablasCrud.add("Tipo de Movimiento de Equipo");
+        tablasCrud.add("Equipo Movimiento Detalle");
+        tablasCrud.add("Equipo Existencia");
 
         ArrayAdapter adapter = new ArrayAdapter(
                 this, android.R.layout.simple_list_item_1,tablasCrud
@@ -50,5 +59,29 @@ public class PM15007 extends AppCompatActivity implements AdapterView.OnItemClic
 
         //hacer llamar a activities segun click
         Toast.makeText(this, "Click a tabla: "+nombreTablaClick, Toast.LENGTH_SHORT).show();
+
+        Intent intent;
+        switch (position){
+            case 0:
+                intent = new Intent(this, CrudUnidadAdministrativa.class);
+                startActivity(intent);
+                break;
+            case 1:
+                intent = new Intent(this, CrudEquipoMovimiento.class);
+                startActivity(intent);
+                break;
+            case 2:
+                intent = new Intent(this, CrudTipoMovimientoEquipo.class);
+                startActivity(intent);
+                break;
+            case 3:
+                intent = new Intent(this, CrudEquipoMovimientoDetalle.class);
+                startActivity(intent);
+                break;
+            case 4:
+                intent = new Intent(this, CrudEquipoExistencia.class);
+                startActivity(intent);
+                break;
+        }
     }
 }

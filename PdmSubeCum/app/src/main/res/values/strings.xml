@@ -27,11 +27,23 @@
 
 
     <!-- TITULOS DE PANTALLA -->
-    <string name="crud_am15005">AM15007</string>
+    <string name="crud_am15005">AM15005</string>
     <string name="crud_pm15007">PM15007</string>
     <string name="crud_mm14031">MM14031</string>
     <string name="crud_rl08017">RL08017</string>
     <string name="crud_ts14004">TS14004</string>
+
+
+    <!--PM15007-->
+    <string name="crud_unidad_administrativa">Unidad Administrativa</string>
+    <string name="crud_equipo_existencia">Equipo Existencia</string>
+    <string name="crud_equipo_movimiento">Equipo Movimiento</string>
+    <string name="crud_equipo_movimiento_detalle">Equipo Movimiento Detalle</string>
+    <string name="crud_tipo_movimiento_equipo">Tipo Movimiento</string>
+    <string name="marca">marca</string>
+    <string name="equipo">equipo</string>
+    <string name="tipo_equipo">tipo equipo</string>
+    <string name="mas">mas</string>
 
 
 </resources>
