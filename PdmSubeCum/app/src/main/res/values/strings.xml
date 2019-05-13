@@ -27,7 +27,7 @@
 
 
     <!-- TITULOS DE PANTALLA -->
-    <string name="crud_am15005">AM15007</string>
+    <string name="crud_am15005">AM15005</string>
     <string name="crud_pm15007">PM15007</string>
     <string name="crud_mm14031">MM14031</string>
     <string name="crud_rl08017">RL08017</string>
