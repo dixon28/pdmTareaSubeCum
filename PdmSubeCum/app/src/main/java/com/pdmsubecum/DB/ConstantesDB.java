@@ -98,5 +98,27 @@ public class ConstantesDB {
     public static final String[] CAMPOS_UNIDAD_ADMINISTRATIVA ={"id_unidad_administrativa", "descripcion"};
 
 
+//AM15005
+    //Tablas
+    public static final String TABLA_MARCA="marca";
+    public static  final String TABLA_TIPOS_DE_EQUIPO="tipos_de_equipo";
+    public static final String TABLA_EQUIPO="equipo";
+
+
+    //Consultas para crear tablas
+    public static final String SQL_CREATE_TABLE_MARCA="CREATE TABLE"+TABLA_MARCA +"(IDMARCA              INTEGER              not null,"+
+            "DESCRIPCIONMARCA     VARCHAR2(50),"+ "constraint PK_MARCA primary key (IDMARCA))";
+
+
+
+    //Borrar Tablas
+    public static  final String SQL_DELETE_MARCA = "DROP TABLE "+TABLA_MARCA;
+
+
+
+
+
+
+
 
 }

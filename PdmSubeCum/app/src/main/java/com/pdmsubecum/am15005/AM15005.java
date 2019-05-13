@@ -49,9 +49,8 @@ public class AM15005 extends AppCompatActivity {
                         break;
 
                     case R.id.navigation_mas:
-                        Intent intent= new Intent(getApplicationContext(), DocActivity.class);
+                        Intent intent= new Intent(AM15005.this, DocActivity.class);
                         startActivity(intent);
-
                         break;
 
 

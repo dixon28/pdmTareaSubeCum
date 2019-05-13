@@ -38,6 +38,7 @@
         <activity android:name=".pm15007.equipo_movimiento.CrudEquipoMovimiento" />
         <activity android:name=".pm15007.equipo_movimiento_detalle.CrudEquipoMovimientoDetalle" />
         <activity android:name=".pm15007.tipo_movimiento_equipo.CrudTipoMovimientoEquipo"></activity>
+        <activity android:name=".am15005.DocActivity"></activity>
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.pdmsubecum.DB.modelo.RolUsuario;
 import com.pdmsubecum.DB.modelo.Usuario;
+import com.pdmsubecum.DB.modelo.am15005.Marca;
 import com.pdmsubecum.DB.modelo.pm15007.EquipoExistencia;
 import com.pdmsubecum.DB.modelo.pm15007.EquipoMovimiento;
 import com.pdmsubecum.DB.modelo.pm15007.EquipoMovimientoDetalle;
@@ -71,12 +72,21 @@ public class DataBase {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA);
     }
 
+
+
+    //AM15005
+    public long getItemsMarca(){
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_MARCA);
+    }
+
+
     /* ------------------------------------------------------
      -------------   INSERCIONES EN TABLAS -------------------
      -------------------------------------------------------*/
     public void insertar(Usuario usuario){
         ContentValues contentValues = usuario.toValues();
         sqLiteDatabase.insert(ConstantesDB.TABLA_USUARIO, null, contentValues);
+
     }
 
     public void insertar(RolUsuario rolUsuario){
@@ -106,6 +116,14 @@ public class DataBase {
         ContentValues contentValues = unidadAdministrativa.toValues();
         sqLiteDatabase.insert(ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA, null, contentValues);
     }
+
+
+    //am15005
+    public void insertar(Marca marca){
+        ContentValues contentValues = marca.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_MARCA, null, contentValues);
+    }
+
 
 
 

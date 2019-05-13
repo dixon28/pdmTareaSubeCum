@@ -29,6 +29,10 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_TIPO_MOVIMIENTO_EQUIPO);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_UNIDAD_ADMINISTRATIVA);
 
+
+        //am15005
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_MARCA);
+
     }
 
     @Override
@@ -42,6 +46,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO_MOVIMIENTO_DETALLE);
         db.execSQL(ConstantesDB.SQL_DELETE_TIPO_MOVIMIENTO_EQUIPO);
         db.execSQL(ConstantesDB.SQL_DELETE_UNIDAD_ADMINISTRATIVA);
+
+        //am15005
+        db.execSQL(ConstantesDB.SQL_DELETE_MARCA);
 
         onCreate(db);
     }
