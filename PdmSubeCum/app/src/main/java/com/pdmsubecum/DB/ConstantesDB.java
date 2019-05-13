@@ -87,6 +87,16 @@ public class ConstantesDB {
     public static final String[] CAMPOS_USUARIO = {"usuario","password"};
     public static final String[] CAMPOS_ROL_USUARIO = {"nombre_rol","usuario"};
 
+    //PM15007
+    public static final String[] CAMPOS_EQUIPO_EXISTENCIA = {"id_equipo_existencia","id_equipo", "id_docente",
+            "id_unidad_administrativa","actual"};
+    public static final String[] CAMPOS_EQUIPO_MOVIMIENTO = {"id_equipo_movimiento","id_tipo_movimiento_equipo",
+            "id_u_administrativa_origen","id_u_administrativa_destino", "comentario", "fecha_movimiento"};
+    public static final String[] CAMPOS_EQUIPO_MOVIMIENTO_DETALLE = {"id_equipo_movimiento_detalle",
+            "id_equipo", "id_equipo_movimiento"};
+    public static final String[] CAMPOS_TIPO_MOVIMIENTO_EQUIPO = {"id_tipo_movimiento_equipo","descripcion"};
+    public static final String[] CAMPOS_UNIDAD_ADMINISTRATIVA ={"id_unidad_administrativa", "descripcion"};
+
 
 
 }
