@@ -49,31 +49,31 @@ public class ConstantesDB {
 
    //-------------------------------Raul------------------------------------------------------------------------------------
     public static final String SQL_CREATE_TABLE_Docente = "CREATE TABLE " + TABLA_Docente +
-            "(  idDocente               INTEGER              not null,\n" +
-           "   idUnidadAdministrativa   INTEGER,\n" +
-           "   nombre                   VARCHAR2(50)         not null,\n" +
-           "   apellido                  VARCHAR2(50)         not null,\n" +
-           "   email                    VARCHAR2(50)         not null,\n" +
-           "   direccion                VARCHAR2(250)        not null,)";
+            "(  idDocente               INTEGER              not null," +
+           "   idUnidadAdministrativa   INTEGER," +
+           "   nombre                   VARCHAR2(50)         not null," +
+           "   apellido                  VARCHAR2(50)         not null," +
+           "   email                    VARCHAR2(50)         not null," +
+           "   direccion                VARCHAR2(250)        not null)";
     public static final String SQL_CREATE_TABLE_AsignacionEquipo = "CREATE TABLE " + TABLA_AsignacionEquipo +
-            "( idAsignacionEquipo     INTEGER              not null,\n" +
-            "   idDocente             INTEGER,\n" +
-            "   fechaAsignacionEquipo DATE                 not null,\n" +
-            "   actualEquipo          SMALLINT             not null,)";
+            "( idAsignacionEquipo     INTEGER              not null," +
+            "   idDocente             INTEGER," +
+            "   fechaAsignacionEquipo DATE                 not null," +
+            "   actualEquipo          SMALLINT             not null)";
     public static final String SQL_CREATE_TABLE_DocumentoAsignacion = "CREATE TABLE " + TABLA_DocumentoAsignacion +
             "(  idDocumentoAsignacion INTEGER              not null,\n" +
             "   idDocente            INTEGER,\n" +
             "   motivo               VARCHAR2(120)        not null,\n" +
             "   fechaAsignacionDoc   VARCHAR2(50)         not null,\n" +
-            "   actualDoc            VARCHAR2(50),)";
+            "   actualDoc            VARCHAR2(50))";
     public static final String SQL_CREATE_TABLE_DocumentoAsignacionDetalle = "CREATE TABLE " + TABLA_DocumentoAsignacionDetalle +
             "(  idDocumentoAsignacionDetalle INTEGER              not null,\n" +
             "   isbn                VARCHAR2(25),\n" +
-            "  idDocumentoAsignacion INTEGER,)";
+            "  idDocumentoAsignacion INTEGER)";
     public static final String SQL_CREATE_TABLE_AsignacionEquipoDetalle = "CREATE TABLE " + TABLA_AsignacionEquipoDetalle +
             "(idAsignacionEquipoDetalle INTEGER              not null,\n" +
             "   idEquipo            INTEGER,\n" +
-            "   idAsignacionEquipo   INTEGER,)";
+            "   idAsignacionEquipo   INTEGER)";
     //------------------------------------------------------------------------------------------------------------------------------
 
     //PM15007
@@ -179,13 +179,17 @@ public class ConstantesDB {
 
 
     //Consultas para crear tablas
-    public static final String SQL_CREATE_TABLE_MARCA="CREATE TABLE"+TABLA_MARCA +"(IDMARCA              INTEGER              not null,"+
+    public static final String SQL_CREATE_TABLE_MARCA="CREATE TABLE "+TABLA_MARCA +"(IDMARCA INTEGER              not null,"+
             "DESCRIPCIONMARCA     VARCHAR2(50),"+ "constraint PK_MARCA primary key (IDMARCA))";
 
 
 
     //Borrar Tablas
     public static  final String SQL_DELETE_MARCA = "DROP TABLE "+TABLA_MARCA;
+
+    //campos marca
+
+    public static final String[] CAMPOS_MARCA={"idmarca","descripcionmarca"};
 
 
 

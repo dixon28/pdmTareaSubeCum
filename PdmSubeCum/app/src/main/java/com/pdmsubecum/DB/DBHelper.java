@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final int DB_VERSION = 2;
+    public static final int DB_VERSION = 5;
 
 
     public DBHelper(Context context) {
@@ -43,6 +43,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+
         db.execSQL(ConstantesDB.SQL_DELETE_USUARIO);
         db.execSQL(ConstantesDB.SQL_DELETE_ROL_USUARIO);
         db.execSQL(ConstantesDB.SQL_DELETE_Docente);

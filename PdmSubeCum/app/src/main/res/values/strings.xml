@@ -82,6 +82,11 @@
     <string name="equipo">equipo</string>
     <string name="tipo_equipo">tipo equipo</string>
     <string name="mas">mas</string>
+    <string name="idmarca">id de marca</string>
+    <string name="descripcionMarca">descripcion</string>
+    <string name="insertar_PM15007">ingresar</string>
+    <string name="Id_de_marca">ingrese el id de la marca a eliminar</string>
+    <string name="eliminar_marca">eliminar</string>
 
 
     <!--STRING DE LOS CRUD-->
@@ -95,8 +100,10 @@
     <string name="limpiar_formulario">limpiar</string>
     <string name="consultar_equipo_existencia">Consultar Equipo Existencia</string>
     <string name="equipo_existencia">Equipo Existencia</string>
-    <string name="actualizar_equipo_existencia">Actualizar Equipo Existencia</string>
+    <string name="consultar_marca">consultar</string>
+    <string name="con_descripcion">Descripcion</string>
     <string name="delete_equipo_existencia">Eliminar Equipo Existencia</string>
+    <string name="actualizar_equipo_existencia">Actualizar Equipo Existencia</string>
 
 
 </resources>
