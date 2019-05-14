@@ -34,7 +34,6 @@
     <string name="crud_ts14004">TS14004</string>
 
 
-
     <!-- *************************** -->
     <!-- * STRING USADOS POR RAUL **-->
     <!-- *************************** -->
@@ -73,10 +72,6 @@
     <string name="actualizar">Actualizar</string>
 
 
-
-
-
-
     <!--PM15007-->
     <string name="crud_unidad_administrativa">Unidad Administrativa</string>
     <string name="crud_equipo_existencia">Equipo Existencia</string>
@@ -87,6 +82,28 @@
     <string name="equipo">equipo</string>
     <string name="tipo_equipo">tipo equipo</string>
     <string name="mas">mas</string>
+    <string name="idmarca">id de marca</string>
+    <string name="descripcionMarca">descripcion</string>
+    <string name="insertar_PM15007">ingresar</string>
+    <string name="Id_de_marca">ingrese el id de la marca a eliminar</string>
+    <string name="eliminar_marca">eliminar</string>
+
+
+    <!--STRING DE LOS CRUD-->
+    <string name="crud_create">Crear</string>
+    <string name="crud_retrieve">Consultar</string>
+    <string name="crud_update">Actualizar</string>
+    <string name="crud_delete">Eliminar</string>
+    <string name="crear_equipo_existencia">Crear Equipo Existencia</string>
+    <string name="id_clase">ID (int)</string>
+    <string name="existencia_actual">Existenca Actual (int)</string>
+    <string name="limpiar_formulario">limpiar</string>
+    <string name="consultar_equipo_existencia">Consultar Equipo Existencia</string>
+    <string name="equipo_existencia">Equipo Existencia</string>
+    <string name="consultar_marca">consultar</string>
+    <string name="con_descripcion">Descripcion</string>
+    <string name="delete_equipo_existencia">Eliminar Equipo Existencia</string>
+    <string name="actualizar_equipo_existencia">Actualizar Equipo Existencia</string>
 
 
 </resources>

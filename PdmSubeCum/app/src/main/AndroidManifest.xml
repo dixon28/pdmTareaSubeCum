@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ts14004.DocumentoAsignacionConsultarActivity"></activity>
+
+        <activity android:name=".am15005.Activities.Marca.ConsultarMarcaActivity" ></activity>
+        <activity android:name=".am15005.Activities.Marca.EliminarMarcaActivity" />
+        <activity android:name=".am15005.Activities.Marca.ActualizarMarcaActivity" />
+        <activity android:name=".am15005.Activities.Marca.InsertarMarcaActivity" />
+        <activity android:name=".pm15007.equipo_existencia.RetrieveEquipoExistencia" />
+        <activity android:name=".pm15007.equipo_existencia.CreateEquipoExistencia" />
+        <activity android:name=".pm15007.equipo_existencia.UpdateEquipoExistencia" />
+        <activity android:name=".pm15007.equipo_existencia.DeleteEquipoExistencia" />
+        <activity android:name=".ts14004.DocumentoAsignacionConsultarActivity" />
         <activity android:name=".ts14004.DocumentoAsignacionActualizarActivity" />
         <activity android:name=".ts14004.DocumentoAsignacionEliminarActivity" />
         <activity android:name=".ts14004.DocumentoAsignacionInsertarActivity" />
@@ -31,31 +40,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
-        <activity
-            android:name=".MenuCarnet"
-            android:label="@string/title_activity_menu_carnet">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        -->
         <activity android:name=".Carnets" />
         <activity android:name=".am15005.AM15005" />
         <activity android:name=".mm14031.MM14031" />
         <activity android:name=".pm15007.PM15007" />
         <activity android:name=".rl08017.RL08017" />
         <activity android:name=".ts14004.TS14004" />
-
         <activity android:name=".pm15007.unidad_administrativa.CrudUnidadAdministrativa" />
         <activity android:name=".pm15007.equipo_existencia.CrudEquipoExistencia" />
         <activity android:name=".pm15007.equipo_movimiento.CrudEquipoMovimiento" />
         <activity android:name=".pm15007.equipo_movimiento_detalle.CrudEquipoMovimientoDetalle" />
-        <activity android:name=".pm15007.tipo_movimiento_equipo.CrudTipoMovimientoEquipo"></activity>
-        <activity android:name=".am15005.DocActivity"></activity>
-
+        <activity android:name=".pm15007.tipo_movimiento_equipo.CrudTipoMovimientoEquipo" />
+        <activity android:name=".am15005.DocActivity" />
     </application>
 
 </manifest>

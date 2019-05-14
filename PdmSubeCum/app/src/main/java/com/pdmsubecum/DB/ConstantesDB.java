@@ -32,11 +32,7 @@ public class ConstantesDB {
     public static final String TABLA_EQUIPO_MOVIMIENTO_DETALLE = "equipo_movimiento_detalle";
     public static final String TABLA_EQUIPO_EXISTENCIA = "equipo_existencia";
 
-    //AM15005
-    //Tablas
-    public static final String TABLA_MARCA="marca";
-    public static  final String TABLA_TIPOS_DE_EQUIPO="tipos_de_equipo";
-    public static final String TABLA_EQUIPO="equipo";
+
 
 
 
@@ -53,6 +49,7 @@ public class ConstantesDB {
 
    //-------------------------------Raul------------------------------------------------------------------------------------
     public static final String SQL_CREATE_TABLE_Docente = "CREATE TABLE " + TABLA_Docente +
+
             "(  idDocente               INTEGER              not null primary key,\n" +
            "   idUnidadAdministrativa   INTEGER, \n" +
            "   nombre                   VARCHAR2(50)         not null,\n" +
@@ -63,6 +60,8 @@ public class ConstantesDB {
             "   idDocente             INTEGER,\n" +
             "   fechaAsignacionEquipo DATE                 not null,\n" +
             "   actualEquipo          SMALLINT             not null)";
+
+
     public static final String SQL_CREATE_TABLE_DocumentoAsignacion = "CREATE TABLE " + TABLA_DocumentoAsignacion +
             "(  idDocumentoAsignacion INTEGER              not null primary key,\n" +
             "   idDocente            INTEGER,\n" +
@@ -70,18 +69,17 @@ public class ConstantesDB {
             "   fechaAsignacionDoc   VARCHAR2(50)         not null,\n" +
             "   actualDoc            VARCHAR2(50))";
     public static final String SQL_CREATE_TABLE_DocumentoAsignacionDetalle = "CREATE TABLE " + TABLA_DocumentoAsignacionDetalle +
+
             "(  idDocumentoAsignacionDetalle INTEGER              not null primary key,\n" +
             "   isbn                         VARCHAR2(25),\n" +
             "  idDocumentoAsignacion         INTEGER)";
+
     public static final String SQL_CREATE_TABLE_AsignacionEquipoDetalle = "CREATE TABLE " + TABLA_AsignacionEquipoDetalle +
             "(idAsignacionEquipoDetalle INTEGER              not null primary key,\n" +
             "   idEquipo            INTEGER,\n" +
             "   idAsignacionEquipo   INTEGER)";
     //------------------------------------------------------------------------------------------------------------------------------
     //Consultas para crear tablas
-    public static final String SQL_CREATE_TABLE_MARCA="CREATE TABLE "+TABLA_MARCA +"(IDMARCA              INTEGER              not null,"+
-            "DESCRIPCIONMARCA     VARCHAR2(50),"+ "constraint PK_MARCA primary key (IDMARCA))";
-
 
     //PM15007
     public static final String SQL_CREATE_TABLE_UNIDAD_ADMINISTRATIVA = "CREATE TABLE "+TABLA_UNIDAD_ADMINISTRATIVA +
@@ -123,8 +121,9 @@ public class ConstantesDB {
     public static final String SQL_DELETE_DocumentoAsignacionDetalle = "DROP TABLE " + TABLA_DocumentoAsignacionDetalle;
     public static final String SQL_DELETE_AsignacionEquipoDetalle = "DROP TABLE " + TABLA_AsignacionEquipoDetalle;
     //------------------------------------------------------------------------------------------------------------------------------
+
     //Borrar Tablas
-    public static  final String SQL_DELETE_MARCA = "DROP TABLE "+TABLA_MARCA;
+
     //PM15007
     public static final String SQL_DELETE_UNIDAD_ADMINISTRATIVA = "DROP TABLE "+TABLA_UNIDAD_ADMINISTRATIVA;
     public static final String SQL_DELETE_EQUIPO_MOVIMIENTO = "DROP TABLE "+ TABLA_EQUIPO_MOVIMIENTO;
@@ -154,6 +153,28 @@ public class ConstantesDB {
             "id_equipo", "id_equipo_movimiento"};
     public static final String[] CAMPOS_TIPO_MOVIMIENTO_EQUIPO = {"id_tipo_movimiento_equipo","descripcion"};
     public static final String[] CAMPOS_UNIDAD_ADMINISTRATIVA ={"id_unidad_administrativa", "descripcion"};
+
+//AM15005
+    //Tablas
+    public static final String TABLA_MARCA="marca";
+    public static  final String TABLA_TIPOS_DE_EQUIPO="tipos_de_equipo";
+    public static final String TABLA_EQUIPO="equipo";
+
+
+    //Consultas para crear tablas
+    public static final String SQL_CREATE_TABLE_MARCA="CREATE TABLE "+TABLA_MARCA +"(IDMARCA INTEGER              not null,"+
+            "DESCRIPCIONMARCA     VARCHAR2(50),"+ "constraint PK_MARCA primary key (IDMARCA))";
+
+
+
+    //Borrar Tablas
+    public static  final String SQL_DELETE_MARCA = "DROP TABLE "+TABLA_MARCA;
+
+    //campos marca
+
+    public static final String[] CAMPOS_MARCA={"idmarca","descripcionmarca"};
+
+
 
 
 
