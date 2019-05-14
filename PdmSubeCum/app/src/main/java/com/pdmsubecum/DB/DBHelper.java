@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final int DB_VERSION = 2;
+    public static final int DB_VERSION = 8;
 
 
     public DBHelper(Context context) {
@@ -45,22 +45,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(ConstantesDB.SQL_DELETE_USUARIO);
         db.execSQL(ConstantesDB.SQL_DELETE_ROL_USUARIO);
+
+
         db.execSQL(ConstantesDB.SQL_DELETE_Docente);
         db.execSQL(ConstantesDB.SQL_DELETE_AsignacionEquipo);
         db.execSQL(ConstantesDB.SQL_DELETE_DocumentoAsignacion);
         db.execSQL(ConstantesDB.SQL_DELETE_AsignacionEquipoDetalle);
         db.execSQL(ConstantesDB.SQL_DELETE_DocumentoAsignacionDetalle);
 
-
-        //pm15007
-        db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO_EXISTENCIA);
-        db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO_MOVIMIENTO);
-        db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO_MOVIMIENTO_DETALLE);
-        db.execSQL(ConstantesDB.SQL_DELETE_TIPO_MOVIMIENTO_EQUIPO);
-        db.execSQL(ConstantesDB.SQL_DELETE_UNIDAD_ADMINISTRATIVA);
-
-        //am15005
-        db.execSQL(ConstantesDB.SQL_DELETE_MARCA);
 
         //pm15007
         db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO_EXISTENCIA);

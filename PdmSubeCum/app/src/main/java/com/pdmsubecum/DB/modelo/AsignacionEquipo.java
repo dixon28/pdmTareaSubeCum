@@ -1,18 +1,16 @@
 package com.pdmsubecum.DB.modelo;
 
-import java.util.Date;
-
 public class AsignacionEquipo {
 
     private int idAsignacionEquipo;
     private int idDocente;
-    private Date fechaAsignacionEquipo;
+    private String fechaAsignacionEquipo;
     private int actualEquipo;
 
     public AsignacionEquipo() {
     }
 
-    public AsignacionEquipo(int idAsignacionEquipo, int idDocente, Date fechaAsignacionEquipo, int actualEquipo) {
+    public AsignacionEquipo(int idAsignacionEquipo, int idDocente, String fechaAsignacionEquipo, int actualEquipo) {
         this.idAsignacionEquipo = idAsignacionEquipo;
         this.idDocente = idDocente;
         this.fechaAsignacionEquipo = fechaAsignacionEquipo;
@@ -35,11 +33,11 @@ public class AsignacionEquipo {
         this.idDocente = idDocente;
     }
 
-    public Date getFechaAsignacionEquipo() {
+    public String getFechaAsignacionEquipo() {
         return fechaAsignacionEquipo;
     }
 
-    public void setFechaAsignacionEquipo(Date fechaAsignacionEquipo) {
+    public void setFechaAsignacionEquipo(String fechaAsignacionEquipo) {
         this.fechaAsignacionEquipo = fechaAsignacionEquipo;
     }
 
