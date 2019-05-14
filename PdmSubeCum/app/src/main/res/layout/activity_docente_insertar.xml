@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1">
+
+    <TableRow>
+
+        <TextView android:text="@string/codDocente" />
+
+        <EditText
+            android:id="@+id/edt_CodDocente"
+            android:inputType="number"
+            android:maxLength="7" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="@string/codUnidad"
+            tools:text="Unidad Administrativa" />
+
+        <EditText
+            android:id="@+id/edt_CodUnidad"
+            android:inputType="number"
+            android:maxLength="10" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="@string/nombre_docente"
+            tools:text="Nombre" />
+
+        <EditText
+            android:id="@+id/edt_Nombre"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/apellido_docente" />
+        <EditText
+            android:id="@+id/edt_apellido"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/email_docente" />
+        <EditText
+            android:id="@+id/edt_email"
+            android:inputType="text"
+            android:maxLength="50" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/btn_insertar"
+            android:onClick="insertarDocente"
+            android:text="@string/insertar" />
+
+        <Button
+            android:id="@+id/btn_limpiar"
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+    </TableRow>
+
+</TableLayout>
