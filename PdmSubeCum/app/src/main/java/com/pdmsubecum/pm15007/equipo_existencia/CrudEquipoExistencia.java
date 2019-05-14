@@ -59,6 +59,14 @@ public class CrudEquipoExistencia extends AppCompatActivity implements AdapterVi
                 intent = new Intent(this, RetrieveEquipoExistencia.class);
                 startActivity(intent);
                 break;
+            case 2:
+                intent = new Intent(this,UpdateEquipoExistencia.class);
+                startActivity(intent);
+                break;
+            case 3:
+                intent = new Intent(this,DeleteEquipoExistencia.class);
+                startActivity(intent);
+                break;
         }
 
     }

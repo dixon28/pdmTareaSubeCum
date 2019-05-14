@@ -95,6 +95,8 @@
     <string name="limpiar_formulario">limpiar</string>
     <string name="consultar_equipo_existencia">Consultar Equipo Existencia</string>
     <string name="equipo_existencia">Equipo Existencia</string>
+    <string name="actualizar_equipo_existencia">Actualizar Equipo Existencia</string>
+    <string name="delete_equipo_existencia">Eliminar Equipo Existencia</string>
 
 
 </resources>

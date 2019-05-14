@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".pm15007.equipo_existencia.RetrieveEquipoExistencia"></activity>
+        <activity android:name=".pm15007.equipo_existencia.DeleteEquipoExistencia"></activity>
+        <activity android:name=".pm15007.equipo_existencia.UpdateEquipoExistencia" />
+        <activity android:name=".pm15007.equipo_existencia.RetrieveEquipoExistencia" />
         <activity android:name=".pm15007.equipo_existencia.CreateEquipoExistencia" />
         <activity android:name=".ts14004.DocumentoAsignacionConsultarActivity" />
         <activity android:name=".ts14004.DocumentoAsignacionActualizarActivity" />

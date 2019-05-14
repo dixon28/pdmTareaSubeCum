@@ -58,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="ID Equipo (int)"
+                android:inputType="number"
                 android:textColor="@color/colorAccentDark" />
         </android.support.design.widget.TextInputLayout>
 
@@ -75,6 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ID Docente (int)"
+            android:inputType="number"
             android:textColor="@color/colorAccentDark" />
     </android.support.design.widget.TextInputLayout>
 
@@ -92,6 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ID Unidad Administrativa (int)"
+            android:inputType="number"
             android:textColor="@color/colorAccentDark" />
     </android.support.design.widget.TextInputLayout>
 
@@ -109,6 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/existencia_actual"
+            android:inputType="number"
             android:textColor="@color/colorAccentDark" />
     </android.support.design.widget.TextInputLayout>
 

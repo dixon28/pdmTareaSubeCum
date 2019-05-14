@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:enabled="true"
             android:hint="@string/id_clase"
+            android:inputType="number"
             android:textAlignment="textStart"
             android:textColor="@color/colorAccentDark" />
     </android.support.design.widget.TextInputLayout>
