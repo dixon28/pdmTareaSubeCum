@@ -179,13 +179,17 @@ public class ConstantesDB {
 
 
     //Consultas para crear tablas
-    public static final String SQL_CREATE_TABLE_MARCA="CREATE TABLE"+TABLA_MARCA +"(IDMARCA              INTEGER              not null,"+
+    public static final String SQL_CREATE_TABLE_MARCA="CREATE TABLE "+TABLA_MARCA +"(IDMARCA INTEGER              not null,"+
             "DESCRIPCIONMARCA     VARCHAR2(50),"+ "constraint PK_MARCA primary key (IDMARCA))";
 
 
 
     //Borrar Tablas
     public static  final String SQL_DELETE_MARCA = "DROP TABLE "+TABLA_MARCA;
+
+    //campos marca
+
+    public static final String[] CAMPOS_MARCA={"idmarca","descripcionmarca"};
 
 
 

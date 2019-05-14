@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".pm15007.equipo_existencia.RetrieveEquipoExistencia"></activity>
+        <activity android:name=".am15005.Activities.Marca.ConsultarMarcaActivity"></activity>
+        <activity android:name=".am15005.Activities.Marca.EliminarMarcaActivity" />
+        <activity android:name=".am15005.Activities.Marca.ActualizarMarcaActivity" />
+        <activity android:name=".am15005.Activities.Marca.InsertarMarcaActivity" />
+        <activity android:name=".pm15007.equipo_existencia.RetrieveEquipoExistencia" />
         <activity android:name=".pm15007.equipo_existencia.CreateEquipoExistencia" />
         <activity android:name=".ts14004.DocumentoAsignacionConsultarActivity" />
         <activity android:name=".ts14004.DocumentoAsignacionActualizarActivity" />

@@ -120,10 +120,48 @@ public class DataBase {
 
     //am15005
     public void insertar(Marca marca){
-        ContentValues contentValues = marca.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_MARCA, null, contentValues);
+        ContentValues a = marca.toValues();
+        a.put("idmarca",marca.getIdmarca());
+        a.put("descripcionmarca",marca.getDescripcionmarca());
+        sqLiteDatabase.insert("marca", null, a);
+
     }
 
+
+    //consultar marca
+
+    public Marca consultarM(String idmarca) {
+
+
+        String[] id = {idmarca};
+        Cursor cursor = sqLiteDatabase.query("marca",ConstantesDB.CAMPOS_MARCA, "idmarca = ?", id, null,
+                null, null);
+        if (cursor.moveToFirst()) {
+
+
+            Marca marca = new Marca();
+            marca.setIdmarca(Integer.parseInt(cursor.getString(0)));
+            marca.setDescripcionmarca(cursor.getString(1));
+
+            return marca;
+        } else {
+            return null;
+        }
+    }
+
+
+    //eliminar Marca
+
+    public String eliminar(Marca marca){
+        String conteo;
+
+        String where="idmarca='"+marca.getIdmarca()+"'";
+        sqLiteDatabase.delete("marca", where, null);
+        conteo=  String.valueOf(getItemsMarca());
+        return conteo;
+
+
+    }
 
 
 
