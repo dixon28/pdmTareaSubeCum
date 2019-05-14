@@ -1,5 +1,7 @@
 package com.pdmsubecum.ts14004;
 
+import android.app.ListActivity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,42 +15,30 @@ import com.pdmsubecum.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TS14004 extends AppCompatActivity implements AdapterView.OnItemClickListener{
-
-    ListView lista;
-
-    List<String> tablasCrud;
+public class TS14004 extends ListActivity {
+    String[] menu = {"Docente", "AsignacionEquipo", "DocumentoAsignacion"};
+    String[] activities = {"DocenteMenuActivity", "AsignacionEquipoMenuActivity", "DocumentoAsignacionMenuActivity"};
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ts14004);
-        this.setTitle(R.string.crud_ts14004);
-
-        lista = findViewById(R.id.menu_ts14004);
-
-        //agregando los item de la tabla
-        tablasCrud = new ArrayList<>();
-        tablasCrud.add("primera tabla");
-        tablasCrud.add("segunda tabla");
-
-        ArrayAdapter adapter = new ArrayAdapter(
-                this, android.R.layout.simple_list_item_1,tablasCrud
-        );
-
-
-        lista.setAdapter(adapter);
-
-        //agregandole el evento click a los items de la list
-        lista.setOnItemClickListener(this);
+        setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu));
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //obteniendo la fila clickeada
-        String nombreTablaClick = tablasCrud.get(position);
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        if (position != 3) {
+            String nombreValue = activities[position];
+            try {
+                Class<?> clase = Class.forName("com.pdmsubecum.ts14004." + nombreValue);
+                Intent inte = new Intent(this, clase);
+                this.startActivity(inte);
 
-        //hacer llamar a activities segun click
-        Toast.makeText(this, "Click a tabla: "+nombreTablaClick, Toast.LENGTH_SHORT).show();
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

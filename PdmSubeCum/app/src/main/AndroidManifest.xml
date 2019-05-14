@@ -9,6 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ts14004.DocumentoAsignacionConsultarActivity"></activity>
+        <activity android:name=".ts14004.DocumentoAsignacionActualizarActivity" />
+        <activity android:name=".ts14004.DocumentoAsignacionEliminarActivity" />
+        <activity android:name=".ts14004.DocumentoAsignacionInsertarActivity" />
+        <activity android:name=".ts14004.AsignacionEquipoConsultarActivity" />
+        <activity android:name=".ts14004.AsignacionEquipoActualizarActivity" />
+        <activity android:name=".ts14004.AsignacionEquipoEliminarActivity" />
+        <activity android:name=".ts14004.AsignacionEquipoInsertarActivity" />
+        <activity android:name=".ts14004.DocenteConsultarActivity" />
+        <activity android:name=".ts14004.DocenteActualizarActivity" />
+        <activity android:name=".ts14004.DocenteEliminarActivity" />
+        <activity android:name=".ts14004.DocenteInsertarActivity" />
+        <activity android:name=".ts14004.DocumentoAsignacionMenuActivity" />
+        <activity android:name=".ts14004.AsignacionEquipoMenuActivity" />
+        <activity android:name=".ts14004.DocenteMenuActivity" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +47,16 @@
         <activity android:name=".mm14031.MM14031" />
         <activity android:name=".pm15007.PM15007" />
         <activity android:name=".rl08017.RL08017" />
-        <activity android:name=".ts14004.TS14004"></activity>
+        <activity android:name=".ts14004.TS14004" />
+<<<<<<< HEAD
+=======
+        <activity android:name=".pm15007.unidad_administrativa.CrudUnidadAdministrativa" />
+        <activity android:name=".pm15007.equipo_existencia.CrudEquipoExistencia" />
+        <activity android:name=".pm15007.equipo_movimiento.CrudEquipoMovimiento" />
+        <activity android:name=".pm15007.equipo_movimiento_detalle.CrudEquipoMovimientoDetalle" />
+        <activity android:name=".pm15007.tipo_movimiento_equipo.CrudTipoMovimientoEquipo"></activity>
+        <activity android:name=".am15005.DocActivity"></activity>
+>>>>>>> 6cbf65ce3a1dda020c783030bee6caaa50f6cdc5
     </application>
 
 </manifest>
