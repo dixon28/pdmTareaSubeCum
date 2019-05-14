@@ -89,4 +89,12 @@
     <string name="mas">mas</string>
 
 
+
+    <!--STRING DE LOS CRUD-->
+    <string name="crud_create">Crear</string>
+    <string name="crud_retrieve">Consultar</string>
+    <string name="crud_update">Actualizar</string>
+    <string name="crud_delete">Eliminar</string>
+
+
 </resources>
