@@ -248,6 +248,68 @@ public class DataBase {
     }
 
     /* ------------------------------------------------------
+     -------------   ACTUALIZACION DE DATOS -----------------
+     -------------------------------------------------------*/
+
+
+    //pm15007
+    public int actualizar(EquipoExistencia equipoExistencia){
+        ContentValues contentValues = equipoExistencia.toValues();
+        String[] id = {String.valueOf(equipoExistencia.getId_equipo_existencia())};
+        return sqLiteDatabase.update(ConstantesDB.TABLA_EQUIPO_EXISTENCIA,contentValues,"id_equipo_existencia = ? ",id);
+    }
+    public int actualizar(EquipoMovimiento equipoMovimiento){
+        ContentValues contentValues = equipoMovimiento.toValues();
+        String[] id = {String.valueOf(equipoMovimiento.getId_equipo_movimiento())};
+        return sqLiteDatabase.update(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO, contentValues, "id_equipo_movimiento = ? ", id);
+    }
+    public int actualizar(EquipoMovimientoDetalle equipoMovimientoDetalle){
+        ContentValues contentValues = equipoMovimientoDetalle.toValues();
+        String[] id = {String.valueOf(equipoMovimientoDetalle.getId_equipo_movimiento_detalle())};
+        return sqLiteDatabase.update(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO_DETALLE, contentValues,"id_equipo_movimiento_detalle = ? ",id);
+    }
+    public int actualizar(TipoMovimientoEquipo tipoMovimientoEquipo){
+        ContentValues contentValues = tipoMovimientoEquipo.toValues();
+        String[] id = {String.valueOf(tipoMovimientoEquipo.getId_tipo_movimiento_equipo())};
+        return sqLiteDatabase.update(ConstantesDB.TABLA_TIPO_MOVIMIENTO_EQUIPO, contentValues,"id_tipo_movimiento_equipo = ? ", id);
+    }
+    public int actualizar(UnidadAdministrativa unidadAdministrativa){
+        ContentValues contentValues = unidadAdministrativa.toValues();
+        String[] id = {String.valueOf(unidadAdministrativa.getId_unidad_administrativa())};
+        return sqLiteDatabase.update(ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA, contentValues,"id_unidad_administrativa = ? ", id);
+    }
+
+
+    /* ------------------------------------------------------
+     -------------   ELIMINACION DE DATOS -----------------
+     -------------------------------------------------------*/
+
+    //PM15007
+    public int eliminar(EquipoExistencia equipoExistencia){
+        String[] id = {String.valueOf(equipoExistencia.getId_equipo_existencia())};
+        return sqLiteDatabase.delete(ConstantesDB.TABLA_EQUIPO_EXISTENCIA,"id_equipo_existencia = ? ",id);
+    }
+    public int eliminar(EquipoMovimiento equipoMovimiento){
+        String[] id = {String.valueOf(equipoMovimiento.getId_equipo_movimiento())};
+        return sqLiteDatabase.delete(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO, "id_equipo_movimiento = ? ", id);
+    }
+    public int eliminar(EquipoMovimientoDetalle equipoMovimientoDetalle){
+        String[] id = {String.valueOf(equipoMovimientoDetalle.getId_equipo_movimiento_detalle())};
+        return sqLiteDatabase.delete(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO_DETALLE,"id_equipo_movimiento_detalle = ? ",id);
+    }
+    public int eliminar(TipoMovimientoEquipo tipoMovimientoEquipo){
+        String[] id = {String.valueOf(tipoMovimientoEquipo.getId_tipo_movimiento_equipo())};
+        return sqLiteDatabase.delete(ConstantesDB.TABLA_TIPO_MOVIMIENTO_EQUIPO,"id_tipo_movimiento_equipo = ? ", id);
+    }
+    public int eliminar(UnidadAdministrativa unidadAdministrativa){
+        String[] id = {String.valueOf(unidadAdministrativa.getId_unidad_administrativa())};
+        return sqLiteDatabase.delete(ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA,"id_unidad_administrativa = ? ", id);
+    }
+
+
+
+
+    /* ------------------------------------------------------
      -------------   QUEMADO DE DATOS -----------------------
      -------------------------------------------------------*/
     public void llenarUsuario(List<Usuario> usuarios){

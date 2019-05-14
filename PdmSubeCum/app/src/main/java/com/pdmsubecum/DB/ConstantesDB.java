@@ -106,8 +106,9 @@ public class ConstantesDB {
 
 
     //Consultas para crear tablas
-    public static final String SQL_CREATE_TABLE_MARCA="CREATE TABLE"+TABLA_MARCA +"(IDMARCA              INTEGER              not null,"+
-            "DESCRIPCIONMARCA     VARCHAR2(50),"+ "constraint PK_MARCA primary key (IDMARCA))";
+    public static final String SQL_CREATE_TABLE_MARCA="CREATE TABLE "+TABLA_MARCA +"(IDMARCA INTEGER not null,"+
+            "DESCRIPCIONMARCA VARCHAR2(50),"+
+            "constraint PK_MARCA primary key (IDMARCA))";
 
 
 
