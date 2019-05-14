@@ -96,9 +96,9 @@ public class DataBase {
 
 
     //pm15007
-    public void insertar(EquipoExistencia equipoExistencia){
+    public long insertar(EquipoExistencia equipoExistencia){
         ContentValues contentValues = equipoExistencia.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_EQUIPO_EXISTENCIA,null,contentValues);
+        return sqLiteDatabase.insert(ConstantesDB.TABLA_EQUIPO_EXISTENCIA,null,contentValues);
     }
     public void insertar(EquipoMovimiento equipoMovimiento){
         ContentValues contentValues = equipoMovimiento.toValues();

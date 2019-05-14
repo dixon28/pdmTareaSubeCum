@@ -1,5 +1,6 @@
 package com.pdmsubecum.pm15007.equipo_existencia;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -47,6 +48,18 @@ public class CrudEquipoExistencia extends AppCompatActivity implements AdapterVi
 
         //hacer llamar a activities segun click
         Toast.makeText(this, "Click a tabla: "+nombreTablaClick, Toast.LENGTH_SHORT).show();
+
+        Intent intent;
+        switch (position){
+            case 0:
+                intent = new Intent(this, CreateEquipoExistencia.class);
+                startActivity(intent);
+                break;
+            case 1:
+                intent = new Intent(this, RetrieveEquipoExistencia.class);
+                startActivity(intent);
+                break;
+        }
 
     }
 }

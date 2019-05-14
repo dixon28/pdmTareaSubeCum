@@ -43,7 +43,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         switch (v.getId()){
             case R.id.login_btn_login:
                 dataBase.abrir();
-                Usuario user = dataBase.getUsuario(this.edt_usuario.getText().toString());
+                Usuario user = dataBase.getUsuario(this.edt_usuario.getText().toString().toLowerCase());
                 dataBase.cerrar();
                 if (user != null){
                     if(user.getPassword().equals(this.edt_password.getText().toString())){
