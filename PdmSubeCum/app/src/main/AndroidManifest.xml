@@ -48,15 +48,14 @@
         <activity android:name=".pm15007.PM15007" />
         <activity android:name=".rl08017.RL08017" />
         <activity android:name=".ts14004.TS14004" />
-<<<<<<< HEAD
-=======
+
         <activity android:name=".pm15007.unidad_administrativa.CrudUnidadAdministrativa" />
         <activity android:name=".pm15007.equipo_existencia.CrudEquipoExistencia" />
         <activity android:name=".pm15007.equipo_movimiento.CrudEquipoMovimiento" />
         <activity android:name=".pm15007.equipo_movimiento_detalle.CrudEquipoMovimientoDetalle" />
         <activity android:name=".pm15007.tipo_movimiento_equipo.CrudTipoMovimientoEquipo"></activity>
         <activity android:name=".am15005.DocActivity"></activity>
->>>>>>> 6cbf65ce3a1dda020c783030bee6caaa50f6cdc5
+
     </application>
 
 </manifest>
