@@ -105,6 +105,9 @@
     <string name="delete_equipo_existencia">Eliminar Equipo Existencia</string>
     <string name="actualizar_equipo_existencia">Actualizar Equipo Existencia</string>
     <string name="actualizar_marca">actualizar</string>
+    <string name="crear_unidad_administrativa">Crear Unidad Administrativa</string>
+    <string name="unidad_administrativa">Unidad Administrativa</string>
+    <string name="consultar_unidad_administrativa">Consultar Unidad Administrativa</string>
 
 
 </resources>

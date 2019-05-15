@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".am15005.Activities.Marca.ConsultarMarcaActivity" ></activity>
+        <activity android:name=".pm15007.unidad_administrativa.RetrieveUnidadAdministrativa"></activity>
+        <activity android:name=".pm15007.unidad_administrativa.CreateUnidadAdministrativa" />
+        <activity android:name=".am15005.Activities.Marca.ConsultarMarcaActivity" />
         <activity android:name=".am15005.Activities.Marca.EliminarMarcaActivity" />
         <activity android:name=".am15005.Activities.Marca.ActualizarMarcaActivity" />
         <activity android:name=".am15005.Activities.Marca.InsertarMarcaActivity" />

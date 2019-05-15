@@ -84,7 +84,8 @@ public class ConstantesDB {
     //PM15007
     public static final String SQL_CREATE_TABLE_UNIDAD_ADMINISTRATIVA = "CREATE TABLE "+TABLA_UNIDAD_ADMINISTRATIVA +
             "(id_unidad_administrativa INTEGER NOT NULL PRIMARY KEY, "+
-            "descripcion VARCHAR(100))";
+            "nombre VARCHAR(30) NOT NULL, "+
+            "descripcion VARCHAR(100) NOT NULL)";
     public static final String SQL_CREATE_TABLE_EQUIPO_MOVIMIENTO = "CREATE TABLE "+TABLA_EQUIPO_MOVIMIENTO +
             "(id_equipo_movimiento INTEGER NOT NULL PRIMARY KEY, " +
             "id_tipo_movimiento_equipo INTEGER NOT NULL, " +
@@ -152,7 +153,7 @@ public class ConstantesDB {
     public static final String[] CAMPOS_EQUIPO_MOVIMIENTO_DETALLE = {"id_equipo_movimiento_detalle",
             "id_equipo", "id_equipo_movimiento"};
     public static final String[] CAMPOS_TIPO_MOVIMIENTO_EQUIPO = {"id_tipo_movimiento_equipo","descripcion"};
-    public static final String[] CAMPOS_UNIDAD_ADMINISTRATIVA ={"id_unidad_administrativa", "descripcion"};
+    public static final String[] CAMPOS_UNIDAD_ADMINISTRATIVA ={"id_unidad_administrativa", "nombre", "descripcion"};
 
 //AM15005
     //Tablas

@@ -35,7 +35,7 @@ public class CreateEquipoExistencia extends AppCompatActivity implements View.On
         til_id_unidad_administrativa = findViewById(R.id.til_id_unidad_administrativa);
         til_actual = findViewById(R.id.til_actual);
 
-        til_id_equipo_existencia.getEditText().setText(String.valueOf(dataBase.getItemsEquipoExistencia()+1));
+        til_id_equipo_existencia.getEditText().setText(String.valueOf(dataBase.getLastIdEquipoExistencia()+1));
 
         btn_limpiar = findViewById(R.id.btn_clean_equipo_existencia);
         btn_crear = findViewById(R.id.btn_create_equipo_existencia);

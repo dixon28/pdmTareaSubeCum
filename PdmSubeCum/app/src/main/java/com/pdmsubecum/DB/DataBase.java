@@ -338,12 +338,36 @@ public class DataBase {
         if (cursor.moveToNext()) {
             UnidadAdministrativa unidadAdministrativa = new UnidadAdministrativa();
             unidadAdministrativa.setId_unidad_administrativa(cursor.getInt(0));
-            unidadAdministrativa.setDescripcion(cursor.getString(1));
+            unidadAdministrativa.setNombre(cursor.getString(1));
+            unidadAdministrativa.setDescripcion(cursor.getString(2));
             return unidadAdministrativa;
         } else {
             return null;
         }
     }
+
+    public int getLastIdEquipoExistencia(){
+        if(getItemsEquipoExistencia() == 0){
+            return 0;
+        }else{
+            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_EQUIPO_EXISTENCIA,ConstantesDB.CAMPOS_EQUIPO_EXISTENCIA,
+                    null, null,null,null,null);
+            cursor.moveToLast();
+            return cursor.getInt(0);
+        }
+
+    }
+    public int getLastIdUnidadAdministrativa(){
+        if(getItemsUnidadAdministrativa() == 0) {
+            return 0;
+        }else{
+            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA, ConstantesDB.CAMPOS_UNIDAD_ADMINISTRATIVA,
+                    null, null, null, null, null);
+            cursor.moveToLast();
+            return cursor.getInt(0);
+        }
+    }
+    
 
     /* ------------------------------------------------------
      -------------   ACTUALIZACION DE DATOS -----------------
