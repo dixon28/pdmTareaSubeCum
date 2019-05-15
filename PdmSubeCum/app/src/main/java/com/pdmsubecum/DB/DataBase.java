@@ -186,6 +186,24 @@ public class DataBase {
     }
 
 
+    public int actualizar(Marca marca,int idmarca) {
+        int status;
+
+        try {
+            ContentValues contentValues = marca.toValues();
+            contentValues.put("idmarca", marca.getIdmarca());
+            contentValues.put("descripcionmarca", marca.getDescripcionmarca());
+            String[] id = {String.valueOf(idmarca)};
+            status = sqLiteDatabase.update(ConstantesDB.TABLA_MARCA, contentValues, "idmarca = ? ", id);
+            return status;
+        }catch (SQLException e)
+        {
+            e.printStackTrace();
+            status=0;
+            return status;
+
+        }
+    }
     //eliminar Marca
 
     public String eliminar(Marca marca){

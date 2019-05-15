@@ -104,6 +104,7 @@
     <string name="con_descripcion">Descripcion</string>
     <string name="delete_equipo_existencia">Eliminar Equipo Existencia</string>
     <string name="actualizar_equipo_existencia">Actualizar Equipo Existencia</string>
+    <string name="actualizar_marca">actualizar</string>
 
 
 </resources>
