@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.pdmsubecum.R;
+import com.pdmsubecum.pm15007.equipo_existencia.UpdateEquipoExistencia;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,12 @@ public class CrudUnidadAdministrativa extends AppCompatActivity implements Adapt
                 break;
             case 1:
                 startActivity(new Intent(this, RetrieveUnidadAdministrativa.class));
+                break;
+            case 2:
+                startActivity(new Intent(this, UpdateUnidadAdministrativa.class));
+                break;
+            case 3:
+                startActivity(new Intent(this, DeleteUnidadAdministrativa.class));
                 break;
         }
     }
