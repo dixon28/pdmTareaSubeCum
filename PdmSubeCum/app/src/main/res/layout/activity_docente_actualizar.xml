@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dip"
+    android:stretchColumns="1" >
+
+    <TableRow>
+
+        <TextView android:text="@string/codDocente" />
+
+        <EditText
+            android:id="@+id/edt_CodDocente"
+            android:hint="@string/codDocente"
+            android:inputType="number"
+            android:maxLength="7" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/codUnidad" />
+
+        <EditText
+            android:id="@+id/edt_CodUnidad"
+            android:hint="id Unidad Administrativa"
+            android:inputType="number"
+            android:maxLength="7" />
+    </TableRow>
+    <TableRow>
+
+        <TextView android:text="@string/nombre_docente" />
+
+        <EditText
+            android:id="@+id/edt_Nombre"
+            android:hint="Texto"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/apellido_docente" />
+
+        <EditText
+            android:id="@+id/edt_Apellido"
+            android:hint="Texto"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/email_docente" />
+
+        <EditText
+            android:id="@+id/edt_email"
+            android:hint="example@.com"
+            android:inputType="text"
+            android:maxLength="50" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:background="#233CC7"
+            android:onClick="actualizarDocente"
+            android:text="@string/actualizar" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:background="#E2EE7D"
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+    </TableRow>
+
+</TableLayout>

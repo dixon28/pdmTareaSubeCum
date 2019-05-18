@@ -5,15 +5,16 @@ import android.content.ContentValues;
 public class Marca {
 
     private int idmarca;
-    private String descripcion;
+    private String descripcionmarca;
 
     public Marca() {
     }
 
-    public Marca(int idmarca, String descripcion) {
+    public Marca(int idmarca, String descripcionmarca) {
         this.idmarca = idmarca;
-        this.descripcion = descripcion;
+        this.descripcionmarca = descripcionmarca;
     }
+
 
     public int getIdmarca() {
         return idmarca;
@@ -23,18 +24,18 @@ public class Marca {
         this.idmarca = idmarca;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescripcionmarca() {
+        return descripcionmarca;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcionmarca(String descripcionmarca) {
+        this.descripcionmarca = descripcionmarca;
     }
 
     public ContentValues toValues(){
         ContentValues contentValues = new ContentValues(2);
         contentValues.put("idmarca", idmarca);
-        contentValues.put("descripcion", descripcion);
+        contentValues.put("descripcionmarca", descripcionmarca);
         return contentValues;
     }
 }

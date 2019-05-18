@@ -82,5 +82,5 @@ public class EquipoMovimiento {
         contentValues.put("comentario", comentario);
         contentValues.put("fecha_movimiento", fecha_movimiento);
         return contentValues;
-    }
+}
 }

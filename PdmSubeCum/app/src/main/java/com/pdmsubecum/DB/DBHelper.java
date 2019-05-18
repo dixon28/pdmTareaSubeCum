@@ -10,7 +10,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final int DB_VERSION = 2;
+
+    public static final int DB_VERSION = 8;
+
 
 
     public DBHelper(Context context) {
@@ -21,6 +23,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_USUARIO);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_ROL_USUARIO);
+        //-----------------Raul----------------------------------------
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_Docente);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_AsignacionEquipo);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DocumentoAsignacion);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_AsignacionEquipoDetalle);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DocumentoAsignacionDetalle);
 
         //pm15007
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_EQUIPO_EXISTENCIA);
@@ -37,8 +45,18 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+
         db.execSQL(ConstantesDB.SQL_DELETE_USUARIO);
         db.execSQL(ConstantesDB.SQL_DELETE_ROL_USUARIO);
+
+
+        db.execSQL(ConstantesDB.SQL_DELETE_Docente);
+        db.execSQL(ConstantesDB.SQL_DELETE_AsignacionEquipo);
+        db.execSQL(ConstantesDB.SQL_DELETE_DocumentoAsignacion);
+        db.execSQL(ConstantesDB.SQL_DELETE_AsignacionEquipoDetalle);
+        db.execSQL(ConstantesDB.SQL_DELETE_DocumentoAsignacionDetalle);
+
 
         //pm15007
         db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO_EXISTENCIA);

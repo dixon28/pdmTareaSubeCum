@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dip"
+    android:stretchColumns="1" >
+
+    <TableRow>
+
+        <TextView android:text="@string/codDocuAsignacion" />
+
+        <EditText
+            android:id="@+id/edt_CodDocuAsignacion"
+            android:hint="id"
+            android:inputType="number"
+            android:maxLength="7" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/codDocente" />
+
+        <EditText
+            android:id="@+id/edt_CodDocente"
+            android:hint="codigo"
+            android:inputType="number"
+            android:maxLength="7" />
+    </TableRow>
+    <TableRow>
+
+        <TextView android:text="@string/motivo_DocuAsignacion" />
+
+        <EditText
+            android:id="@+id/edt_Motivo"
+            android:hint="Texto"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/fecha_DocuAsignacion" />
+
+        <EditText
+            android:id="@+id/edt_fechaDocuAsignacion"
+            android:hint="Texto"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+
+
+
+    <TableRow>
+
+        <Button
+            android:layout_width="180dp"
+            android:background="#233CC7"
+            android:onClick="actualizarDocumentoAsignado"
+            android:text="@string/actualizar" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:background="#E2EE7D"
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+    </TableRow>
+
+</TableLayout>
