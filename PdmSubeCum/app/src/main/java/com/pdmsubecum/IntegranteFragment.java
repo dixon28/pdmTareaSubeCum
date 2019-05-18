@@ -92,7 +92,8 @@ public class IntegranteFragment extends Fragment {
                             integranteList.add(new Integrante("Joel Ramos Lopez","RL08017","bastantes tablas",R.drawable.man2));
                             break;
                         case "ts14004":
-                            integranteList.add(new Integrante("Raul Trigueros Santamaria","TS14004","Docente/AsignacionEquipo/DocumentoAsignacion",R.drawable.rulo));
+                            integranteList.add(new Integrante("Raul Trigueros Santamaria","TS14004",
+                                    "Docente/AsignacionEquipo/DocumentoAsignacion",R.drawable.rulo));
                             break;
                     }
                     break;

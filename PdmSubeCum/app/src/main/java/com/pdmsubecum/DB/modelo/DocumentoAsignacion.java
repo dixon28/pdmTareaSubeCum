@@ -7,17 +7,17 @@ public class DocumentoAsignacion {
     private int idDocente;
     private String motivo;
     private String FechaAsignacionDoc;
-    private int actualDoc;
+
 
     public DocumentoAsignacion() {
     }
 
-    public DocumentoAsignacion(int idDocumentoAsignacion, int idDocente, String motivo, String fechaAsignacionDoc, int actualDoc) {
+    public DocumentoAsignacion(int idDocumentoAsignacion, int idDocente, String motivo, String fechaAsignacionDoc) {
         this.idDocumentoAsignacion = idDocumentoAsignacion;
         this.idDocente = idDocente;
         this.motivo = motivo;
         FechaAsignacionDoc = fechaAsignacionDoc;
-        this.actualDoc = actualDoc;
+
     }
 
     public int getIdDocumentoAsignacion() {
@@ -52,11 +52,5 @@ public class DocumentoAsignacion {
         FechaAsignacionDoc = fechaAsignacionDoc;
     }
 
-    public int getActualDoc() {
-        return actualDoc;
-    }
 
-    public void setActualDoc(int actualDoc) {
-        this.actualDoc = actualDoc;
-    }
 }

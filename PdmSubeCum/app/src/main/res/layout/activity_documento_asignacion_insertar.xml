@@ -1,9 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ts14004.DocumentoAsignacionInsertarActivity">
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1">
 
-</android.support.constraint.ConstraintLayout>
+    <TableRow>
+
+        <TextView android:text="@string/codDocuAsignacion" />
+
+        <EditText
+            android:id="@+id/edt_CodDocuAsignacion"
+            android:hint="id "
+            android:inputType="number"
+            android:maxLength="7" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="@string/codDocente"
+            tools:text="Codigo Docente" />
+
+        <EditText
+            android:id="@+id/edt_CodDocente"
+            android:hint="codigo"
+            android:inputType="number"
+            android:maxLength="7" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="@string/motivo_DocuAsignacion"
+            />
+
+        <EditText
+            android:id="@+id/edt_Motivo"
+            android:hint="Texto"
+            android:inputType="text"
+            android:maxLength="50" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/fecha_DocuAsignacion" />
+
+        <EditText
+            android:id="@+id/edt_fechaDocuAsignacion"
+            android:hint="Texto"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/btn_insertar"
+            android:background="#52C956"
+            android:onClick="insertarDocumentoAsignado"
+            android:text="@string/insertar" />
+
+        <Button
+            android:id="@+id/btn_limpiar"
+            android:background="#E2EE7D"
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+    </TableRow>
+
+</TableLayout>

@@ -11,6 +11,7 @@
 
         <EditText
             android:id="@+id/edt_CodDocente"
+            android:hint="@string/codDocente"
             android:inputType="number"
             android:maxLength="7" />
     </TableRow>
@@ -21,6 +22,7 @@
 
         <EditText
             android:id="@+id/edt_CodUnidad"
+            android:hint="id Unidad Administrativa"
             android:inputType="number"
             android:maxLength="7" />
     </TableRow>
@@ -30,6 +32,7 @@
 
         <EditText
             android:id="@+id/edt_Nombre"
+            android:hint="Texto"
             android:inputType="text"
             android:maxLength="30" />
     </TableRow>
@@ -40,6 +43,7 @@
 
         <EditText
             android:id="@+id/edt_Apellido"
+            android:hint="Texto"
             android:inputType="text"
             android:maxLength="30" />
     </TableRow>
@@ -50,6 +54,7 @@
 
         <EditText
             android:id="@+id/edt_email"
+            android:hint="example@.com"
             android:inputType="text"
             android:maxLength="50" />
     </TableRow>
@@ -57,6 +62,7 @@
     <TableRow>
 
         <Button
+            android:background="#233CC7"
             android:onClick="actualizarDocente"
             android:text="@string/actualizar" />
     </TableRow>
@@ -64,6 +70,7 @@
     <TableRow>
 
         <Button
+            android:background="#E2EE7D"
             android:onClick="limpiarTexto"
             android:text="@string/limpiar" />
     </TableRow>

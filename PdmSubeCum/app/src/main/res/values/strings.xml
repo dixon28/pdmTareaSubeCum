@@ -37,7 +37,6 @@
     <!-- *************************** -->
     <!-- * STRING USADOS POR RAUL **-->
     <!-- *************************** -->
-
     <string name="title_activity_docente_menu">DocenteMenuActivity</string>
     <string name="title_activity_asignacionEquipo_menu">AsignacionEquipoMenuActivity</string>
     <string name="title_activity_documentoAsignacion_menu">DocumentoAsignacionMenuActivity</string>
@@ -60,7 +59,7 @@
     <string name="eliminar_registro">Eliminar Registro</string>
     <string name="consultar_registro">Consultar Registro</string>
     <string name="actualizar_registro">Actualizar Registro</string>
-    <string name="codDocente">Codigo</string>
+    <string name="codDocente">Codigo Docente</string>
     <string name="codUnidad">Unidad Administrativa</string>
     <string name="nombre_docente"> Nombre</string>
     <string name="apellido_docente"> Apellido</string>
@@ -70,6 +69,14 @@
     <string name="eliminar">Eliminar</string>
     <string name="consultar">Consultar</string>
     <string name="actualizar">Actualizar</string>
+    <string name="codDocuAsignacion">ID DocumentoAsignacion</string>
+    <string name="motivo_DocuAsignacion">Motivo</string>
+    <string name="fecha_DocuAsignacion">Fecha de Asignacion</string>
+    <string name="codAsignacionEquipo">Codigo de Asignacion de Equipo</string>
+    <string name="fecha_AsignacionEquipo">Fecha de Asignacion</string>
+    <string name="actualAsignado">Asignacion Actual</string>
+
+
 
 
     <!--PM15007-->
@@ -108,6 +115,7 @@
     <string name="crear_unidad_administrativa">Crear Unidad Administrativa</string>
     <string name="unidad_administrativa">Unidad Administrativa</string>
     <string name="consultar_unidad_administrativa">Consultar Unidad Administrativa</string>
+
 
 
 </resources>

@@ -472,12 +472,12 @@ public class DataBase {
         final int[] VAidAsignacionEquipo = {2222222, 2222220, 2222200, 2222000};
         final int[] VAidDocente = {8888881, 8888882, 8888883,8888884};
         final String[] VAfechaAsignacionEquipo = {"2019/05/14", "2019-05-14", "2019-05-15", "2019-05-16"};
-        final int[] VAactualEquipo = {3333330, 3333331, 3333332, 3333333};
+
 
         final int[] VDOidDocumentoAsignacion = {3222222, 3222220, 3222200, 3222000};
         final int[] VDOidDocente = {8888881, 8888882, 8888883,8888884};
+        final String[] VDOmotivo = {"Apoyo en clase", "Apoyo en clase", "Tarea de investigacion", "Lectura"};
         final String[] VDOfechaAsignacionDoc = {"2019-05-16", "2019-05-17", "2019-05-18", "2019-05-19"};
-        final int[] VDOactualDoc = {4000000, 4000001, 4000011, 4000111};
 
         abrir();
     if (getItemsDocente()==0){
@@ -493,11 +493,11 @@ public class DataBase {
     }
     if(getItemsAsignacionEquipo()==0){
         AsignacionEquipo asignacionEquipo = new AsignacionEquipo();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             asignacionEquipo.setIdAsignacionEquipo(VAidAsignacionEquipo[i]);
             asignacionEquipo.setIdDocente(VAidDocente[i]);
             asignacionEquipo.setFechaAsignacionEquipo(VAfechaAsignacionEquipo[i]);
-            asignacionEquipo.setActualEquipo(VAactualEquipo[i]);
+
             // insertar(asignacionEquipo);
         }
     }
@@ -506,8 +506,9 @@ public class DataBase {
         for (int i = 0; i < 4; i++) {
             documentoAsignacion.setIdDocumentoAsignacion(VDOidDocumentoAsignacion[i]);
             documentoAsignacion.setIdDocente(VDOidDocente[i]);
+            documentoAsignacion.setMotivo(VDOmotivo[i]);
             documentoAsignacion.setFechaAsignacionDoc(VDOfechaAsignacionDoc[i]);
-            documentoAsignacion.setActualDoc(VDOactualDoc[i]);
+
             // insertar(documentoAsignacion);
         }
     }
