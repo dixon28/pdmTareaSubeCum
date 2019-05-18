@@ -115,6 +115,8 @@
     <string name="crear_unidad_administrativa">Crear Unidad Administrativa</string>
     <string name="unidad_administrativa">Unidad Administrativa</string>
     <string name="consultar_unidad_administrativa">Consultar Unidad Administrativa</string>
+    <string name="update_unidad_administrativa">Actualizar Unidad Administrativa</string>
+    <string name="delete_unidad_administrativa">Eliminar Unidad Administrativa</string>
 
 
 
