@@ -36,13 +36,16 @@
 
     <!-- Titulos de botones de CRUD -->
     <string name="opciones">Opciones a realizar</string>
-    <string name="insertar">INSERTAR</string>
-    <string name="consultar">CONSULTAR</string>
-    <string name="actualizar">ACTUALIZAR</string>
-    <string name="eliminar">ELIMINAR</string>
-    <string name="limpiarTexto">LIMPIAR</string>
+    <!--
+   <string name="insertar">INSERTAR</string>
+   <string name="consultar">CONSULTAR</string>
+   <string name="actualizar">ACTUALIZAR</string>
+   <string name="eliminar">ELIMINAR</string>
+   -->
+   <string name="limpiarTexto">LIMPIAR</string>
 
-    <!-- VALORES PARA MATERIA, HORARIO Y GRUPO -->
+
+   <!-- VALORES PARA MATERIA, HORARIO Y GRUPO -->
 
     <string name="codigoMateria">Codigo Materia</string>
     <string name="nombreMateria">Nombre</string>

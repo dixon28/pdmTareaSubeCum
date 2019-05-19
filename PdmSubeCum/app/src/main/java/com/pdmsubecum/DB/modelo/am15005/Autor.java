@@ -45,7 +45,7 @@ public class Autor {
         ContentValues contentValues = new ContentValues(3);
         contentValues.put("idautor", idautor);
         contentValues.put("nombreautor",nombreAutor);
-        contentValues.put("apellidosuator",apellidosAutor);
+        contentValues.put("apellidosautor",apellidosAutor);
         return contentValues;
     }
 }

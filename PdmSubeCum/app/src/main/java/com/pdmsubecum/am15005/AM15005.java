@@ -24,10 +24,13 @@ public class AM15005 extends AppCompatActivity {
 
     List<String> tablasCrud;
 
+    LlenarDBAM15005 dbam15005;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_am15005);
+        this.dbam15005 = new LlenarDBAM15005(this);
         MarcaFragment homeFragment= new MarcaFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, homeFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack(null).commit();
 

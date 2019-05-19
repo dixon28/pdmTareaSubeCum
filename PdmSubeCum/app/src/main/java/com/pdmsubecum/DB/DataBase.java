@@ -157,6 +157,30 @@ public class DataBase {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_MARCA);
     }
 
+    private long getItemsAutor() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_AUTOR);
+    }
+
+    private long getItemsAutorDetalle() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_AUTOR_DETALLE);
+    }
+
+    private long getItemsTiposEquipo() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_TIPOS_DE_EQUIPO);
+
+
+    }
+
+    private long getItemsTiposDocumento() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_TIPOS_DE_DOCUMENTO);
+    }
+    private long getItemsDocumento() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_DOCUMENTO);
+    }
+    private long getItemsEquipo() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_EQUIPO);
+    }
+
 
     /* ------------------------------------------------------
      -------------   INSERCIONES EN TABLAS -------------------
@@ -249,9 +273,6 @@ public class DataBase {
 
     public void insertar(Autor autor) {
         ContentValues a = autor.toValues();
-        a.put("idautor", autor.getIdautor());
-        a.put("nombreautor", autor.getNombreAutor());
-        a.put("apellidosautor", autor.getApellidosAutor());
         sqLiteDatabase.insert("autor", null, a);
 
     }
@@ -260,7 +281,7 @@ public class DataBase {
         ContentValues a = tequipo.toValues();
         a.put("idtiposdeequipo", tequipo.getIdTiposDeEquipo());
         a.put("descripciontipequipo", tequipo.getDescripcionTipEquipo());
-        sqLiteDatabase.insert("tiposdeequipo", null, a);
+        sqLiteDatabase.insert(ConstantesDB.TABLA_TIPOS_DE_EQUIPO, null, a);
 
     }
 
@@ -340,6 +361,62 @@ public class DataBase {
 
 
     }
+
+    //    insertar Datos
+    public void llenarMarca(List<Marca> marcas) {
+        long items = getItemsMarca();
+        if (items == 0) {
+            for (Marca marca : marcas) {
+                try {
+                    insertar(marca);
+                } catch (SQLiteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarAutor(List<Autor> autors) {
+        long items = getItemsAutor();
+        if (items == 0) {
+            for (Autor autor: autors) {
+                try {
+                    insertar(autor);
+                } catch (SQLiteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarTiposEquipo(List<TiposDeEquipo> tiposDeEquipos) {
+        long items = getItemsTiposEquipo();
+        if (items == 0) {
+            for (TiposDeEquipo equipo: tiposDeEquipos) {
+                try {
+                    insertar(equipo);
+                } catch (SQLiteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarTiposDeDocumento(List<TiposDeDocumento> td) {
+        long items = getItemsTiposDocumento();
+        if (items == 0) {
+            for (TiposDeDocumento d: td) {
+                try {
+                    insertar(d);
+                } catch (SQLiteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+
 
 
     /* ------------------------------------------------------
