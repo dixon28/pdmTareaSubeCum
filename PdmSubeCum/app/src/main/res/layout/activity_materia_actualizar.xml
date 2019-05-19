@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dip"
+    android:stretchColumns="1">
+
+    <TableRow>
+        <TextView android:text="@string/codigoMateria" />
+
+        <EditText
+            android:id="@+id/editCodigoMateria"
+            android:inputType="text"
+            android:maxLength="6"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView android:text="@string/nombreMateria" />
+
+        <EditText
+            android:id="@+id/editNombreMateria"
+            android:inputType="text"
+            android:maxLength="30"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView android:text="@string/UV" />
+
+        <EditText
+            android:id="@+id/editUV"
+            android:inputType="text"
+            android:maxLength="30"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView android:text="@string/idCiclo" />
+
+        <EditText
+            android:id="@+id/editIdCiclo"
+            android:inputType="number"
+            android:maxLength="6"/>
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:onClick="actualizarMateria"
+            android:text="@string/actualizar"/>
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiarTexto"/>
+    </TableRow>
+
+</TableLayout>

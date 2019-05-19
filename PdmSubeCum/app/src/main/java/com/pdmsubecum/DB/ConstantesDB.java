@@ -237,6 +237,62 @@ public class ConstantesDB {
       "disponibledoc"};
 
 
+    public static final String TABLA_CICLO = "ciclo";
+    public static final String TABLA_DIA = "dia";
+    public static final String TABLA_AULA = "aula";
+    public static final String TABLA_HORARIODETALLE = "horariodetalle";
+    public static final String TABLA_MATERIA = "materia";
+    public static final String TABLA_HORARIO = "horario";
+    public static final String TABLA_GRUPO = "grupo";
 
+    //Tablas MM
+    public static final String SQL_CREATE_TABLE_CICLO = "CREATE TABLE "+ TABLA_CICLO +
+            "(idCiclo INT NOT NULL PRIMARY KEY, numero VARCHAR(30) NULL, year INT NULL)";
+
+    public static final String SQL_CREATE_TABLE_DIA = "CREATE TABLE "+ TABLA_DIA +
+            "(idDia INT NOT NULL PRIMARY KEY, descripcion VARCHAR(30) NOT NULL)";
+
+    public static final String SQL_CREATE_TABLE_AULA = "CREATE TABLE "+ TABLA_AULA +
+            "(idAula INT NOT NULL PRIMARY KEY, descripcion VARCHAR(30) NOT NULL)";
+
+    public static final String SQL_CREATE_TABLE_HORARIODETALLE = "CREATE TABLE "+ TABLA_HORARIODETALLE +
+            "(idGrupo INT NOT NULL, idHorario INT NOT NULL, PRIMARY KEY(idGrupo,idHorario))";
+
+    public static final String SQL_CREATE_TABLE_MATERIA = "CREATE TABLE "+ TABLA_MATERIA +
+            "(codigoMateria VARCHAR(6) NOT NULL PRIMARY KEY, nombreMateria VARCHAR(50) NOT NULL," +
+            "UV VARCHAR(50) NULL, idCiclo INT NULL)";
+
+    public static final String SQL_CREATE_TABLE_HORARIO = "CREATE TABLE "+ TABLA_HORARIO +
+            "(idHorario INT NOT NULL PRIMARY KEY, idDia INT NOT NULL, idAula INT NOT NULL," +
+            "hora VARCHAR(50) NULL)";
+
+    public static final String SQL_CREATE_TABLE_GRUPO = "CREATE TABLE "+ TABLA_GRUPO +
+            "(idGrupo INT NOT NULL PRIMARY KEY, codigoMateria VARCHAR(6) NOT NULL," +
+            "idDocente INT NOT NULL,descripcion VARCHAR(50) NULL)";
+
+    public static final String SQL_CREATE_TRIGGER_MATERIAELIMINAR = "CREATE TRIGGER tr_MateriaEliminar " +
+            "BEFORE DELETE ON materia BEGIN DELETE FROM grupo WHERE codigoMateria = OLD.codigoMateria; END";
+
+    public static final String SQL_CREATE_TRIGGER_GRUPOELIMINAR = "CREATE TRIGGER tr_GrupoEliminar " +
+            "BEFORE DELETE ON grupo BEGIN DELETE FROM horarioDetalle WHERE idGrupo = OLD.idGrupo; END";
+
+    public static final String SQL_CREATE_TRIGGER_HORARIOELIMINAR = "CREATE TRIGGER tr_HorarioEliminar " +
+            "BEFORE DELETE ON horario BEGIN DELETE FROM horarioDetalle WHERE idHorario = OLD.idHorario; END";
+    //Fin Tablas MM
+
+    // MM
+    public static final String SQL_DELETE_DIA = "DROP TABLE "+TABLA_DIA;
+    public static final String SQL_DELETE_AULA = "DROP TABLE "+TABLA_AULA;
+    public static final String SQL_DELETE_CICLO = "DROP TABLE "+TABLA_CICLO;
+    public static final String SQL_DELETE_HORARIODETALLE = "DROP TABLE "+TABLA_HORARIODETALLE;
+    public static final String SQL_DELETE_MATERIA = "DROP TABLE "+TABLA_MATERIA;
+    public static final String SQL_DELETE_HORARIO = "DROP TABLE "+TABLA_HORARIO;
+    public static final String SQL_DELETE_GRUPO = "DROP TABLE "+TABLA_GRUPO;
+    public static final String SQL_DELETE_TRIGGER_MATERIAELIMINAR = "DROP TRIGGER tr_MateriaEliminar;";
+    public static final String SQL_DELETE_TRIGGER_GRUPOELIMINAR = "DROP TRIGGER tr_GrupoEliminar";
+    public static final String SQL_DELETE_TRIGGER_HORARIOELIMINAR = "DROP TRIGGER tr_HorarioEliminar;";
+
+
+    //FIN MM
 
 }
