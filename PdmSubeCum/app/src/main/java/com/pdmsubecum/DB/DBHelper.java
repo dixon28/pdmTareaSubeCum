@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
 
-    public static final int DB_VERSION = 12;
+    public static final int DB_VERSION = 13;
 
 
 

@@ -172,51 +172,46 @@ public class DataBase {
 
     }
 
-    public void insertar(Autor autor){
+    public void insertar(Autor autor) {
         ContentValues a = autor.toValues();
-        a.put("idautor",autor.getIdautor());
-        a.put("nombreautor",autor.getNombreAutor());
-        a.put("apellidosautor",autor.getApellidosAutor());
+        a.put("idautor", autor.getIdautor());
+        a.put("nombreautor", autor.getNombreAutor());
+        a.put("apellidosautor", autor.getApellidosAutor());
         sqLiteDatabase.insert("autor", null, a);
 
     }
 
-    public void insertar(TiposDeEquipo tequipo){
+    public void insertar(TiposDeEquipo tequipo) {
         ContentValues a = tequipo.toValues();
-        a.put("idtiposdeequipo",tequipo.getIdTiposDeEquipo());
-        a.put("descripciontipequipo",tequipo.getDescripcionTipEquipo());
+        a.put("idtiposdeequipo", tequipo.getIdTiposDeEquipo());
+        a.put("descripciontipequipo", tequipo.getDescripcionTipEquipo());
         sqLiteDatabase.insert("tiposdeequipo", null, a);
 
     }
 
-    public void insertar(TiposDeDocumento tdoc){
-        ContentValues contentValues= tdoc.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_TIPOS_DE_DOCUMENTO, null,contentValues);
+    public void insertar(TiposDeDocumento tdoc) {
+        ContentValues contentValues = tdoc.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_TIPOS_DE_DOCUMENTO, null, contentValues);
 
     }
 
-    public void insertar(AutorDetalle autorDetalle){
-        ContentValues contentValues= autorDetalle.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_AUTOR_DETALLE, null,contentValues);
-
-    }
-    public void insertar(Documento documento){
-        ContentValues contentValues= documento.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO, null,contentValues);
+    public void insertar(AutorDetalle autorDetalle) {
+        ContentValues contentValues = autorDetalle.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_AUTOR_DETALLE, null, contentValues);
 
     }
 
-    public void insertar(Equipo equipo){
-        ContentValues contentValues=equipo.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_EQUIPO, null,contentValues);
+    public void insertar(Documento documento) {
+        ContentValues contentValues = documento.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO, null, contentValues);
 
     }
 
+    public void insertar(Equipo equipo) {
+        ContentValues contentValues = equipo.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_EQUIPO, null, contentValues);
 
-
-
-
-
+    }
 
 
     //consultar marca
@@ -620,17 +615,31 @@ public class DataBase {
     public String actualizar(Docente docente) {
         //if (verificarIntegridad(alumno, 5)) {
 
-            String[] id = {String.valueOf(docente.getIdDocente())};
-            ContentValues cv = new ContentValues();
-            cv.put("idUnidadAdministrativa", docente.getIdUnidadAdministrativa());
-            cv.put("nombre", docente.getNombre());
-            cv.put("apellido", docente.getApellido());
-            cv.put("email", docente.getEmail());
-            sqLiteDatabase.update(ConstantesDB.TABLA_Docente, cv, "idDocente = ?", id);
-            return "Registro Actualizado Correctamente";
-       // } else {
-          //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
+        String[] id = {String.valueOf(docente.getIdDocente())};
+        ContentValues cv = new ContentValues();
+        cv.put("idUnidadAdministrativa", docente.getIdUnidadAdministrativa());
+        cv.put("nombre", docente.getNombre());
+        cv.put("apellido", docente.getApellido());
+        cv.put("email", docente.getEmail());
+        sqLiteDatabase.update(ConstantesDB.TABLA_Docente, cv, "idDocente = ?", id);
+        return "Registro Actualizado Correctamente";
+        // } else {
+        //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
         //}
     }
+
+
+    //METODOS ELIMINAR <--TS14004-->
+    public String eliminar(Docente docente) {
+        String regAfectados = "filas afectadas= ";
+        int contador = 0;
+        /*if (verificarIntegridad(alumno, 3)) {
+            contador += db.delete("nota", "carnet='" + alumno.getCarnet() + "'", null);
+        }*/
+        contador += sqLiteDatabase.delete(ConstantesDB.TABLA_Docente, "idDocente='" + docente.getIdDocente() + "'", null);
+        regAfectados += contador;
+        return regAfectados;
+    }
+
 
 }
