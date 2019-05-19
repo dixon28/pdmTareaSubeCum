@@ -9,6 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".mm14031.HorarioMenuActivity"></activity>
+        <activity android:name=".mm14031.GrupoMenuActivity" />
+        <activity android:name=".mm14031.MateriaMenuActivity" />
+        <activity
+            android:name=".mm14031.MateriaEliminarActivity"
+            android:label="@string/title_activity_materia_eliminar" />
+        <activity android:name=".mm14031.MateriaActualizarActivity" />
+        <activity android:name=".mm14031.MateriaConsultarActivity" />
+        <activity android:name=".mm14031.MateriaInsertarActivity" />
+        <activity android:name=".mm14031.GrupoEliminarActivity" />
+        <activity android:name=".mm14031.GrupoActualizarActivity" />
+        <activity android:name=".mm14031.GrupoConsultarActivity" />
+        <activity android:name=".mm14031.GrupoInsertarActivity" />
+        <activity android:name=".mm14031.HorarioEliminarActivity" />
+        <activity android:name=".mm14031.HorarioActualizarActivity" />
+        <activity android:name=".mm14031.HorarioConsultarActivity" />
+        <activity android:name=".mm14031.HorarioInsertarActivity" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +49,7 @@
         <activity android:name=".mm14031.MM14031" />
         <activity android:name=".pm15007.PM15007" />
         <activity android:name=".rl08017.RL08017" />
-        <activity android:name=".ts14004.TS14004"></activity>
+        <activity android:name=".ts14004.TS14004" />
     </application>
 
 </manifest>

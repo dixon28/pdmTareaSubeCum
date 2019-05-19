@@ -3,6 +3,7 @@ package com.pdmsubecum;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +28,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
-        llenarDB = new LlenarDB(this);
+        this.llenarDB = new LlenarDB(this);
         dataBase = new DataBase(this);
 
         this.edt_usuario = findViewById(R.id.edt_usuario);

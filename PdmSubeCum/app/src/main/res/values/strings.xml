@@ -32,6 +32,32 @@
     <string name="crud_mm14031">MM14031</string>
     <string name="crud_rl08017">RL08017</string>
     <string name="crud_ts14004">TS14004</string>
+    <string name="title_activity_materia_eliminar">MateriaEliminarActivity</string>
 
+    <!-- Titulos de botones de CRUD -->
+    <string name="opciones">Opciones a realizar</string>
+    <string name="insertar">INSERTAR</string>
+    <string name="consultar">CONSULTAR</string>
+    <string name="actualizar">ACTUALIZAR</string>
+    <string name="eliminar">ELIMINAR</string>
+    <string name="limpiarTexto">LIMPIAR</string>
+
+    <!-- VALORES PARA MATERIA, HORARIO Y GRUPO -->
+
+    <string name="codigoMateria">Codigo Materia</string>
+    <string name="nombreMateria">Nombre</string>
+    <string name="UV">UV</string>
+    <string name="idCiclo">ID Ciclo</string>
+
+    <string name="idHorario">ID Horario</string>
+    <string name="idDia">ID Dia</string>
+    <string name="idAula">ID Aula</string>
+    <string name="hora">Hora</string>
+
+    <string name="idGrupo">ID Grupo</string>
+    <string name="idDocente">ID Docente</string>
+    <string name="descripcion">Descripcion</string>
+
+    <!--- FIN -->
 
 </resources>
