@@ -65,7 +65,7 @@ public class ConstantesDB {
             "(  idDocumentoAsignacion INTEGER              not null primary key,\n" +
             "   idDocente            INTEGER,\n" +
             "   motivo               VARCHAR2(120)        not null,\n" +
-            "   fechaAsignacionDoc   VARCHAR2(50)         not null" ;
+            "   fechaAsignacionDoc   VARCHAR2(50)         not null)" ;
     public static final String SQL_CREATE_TABLE_DocumentoAsignacionDetalle = "CREATE TABLE " + TABLA_DocumentoAsignacionDetalle +
 
             "(  idDocumentoAsignacionDetalle INTEGER              not null primary key,\n" +
@@ -155,24 +155,86 @@ public class ConstantesDB {
 
 //AM15005
     //Tablas
+    public static final String TABLA_AUTOR="autor";
     public static final String TABLA_MARCA="marca";
     public static  final String TABLA_TIPOS_DE_EQUIPO="tipos_de_equipo";
+    public static final String TABLA_TIPOS_DE_DOCUMENTO="tipos_de_documento";
+    public static final String TABLA_AUTOR_DETALLE="autordetalle";
+    public static final String TABLA_DOCUMENTO="documento";
     public static final String TABLA_EQUIPO="equipo";
+
 
 
     //Consultas para crear tablas
     public static final String SQL_CREATE_TABLE_MARCA="CREATE TABLE "+TABLA_MARCA +"(IDMARCA INTEGER              not null,"+
             "DESCRIPCIONMARCA     VARCHAR2(50),"+ "constraint PK_MARCA primary key (IDMARCA))";
 
+    public static final String SQL_CREATE_TABLE_AUTOR="CREATE TABLE "+TABLA_AUTOR +"(IDAUTOR              INTEGER              not null,"+
+                    "NOMBREAUTOR          VARCHAR2(50)         not null,"+ "APELLIDOSAUTOR       VARCHAR2(50),"+ "constraint PK_AUTOR primary key (IDAUTOR))";
+
+    public static final String SQL_CREATE_TABLE_TIPOS_EQUIPO= "CREATE TABLE "+TABLA_TIPOS_DE_EQUIPO
+  +          "(IDTIPOSDEEQUIPO      INTEGER              not null,"+ "DESCRIPCIONTIPEQUIPO VARCHAR2(50)         not null,"+
+   " constraint PK_TIPOSDEEQUIPO primary key (IDTIPOSDEEQUIPO))";
+    public static final String SQL_CREATE_TABLE_TIPOS_DOCUMENTO= "CREATE TABLE "+TABLA_TIPOS_DE_DOCUMENTO+ "(IDTIPOSDEDOCUMENTO   INTEGER not null,"+"DESCRIPCIONTIPODEDOCUMENTO VARCHAR2(50),"+
+    "constraint PK_TIPOSDEDOCUMENTO primary key (IDTIPOSDEDOCUMENTO) )";
+
+    public static final String SQL_CREATE_TABLE_AUTORDETALLE="CREATE TABLE "+TABLA_AUTOR_DETALLE+ "(ISBN                 VARCHAR2(25),"+"IDAUTOR              INTEGER)";
+
+
+
+
+    public static final String SQL_CREATE_TABLE_DOCUMENTO="CREATE TABLE "+ TABLA_DOCUMENTO+
+            "( ISBN                 VARCHAR2(25)         not null,"+
+    "IDTIPOSDEDOCUMENTO   INTEGER,"+
+    "NOMBREDOC            VARCHAR2(50)         not null,"+
+    "IDIOMA               VARCHAR2(50)         not null,"+
+    "DESCRIPCIONDOC       VARCHAR2(50)         not null,"+
+    "DISPONIBLEDOC        VARCHAR2(50)         not null,"+
+    "constraint PK_DOCUMENTO primary key (ISBN))";
+
+
+    public static final String SQL_CREATE_TABLE_EQUIPO="CREATE TABLE "+ TABLA_EQUIPO +
+            "("+"    IDEQUIPO             INTEGER              not null,"+
+                 "   IDTIPOSDEEQUIPO      INTEGER,"+
+                  "  IDMARCA              INTEGER,"+
+                   " SERIE                VARCHAR2(25),"+
+   " CARACTERISTICAS      VARCHAR2(250)        not null,"+
+   " MODELO               VARCHAR2(50),"+
+    "FECHAINGRESO         DATE                 not null,"+
+    "EQUIPODISPONIBLE     SMALLINT,"+
+    "constraint PK_EQUIPO primary key (IDEQUIPO))";
+
+
+
+
+
+
+
+
+
 
 
     //Borrar Tablas
     public static  final String SQL_DELETE_MARCA = "DROP TABLE "+TABLA_MARCA;
+    public static  final String SQL_DELETE_AUTOR = "DROP TABLE "+TABLA_AUTOR;
+    public static  final String SQL_DELETE_TIPOS_EQUIPO = "DROP TABLE "+TABLA_TIPOS_DE_EQUIPO;
+    public static  final String SQL_DELETE_TIPOS_DOCUMENTO = "DROP TABLE "+TABLA_TIPOS_DE_DOCUMENTO;
+    public static  final String SQL_DELETE_AUTORDETALLE="DROP TABLE "+ TABLA_AUTOR_DETALLE;
+    public static  final String SQL_DELETE_DOCUMENTO="DROP TABLE "+ TABLA_DOCUMENTO;
+    public static  final String SQL_DELETE_EQUIPO="DROP TABLE "+ TABLA_EQUIPO;
+
 
     //campos marca
-
     public static final String[] CAMPOS_MARCA={"idmarca","descripcionmarca"};
-
+    public static final String[] CAMPOS_AUTOR={"idautor","nombreautor","apellidosautor"};
+    public static final String[] CAMPOS_TIPOS_EQUIPO={"idtiposdeequipo","descripciontipequipo"};
+    public static final String[] CAMPOS_TIPOS_DOCUMENTO={"tiposdedocumento","descripciontipodedocumento"};
+    public static final String[] CAMPOS_AUTORDETALLE={"isbn","idautor"};
+    public static final String[] CAMPOS_EQUIPO={"idequipo","idtiposdeequipo","idmarca","serie","caracteristicas", "modelo","fechaingreso","equipodisponible"};
+    public static final String[] CAMPOS_DOCUMENTO={"isbn" ,"idtiposdedocumento",
+     "nombredoc" ,      "idioma",
+      "descripciondoc",
+      "disponibledoc"};
 
 
 
