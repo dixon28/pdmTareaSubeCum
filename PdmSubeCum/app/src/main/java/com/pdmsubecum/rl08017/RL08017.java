@@ -1,54 +1,34 @@
 package com.pdmsubecum.rl08017;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.pdmsubecum.R;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class RL08017 extends AppCompatActivity  implements AdapterView.OnItemClickListener{
-
-    ListView lista;
-
-    List<String> tablasCrud;
-
+public class RL08017 extends ListActivity {
+    String[] menu={"Tabla Tipos Movimiento Documento","Tabla Documento Movimiento","Tabla Documento Existencia ","LLenar Base de Datos"};
+    String[] activities={"TiposDeMovimientoParaDocumentoMenuActivity","DocumentoMovimientoMenuActivity","DocumentoExistenciaMenuActivity"};
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rl08017);
-        this.setTitle(R.string.crud_rl08017);
-
-        lista = findViewById(R.id.menu_rl08017);
-
-        //agregando los item de la tabla
-        tablasCrud = new ArrayList<>();
-        tablasCrud.add("primera tabla");
-        tablasCrud.add("segunda tabla");
-
-        ArrayAdapter adapter = new ArrayAdapter(
-                this, android.R.layout.simple_list_item_1,tablasCrud
-        );
-
-
-        lista.setAdapter(adapter);
-
-        //agregandole el evento click a los items de la list
-        lista.setOnItemClickListener(this);
+        setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu));
     }
-
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //obteniendo la fila clickeada
-        String nombreTablaClick = tablasCrud.get(position);
-
-        //hacer llamar a activities segun click
-        Toast.makeText(this, "Click a tabla: "+nombreTablaClick, Toast.LENGTH_SHORT).show();
+    protected void onListItemClick(ListView l,View v,int position,long id){
+        super.onListItemClick(l, v, position, id);
+        if(position!=3){
+            String nombreValue=activities[position];
+            try{
+                Class<?> clase=Class.forName("com.pdmsubecum.rl08017."+nombreValue);
+                Intent inte = new Intent(this,clase);
+                this.startActivity(inte);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }else{
+//CODIGO PARA LLENAR BASE DE DATOS
+        }
     }
 }
