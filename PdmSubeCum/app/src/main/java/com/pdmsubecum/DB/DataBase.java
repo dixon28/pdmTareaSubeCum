@@ -14,7 +14,13 @@ import com.pdmsubecum.DB.modelo.Docente;
 import com.pdmsubecum.DB.modelo.DocumentoAsignacion;
 import com.pdmsubecum.DB.modelo.RolUsuario;
 import com.pdmsubecum.DB.modelo.Usuario;
+import com.pdmsubecum.DB.modelo.am15005.Autor;
+import com.pdmsubecum.DB.modelo.am15005.AutorDetalle;
+import com.pdmsubecum.DB.modelo.am15005.Documento;
+import com.pdmsubecum.DB.modelo.am15005.Equipo;
 import com.pdmsubecum.DB.modelo.am15005.Marca;
+import com.pdmsubecum.DB.modelo.am15005.TiposDeDocumento;
+import com.pdmsubecum.DB.modelo.am15005.TiposDeEquipo;
 import com.pdmsubecum.DB.modelo.pm15007.EquipoExistencia;
 import com.pdmsubecum.DB.modelo.pm15007.EquipoMovimiento;
 import com.pdmsubecum.DB.modelo.pm15007.EquipoMovimientoDetalle;
@@ -162,6 +168,52 @@ public class DataBase {
         sqLiteDatabase.insert("marca", null, a);
 
     }
+
+    public void insertar(Autor autor){
+        ContentValues a = autor.toValues();
+        a.put("idautor",autor.getIdautor());
+        a.put("nombreautor",autor.getNombreAutor());
+        a.put("apellidosautor",autor.getApellidosAutor());
+        sqLiteDatabase.insert("autor", null, a);
+
+    }
+
+    public void insertar(TiposDeEquipo tequipo){
+        ContentValues a = tequipo.toValues();
+        a.put("idtiposdeequipo",tequipo.getIdTiposDeEquipo());
+        a.put("descripciontipequipo",tequipo.getDescripcionTipEquipo());
+        sqLiteDatabase.insert("tiposdeequipo", null, a);
+
+    }
+
+    public void insertar(TiposDeDocumento tdoc){
+        ContentValues contentValues= tdoc.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_TIPOS_DE_DOCUMENTO, null,contentValues);
+
+    }
+
+    public void insertar(AutorDetalle autorDetalle){
+        ContentValues contentValues= autorDetalle.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_AUTOR_DETALLE, null,contentValues);
+
+    }
+    public void insertar(Documento documento){
+        ContentValues contentValues= documento.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO, null,contentValues);
+
+    }
+
+    public void insertar(Equipo equipo){
+        ContentValues contentValues=equipo.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_EQUIPO, null,contentValues);
+
+    }
+
+
+
+
+
+
 
 
     //consultar marca
