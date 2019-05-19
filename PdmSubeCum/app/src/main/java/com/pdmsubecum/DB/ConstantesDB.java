@@ -65,7 +65,7 @@ public class ConstantesDB {
             "(  idDocumentoAsignacion INTEGER              not null primary key,\n" +
             "   idDocente            INTEGER,\n" +
             "   motivo               VARCHAR2(120)        not null,\n" +
-            "   fechaAsignacionDoc   VARCHAR2(50)         not null" ;
+            "   fechaAsignacionDoc   VARCHAR2(50)         not null)" ;
     public static final String SQL_CREATE_TABLE_DocumentoAsignacionDetalle = "CREATE TABLE " + TABLA_DocumentoAsignacionDetalle +
 
             "(  idDocumentoAsignacionDetalle INTEGER              not null primary key,\n" +
