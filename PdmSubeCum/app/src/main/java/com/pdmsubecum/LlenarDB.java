@@ -40,20 +40,18 @@ public class LlenarDB {
     public DataBase dataBase;
 
     public LlenarDB(Context context){
-        DataBase dataBase1 = new DataBase(context);
-        final DataBase dataBase = new DataBase(context);
-        this.dataBase = dataBase;
+        dataBase = new DataBase(context);
         crearUsuarios();
     }
 
     public void crearUsuarios(){
         usuarios = new ArrayList<>();
-        usuarios.add(new Usuario("am15005","am15005"));
-        usuarios.add(new Usuario("mm14031","mm14031"));
-        usuarios.add(new Usuario("pm15007","pm15007"));
-        usuarios.add(new Usuario("rl08017","rl08017"));
-        usuarios.add(new Usuario("ts14004","ts14004"));
-        usuarios.add(new Usuario("admin","admin"));
+        usuarios.add(new Usuario("am15005", "am15005"));
+        usuarios.add(new Usuario("mm14031", "mm14031"));
+        usuarios.add(new Usuario("pm15007", "pm15007"));
+        usuarios.add(new Usuario("rl08017", "rl08017"));
+        usuarios.add(new Usuario("ts14004", "ts14004"));
+        usuarios.add(new Usuario("admin", "admin"));
 
         dataBase.llenarUsuario(usuarios);
         crearRolesUsuarios();
@@ -74,12 +72,12 @@ public class LlenarDB {
     }
     public void crearRolesUsuarios(){
         roles = new ArrayList<>();
-        roles.add(new RolUsuario("usuario","am15005"));
-        roles.add(new RolUsuario("usuario","mm14031"));
-        roles.add(new RolUsuario("admin","pm15007"));
-        roles.add(new RolUsuario("usuario","rl08017"));
-        roles.add(new RolUsuario("usuario","ts14004"));
-        roles.add(new RolUsuario("admin","admin"));
+        roles.add(new RolUsuario("usuario", "am15005"));
+        roles.add(new RolUsuario("usuario", "mm14031"));
+        roles.add(new RolUsuario("admin", "pm15007"));
+        roles.add(new RolUsuario("usuario", "rl08017"));
+        roles.add(new RolUsuario("usuario", "ts14004"));
+        roles.add(new RolUsuario("admin", "admin"));
 
         dataBase.llenarRolUsuario(roles);
     }

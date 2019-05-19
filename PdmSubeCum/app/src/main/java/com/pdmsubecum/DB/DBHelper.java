@@ -11,7 +11,9 @@ import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final int DB_VERSION = 2;
+
+    public static final int DB_VERSION = 12;
+
 
 
     public DBHelper(Context context) {
@@ -20,9 +22,31 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_USUARIO);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_ROL_USUARIO);
+        //-----------------Raul----------------------------------------
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_Docente);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_AsignacionEquipo);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DocumentoAsignacion);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_AsignacionEquipoDetalle);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DocumentoAsignacionDetalle);
+
+        //pm15007
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_EQUIPO_EXISTENCIA);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_EQUIPO_MOVIMIENTO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_EQUIPO_MOVIMIENTO_DETALLE);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_TIPO_MOVIMIENTO_EQUIPO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_UNIDAD_ADMINISTRATIVA);
+
+
+        //am15005
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_MARCA);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_AUTOR);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_TIPOS_DOCUMENTO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_TIPOS_EQUIPO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_AUTORDETALLE);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_EQUIPO);
 
         //Tablas MM
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DIA);
@@ -41,8 +65,35 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+
         db.execSQL(ConstantesDB.SQL_DELETE_USUARIO);
         db.execSQL(ConstantesDB.SQL_DELETE_ROL_USUARIO);
+
+
+        db.execSQL(ConstantesDB.SQL_DELETE_Docente);
+        db.execSQL(ConstantesDB.SQL_DELETE_AsignacionEquipo);
+        db.execSQL(ConstantesDB.SQL_DELETE_DocumentoAsignacion);
+        db.execSQL(ConstantesDB.SQL_DELETE_AsignacionEquipoDetalle);
+        db.execSQL(ConstantesDB.SQL_DELETE_DocumentoAsignacionDetalle);
+
+
+        //pm15007
+        db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO_EXISTENCIA);
+        db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO_MOVIMIENTO);
+        db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO_MOVIMIENTO_DETALLE);
+        db.execSQL(ConstantesDB.SQL_DELETE_TIPO_MOVIMIENTO_EQUIPO);
+        db.execSQL(ConstantesDB.SQL_DELETE_UNIDAD_ADMINISTRATIVA);
+
+        //am15005
+        db.execSQL(ConstantesDB.SQL_DELETE_MARCA);
+        db.execSQL(ConstantesDB.SQL_DELETE_AUTOR);
+        db.execSQL(ConstantesDB.SQL_DELETE_TIPOS_DOCUMENTO);
+        db.execSQL(ConstantesDB.SQL_DELETE_TIPOS_EQUIPO);
+        db.execSQL(ConstantesDB.SQL_DELETE_AUTORDETALLE);
+        db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO);
+        db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO);
+
 
         //Tablas MM
         db.execSQL(ConstantesDB.SQL_DELETE_DIA);

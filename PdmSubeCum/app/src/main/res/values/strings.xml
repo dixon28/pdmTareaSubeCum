@@ -27,7 +27,7 @@
 
 
     <!-- TITULOS DE PANTALLA -->
-    <string name="crud_am15005">AM15007</string>
+    <string name="crud_am15005">AM15005</string>
     <string name="crud_pm15007">PM15007</string>
     <string name="crud_mm14031">MM14031</string>
     <string name="crud_rl08017">RL08017</string>
@@ -59,5 +59,91 @@
     <string name="descripcion">Descripcion</string>
 
     <!--- FIN -->
+
+    <!-- *************************** -->
+    <!-- * STRING USADOS POR RAUL **-->
+    <!-- *************************** -->
+    <string name="title_activity_docente_menu">DocenteMenuActivity</string>
+    <string name="title_activity_asignacionEquipo_menu">AsignacionEquipoMenuActivity</string>
+    <string name="title_activity_documentoAsignacion_menu">DocumentoAsignacionMenuActivity</string>
+    <string name="title_activity_docente_insertar">DocenteInsertarActivity</string>
+    <string name="title_activity_docente_eliminar">DocenteEliminarActivity</string>
+    <string name="title_activity_docente_actualizar">DocenteActualizarActivity</string>
+    <string name="title_activity_docente_consultar">DocenteConsultarActivity</string>
+    <string name="title_activity_documentoAsignacion_insertar">DocumentoAsignacionInsertarActivity</string>
+    <string name="title_activity_documentoAsignacion_eliminar">DocumentoAsignacionEliminarActivity</string>
+    <string name="title_activity_documentoAsignacion_actualizar">DocumentoAsignacionActualizarActivity</string>
+    <string name="title_activity_documentoAsignacion_consultar">DocumentoAsignacionConsultarActivity</string>
+    <string name="title_activity_asignacionEquipo_insertar">AsignacionEquipoInsertarActivity</string>
+    <string name="title_activity_asignacionEquipo_eliminar">AsignacionEquipoEliminarActivity</string>
+    <string name="title_activity_asignacionEquipo_actualizar">AsignacionEquipoActualizarActivity</string>
+    <string name="title_activity_asignacionEquipo_consultar">AsignacionEquipoConsultarActivity</string>
+    <string name="docente_menu">Función a Ejecutar Docente</string>
+    <string name="asignacionEquipo_menu">Función a Ejecutar AsignacionEquipo</string>
+    <string name="documentoAsignacion_menu">Función a Ejecutar DocumentoAsignacion</string>
+    <string name="insertar_registro">Insertar Registro</string>
+    <string name="eliminar_registro">Eliminar Registro</string>
+    <string name="consultar_registro">Consultar Registro</string>
+    <string name="actualizar_registro">Actualizar Registro</string>
+    <string name="codDocente">Codigo Docente</string>
+    <string name="codUnidad">Unidad Administrativa</string>
+    <string name="nombre_docente"> Nombre</string>
+    <string name="apellido_docente"> Apellido</string>
+    <string name="email_docente"> Email</string>
+    <string name="insertar"> Insertar</string>
+    <string name="limpiar">Limpiar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="consultar">Consultar</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="codDocuAsignacion">ID DocumentoAsignacion</string>
+    <string name="motivo_DocuAsignacion">Motivo</string>
+    <string name="fecha_DocuAsignacion">Fecha de Asignacion</string>
+    <string name="codAsignacionEquipo">Codigo de Asignacion de Equipo</string>
+    <string name="fecha_AsignacionEquipo">Fecha de Asignacion</string>
+    <string name="actualAsignado">Asignacion Actual</string>
+
+
+
+
+    <!--PM15007-->
+    <string name="crud_unidad_administrativa">Unidad Administrativa</string>
+    <string name="crud_equipo_existencia">Equipo Existencia</string>
+    <string name="crud_equipo_movimiento">Equipo Movimiento</string>
+    <string name="crud_equipo_movimiento_detalle">Equipo Movimiento Detalle</string>
+    <string name="crud_tipo_movimiento_equipo">Tipo Movimiento</string>
+    <string name="marca">marca</string>
+    <string name="equipo">equipo</string>
+    <string name="tipo_equipo">tipo equipo</string>
+    <string name="mas">mas</string>
+    <string name="idmarca">id de marca</string>
+    <string name="descripcionMarca">descripcion</string>
+    <string name="insertar_PM15007">ingresar</string>
+    <string name="Id_de_marca">ingrese el id de la marca a eliminar</string>
+    <string name="eliminar_marca">eliminar</string>
+
+
+    <!--STRING DE LOS CRUD-->
+    <string name="crud_create">Crear</string>
+    <string name="crud_retrieve">Consultar</string>
+    <string name="crud_update">Actualizar</string>
+    <string name="crud_delete">Eliminar</string>
+    <string name="crear_equipo_existencia">Crear Equipo Existencia</string>
+    <string name="id_clase">ID (int)</string>
+    <string name="existencia_actual">Existenca Actual (int)</string>
+    <string name="limpiar_formulario">limpiar</string>
+    <string name="consultar_equipo_existencia">Consultar Equipo Existencia</string>
+    <string name="equipo_existencia">Equipo Existencia</string>
+    <string name="consultar_marca">consultar</string>
+    <string name="con_descripcion">Descripcion</string>
+    <string name="delete_equipo_existencia">Eliminar Equipo Existencia</string>
+    <string name="actualizar_equipo_existencia">Actualizar Equipo Existencia</string>
+    <string name="actualizar_marca">actualizar</string>
+    <string name="crear_unidad_administrativa">Crear Unidad Administrativa</string>
+    <string name="unidad_administrativa">Unidad Administrativa</string>
+    <string name="consultar_unidad_administrativa">Consultar Unidad Administrativa</string>
+    <string name="update_unidad_administrativa">Actualizar Unidad Administrativa</string>
+    <string name="delete_unidad_administrativa">Eliminar Unidad Administrativa</string>
+
+
 
 </resources>
