@@ -25,6 +25,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.pdmsubecum.DB.ConstantesDB.campos_Docente;
+import static java.lang.Integer.parseInt;
+
 /**
  * Created by rodri on 10/05/2019.
  */
@@ -127,10 +130,10 @@ public class DataBase {
 
     //pm15007
 
-    public long insertar(EquipoExistencia equipoExistencia){
+    public long insertar(EquipoExistencia equipoExistencia) {
         ContentValues contentValues = equipoExistencia.toValues();
-        return sqLiteDatabase.insert(ConstantesDB.TABLA_EQUIPO_EXISTENCIA,null,contentValues);
-}
+        return sqLiteDatabase.insert(ConstantesDB.TABLA_EQUIPO_EXISTENCIA, null, contentValues);
+    }
 
     public void insertar(EquipoMovimiento equipoMovimiento) {
         ContentValues contentValues = equipoMovimiento.toValues();
@@ -155,10 +158,10 @@ public class DataBase {
 
     //am15005
 
-    public void insertar(Marca marca){
+    public void insertar(Marca marca) {
         ContentValues a = marca.toValues();
-        a.put("idmarca",marca.getIdmarca());
-        a.put("descripcionmarca",marca.getDescripcionmarca());
+        a.put("idmarca", marca.getIdmarca());
+        a.put("descripcionmarca", marca.getDescripcionmarca());
         sqLiteDatabase.insert("marca", null, a);
 
     }
@@ -170,13 +173,13 @@ public class DataBase {
 
 
         String[] id = {idmarca};
-        Cursor cursor = sqLiteDatabase.query("marca",ConstantesDB.CAMPOS_MARCA, "idmarca = ?", id, null,
+        Cursor cursor = sqLiteDatabase.query("marca", ConstantesDB.CAMPOS_MARCA, "idmarca = ?", id, null,
                 null, null);
         if (cursor.moveToFirst()) {
 
 
             Marca marca = new Marca();
-            marca.setIdmarca(Integer.parseInt(cursor.getString(0)));
+            marca.setIdmarca(parseInt(cursor.getString(0)));
             marca.setDescripcionmarca(cursor.getString(1));
 
             return marca;
@@ -186,7 +189,7 @@ public class DataBase {
     }
 
 
-    public int actualizar(Marca marca,int idmarca) {
+    public int actualizar(Marca marca, int idmarca) {
         int status;
 
         try {
@@ -196,28 +199,25 @@ public class DataBase {
             String[] id = {String.valueOf(idmarca)};
             status = sqLiteDatabase.update(ConstantesDB.TABLA_MARCA, contentValues, "idmarca = ? ", id);
             return status;
-        }catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
-            status=0;
+            status = 0;
             return status;
 
         }
     }
     //eliminar Marca
 
-    public String eliminar(Marca marca){
+    public String eliminar(Marca marca) {
         String conteo;
 
-        String where="idmarca='"+marca.getIdmarca()+"'";
+        String where = "idmarca='" + marca.getIdmarca() + "'";
         sqLiteDatabase.delete("marca", where, null);
-        conteo=  String.valueOf(getItemsMarca());
+        conteo = String.valueOf(getItemsMarca());
         return conteo;
 
 
     }
-
-
 
 
     /* ------------------------------------------------------
@@ -346,21 +346,22 @@ public class DataBase {
         }
     }
 
-    public int getLastIdEquipoExistencia(){
-        if(getItemsEquipoExistencia() == 0){
+    public int getLastIdEquipoExistencia() {
+        if (getItemsEquipoExistencia() == 0) {
             return 0;
-        }else{
-            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_EQUIPO_EXISTENCIA,ConstantesDB.CAMPOS_EQUIPO_EXISTENCIA,
-                    null, null,null,null,null);
+        } else {
+            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_EQUIPO_EXISTENCIA, ConstantesDB.CAMPOS_EQUIPO_EXISTENCIA,
+                    null, null, null, null, null);
             cursor.moveToLast();
             return cursor.getInt(0);
         }
 
     }
-    public int getLastIdUnidadAdministrativa(){
-        if(getItemsUnidadAdministrativa() == 0) {
+
+    public int getLastIdUnidadAdministrativa() {
+        if (getItemsUnidadAdministrativa() == 0) {
             return 0;
-        }else{
+        } else {
             Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA, ConstantesDB.CAMPOS_UNIDAD_ADMINISTRATIVA,
                     null, null, null, null, null);
             cursor.moveToLast();
@@ -375,30 +376,34 @@ public class DataBase {
 
 
     //pm15007
-    public int actualizar(EquipoExistencia equipoExistencia){
+    public int actualizar(EquipoExistencia equipoExistencia) {
         ContentValues contentValues = equipoExistencia.toValues();
         String[] id = {String.valueOf(equipoExistencia.getId_equipo_existencia())};
-        return sqLiteDatabase.update(ConstantesDB.TABLA_EQUIPO_EXISTENCIA,contentValues,"id_equipo_existencia = ? ",id);
+        return sqLiteDatabase.update(ConstantesDB.TABLA_EQUIPO_EXISTENCIA, contentValues, "id_equipo_existencia = ? ", id);
     }
-    public int actualizar(EquipoMovimiento equipoMovimiento){
+
+    public int actualizar(EquipoMovimiento equipoMovimiento) {
         ContentValues contentValues = equipoMovimiento.toValues();
         String[] id = {String.valueOf(equipoMovimiento.getId_equipo_movimiento())};
         return sqLiteDatabase.update(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO, contentValues, "id_equipo_movimiento = ? ", id);
     }
-    public int actualizar(EquipoMovimientoDetalle equipoMovimientoDetalle){
+
+    public int actualizar(EquipoMovimientoDetalle equipoMovimientoDetalle) {
         ContentValues contentValues = equipoMovimientoDetalle.toValues();
         String[] id = {String.valueOf(equipoMovimientoDetalle.getId_equipo_movimiento_detalle())};
-        return sqLiteDatabase.update(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO_DETALLE, contentValues,"id_equipo_movimiento_detalle = ? ",id);
+        return sqLiteDatabase.update(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO_DETALLE, contentValues, "id_equipo_movimiento_detalle = ? ", id);
     }
-    public int actualizar(TipoMovimientoEquipo tipoMovimientoEquipo){
+
+    public int actualizar(TipoMovimientoEquipo tipoMovimientoEquipo) {
         ContentValues contentValues = tipoMovimientoEquipo.toValues();
         String[] id = {String.valueOf(tipoMovimientoEquipo.getId_tipo_movimiento_equipo())};
-        return sqLiteDatabase.update(ConstantesDB.TABLA_TIPO_MOVIMIENTO_EQUIPO, contentValues,"id_tipo_movimiento_equipo = ? ", id);
+        return sqLiteDatabase.update(ConstantesDB.TABLA_TIPO_MOVIMIENTO_EQUIPO, contentValues, "id_tipo_movimiento_equipo = ? ", id);
     }
-    public int actualizar(UnidadAdministrativa unidadAdministrativa){
+
+    public int actualizar(UnidadAdministrativa unidadAdministrativa) {
         ContentValues contentValues = unidadAdministrativa.toValues();
         String[] id = {String.valueOf(unidadAdministrativa.getId_unidad_administrativa())};
-        return sqLiteDatabase.update(ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA, contentValues,"id_unidad_administrativa = ? ", id);
+        return sqLiteDatabase.update(ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA, contentValues, "id_unidad_administrativa = ? ", id);
     }
 
 
@@ -407,28 +412,30 @@ public class DataBase {
      -------------------------------------------------------*/
 
     //PM15007
-    public int eliminar(EquipoExistencia equipoExistencia){
+    public int eliminar(EquipoExistencia equipoExistencia) {
         String[] id = {String.valueOf(equipoExistencia.getId_equipo_existencia())};
-        return sqLiteDatabase.delete(ConstantesDB.TABLA_EQUIPO_EXISTENCIA,"id_equipo_existencia = ? ",id);
+        return sqLiteDatabase.delete(ConstantesDB.TABLA_EQUIPO_EXISTENCIA, "id_equipo_existencia = ? ", id);
     }
-    public int eliminar(EquipoMovimiento equipoMovimiento){
+
+    public int eliminar(EquipoMovimiento equipoMovimiento) {
         String[] id = {String.valueOf(equipoMovimiento.getId_equipo_movimiento())};
         return sqLiteDatabase.delete(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO, "id_equipo_movimiento = ? ", id);
     }
-    public int eliminar(EquipoMovimientoDetalle equipoMovimientoDetalle){
+
+    public int eliminar(EquipoMovimientoDetalle equipoMovimientoDetalle) {
         String[] id = {String.valueOf(equipoMovimientoDetalle.getId_equipo_movimiento_detalle())};
-        return sqLiteDatabase.delete(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO_DETALLE,"id_equipo_movimiento_detalle = ? ",id);
+        return sqLiteDatabase.delete(ConstantesDB.TABLA_EQUIPO_MOVIMIENTO_DETALLE, "id_equipo_movimiento_detalle = ? ", id);
     }
-    public int eliminar(TipoMovimientoEquipo tipoMovimientoEquipo){
+
+    public int eliminar(TipoMovimientoEquipo tipoMovimientoEquipo) {
         String[] id = {String.valueOf(tipoMovimientoEquipo.getId_tipo_movimiento_equipo())};
-        return sqLiteDatabase.delete(ConstantesDB.TABLA_TIPO_MOVIMIENTO_EQUIPO,"id_tipo_movimiento_equipo = ? ", id);
+        return sqLiteDatabase.delete(ConstantesDB.TABLA_TIPO_MOVIMIENTO_EQUIPO, "id_tipo_movimiento_equipo = ? ", id);
     }
-    public int eliminar(UnidadAdministrativa unidadAdministrativa){
+
+    public int eliminar(UnidadAdministrativa unidadAdministrativa) {
         String[] id = {String.valueOf(unidadAdministrativa.getId_unidad_administrativa())};
-        return sqLiteDatabase.delete(ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA,"id_unidad_administrativa = ? ", id);
+        return sqLiteDatabase.delete(ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA, "id_unidad_administrativa = ? ", id);
     }
-
-
 
 
     /* ------------------------------------------------------
@@ -462,7 +469,7 @@ public class DataBase {
 
     //TS14004---------------------------------------------------------------------------
     public String llenarBase() {
-        final int[] VDidDocente = {8888881, 8888882, 8888883,8888884};
+        final int[] VDidDocente = {8888881, 8888882, 8888883, 8888884};
         final int[] VDidUnidadAdministrativa = {1111111, 1111110, 1111100, 1111000};
         final String[] VDnombre = {"Rodrigo", "Nelson", "Joel", "Dixon"};
         final String[] VDapellido = {"Orantes", "Ortiz", "Gonzales", "Coto"};
@@ -470,54 +477,54 @@ public class DataBase {
 
 
         final int[] VAidAsignacionEquipo = {2222222, 2222220, 2222200, 2222000};
-        final int[] VAidDocente = {8888881, 8888882, 8888883,8888884};
+        final int[] VAidDocente = {8888881, 8888882, 8888883, 8888884};
         final String[] VAfechaAsignacionEquipo = {"2019/05/14", "2019-05-14", "2019-05-15", "2019-05-16"};
 
 
         final int[] VDOidDocumentoAsignacion = {3222222, 3222220, 3222200, 3222000};
-        final int[] VDOidDocente = {8888881, 8888882, 8888883,8888884};
+        final int[] VDOidDocente = {8888881, 8888882, 8888883, 8888884};
         final String[] VDOmotivo = {"Apoyo en clase", "Apoyo en clase", "Tarea de investigacion", "Lectura"};
         final String[] VDOfechaAsignacionDoc = {"2019-05-16", "2019-05-17", "2019-05-18", "2019-05-19"};
 
         abrir();
-    if (getItemsDocente()==0){
-        Docente docente = new Docente();
-        for (int i = 0; i < 4; i++) {
-            docente.setIdDocente(VDidDocente[i]);
-            docente.setIdUnidadAdministrativa(VDidUnidadAdministrativa[i]);
-            docente.setNombre(VDnombre[i]);
-            docente.setApellido(VDapellido[i]);
-            docente.setEmail(VDemail[i]);
-            insertar(docente);
+        if (getItemsDocente() == 0) {
+            Docente docente = new Docente();
+            for (int i = 0; i < 4; i++) {
+                docente.setIdDocente(VDidDocente[i]);
+                docente.setIdUnidadAdministrativa(VDidUnidadAdministrativa[i]);
+                docente.setNombre(VDnombre[i]);
+                docente.setApellido(VDapellido[i]);
+                docente.setEmail(VDemail[i]);
+                insertar(docente);
+            }
         }
-    }
-    if(getItemsAsignacionEquipo()==0){
-        AsignacionEquipo asignacionEquipo = new AsignacionEquipo();
-        for (int i = 0; i < 3; i++) {
-            asignacionEquipo.setIdAsignacionEquipo(VAidAsignacionEquipo[i]);
-            asignacionEquipo.setIdDocente(VAidDocente[i]);
-            asignacionEquipo.setFechaAsignacionEquipo(VAfechaAsignacionEquipo[i]);
+        if (getItemsAsignacionEquipo() == 0) {
+            AsignacionEquipo asignacionEquipo = new AsignacionEquipo();
+            for (int i = 0; i < 3; i++) {
+                asignacionEquipo.setIdAsignacionEquipo(VAidAsignacionEquipo[i]);
+                asignacionEquipo.setIdDocente(VAidDocente[i]);
+                asignacionEquipo.setFechaAsignacionEquipo(VAfechaAsignacionEquipo[i]);
 
-            // insertar(asignacionEquipo);
+                // insertar(asignacionEquipo);
+            }
         }
-    }
-    if(getItemsDocumentoAsignacion()==0){
-        DocumentoAsignacion documentoAsignacion = new DocumentoAsignacion();
-        for (int i = 0; i < 4; i++) {
-            documentoAsignacion.setIdDocumentoAsignacion(VDOidDocumentoAsignacion[i]);
-            documentoAsignacion.setIdDocente(VDOidDocente[i]);
-            documentoAsignacion.setMotivo(VDOmotivo[i]);
-            documentoAsignacion.setFechaAsignacionDoc(VDOfechaAsignacionDoc[i]);
+        if (getItemsDocumentoAsignacion() == 0) {
+            DocumentoAsignacion documentoAsignacion = new DocumentoAsignacion();
+            for (int i = 0; i < 4; i++) {
+                documentoAsignacion.setIdDocumentoAsignacion(VDOidDocumentoAsignacion[i]);
+                documentoAsignacion.setIdDocente(VDOidDocente[i]);
+                documentoAsignacion.setMotivo(VDOmotivo[i]);
+                documentoAsignacion.setFechaAsignacionDoc(VDOfechaAsignacionDoc[i]);
 
-            // insertar(documentoAsignacion);
+                // insertar(documentoAsignacion);
+            }
         }
-    }
 
         cerrar();
         return "Guardo Correctamente";
     }
 
-    //INSERTAR TS14004
+    //METODOS INSERTAR <--TS14004-->
     public String insertar(Docente docente) {
         String regInsertados = "Registro Insertado Nº= ";
         long contador = 0;
@@ -535,6 +542,43 @@ public class DataBase {
             regInsertados = regInsertados + contador;
         }
         return regInsertados;
+    }
+
+    //METODOS CONSULTAR <--TS14004-->
+
+    public Docente consultarDocente(int idDocente) {
+        String[] id = {String.valueOf(idDocente)};
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_Docente, campos_Docente, "idDocente = ?", id, null, null, null);
+        if (cursor.moveToFirst()) {
+            Docente docente = new Docente();
+            docente.setIdDocente(cursor.getInt(0));
+            docente.setIdUnidadAdministrativa(cursor.getInt(1));
+            docente.setNombre(cursor.getString(2));
+            docente.setApellido(cursor.getString(3));
+            docente.setEmail(cursor.getString(4));
+
+            return docente;
+        } else {
+            return null;
+        }
+    }
+
+    //METODOS ACTUALIZAR <--TS14004-->
+
+    public String actualizar(Docente docente) {
+        //if (verificarIntegridad(alumno, 5)) {
+
+            String[] id = {String.valueOf(docente.getIdDocente())};
+            ContentValues cv = new ContentValues();
+            cv.put("idUnidadAdministrativa", docente.getIdUnidadAdministrativa());
+            cv.put("nombre", docente.getNombre());
+            cv.put("apellido", docente.getApellido());
+            cv.put("email", docente.getEmail());
+            sqLiteDatabase.update(ConstantesDB.TABLA_Docente, cv, "idDocente = ?", id);
+            return "Registro Actualizado Correctamente";
+       // } else {
+          //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
+        //}
     }
 
 }
