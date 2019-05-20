@@ -27,7 +27,7 @@
             android:layout_width="214dp"
             android:layout_height="wrap_content"
             android:background="#27B2F0"
-            android:onClick="consultarEquipoAsignado"
+            android:onClick="consultarAsignacionEquipo"
             android:text="@string/consultar" />
 
         <Button

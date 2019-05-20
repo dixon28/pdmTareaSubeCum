@@ -58,14 +58,14 @@ public class ConstantesDB {
     public static final String SQL_CREATE_TABLE_AsignacionEquipo = "CREATE TABLE " + TABLA_AsignacionEquipo +
             "( idAsignacionEquipo     INTEGER              not null primary key,\n" +
             "   idDocente             INTEGER,\n" +
-            "   fechaAsignacionEquipo DATE                 not null)";
+            "   fechaAsignacionEquipo TEXT                 not null)";
 
 
     public static final String SQL_CREATE_TABLE_DocumentoAsignacion = "CREATE TABLE " + TABLA_DocumentoAsignacion +
             "(  idDocumentoAsignacion INTEGER              not null primary key,\n" +
             "   idDocente            INTEGER,\n" +
             "   motivo               VARCHAR2(120)        not null,\n" +
-            "   fechaAsignacionDoc   VARCHAR2(50)         not null)" ;
+            "   fechaAsignacionDoc   TEXT         not null)" ;
     public static final String SQL_CREATE_TABLE_DocumentoAsignacionDetalle = "CREATE TABLE " + TABLA_DocumentoAsignacionDetalle +
 
             "(  idDocumentoAsignacionDetalle INTEGER              not null primary key,\n" +
@@ -138,7 +138,7 @@ public class ConstantesDB {
 
     //---------------  RAUL  ------------------------------------
     public static final String[] campos_Docente = {"idDocente", "idUnidadAdministrativa","nombre","apellido","email"};
-    public static final String[] campos_AsignacionEquipo = {"idAsignacionEquipo", "idDocente", "fechaAsignacion"};
+    public static final String[] campos_AsignacionEquipo = {"idAsignacionEquipo", "idDocente", "fechaAsignacionEquipo"};
     public static final String[] campos_DocumentoAsignacion= {"idDocumentoAsignacion", "idDocente", "motivo","FechaAsignacionDoc"};
     public static final String[] campos_DocumentoAsignacionDetalle= {"idDocumentoAsignacionDetalle", "isbn", "idDocumentoAsignacion"};
     public static final String[] campos_AsignacionEquipoDetalle= {"idAsignacionEquipoDetalle", "idEquipo", "idAsignacionEquipo"};

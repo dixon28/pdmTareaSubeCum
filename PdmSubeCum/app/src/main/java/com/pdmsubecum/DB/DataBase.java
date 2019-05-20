@@ -40,7 +40,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.pdmsubecum.DB.ConstantesDB.campos_AsignacionEquipo;
 import static com.pdmsubecum.DB.ConstantesDB.campos_Docente;
+import static com.pdmsubecum.DB.ConstantesDB.campos_DocumentoAsignacion;
 import static java.lang.Integer.parseInt;
 
 /**
@@ -1179,7 +1181,7 @@ public class DataBase {
 
         final int[] VAidAsignacionEquipo = {2222222, 2222220, 2222200, 2222000};
         final int[] VAidDocente = {8888881, 8888882, 8888883, 8888884};
-        final String[] VAfechaAsignacionEquipo = {"2019/05/14", "2019-05-14", "2019-05-15", "2019-05-16"};
+        final String[] VAfechaAsignacionEquipo = {"2019-05-01", "2019-05-19", "2019-05-21", "2019-05-25"};
 
 
         final int[] VDOidDocumentoAsignacion = {3222222, 3222220, 3222200, 3222000};
@@ -1206,7 +1208,7 @@ public class DataBase {
                 asignacionEquipo.setIdDocente(VAidDocente[i]);
                 asignacionEquipo.setFechaAsignacionEquipo(VAfechaAsignacionEquipo[i]);
 
-                // insertar(asignacionEquipo);
+                 insertar(asignacionEquipo);
             }
         }
         if (getItemsDocumentoAsignacion() == 0) {
@@ -1217,7 +1219,7 @@ public class DataBase {
                 documentoAsignacion.setMotivo(VDOmotivo[i]);
                 documentoAsignacion.setFechaAsignacionDoc(VDOfechaAsignacionDoc[i]);
 
-                // insertar(documentoAsignacion);
+                 insertar(documentoAsignacion);
             }
         }
 
@@ -1225,6 +1227,7 @@ public class DataBase {
         return "Guardo Correctamente";
     }
 
+    //******************************************INICIO CRUD DE TS14004*****************************************************************
     //METODOS INSERTAR <--TS14004-->
     public String insertar(Docente docente) {
         String regInsertados = "Registro Insertado Nº= ";
@@ -1237,6 +1240,42 @@ public class DataBase {
         doce.put("apellido", docente.getApellido());
         doce.put("email", docente.getEmail());
         contador = sqLiteDatabase.insert(ConstantesDB.TABLA_Docente, null, doce);
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
+    public String insertar(AsignacionEquipo asignacionEquipo) {
+        String regInsertados = "Registro Insertado Nº= ";
+        long contador = 0;
+
+        ContentValues asignaEquipo = new ContentValues();
+        asignaEquipo.put("idAsignacionEquipo", asignacionEquipo.getIdAsignacionEquipo());
+        asignaEquipo.put("idDocente", asignacionEquipo.getIdDocente());
+        asignaEquipo.put("fechaAsignacionEquipo", asignacionEquipo.getFechaAsignacionEquipo());
+        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_AsignacionEquipo, null, asignaEquipo);
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
+
+    public String insertar(DocumentoAsignacion documentoAsignacion){
+        String regInsertados = "Registro Insertado Nº= ";
+        long contador = 0;
+
+        ContentValues documentoAsignado = new ContentValues();
+        documentoAsignado.put("idDocumentoAsignacion", documentoAsignacion.getIdDocumentoAsignacion());
+        documentoAsignado.put("idDocente", documentoAsignacion.getIdDocente());
+        documentoAsignado.put("motivo", documentoAsignacion.getMotivo());
+        documentoAsignado.put("fechaAsignacionDoc", documentoAsignacion.getFechaAsignacionDoc());
+        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DocumentoAsignacion, null, documentoAsignado);
         if (contador == -1 || contador == 0) {
             regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
         } else {
@@ -1264,6 +1303,38 @@ public class DataBase {
         }
     }
 
+    public AsignacionEquipo consultarAsignacionEquipo(int idAsignacionEquipo) {
+        String[] id = {String.valueOf(idAsignacionEquipo)};
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_AsignacionEquipo, campos_AsignacionEquipo, "idAsignacionEquipo = ?", id, null, null, null);
+        if (cursor.moveToFirst()) {
+            AsignacionEquipo asignacionEquipo = new AsignacionEquipo();
+            asignacionEquipo.setIdAsignacionEquipo(cursor.getInt(0));
+            asignacionEquipo.setIdDocente(cursor.getInt(1));
+            asignacionEquipo.setFechaAsignacionEquipo(cursor.getString(2));
+
+            return asignacionEquipo;
+        } else {
+            return null;
+        }
+    }
+
+    public DocumentoAsignacion consultarDocumentoAsignacion(int idDocumentoAsignacion) {
+        String[] id = {String.valueOf(idDocumentoAsignacion)};
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DocumentoAsignacion, campos_DocumentoAsignacion, "idDocumentoAsignacion = ?", id, null, null, null);
+        if (cursor.moveToFirst()) {
+           DocumentoAsignacion documentoAsignacion = new DocumentoAsignacion();
+            documentoAsignacion.setIdDocumentoAsignacion(cursor.getInt(0));
+            documentoAsignacion.setIdDocente(cursor.getInt(1));
+            documentoAsignacion.setMotivo(cursor.getString(2));
+            documentoAsignacion.setFechaAsignacionDoc(cursor.getString(3));
+
+            return documentoAsignacion;
+        } else {
+            return null;
+        }
+    }
+
+
     //METODOS ACTUALIZAR <--TS14004-->
 
     public String actualizar(Docente docente) {
@@ -1276,6 +1347,35 @@ public class DataBase {
         cv.put("apellido", docente.getApellido());
         cv.put("email", docente.getEmail());
         sqLiteDatabase.update(ConstantesDB.TABLA_Docente, cv, "idDocente = ?", id);
+        return "Registro Actualizado Correctamente";
+        // } else {
+        //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
+        //}
+
+    }
+    public String actualizar(AsignacionEquipo asignacionEquipo) {
+        //if (verificarIntegridad(alumno, 5)) {
+
+        String[] id = {String.valueOf(asignacionEquipo.getIdAsignacionEquipo())};
+        ContentValues cv = new ContentValues();
+        cv.put("idDocente", asignacionEquipo.getIdDocente());
+        cv.put("fechaAsignacionEquipo", asignacionEquipo.getFechaAsignacionEquipo());
+        sqLiteDatabase.update(ConstantesDB.TABLA_AsignacionEquipo, cv, "idAsignacionEquipo = ?", id);
+        return "Registro Actualizado Correctamente";
+        // } else {
+        //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
+        //}
+    }
+
+    public String actualizar(DocumentoAsignacion documentoAsignacion) {
+        //if (verificarIntegridad(alumno, 5)) {
+
+        String[] id = {String.valueOf(documentoAsignacion.getIdDocumentoAsignacion())};
+        ContentValues cv = new ContentValues();
+        cv.put("idDocente", documentoAsignacion.getIdDocente());
+        cv.put("motivo", documentoAsignacion.getMotivo());
+        cv.put("fechaAsignacionDoc", documentoAsignacion.getFechaAsignacionDoc());
+        sqLiteDatabase.update(ConstantesDB.TABLA_DocumentoAsignacion, cv, "idDocumentoAsignacion = ?", id);
         return "Registro Actualizado Correctamente";
         // } else {
         //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
@@ -1295,5 +1395,27 @@ public class DataBase {
         return regAfectados;
     }
 
+    public String eliminar(AsignacionEquipo asignacionEquipo) {
+        String regAfectados = "filas afectadas= ";
+        int contador = 0;
+        /*if (verificarIntegridad(alumno, 3)) {
+            contador += db.delete("nota", "carnet='" + alumno.getCarnet() + "'", null);
+        }*/
+        contador += sqLiteDatabase.delete(ConstantesDB.TABLA_AsignacionEquipo, "idAsignacionEquipo='" + asignacionEquipo.getIdAsignacionEquipo() + "'", null);
+        regAfectados += contador;
+        return regAfectados;
+    }
+
+    public String eliminar(DocumentoAsignacion documentoAsignacion) {
+        String regAfectados = "filas afectadas= ";
+        int contador = 0;
+        /*if (verificarIntegridad(alumno, 3)) {
+            contador += db.delete("nota", "carnet='" + alumno.getCarnet() + "'", null);
+        }*/
+        contador += sqLiteDatabase.delete(ConstantesDB.TABLA_DocumentoAsignacion, "idDocumentoAsignacion='" + documentoAsignacion.getIdDocumentoAsignacion() + "'", null);
+        regAfectados += contador;
+        return regAfectados;
+    }
 
 }
+//***************************************************FIN CRUD DE TS14004**********************************************************************
