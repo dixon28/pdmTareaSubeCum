@@ -295,4 +295,55 @@ public class ConstantesDB {
 
     //FIN MM
 
+
+    //rl08017
+
+    //nombre de tablas
+    public static final String TABLA_TIPO_MOV_DOCUMENTO="tipo_movimiento_para_documento";
+    public static final String TABLA_DOCUMENTO_MOVIMIENTO="movimiento_documento";
+    public static final String TABLA_DOCUMENTO_MOVIMIENTO_DETALLE="movimiento_documento_detalle";
+    public static final String TABLA_DOCUMENTO_EXISTENCIA="documento_existencia";
+
+    // queries para crear las tablas
+    // ----------------------------------------------------
+    public static final String SQL_CREATE_TABLE_TIPO_MOV_DOCUMENTO = "CREATE TABLE " + TABLA_TIPO_MOV_DOCUMENTO +
+            "( id_tipo_de_movimiento_para_documento  INTEGER NOT NULL PRIMARY KEY," +
+            "descripcion VARCHAR(50) NOT NULL )";
+
+    public static final String SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO = "CREATE TABLE "+ TABLA_DOCUMENTO_MOVIMIENTO +
+            "(id_documento_movimiento INTEGER NOT NULL PRIMARY KEY, " +
+            "id_tipo_movimiento_documento INTEGER NOT NULL, " +
+            "id_unidad_admin_origen INTEGER NOT NULL, "+
+            "id_unidad_admin_destino INTEGER NOT NULL, "+
+            "comentario VARCHAR(100) NOT NULL, "+
+            "fecha_movimiento TEXT NOT NULL)";
+
+    public static final String SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO_DETALLE = "CREATE TABLE "+TABLA_DOCUMENTO_MOVIMIENTO_DETALLE +
+            "(id_documento_movimiento_detalle INTEGER NOT NULL PRIMARY KEY, "+
+            "isbn VARCHAR(25) NOT NULL, "+
+            "id_documento_movimiento INTEGER NOT NULL)";
+    public static final String SQL_CREATE_TABLE_DOCUMENTO_EXISTENCIA = "CREATE TABLE "+TABLA_DOCUMENTO_EXISTENCIA +
+            "(id_documento_existencia INTEGER NOT NULL PRIMARY KEY, "+
+            "isbn VARCHAR(25) NOT NULL, "+
+            "id_docente INTEGER NOT NULL, "+
+            "id_unidad_admin INTEGER NOT NULL, "+
+            "actual INTEGER NOT NULL)";
+
+    // query para borrar la DB
+
+    public static final String SQL_DELETE_TIPO_MOV_DOCUMENTO = "DROP TABLE "+ TABLA_TIPO_MOV_DOCUMENTO;
+    public static final String SQL_DELETE_DOCUMENTO_MOVIMIENTO = "DROP TABLE "+TABLA_DOCUMENTO_MOVIMIENTO;
+    public static final String SQL_DELETE_DOCUMENTO_MOVIMIENTO_DETALLE ="DROP TABLE "+TABLA_DOCUMENTO_MOVIMIENTO_DETALLE;
+    public static final String SQL_DELETE_DOCUMENTO_EXISTENCIA = "DROP TABLE "+TABLA_DOCUMENTO_EXISTENCIA;
+
+    // campos de las tablas
+
+    public static final String[] CAMPOS_TIPO_MOV_DOCUMENTO = {"id_tipo_de_movimiento_para_documento","descripcion"};
+    public static final String[] CAMPOS_DOCUMENTO_MOVIMIENTO = {"id_documento_movimiento","id_tipo_movimiento_documento",
+            "id_unidad_admin_origen","id_unidad_admin_destino", "comentario", "fecha_movimiento"};
+    public static final String[] CAMPOS_DOCUMENTO_MOVIMIENTO_DETALLE = {"id_documento_movimiento_detalle",
+            "isbn", "id_documento_movimiento"};
+    public static final String[] CAMPOS_DOCUMENTO_EXISTENCIA = {"id_documento_existencia","isbn", "id_docente",
+            "id_unidad_admin","actual"};
+
 }

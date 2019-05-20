@@ -12,7 +12,7 @@ import android.util.Log;
 public class DBHelper extends SQLiteOpenHelper {
 
 
-    public static final int DB_VERSION = 13;
+    public static final int DB_VERSION = 15;
 
 
 
@@ -61,6 +61,13 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_HORARIOELIMINAR);
         //Fin Tablas MM
 
+        //rl08017
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_TIPO_MOV_DOCUMENTO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO_DETALLE);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_EXISTENCIA);
+
+
     }
 
     @Override
@@ -107,6 +114,15 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_GRUPOELIMINAR);
         db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_HORARIOELIMINAR);
         //Fin tRablas MM
+
+
+        //rl08017
+        db.execSQL(ConstantesDB.SQL_DELETE_TIPO_MOV_DOCUMENTO);
+        db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_MOVIMIENTO);
+        db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_MOVIMIENTO_DETALLE);
+        db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_EXISTENCIA);
+
+
         onCreate(db);
     }
 }
