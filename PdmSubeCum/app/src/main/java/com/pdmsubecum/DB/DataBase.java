@@ -8,12 +8,21 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.pdmsubecum.DB.modelo.AsignacionEquipo;
 import com.pdmsubecum.DB.modelo.Docente;
 import com.pdmsubecum.DB.modelo.DocumentoAsignacion;
 import com.pdmsubecum.DB.modelo.RolUsuario;
 import com.pdmsubecum.DB.modelo.Usuario;
+import com.pdmsubecum.mm14031.Aula;
+import com.pdmsubecum.mm14031.Ciclo;
+import com.pdmsubecum.mm14031.Dia;
+import com.pdmsubecum.mm14031.Grupo;
+import com.pdmsubecum.mm14031.Horario;
+import com.pdmsubecum.mm14031.HorarioDetalle;
+import com.pdmsubecum.mm14031.HorarioEliminarActivity;
+import com.pdmsubecum.mm14031.Materia;
 import com.pdmsubecum.DB.modelo.am15005.Autor;
 import com.pdmsubecum.DB.modelo.am15005.AutorDetalle;
 import com.pdmsubecum.DB.modelo.am15005.Documento;
@@ -26,16 +35,14 @@ import com.pdmsubecum.DB.modelo.pm15007.EquipoMovimiento;
 import com.pdmsubecum.DB.modelo.pm15007.EquipoMovimientoDetalle;
 import com.pdmsubecum.DB.modelo.pm15007.TipoMovimientoEquipo;
 import com.pdmsubecum.DB.modelo.pm15007.UnidadAdministrativa;
-import com.pdmsubecum.rl08017.DocumentoExistencia;
-import com.pdmsubecum.rl08017.TiposDeMovimientoParaDocumento;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.pdmsubecum.DB.ConstantesDB.CAMPOS_DOCUMENTO_EXISTENCIA;
-import static com.pdmsubecum.DB.ConstantesDB.CAMPOS_TIPO_MOV_DOCUMENTO;
+import static com.pdmsubecum.DB.ConstantesDB.campos_AsignacionEquipo;
 import static com.pdmsubecum.DB.ConstantesDB.campos_Docente;
+import static com.pdmsubecum.DB.ConstantesDB.campos_DocumentoAsignacion;
 import static java.lang.Integer.parseInt;
 
 /**
@@ -47,13 +54,13 @@ public class DataBase {
     SQLiteDatabase sqLiteDatabase;
     SQLiteOpenHelper sqLiteOpenHelper;
 
-    public DataBase(Context context) {
+    public DataBase(Context context){
         this.context = context;
         sqLiteOpenHelper = new DBHelper(context);
         sqLiteDatabase = sqLiteOpenHelper.getWritableDatabase();
     }
 
-    public void abrir() {
+    public void abrir(){
         sqLiteDatabase = sqLiteOpenHelper.getWritableDatabase();
     }
 
@@ -66,13 +73,43 @@ public class DataBase {
      -------------   CONTADORES DE TABLAS -------------------
      -------------------------------------------------------*/
 
-    public long getItemsUsuario() {
+    public long getItemsUsuario(){
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_USUARIO);
     }
-
-    public long getItemsRol() {
+    public long getItemsRol(){
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_ROL_USUARIO);
     }
+
+
+    //Tablas MM
+
+    public long getItemsAula(){
+        return  DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_AULA);
+    }
+
+    public long getItemsDia(){
+        return  DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_DIA);
+    }
+
+    public long getItemsCiclo(){
+        return  DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_CICLO);
+    }
+
+    public long getItemsMateria(){
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_MATERIA);
+    }
+    public long getItemsHorario(){
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_HORARIO);
+    }
+    public long getItemsGrupo(){
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_GRUPO);
+    }
+
+    public long getItemsHorarioDetalle(){
+        return  DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_HORARIODETALLE);
+    }
+
+    //Fin Tablas MM
 
     //PM15007
     public long getItemsEquipoExistencia() {
@@ -122,27 +159,82 @@ public class DataBase {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_MARCA);
     }
 
-    //rl08017
-    public long getItemsTipoMovimientoDocumento(){
-        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO);
+    private long getItemsAutor() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_AUTOR);
+    }
+
+    private long getItemsAutorDetalle() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_AUTOR_DETALLE);
+    }
+
+    private long getItemsTiposEquipo() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_TIPOS_DE_EQUIPO);
+
+
+    }
+
+    private long getItemsTiposDocumento() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_TIPOS_DE_DOCUMENTO);
+    }
+    private long getItemsDocumento() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_DOCUMENTO);
+    }
+    private long getItemsEquipo() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_EQUIPO);
     }
 
 
     /* ------------------------------------------------------
      -------------   INSERCIONES EN TABLAS -------------------
      -------------------------------------------------------*/
-    public void insertar(Usuario usuario) {
+    public void insertar(Usuario usuario){
         ContentValues contentValues = usuario.toValues();
         sqLiteDatabase.insert(ConstantesDB.TABLA_USUARIO, null, contentValues);
-
     }
 
-    public void insertar(RolUsuario rolUsuario) {
+    public void insertar(RolUsuario rolUsuario){
         ContentValues contentValues = rolUsuario.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_ROL_USUARIO, null, contentValues);
+        sqLiteDatabase.insert(ConstantesDB.TABLA_ROL_USUARIO, null,contentValues);
     }
 
+    //INSERT TABLAS MM
 
+    public void insertar(Aula aula){
+        ContentValues contentValues = aula.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_AULA,null,contentValues);
+    }
+
+    public void insertar(Dia dia){
+        ContentValues contentValues = dia.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_DIA,null,contentValues);
+    }
+
+    public void insertar(Ciclo ciclo){
+        ContentValues contentValues = ciclo.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_CICLO,null,contentValues);
+
+    }
+
+    public void insertar(Materia materia){
+        ContentValues contentValues = materia.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_MATERIA,null,contentValues);
+    }
+
+    public void insertar(Grupo grupo){
+        ContentValues contentValues = grupo.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_GRUPO,null,contentValues);
+    }
+    public void insertar(Horario horario){
+        ContentValues contentValues = horario.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_HORARIO,null,contentValues);
+    }
+
+    public void insertar(HorarioDetalle horarioDetalle){
+        ContentValues contentValues = horarioDetalle.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_HORARIODETALLE,null,contentValues);
+    }
+
+    //FIN INSERT TABLAS MM
     //pm15007
 
     public long insertar(EquipoExistencia equipoExistencia) {
@@ -181,164 +273,43 @@ public class DataBase {
 
     }
 
-    public void insertar(Autor autor){
+    public void insertar(Autor autor) {
         ContentValues a = autor.toValues();
-        a.put("idautor",autor.getIdautor());
-        a.put("nombreautor",autor.getNombreAutor());
-        a.put("apellidosautor",autor.getApellidosAutor());
         sqLiteDatabase.insert("autor", null, a);
 
     }
 
-    public void insertar(TiposDeEquipo tequipo){
+    public void insertar(TiposDeEquipo tequipo) {
         ContentValues a = tequipo.toValues();
-        a.put("idtiposdeequipo",tequipo.getIdTiposDeEquipo());
-        a.put("descripciontipequipo",tequipo.getDescripcionTipEquipo());
-        sqLiteDatabase.insert("tiposdeequipo", null, a);
+        a.put("idtiposdeequipo", tequipo.getIdTiposDeEquipo());
+        a.put("descripciontipequipo", tequipo.getDescripcionTipEquipo());
+        sqLiteDatabase.insert(ConstantesDB.TABLA_TIPOS_DE_EQUIPO, null, a);
 
     }
 
-    public void insertar(TiposDeDocumento tdoc){
-        ContentValues contentValues= tdoc.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_TIPOS_DE_DOCUMENTO, null,contentValues);
+    public void insertar(TiposDeDocumento tdoc) {
+        ContentValues contentValues = tdoc.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_TIPOS_DE_DOCUMENTO, null, contentValues);
 
     }
 
-    public void insertar(AutorDetalle autorDetalle){
-        ContentValues contentValues= autorDetalle.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_AUTOR_DETALLE, null,contentValues);
-
-    }
-    public void insertar(Documento documento){
-        ContentValues contentValues= documento.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO, null,contentValues);
+    public void insertar(AutorDetalle autorDetalle) {
+        ContentValues contentValues = autorDetalle.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_AUTOR_DETALLE, null, contentValues);
 
     }
 
-    public void insertar(Equipo equipo){
-        ContentValues contentValues=equipo.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_EQUIPO, null,contentValues);
+    public void insertar(Documento documento) {
+        ContentValues contentValues = documento.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO, null, contentValues);
 
     }
 
-    //rl08017
+    public void insertar(Equipo equipo) {
+        ContentValues contentValues = equipo.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_EQUIPO, null, contentValues);
 
-    public String insertar(TiposDeMovimientoParaDocumento tiposDeMovimientoParaDocumento){
-        String regInsertados="Registro Insertado Nº= ";
-        long contador=0;
-        ContentValues tipo = new ContentValues();
-        tipo.put("id_tipo_de_movimiento_para_documento", tiposDeMovimientoParaDocumento.getIdTiposDeMovimientoParaDocumento());
-        tipo.put("descripcion", tiposDeMovimientoParaDocumento.getDescripcionMovimientoDoc());
-        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, null, tipo);
-        if(contador==-1 || contador==0)
-        {
-            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
-        }
-        else {
-            regInsertados=regInsertados+contador;
-        }
-        return regInsertados;
     }
-
-    public String insertar(DocumentoExistencia documentoExistencia){
-        String regInsertados="Registro Insertado Nº= ";
-        long contador=0;
-        ContentValues tipo = new ContentValues();
-        tipo.put("id_documento_existencia", documentoExistencia.getIdDocumentoExistencia());
-        tipo.put("isbn", documentoExistencia.getIsbn());
-        tipo.put("id_docente", documentoExistencia.getIdDocente());
-        tipo.put("id_unidad_admin", documentoExistencia.getIdUnidadAdministrativa());
-        tipo.put("actual", documentoExistencia.getActual());
-        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, null, tipo);
-        if(contador==-1 || contador==0)
-        {
-            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
-        }
-        else {
-            regInsertados=regInsertados+contador;
-        }
-        return regInsertados;
-    }
-
-    public TiposDeMovimientoParaDocumento consultarTipoMov(String idMov){
-        String[] id = {idMov};
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, CAMPOS_TIPO_MOV_DOCUMENTO, "id_tipo_de_movimiento_para_documento = ?", id, null, null, null);
-        if(cursor.moveToFirst()){
-            TiposDeMovimientoParaDocumento tipo = new TiposDeMovimientoParaDocumento();
-            tipo.setIdTiposDeMovimientoParaDocumento(parseInt(cursor.getString(0)));
-            tipo.setDescripcionMovimientoDoc(cursor.getString(1));
-            return tipo;
-        }else{ return null;
-        }
-    }
-
-    public DocumentoExistencia consultarDocExistencia(String idExis){
-        String[] id = {idExis};
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, CAMPOS_DOCUMENTO_EXISTENCIA, "id_documento_existencia = ?", id, null, null, null);
-        if(cursor.moveToFirst()){
-            DocumentoExistencia tipo = new DocumentoExistencia();
-            tipo.setIdDocumentoExistencia(parseInt(cursor.getString(0)));
-            tipo.setIsbn(cursor.getString(1));
-            tipo.setIdDocente(parseInt(cursor.getString(2)));
-            tipo.setIdUnidadAdministrativa(parseInt(cursor.getString(3)));
-            tipo.setActual(parseInt(cursor.getString(4)));
-            return tipo;
-        }else{ return null;
-        }
-    }
-
-    public String actualizar(TiposDeMovimientoParaDocumento tipo){
-        try{
-            String[] id = {String.valueOf(tipo.getIdTiposDeMovimientoParaDocumento())};
-            ContentValues cv = new ContentValues();
-            cv.put("id_tipo_de_movimiento_para_documento", tipo.getIdTiposDeMovimientoParaDocumento());
-            cv.put("descripcion", tipo.getDescripcionMovimientoDoc());
-            sqLiteDatabase.update(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, cv, "id_tipo_de_movimiento_para_documento = ?", id);
-            return "Registro Actualizado Correctamente";
-        }
-        catch (SQLException e ){
-            return e.toString();
-        }
-    }
-
-    public String actualizar(DocumentoExistencia tipo){
-        try{
-            String[] id = {String.valueOf(tipo.getIdDocumentoExistencia())};
-            ContentValues cv = new ContentValues();
-            cv.put("id_documento_existencia", tipo.getIdDocumentoExistencia());
-            cv.put("isbn", tipo.getIsbn());
-            cv.put("id_docente", tipo.getIdDocente());
-            cv.put("id_unidad_admin", tipo.getIdUnidadAdministrativa());
-            cv.put("actual", tipo.getActual());
-            sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, cv, "id_documento_existencia = ?", id);
-            return "Registro Actualizado Correctamente";
-        }
-        catch (SQLException e ){
-            return e.toString();
-        }
-    }
-
-    public String eliminar(TiposDeMovimientoParaDocumento tipo){
-        String regAfectados="filas afectadas= ";
-        int contador=0;
-            contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, "id_tipo_de_movimiento_para_documento='"+ tipo.getIdTiposDeMovimientoParaDocumento() +"'", null);
-
-        regAfectados+=contador;
-        return regAfectados;
-    }
-
-    public String eliminar(DocumentoExistencia tipo){
-        String regAfectados="filas afectadas= ";
-        int contador=0;
-        contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, "id_documento_existencia='"+ tipo.getIdDocumentoExistencia() +"'", null);
-
-        regAfectados+=contador;
-        return regAfectados;
-    }
-
-
-
-
 
 
     //consultar marca
@@ -393,15 +364,71 @@ public class DataBase {
 
     }
 
+    //    insertar Datos
+    public void llenarMarca(List<Marca> marcas) {
+        long items = getItemsMarca();
+        if (items == 0) {
+            for (Marca marca : marcas) {
+                try {
+                    insertar(marca);
+                } catch (SQLiteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarAutor(List<Autor> autors) {
+        long items = getItemsAutor();
+        if (items == 0) {
+            for (Autor autor: autors) {
+                try {
+                    insertar(autor);
+                } catch (SQLiteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarTiposEquipo(List<TiposDeEquipo> tiposDeEquipos) {
+        long items = getItemsTiposEquipo();
+        if (items == 0) {
+            for (TiposDeEquipo equipo: tiposDeEquipos) {
+                try {
+                    insertar(equipo);
+                } catch (SQLiteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarTiposDeDocumento(List<TiposDeDocumento> td) {
+        long items = getItemsTiposDocumento();
+        if (items == 0) {
+            for (TiposDeDocumento d: td) {
+                try {
+                    insertar(d);
+                } catch (SQLiteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+
+
 
     /* ------------------------------------------------------
      -------------   CONSULTAS DE TABLAS -------------------
      -------------------------------------------------------*/
-    public List<Usuario> getUsuarios() {
+    public  List<Usuario> getUsuarios(){
         List<Usuario> usuarios = new ArrayList<>();
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_USUARIO, ConstantesDB.CAMPOS_USUARIO, null,
-                null, null, null, null);
-        while (cursor.moveToNext()) {
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_USUARIO, ConstantesDB.CAMPOS_USUARIO,null,
+                null,null,null,null);
+        while(cursor.moveToNext()){
             Usuario usuario = new Usuario();
             usuario.setUsuario(cursor.getString(0));
             usuario.setPassword(cursor.getString(1));
@@ -410,26 +437,25 @@ public class DataBase {
         return usuarios;
     }
 
-    public Usuario getUsuario(String user) {
+    public Usuario getUsuario(String user){
         String[] id = {user};
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_USUARIO, ConstantesDB.CAMPOS_USUARIO, "usuario = ?",
-                id, null, null, null);
-        if (cursor.moveToFirst()) {
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_USUARIO, ConstantesDB.CAMPOS_USUARIO,"usuario = ?",
+                id,null,null,null);
+        if(cursor.moveToFirst()){
             Usuario usuario = new Usuario();
             usuario.setUsuario(cursor.getString(0));
             usuario.setPassword(cursor.getString(1));
             return usuario;
-        } else {
+        }else{
             return null;
         }
 
     }
-
-    public RolUsuario getRolUsuario(String user) {
+    public RolUsuario getRolUsuario(String user){
         String[] id = {user};
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_ROL_USUARIO, ConstantesDB.CAMPOS_ROL_USUARIO,
-                "usuario = ?", id, null, null, null);
-        if (cursor.moveToFirst()) {
+            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_ROL_USUARIO, ConstantesDB.CAMPOS_ROL_USUARIO,"usuario = ?",
+                id,null,null,null);
+        if(cursor.moveToFirst()){
             RolUsuario rolUsuario = new RolUsuario();
             rolUsuario.setNombre_rol(cursor.getString(0));
             rolUsuario.setUsuario(cursor.getString(1));
@@ -542,7 +568,7 @@ public class DataBase {
             return cursor.getInt(0);
         }
     }
-    
+
 
     /* ------------------------------------------------------
      -------------   ACTUALIZACION DE DATOS -----------------
@@ -615,32 +641,612 @@ public class DataBase {
     /* ------------------------------------------------------
      -------------   QUEMADO DE DATOS -----------------------
      -------------------------------------------------------*/
-    public void llenarUsuario(List<Usuario> usuarios) {
+    public void llenarUsuario(List<Usuario> usuarios){
         long items = getItemsUsuario();
-        if (items == 0) {
-            for (Usuario usuario : usuarios) {
+        if(items == 0){
+            for (Usuario usuario: usuarios){
                 try {
                     insertar(usuario);
-                } catch (SQLiteException e) {
+                }catch (SQLiteException e){
                     e.printStackTrace();
                 }
             }
         }
     }
-
-    public void llenarRolUsuario(List<RolUsuario> roles) {
+    public void llenarRolUsuario(List<RolUsuario> roles){
         long items = getItemsRol();
-        if (items == 0) {
-            for (RolUsuario rolUsuario : roles) {
+        if(items == 0){
+            for (RolUsuario rolUsuario: roles){
                 try {
                     insertar(rolUsuario);
-                } catch (SQLiteException e) {
+                }catch (SQLiteException e){
                     e.printStackTrace();
                 }
             }
         }
     }
 
+    //LLENADO TABLAS MM
+
+    public void llenarAula(List<Aula> aulas){
+        long items = getItemsAula();
+        if (items == 0){
+            for (Aula aula: aulas){
+                try {
+                    insertar(aula);
+                }catch (SQLiteException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarDia(List<Dia> dias){
+        long items = getItemsDia();
+        if (items == 0){
+            for (Dia dia: dias){
+                try {
+                    insertar(dia);
+                }catch (SQLiteException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarCiclo(List<Ciclo> ciclos){
+        long items = getItemsCiclo();
+        if (items == 0){
+            for (Ciclo ciclo: ciclos){
+                try {
+                    insertar(ciclo);
+                }catch (SQLiteException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarMateria(List<Materia> materias){
+        long items = getItemsMateria();
+        if (items == 0){
+            for (Materia materia: materias){
+                try {
+                    insertar(materia);
+                }catch (SQLiteException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarHorario(List<Horario> horarios){
+        long items = getItemsHorario();
+        if (items == 0){
+            for (Horario horario: horarios){
+                try {
+                    insertar(horario);
+                }catch (SQLiteException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarGrupo(List<Grupo> grupos){
+        long items = getItemsGrupo();
+        if (items == 0){
+            for (Grupo grupo: grupos){
+                try {
+                    insertar(grupo);
+                }catch (SQLiteException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarHorarioDetalle(List<HorarioDetalle> horarioDetalles){
+        long items = getItemsHorarioDetalle();
+        if (items == 0){
+            for (HorarioDetalle horarioDetalle : horarioDetalles){
+                try {
+                    insertar(horarioDetalle);
+                }catch (SQLiteException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+    // FIN LLENADO TABLAS MM
+
+    private boolean aulaExiste(Aula aula) throws SQLException{
+
+        String[] idAula = {String.valueOf(aula.getIdAula())};
+        abrir();
+        Cursor c = sqLiteDatabase.query("aula",null,"idAula = ?",idAula,
+                null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public Aula consultarAula(int idAula){
+
+        String[] columnas = {"idAula,descripcion"};
+        String[] codAula ={String.valueOf(idAula)};
+        Cursor c = sqLiteDatabase.query("aula",columnas,"idAula = ?",codAula,
+                null,null,null);
+        if (c.moveToFirst()){
+            Aula aula = new Aula();
+            aula.setIdAula(c.getInt(0));
+            aula.setDescripcion(c.getString(1));
+            return aula;
+        }else{
+            return null;
+        }
+    }
+
+    private boolean diaExiste(Dia dia) throws SQLException{
+
+        String[] idDia = {String.valueOf(dia.getIdDia())};
+        Cursor c = sqLiteDatabase.query("dia",null,"idDia = ?",idDia,
+                null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public Dia consultarDia(int idDia){
+
+        String[] columnas = {"idDia,descripcion"};
+        String[] codDia ={String.valueOf(idDia)};
+        Cursor c = sqLiteDatabase.query("dia",columnas,"idDia = ?",codDia,
+                null,null,null);
+        if (c.moveToFirst()){
+            Dia dia = new Dia();
+            dia.setIdDia(c.getInt(0));
+            dia.setDescripcion(c.getString(1));
+
+            return dia;
+        }else{
+            return null;
+        }
+    }
+
+    private boolean cicloExiste(Ciclo ciclo) throws SQLException{
+
+        String[] idCiclo = {String.valueOf(ciclo.getIdCiclo())};
+        abrir();
+        Cursor c = sqLiteDatabase.query("ciclo",null,"idCiclo = ?",idCiclo,
+                null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public Ciclo consultarCiclo(int idCiclo){
+
+        String[] columnas = {"idCiclo,numero,year"};
+        String[] codCiclo ={String.valueOf(idCiclo)};
+        Cursor c = sqLiteDatabase.query("ciclo",columnas,"idCiclo = ?",codCiclo,
+                null,null,null);
+        if (c.moveToFirst()){
+            Ciclo ciclo = new Ciclo();
+            ciclo.setIdCiclo(c.getInt(0));
+            ciclo.setNumero(c.getString(1));
+            ciclo.setYear(c.getInt(2));
+            return ciclo;
+        }else{
+            return null;
+        }
+    }
+
+
+    public String insertarMateria(Materia materia){
+
+        String mensaje = "Registro No: ";
+        long contador = 0 ;
+
+        if (materiaExiste(materia)==false){
+            Ciclo ciclo = new Ciclo();
+            ciclo.setIdCiclo(materia.getIdCiclo());
+
+            if (cicloExiste(ciclo)){
+
+                ContentValues contentValues = materia.toValues();
+                contador= sqLiteDatabase.insert(ConstantesDB.TABLA_MATERIA,null,contentValues);
+
+                if(contador == -1 || contador == 0){
+                    mensaje = "Error al insertar el registro. Registro duplicado";
+                }else{
+                    mensaje = "Registro insertado correctamente";
+                }
+
+            }else {
+                mensaje = "El ciclo: " + materia.getIdCiclo() + " No Existe.";
+            }
+
+        }else{
+            mensaje = "Materia con Codigo: " + materia.getCodigoMateria() + " ya Existe.";
+        }
+
+        return  mensaje;
+    }
+
+    public String actualizarMateria(Materia materia){
+
+        String mensaje;
+
+        if (materiaExiste(materia)){
+            Ciclo ciclo = new Ciclo();
+            ciclo.setIdCiclo(materia.getIdCiclo());
+
+            if (cicloExiste(ciclo)){
+                String[] codigo = {materia.getCodigoMateria()};
+                ContentValues contentValues = materia.toValues();
+                sqLiteDatabase.update("materia",contentValues,"codigoMateria = ?",codigo);
+                mensaje = "Registro actualizado correctamente";
+
+            }else {
+                mensaje = "El ciclo: " + materia.getIdCiclo() + " No Existe.";
+            }
+
+
+        }else{
+            mensaje = "Materia con Codigo: " + materia.getCodigoMateria() + " no existe";
+        }
+
+        return mensaje;
+    }
+
+    public String eliminarMateria(Materia materia){
+
+        int contador = 0;
+
+        if (materiaExiste(materia)){
+            String[] codigoMateria = {materia.getCodigoMateria()};
+
+            contador = sqLiteDatabase.delete("materia","codigoMateria = ?",codigoMateria);
+
+            if (contador != 0){
+                return "Registro eliminado correctamente";
+            }else{
+                return "Registro No fue eliminado";
+            }
+
+        }else{
+            return "Materia con codigo: " + materia.getCodigoMateria() + " no existe";
+        }
+
+    }
+
+    public Materia consultarMateria(String codigoMateria){
+
+        String[] columnas = {"codigoMateria,nombreMateria,UV,idCiclo"};
+        String[] codMateria ={codigoMateria};
+        Cursor c = sqLiteDatabase.query("materia",columnas,"codigoMateria = ?",codMateria,
+                null,null,null);
+        if (c.moveToFirst()){
+            Materia materia = new Materia();
+            materia.setCodigoMateria(c.getString(0));
+            materia.setNombreMateria(c.getString(1));
+            materia.setUV(c.getString(2));
+            materia.setIdCiclo(c.getInt(3));
+            return materia;
+        }else{
+            return null;
+        }
+    }
+
+    private boolean materiaExiste(Materia materia) throws SQLException{
+
+        String[] codigoMateria = {materia.getCodigoMateria()};
+
+        abrir();
+        Cursor c = sqLiteDatabase.query("materia",null,"codigoMateria = ?",codigoMateria,
+                null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    public String insertarHorario(Horario horario){
+
+        String mensaje = "Registro No: ";
+        long contador = 0 ;
+
+        if (horarioExiste(horario) == false){
+            Aula aula = new Aula();
+            aula.setIdAula(horario.getIdAula());
+
+            if (aulaExiste(aula)){
+                Dia dia = new Dia();
+                dia.setIdDia(horario.getIdDia());
+                if(diaExiste(dia)){
+
+                    ContentValues contentValues = horario.toValues();
+                    contador= sqLiteDatabase.insert(ConstantesDB.TABLA_HORARIO,null,contentValues);
+
+                    if(contador == -1 || contador == 0){
+                        mensaje = "Error al insertar el registro. Registro duplicado";
+                    }else{
+                        mensaje = "Registro insertado correctamente";
+                    }
+
+                }else{
+                    mensaje = "Dia con ID: " + dia.getIdDia() + " No existe";
+                }
+            }else{
+                mensaje = "Aula con ID: " + aula.getIdAula() + " No Existe.";
+            }
+
+        }else{
+            mensaje = "Horario con ID: " + horario.getIdHorario() + " ya Existe.";
+        }
+
+        return  mensaje;
+    }
+
+    public String actualizarHorario(Horario horario){
+
+        String mensaje;
+        if (horarioExiste(horario)){
+            Aula aula = new Aula();
+            aula.setIdAula(horario.getIdAula());
+            if (aulaExiste(aula)){
+                Dia dia = new Dia();
+                dia.setIdDia(horario.getIdDia());
+                if(diaExiste(dia)){
+                    String[] codigo = {String.valueOf(horario.getIdHorario())};
+                    ContentValues contentValues = horario.toValues();
+                    sqLiteDatabase.update("horario",contentValues,"idHorario = ?",codigo);
+                    mensaje = "Registro actualizado correctamente";
+
+                }else{
+                    mensaje = "Dia con ID: " + dia.getIdDia() + " No existe";
+                }
+            }else{
+                mensaje = "Aula con ID: " + aula.getIdAula() + " No Existe.";
+            }
+        }else{
+            mensaje ="Horario con ID: " + horario.getIdHorario() + " no existe";
+        }
+
+        return mensaje;
+    }
+
+    public String eliminarHorario(Horario horario){
+
+        if (horarioExiste(horario)){
+            int contador = 0;
+            String[] idHorario = {String.valueOf(horario.getIdHorario())};
+
+            contador = sqLiteDatabase.delete("horario","idHorario = ?",idHorario);
+
+            if (contador != 0){
+                return "Registro eliminado correctamente";
+            }else{
+                return "Registro No fue eliminado";
+            }
+
+        }else{
+            return "Horario con ID: " + horario.getIdHorario() + " no existe";
+        }
+
+    }
+
+    public Horario consultarHorario(int idHorario){
+
+        String[] columnas = {"idHorario,idDia,idAula,hora"};
+        String[] codHorario ={String.valueOf(idHorario)};
+        Cursor c = sqLiteDatabase.query("horario",columnas,"idHorario = ?",codHorario,
+                null,null,null);
+        if (c.moveToFirst()){
+            Horario horario = new Horario();
+            horario.setIdHorario(c.getInt(0));
+            horario.setIdDia(c.getInt(1));
+            horario.setIdAula(c.getInt(2));
+            horario.setHora(c.getString(3));
+            return horario;
+        }else{
+            return null;
+        }
+
+    }
+
+    private boolean horarioExiste(Horario horario) throws SQLException{
+
+        String[] idHorario = {String.valueOf(horario.getIdHorario())};
+
+        Cursor c = sqLiteDatabase.query("Horario",null,"idhorario = ?",
+                idHorario,null,null,null);
+        Log.d("HORARIO EXISTE","HORARIO RETURN CURSOR");
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    public String insertarGrupo(Grupo grupo, HorarioDetalle horarioDetalle){
+
+        String mensaje = "Registro No: ";
+        long contador = 0 ;
+        Materia materia = new Materia();
+        materia.setCodigoMateria(grupo.getCodigoMateria());
+
+        if (grupoExiste(grupo)== false){
+            if (materiaExiste(materia)){
+                Horario horario = new Horario();
+                horario.setIdHorario(horarioDetalle.getIdHoraio());
+
+                if(horarioExiste(horario)){
+                    ContentValues contentValues = grupo.toValues();
+                    contador= sqLiteDatabase.insert(ConstantesDB.TABLA_GRUPO,null,contentValues);
+
+                    if(contador == -1 || contador == 0){
+                        mensaje = "Error al insertar el registro. Registro duplicado";
+                    }else{
+                       if(insertarHorarioDetalle(horarioDetalle)){
+                           mensaje = "Registro insertado correctamente";
+                       }
+                    }
+
+                }else{
+                    mensaje = "Horario con ID: " + horarioDetalle.getIdHoraio() + " no existe.";
+                }
+
+            }else{
+                mensaje = "Materia con Codigo: " + materia.getCodigoMateria() + " no existe";
+            }
+        }else{
+            mensaje = "Grupo con ID: " + grupo.getIdGrupo() + " ya Existe.";
+        }
+
+        return  mensaje;
+    }
+
+    public boolean insertarHorarioDetalle(HorarioDetalle horarioDetalle){
+        long contador = 0 ;
+
+        ContentValues contentValues = horarioDetalle.toValues();
+        contador= sqLiteDatabase.insert(ConstantesDB.TABLA_HORARIODETALLE,null,contentValues);
+
+        return true;
+    }
+
+    public boolean actualizarHorarioDetalle(HorarioDetalle horarioDetalle){
+        String[] idGrupo = {String.valueOf(horarioDetalle.getIdGrupo())};
+        ContentValues contentValues = horarioDetalle.toValues();
+        sqLiteDatabase.update("horarioDetalle",contentValues,"idGrupo=?",idGrupo);
+        return true;
+    }
+
+
+    public HorarioDetalle consultarHorarioDetallePorIdGrupo(int idGrupo){
+
+        String[] columnas = {"idGrupo,idHorario"};
+        String[] codigoGrupo ={String.valueOf(idGrupo)};
+        Cursor c = sqLiteDatabase.query("horarioDetalle",columnas,"idGrupo = ?",codigoGrupo,
+                null,null,null);
+        if (c.moveToFirst()){
+            HorarioDetalle horarioDetalle = new HorarioDetalle();
+            horarioDetalle.setIdGrupo(c.getInt(0));
+            horarioDetalle.setIdHoraio(c.getInt(1));
+            return horarioDetalle;
+        }else{
+            return null;
+        }
+
+    }
+
+    public String actualizarGrupo(Grupo grupo, HorarioDetalle horarioDetalle){
+
+        String mensaje;
+        if (grupoExiste(grupo)){
+            Materia materia = new Materia();
+            materia.setCodigoMateria(grupo.getCodigoMateria());
+
+            if(materiaExiste(materia)){
+                Horario  horario = new Horario();
+                horario.setIdHorario(horarioDetalle.getIdHoraio());
+
+                if (horarioExiste(horario)){
+                    String[] codigo = {String.valueOf(grupo.getIdGrupo())};
+                    ContentValues contentValues = grupo.toValues();
+                    sqLiteDatabase.update("grupo",contentValues,"idGrupo = ?",codigo);
+
+                    if(actualizarHorarioDetalle(horarioDetalle)){
+                        mensaje = "Registro actualizado correctamente";
+                    }else{
+                        mensaje = "Grupo actualizado correctamente";
+                    }
+
+                }else{
+                    mensaje = "Horario con ID: " + horarioDetalle.getIdHoraio() + " no existe";
+                }
+
+            }else{
+                mensaje = "Materia con Codigo: " + grupo.getCodigoMateria() + " no existe.";
+            }
+
+        }else{
+            mensaje = "Grupo con ID: " + grupo.getIdGrupo() + " no existe";
+        }
+
+        return mensaje;
+
+    }
+
+    public String eliminarGrupo(Grupo grupo){
+
+        int contador = 0;
+
+        if (grupoExiste(grupo)){
+            String[] idGrupo = {String.valueOf(grupo.getIdGrupo())};
+
+            contador = sqLiteDatabase.delete("grupo","idGrupo = ?",idGrupo);
+
+            if (contador != 0){
+                return "Registro eliminado correctamente";
+            }else{
+                return "Registro No fue eliminado";
+            }
+
+        }else{
+            return "Grupo con ID: " + grupo.getIdGrupo() + " no existe";
+        }
+    }
+
+    public Grupo consultarGrupo(int idGrupo ){
+
+        String[] columnas = {"idGrupo,codigoMateria,idDocente,descripcion"};
+        int[] codGrupo ={idGrupo};
+        Cursor c = sqLiteDatabase.query("grupo",columnas,"idGrupo = ?",new String[]{String.valueOf(idGrupo)},
+                null,null,null);
+        if (c.moveToFirst()){
+            Grupo grupo = new Grupo();
+            grupo.setIdGrupo(c.getInt(0));
+            grupo.setCodigoMateria(c.getString(1));
+            grupo.setIdDocente(c.getInt(2));
+            grupo.setDescripcion(c.getString(3));
+            return grupo;
+        }else{
+            return null;
+        }
+    }
+
+    private boolean grupoExiste(Grupo grupo) throws SQLException{
+
+        String[] idGrupo = {String.valueOf(grupo.getIdGrupo())};
+
+        Cursor c = sqLiteDatabase.query("grupo",null,"idGrupo = ?",
+                idGrupo,null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
     //TS14004---------------------------------------------------------------------------
     public String llenarBase() {
         final int[] VDidDocente = {8888881, 8888882, 8888883, 8888884};
@@ -652,7 +1258,7 @@ public class DataBase {
 
         final int[] VAidAsignacionEquipo = {2222222, 2222220, 2222200, 2222000};
         final int[] VAidDocente = {8888881, 8888882, 8888883, 8888884};
-        final String[] VAfechaAsignacionEquipo = {"2019/05/14", "2019-05-14", "2019-05-15", "2019-05-16"};
+        final String[] VAfechaAsignacionEquipo = {"2019-05-01", "2019-05-19", "2019-05-21", "2019-05-25"};
 
 
         final int[] VDOidDocumentoAsignacion = {3222222, 3222220, 3222200, 3222000};
@@ -679,7 +1285,7 @@ public class DataBase {
                 asignacionEquipo.setIdDocente(VAidDocente[i]);
                 asignacionEquipo.setFechaAsignacionEquipo(VAfechaAsignacionEquipo[i]);
 
-                // insertar(asignacionEquipo);
+                 insertar(asignacionEquipo);
             }
         }
         if (getItemsDocumentoAsignacion() == 0) {
@@ -690,7 +1296,7 @@ public class DataBase {
                 documentoAsignacion.setMotivo(VDOmotivo[i]);
                 documentoAsignacion.setFechaAsignacionDoc(VDOfechaAsignacionDoc[i]);
 
-                // insertar(documentoAsignacion);
+                 insertar(documentoAsignacion);
             }
         }
 
@@ -698,6 +1304,7 @@ public class DataBase {
         return "Guardo Correctamente";
     }
 
+    //******************************************INICIO CRUD DE TS14004*****************************************************************
     //METODOS INSERTAR <--TS14004-->
     public String insertar(Docente docente) {
         String regInsertados = "Registro Insertado Nº= ";
@@ -710,6 +1317,42 @@ public class DataBase {
         doce.put("apellido", docente.getApellido());
         doce.put("email", docente.getEmail());
         contador = sqLiteDatabase.insert(ConstantesDB.TABLA_Docente, null, doce);
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
+    public String insertar(AsignacionEquipo asignacionEquipo) {
+        String regInsertados = "Registro Insertado Nº= ";
+        long contador = 0;
+
+        ContentValues asignaEquipo = new ContentValues();
+        asignaEquipo.put("idAsignacionEquipo", asignacionEquipo.getIdAsignacionEquipo());
+        asignaEquipo.put("idDocente", asignacionEquipo.getIdDocente());
+        asignaEquipo.put("fechaAsignacionEquipo", asignacionEquipo.getFechaAsignacionEquipo());
+        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_AsignacionEquipo, null, asignaEquipo);
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
+
+    public String insertar(DocumentoAsignacion documentoAsignacion){
+        String regInsertados = "Registro Insertado Nº= ";
+        long contador = 0;
+
+        ContentValues documentoAsignado = new ContentValues();
+        documentoAsignado.put("idDocumentoAsignacion", documentoAsignacion.getIdDocumentoAsignacion());
+        documentoAsignado.put("idDocente", documentoAsignacion.getIdDocente());
+        documentoAsignado.put("motivo", documentoAsignacion.getMotivo());
+        documentoAsignado.put("fechaAsignacionDoc", documentoAsignacion.getFechaAsignacionDoc());
+        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DocumentoAsignacion, null, documentoAsignado);
         if (contador == -1 || contador == 0) {
             regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
         } else {
@@ -737,22 +1380,119 @@ public class DataBase {
         }
     }
 
+    public AsignacionEquipo consultarAsignacionEquipo(int idAsignacionEquipo) {
+        String[] id = {String.valueOf(idAsignacionEquipo)};
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_AsignacionEquipo, campos_AsignacionEquipo, "idAsignacionEquipo = ?", id, null, null, null);
+        if (cursor.moveToFirst()) {
+            AsignacionEquipo asignacionEquipo = new AsignacionEquipo();
+            asignacionEquipo.setIdAsignacionEquipo(cursor.getInt(0));
+            asignacionEquipo.setIdDocente(cursor.getInt(1));
+            asignacionEquipo.setFechaAsignacionEquipo(cursor.getString(2));
+
+            return asignacionEquipo;
+        } else {
+            return null;
+        }
+    }
+
+    public DocumentoAsignacion consultarDocumentoAsignacion(int idDocumentoAsignacion) {
+        String[] id = {String.valueOf(idDocumentoAsignacion)};
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DocumentoAsignacion, campos_DocumentoAsignacion, "idDocumentoAsignacion = ?", id, null, null, null);
+        if (cursor.moveToFirst()) {
+           DocumentoAsignacion documentoAsignacion = new DocumentoAsignacion();
+            documentoAsignacion.setIdDocumentoAsignacion(cursor.getInt(0));
+            documentoAsignacion.setIdDocente(cursor.getInt(1));
+            documentoAsignacion.setMotivo(cursor.getString(2));
+            documentoAsignacion.setFechaAsignacionDoc(cursor.getString(3));
+
+            return documentoAsignacion;
+        } else {
+            return null;
+        }
+    }
+
+
     //METODOS ACTUALIZAR <--TS14004-->
 
     public String actualizar(Docente docente) {
         //if (verificarIntegridad(alumno, 5)) {
 
-            String[] id = {String.valueOf(docente.getIdDocente())};
-            ContentValues cv = new ContentValues();
-            cv.put("idUnidadAdministrativa", docente.getIdUnidadAdministrativa());
-            cv.put("nombre", docente.getNombre());
-            cv.put("apellido", docente.getApellido());
-            cv.put("email", docente.getEmail());
-            sqLiteDatabase.update(ConstantesDB.TABLA_Docente, cv, "idDocente = ?", id);
-            return "Registro Actualizado Correctamente";
-       // } else {
-          //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
+        String[] id = {String.valueOf(docente.getIdDocente())};
+        ContentValues cv = new ContentValues();
+        cv.put("idUnidadAdministrativa", docente.getIdUnidadAdministrativa());
+        cv.put("nombre", docente.getNombre());
+        cv.put("apellido", docente.getApellido());
+        cv.put("email", docente.getEmail());
+        sqLiteDatabase.update(ConstantesDB.TABLA_Docente, cv, "idDocente = ?", id);
+        return "Registro Actualizado Correctamente";
+        // } else {
+        //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
+        //}
+
+    }
+    public String actualizar(AsignacionEquipo asignacionEquipo) {
+        //if (verificarIntegridad(alumno, 5)) {
+
+        String[] id = {String.valueOf(asignacionEquipo.getIdAsignacionEquipo())};
+        ContentValues cv = new ContentValues();
+        cv.put("idDocente", asignacionEquipo.getIdDocente());
+        cv.put("fechaAsignacionEquipo", asignacionEquipo.getFechaAsignacionEquipo());
+        sqLiteDatabase.update(ConstantesDB.TABLA_AsignacionEquipo, cv, "idAsignacionEquipo = ?", id);
+        return "Registro Actualizado Correctamente";
+        // } else {
+        //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
         //}
     }
 
+    public String actualizar(DocumentoAsignacion documentoAsignacion) {
+        //if (verificarIntegridad(alumno, 5)) {
+
+        String[] id = {String.valueOf(documentoAsignacion.getIdDocumentoAsignacion())};
+        ContentValues cv = new ContentValues();
+        cv.put("idDocente", documentoAsignacion.getIdDocente());
+        cv.put("motivo", documentoAsignacion.getMotivo());
+        cv.put("fechaAsignacionDoc", documentoAsignacion.getFechaAsignacionDoc());
+        sqLiteDatabase.update(ConstantesDB.TABLA_DocumentoAsignacion, cv, "idDocumentoAsignacion = ?", id);
+        return "Registro Actualizado Correctamente";
+        // } else {
+        //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
+        //}
+    }
+
+
+    //METODOS ELIMINAR <--TS14004-->
+    public String eliminar(Docente docente) {
+        String regAfectados = "filas afectadas= ";
+        int contador = 0;
+        /*if (verificarIntegridad(alumno, 3)) {
+            contador += db.delete("nota", "carnet='" + alumno.getCarnet() + "'", null);
+        }*/
+        contador += sqLiteDatabase.delete(ConstantesDB.TABLA_Docente, "idDocente='" + docente.getIdDocente() + "'", null);
+        regAfectados += contador;
+        return regAfectados;
+    }
+
+    public String eliminar(AsignacionEquipo asignacionEquipo) {
+        String regAfectados = "filas afectadas= ";
+        int contador = 0;
+        /*if (verificarIntegridad(alumno, 3)) {
+            contador += db.delete("nota", "carnet='" + alumno.getCarnet() + "'", null);
+        }*/
+        contador += sqLiteDatabase.delete(ConstantesDB.TABLA_AsignacionEquipo, "idAsignacionEquipo='" + asignacionEquipo.getIdAsignacionEquipo() + "'", null);
+        regAfectados += contador;
+        return regAfectados;
+    }
+
+    public String eliminar(DocumentoAsignacion documentoAsignacion) {
+        String regAfectados = "filas afectadas= ";
+        int contador = 0;
+        /*if (verificarIntegridad(alumno, 3)) {
+            contador += db.delete("nota", "carnet='" + alumno.getCarnet() + "'", null);
+        }*/
+        contador += sqLiteDatabase.delete(ConstantesDB.TABLA_DocumentoAsignacion, "idDocumentoAsignacion='" + documentoAsignacion.getIdDocumentoAsignacion() + "'", null);
+        regAfectados += contador;
+        return regAfectados;
+    }
+
 }
+//***************************************************FIN CRUD DE TS14004**********************************************************************

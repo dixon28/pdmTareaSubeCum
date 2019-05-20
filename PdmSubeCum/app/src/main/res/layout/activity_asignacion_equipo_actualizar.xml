@@ -32,7 +32,7 @@
 
         <EditText
             android:id="@+id/edt_fechaAsignaEquipo"
-            android:hint="Texto"
+            android:hint="AAAA-MM-DD"
             android:inputType="text"
             android:maxLength="30" />
     </TableRow>
@@ -43,7 +43,7 @@
         <Button
             android:layout_width="180dp"
             android:background="#233CC7"
-            android:onClick="actualizarEquipoAsignado"
+            android:onClick="actualizarEquipoAsignacion"
             android:text="@string/actualizar" />
     </TableRow>
 

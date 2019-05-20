@@ -21,6 +21,6 @@
         android:layout_width="209dp"
         android:layout_height="wrap_content"
         android:background="#F84234"
-        android:onClick="eliminarEquipoAsignado"
+        android:onClick="eliminarAsignacionEquipo"
         android:text="@string/eliminar" />
 </LinearLayout>

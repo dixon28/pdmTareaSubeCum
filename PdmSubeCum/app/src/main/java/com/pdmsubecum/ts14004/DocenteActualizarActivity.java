@@ -10,6 +10,9 @@ import com.pdmsubecum.DB.DataBase;
 import com.pdmsubecum.DB.modelo.Docente;
 import com.pdmsubecum.R;
 
+import static java.lang.Integer.parseInt;
+
+
 public class DocenteActualizarActivity extends AppCompatActivity {
 
     DataBase helper;
@@ -19,6 +22,10 @@ public class DocenteActualizarActivity extends AppCompatActivity {
     EditText edt_apellido;
     EditText edt_email;
 
+    /**
+     * Called when the activity is first created.
+     */
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_docente_actualizar);
@@ -32,8 +39,8 @@ public class DocenteActualizarActivity extends AppCompatActivity {
 
     public void actualizarDocente(View v) {
         Docente docente = new Docente();
-        docente.setIdDocente(Integer.parseInt(edt_CodDocente.getText().toString()));
-        docente.setIdUnidadAdministrativa(Integer.parseInt(edt_CodUnidad.getText().toString()));
+        docente.setIdDocente (parseInt(edt_CodDocente.getText().toString()));
+        docente.setIdUnidadAdministrativa (parseInt(edt_CodUnidad.getText().toString()));
         docente.setNombre(edt_Nombre.getText().toString());
         docente.setApellido(edt_apellido.getText().toString());
         docente.setEmail(edt_email.getText().toString());
@@ -45,6 +52,7 @@ public class DocenteActualizarActivity extends AppCompatActivity {
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
 
     }
+
     public void limpiarTexto(View v) {
 
         edt_CodDocente.setText("");
@@ -54,3 +62,5 @@ public class DocenteActualizarActivity extends AppCompatActivity {
         edt_email.setText("");
     }
 }
+
+

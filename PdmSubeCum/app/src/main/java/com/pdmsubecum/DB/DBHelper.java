@@ -3,6 +3,7 @@ package com.pdmsubecum.DB;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by rodri on 10/05/2019.
@@ -11,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
 
-    public static final int DB_VERSION = 15;
+    public static final int DB_VERSION = 13;
 
 
 
@@ -47,12 +48,18 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_EQUIPO);
 
-        //rl08017
-        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_EXISTENCIA);
-        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO);
-        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO_DETALLE);
-        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_TIPO_MOV_DOCUMENTO);
-
+        //Tablas MM
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DIA);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_AULA);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_CICLO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_MATERIA);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_HORARIO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_GRUPO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_HORARIODETALLE);
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_MATERIAELIMINAR);
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_GRUPOELIMINAR);
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_HORARIOELIMINAR);
+        //Fin Tablas MM
 
     }
 
@@ -88,12 +95,18 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO);
 
 
-        //rl08017
-        db.execSQL(ConstantesDB.SQL_DELETE_TIPO_MOV_DOCUMENTO);
-        db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_MOVIMIENTO);
-        db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_MOVIMIENTO_DETALLE);
-        db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_EXISTENCIA);
-
+        //Tablas MM
+        db.execSQL(ConstantesDB.SQL_DELETE_DIA);
+        db.execSQL(ConstantesDB.SQL_DELETE_AULA);
+        db.execSQL(ConstantesDB.SQL_DELETE_CICLO);
+        db.execSQL(ConstantesDB.SQL_DELETE_HORARIODETALLE);
+        db.execSQL(ConstantesDB.SQL_DELETE_MATERIA);
+        db.execSQL(ConstantesDB.SQL_DELETE_HORARIO);
+        db.execSQL(ConstantesDB.SQL_DELETE_GRUPO);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_MATERIAELIMINAR);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_GRUPOELIMINAR);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_HORARIOELIMINAR);
+        //Fin tRablas MM
         onCreate(db);
     }
 }

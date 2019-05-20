@@ -58,14 +58,14 @@ public class ConstantesDB {
     public static final String SQL_CREATE_TABLE_AsignacionEquipo = "CREATE TABLE " + TABLA_AsignacionEquipo +
             "( idAsignacionEquipo     INTEGER              not null primary key,\n" +
             "   idDocente             INTEGER,\n" +
-            "   fechaAsignacionEquipo DATE                 not null)";
+            "   fechaAsignacionEquipo TEXT                 not null)";
 
 
     public static final String SQL_CREATE_TABLE_DocumentoAsignacion = "CREATE TABLE " + TABLA_DocumentoAsignacion +
             "(  idDocumentoAsignacion INTEGER              not null primary key,\n" +
             "   idDocente            INTEGER,\n" +
             "   motivo               VARCHAR2(120)        not null,\n" +
-            "   fechaAsignacionDoc   VARCHAR2(50)         not null)" ;
+            "   fechaAsignacionDoc   TEXT         not null)" ;
     public static final String SQL_CREATE_TABLE_DocumentoAsignacionDetalle = "CREATE TABLE " + TABLA_DocumentoAsignacionDetalle +
 
             "(  idDocumentoAsignacionDetalle INTEGER              not null primary key,\n" +
@@ -138,7 +138,7 @@ public class ConstantesDB {
 
     //---------------  RAUL  ------------------------------------
     public static final String[] campos_Docente = {"idDocente", "idUnidadAdministrativa","nombre","apellido","email"};
-    public static final String[] campos_AsignacionEquipo = {"idAsignacionEquipo", "idDocente", "fechaAsignacion"};
+    public static final String[] campos_AsignacionEquipo = {"idAsignacionEquipo", "idDocente", "fechaAsignacionEquipo"};
     public static final String[] campos_DocumentoAsignacion= {"idDocumentoAsignacion", "idDocente", "motivo","FechaAsignacionDoc"};
     public static final String[] campos_DocumentoAsignacionDetalle= {"idDocumentoAsignacionDetalle", "isbn", "idDocumentoAsignacion"};
     public static final String[] campos_AsignacionEquipoDetalle= {"idAsignacionEquipoDetalle", "idEquipo", "idAsignacionEquipo"};
@@ -237,54 +237,62 @@ public class ConstantesDB {
       "disponibledoc"};
 
 
-    //rl08017
+    public static final String TABLA_CICLO = "ciclo";
+    public static final String TABLA_DIA = "dia";
+    public static final String TABLA_AULA = "aula";
+    public static final String TABLA_HORARIODETALLE = "horariodetalle";
+    public static final String TABLA_MATERIA = "materia";
+    public static final String TABLA_HORARIO = "horario";
+    public static final String TABLA_GRUPO = "grupo";
 
-    //nombre de tablas
-    public static final String TABLA_TIPO_MOV_DOCUMENTO="tipo_movimiento_para_documento";
-    public static final String TABLA_DOCUMENTO_MOVIMIENTO="movimiento_documento";
-    public static final String TABLA_DOCUMENTO_MOVIMIENTO_DETALLE="movimiento_documento_detalle";
-    public static final String TABLA_DOCUMENTO_EXISTENCIA="documento_existencia";
+    //Tablas MM
+    public static final String SQL_CREATE_TABLE_CICLO = "CREATE TABLE "+ TABLA_CICLO +
+            "(idCiclo INT NOT NULL PRIMARY KEY, numero VARCHAR(30) NULL, year INT NULL)";
 
-    // queries para crear las tablas
-    // ----------------------------------------------------
-    public static final String SQL_CREATE_TABLE_TIPO_MOV_DOCUMENTO = "CREATE TABLE " + TABLA_TIPO_MOV_DOCUMENTO +
-            "( id_tipo_de_movimiento_para_documento  INTEGER NOT NULL PRIMARY KEY," +
-            "descripcion VARCHAR(50) NOT NULL )";
+    public static final String SQL_CREATE_TABLE_DIA = "CREATE TABLE "+ TABLA_DIA +
+            "(idDia INT NOT NULL PRIMARY KEY, descripcion VARCHAR(30) NOT NULL)";
 
-    public static final String SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO = "CREATE TABLE "+ TABLA_DOCUMENTO_MOVIMIENTO +
-            "(id_documento_movimiento INTEGER NOT NULL PRIMARY KEY, " +
-            "id_tipo_movimiento_documento INTEGER NOT NULL, " +
-            "id_unidad_admin_origen INTEGER NOT NULL, "+
-            "id_unidad_admin_destino INTEGER NOT NULL, "+
-            "comentario VARCHAR(100) NOT NULL, "+
-            "fecha_movimiento TEXT NOT NULL)";
+    public static final String SQL_CREATE_TABLE_AULA = "CREATE TABLE "+ TABLA_AULA +
+            "(idAula INT NOT NULL PRIMARY KEY, descripcion VARCHAR(30) NOT NULL)";
 
-    public static final String SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO_DETALLE = "CREATE TABLE "+TABLA_DOCUMENTO_MOVIMIENTO_DETALLE +
-            "(id_documento_movimiento_detalle INTEGER NOT NULL PRIMARY KEY, "+
-            "isbn VARCHAR(25) NOT NULL, "+
-            "id_documento_movimiento INTEGER NOT NULL)";
-    public static final String SQL_CREATE_TABLE_DOCUMENTO_EXISTENCIA = "CREATE TABLE "+TABLA_DOCUMENTO_EXISTENCIA +
-            "(id_documento_existencia INTEGER NOT NULL PRIMARY KEY, "+
-            "isbn VARCHAR(25) NOT NULL, "+
-            "id_docente INTEGER NOT NULL, "+
-            "id_unidad_admin INTEGER NOT NULL, "+
-            "actual INTEGER NOT NULL)";
+    public static final String SQL_CREATE_TABLE_HORARIODETALLE = "CREATE TABLE "+ TABLA_HORARIODETALLE +
+            "(idGrupo INT NOT NULL, idHorario INT NOT NULL, PRIMARY KEY(idGrupo,idHorario))";
 
-    // query para borrar la DB
+    public static final String SQL_CREATE_TABLE_MATERIA = "CREATE TABLE "+ TABLA_MATERIA +
+            "(codigoMateria VARCHAR(6) NOT NULL PRIMARY KEY, nombreMateria VARCHAR(50) NOT NULL," +
+            "UV VARCHAR(50) NULL, idCiclo INT NULL)";
 
-    public static final String SQL_DELETE_TIPO_MOV_DOCUMENTO = "DROP TABLE "+ TABLA_TIPO_MOV_DOCUMENTO;
-    public static final String SQL_DELETE_DOCUMENTO_MOVIMIENTO = "DROP TABLE "+TABLA_DOCUMENTO_MOVIMIENTO;
-    public static final String SQL_DELETE_DOCUMENTO_MOVIMIENTO_DETALLE ="DROP TABLE "+TABLA_DOCUMENTO_MOVIMIENTO_DETALLE;
-    public static final String SQL_DELETE_DOCUMENTO_EXISTENCIA = "DROP TABLE "+TABLA_DOCUMENTO_EXISTENCIA;
+    public static final String SQL_CREATE_TABLE_HORARIO = "CREATE TABLE "+ TABLA_HORARIO +
+            "(idHorario INT NOT NULL PRIMARY KEY, idDia INT NOT NULL, idAula INT NOT NULL," +
+            "hora VARCHAR(50) NULL)";
 
-    // campos de las tablas
+    public static final String SQL_CREATE_TABLE_GRUPO = "CREATE TABLE "+ TABLA_GRUPO +
+            "(idGrupo INT NOT NULL PRIMARY KEY, codigoMateria VARCHAR(6) NOT NULL," +
+            "idDocente INT NOT NULL,descripcion VARCHAR(50) NULL)";
 
-    public static final String[] CAMPOS_TIPO_MOV_DOCUMENTO = {"id_tipo_de_movimiento_para_documento","descripcion"};
-    public static final String[] CAMPOS_DOCUMENTO_MOVIMIENTO = {"id_documento_movimiento","id_tipo_movimiento_documento",
-            "id_unidad_admin_origen","id_unidad_admin_destino", "comentario", "fecha_movimiento"};
-    public static final String[] CAMPOS_DOCUMENTO_MOVIMIENTO_DETALLE = {"id_documento_movimiento_detalle",
-            "isbn", "id_documento_movimiento"};
-    public static final String[] CAMPOS_DOCUMENTO_EXISTENCIA = {"id_documento_existencia","isbn", "id_docente",
-            "id_unidad_admin","actual"};
+    public static final String SQL_CREATE_TRIGGER_MATERIAELIMINAR = "CREATE TRIGGER tr_MateriaEliminar " +
+            "BEFORE DELETE ON materia BEGIN DELETE FROM grupo WHERE codigoMateria = OLD.codigoMateria; END";
+
+    public static final String SQL_CREATE_TRIGGER_GRUPOELIMINAR = "CREATE TRIGGER tr_GrupoEliminar " +
+            "BEFORE DELETE ON grupo BEGIN DELETE FROM horarioDetalle WHERE idGrupo = OLD.idGrupo; END";
+
+    public static final String SQL_CREATE_TRIGGER_HORARIOELIMINAR = "CREATE TRIGGER tr_HorarioEliminar " +
+            "BEFORE DELETE ON horario BEGIN DELETE FROM horarioDetalle WHERE idHorario = OLD.idHorario; END";
+    //Fin Tablas MM
+
+    // MM
+    public static final String SQL_DELETE_DIA = "DROP TABLE "+TABLA_DIA;
+    public static final String SQL_DELETE_AULA = "DROP TABLE "+TABLA_AULA;
+    public static final String SQL_DELETE_CICLO = "DROP TABLE "+TABLA_CICLO;
+    public static final String SQL_DELETE_HORARIODETALLE = "DROP TABLE "+TABLA_HORARIODETALLE;
+    public static final String SQL_DELETE_MATERIA = "DROP TABLE "+TABLA_MATERIA;
+    public static final String SQL_DELETE_HORARIO = "DROP TABLE "+TABLA_HORARIO;
+    public static final String SQL_DELETE_GRUPO = "DROP TABLE "+TABLA_GRUPO;
+    public static final String SQL_DELETE_TRIGGER_MATERIAELIMINAR = "DROP TRIGGER tr_MateriaEliminar;";
+    public static final String SQL_DELETE_TRIGGER_GRUPOELIMINAR = "DROP TRIGGER tr_GrupoEliminar";
+    public static final String SQL_DELETE_TRIGGER_HORARIOELIMINAR = "DROP TRIGGER tr_HorarioEliminar;";
+
+
+    //FIN MM
 
 }

@@ -42,7 +42,7 @@
         <TextView android:text="@string/apellido_docente" />
 
         <EditText
-            android:id="@+id/edt_Apellido"
+            android:id="@+id/edt_apellido"
             android:hint="Texto"
             android:inputType="text"
             android:maxLength="30" />

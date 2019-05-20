@@ -64,17 +64,19 @@
 
     <ImageButton
         android:id="@+id/imageButton4"
-        android:layout_width="130dp"
-        android:layout_height="147dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="194dp"
+        android:layout_height="233dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/edt_usuario"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_grande" />
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/minerva" />
 
 </android.support.constraint.ConstraintLayout>
