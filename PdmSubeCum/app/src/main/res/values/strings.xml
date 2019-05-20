@@ -150,7 +150,7 @@
     <string name="delete_unidad_administrativa">Eliminar Unidad Administrativa</string>
 
     <!-- * STRING USADOS POR JOEL **-->
-    <string name="idTipo">id tipo</string>
+    <string name="idTipo">id tipo Movimiento</string>
     <string name="descTipoM">descripcion</string>
     <string name="opcionesTM">opciones</string>
     <string name="idDocExi">id Doc Existencia</string>
@@ -158,6 +158,11 @@
     <string name="descIdDocente">ID Docente</string>
     <string name="descUnidasAdm">Unidad Administrativa</string>
     <string name="descActual"> Actual </string>
+    <string name="idDocMov"> id movimiento documento </string>
+    <string name="idUnOrigen"> Unidad Origen </string>
+    <string name="idUniDestino"> Unidad Destino </string>
+    <string name="fecha"> fecha </string>
+    <string name="idMovDetalle"> id Movimiento detalle </string>
 
 
 </resources>

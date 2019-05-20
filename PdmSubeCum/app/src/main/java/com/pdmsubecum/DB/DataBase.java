@@ -36,6 +36,7 @@ import com.pdmsubecum.DB.modelo.pm15007.EquipoMovimientoDetalle;
 import com.pdmsubecum.DB.modelo.pm15007.TipoMovimientoEquipo;
 import com.pdmsubecum.DB.modelo.pm15007.UnidadAdministrativa;
 import com.pdmsubecum.rl08017.DocumentoExistencia;
+import com.pdmsubecum.rl08017.DocumentoMovimiento;
 import com.pdmsubecum.rl08017.TiposDeMovimientoParaDocumento;
 
 
@@ -1615,5 +1616,47 @@ public class DataBase {
         return regAfectados;
     }
 
+    public String insertarMovDoc(DocumentoMovimiento doc){
+        String regInsertados="Registro Insertado Nº= ";
+        long contador=0;
+        ContentValues tipo = new ContentValues();
+        tipo.put("id_documento_movimiento", doc.getIdDocMov());
+        tipo.put("id_tipo_movimiento_documento", doc.getIdTipoMovDoc());
+        tipo.put("id_unidad_admin_origen", doc.getIdUnidadAdmOrigen());
+        tipo.put("id_unidad_admin_destino", doc.getIdUnidadAdmDestino());
+        tipo.put("comentario", doc.getComentario());
+        tipo.put("fecha_movimiento", doc.getFecha());
+        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, null, tipo);
+        if(contador==-1 || contador==0)
+        {
+            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        }
+        else {
+            ContentValues tipo2 = new ContentValues();
+            tipo2.put("id_documento_movimiento_detalle",doc.getIdMovDocDetalle());
+            tipo2.put("isbn", doc.getIsbn());
+            tipo2.put("id_documento_movimiento", doc.getIdDocMov());
+            contador += sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, null, tipo2);
+            if(contador==-1 || contador==0)
+            {
+                regInsertados= "erro en tabla";
+            }
+            else{
+
+                regInsertados=regInsertados+contador;
+            }
+        }
+        return regInsertados;
+    }
+
+    public String eliminar(DocumentoMovimiento tipo){
+        String regAfectados="filas afectadas= ";
+        int contador=0;
+        contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, "id_documento_movimiento='"+ tipo.getIdDocMov() +"'", null);
+        contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, "id_documento_movimiento='"+ tipo.getIdDocMov() +"'", null);
+
+        regAfectados+=contador;
+        return regAfectados;
+    }
 }
 //***************************************************FIN CRUD DE TS14004**********************************************************************
