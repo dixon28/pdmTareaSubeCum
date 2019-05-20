@@ -118,6 +118,15 @@
     <string name="update_unidad_administrativa">Actualizar Unidad Administrativa</string>
     <string name="delete_unidad_administrativa">Eliminar Unidad Administrativa</string>
 
+    <!-- * STRING USADOS POR JOEL **-->
+    <string name="idTipo">id tipo</string>
+    <string name="descTipoM">descripcion</string>
+    <string name="opcionesTM">opciones</string>
+    <string name="idDocExi">id Doc Existencia</string>
+    <string name="isbnDoc">Documento ISBN</string>
+    <string name="descIdDocente">ID Docente</string>
+    <string name="descUnidasAdm">Unidad Administrativa</string>
+    <string name="descActual"> Actual </string>
 
 
 </resources>

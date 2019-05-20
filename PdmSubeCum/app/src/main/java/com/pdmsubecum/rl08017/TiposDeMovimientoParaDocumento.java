@@ -1,5 +1,7 @@
 package com.pdmsubecum.rl08017;
 
+import android.content.ContentValues;
+
 public class TiposDeMovimientoParaDocumento {
 
     private int idTiposDeMovimientoParaDocumento;
@@ -10,8 +12,10 @@ public class TiposDeMovimientoParaDocumento {
         this.descripcionMovimientoDoc = descripcionMovimientoDoc;
     }
 
-    public void TiposDeMovimientoParaDocumento(){
+    public TiposDeMovimientoParaDocumento() {
+
     }
+
     public int getIdTiposDeMovimientoParaDocumento() {
         return idTiposDeMovimientoParaDocumento;
     }

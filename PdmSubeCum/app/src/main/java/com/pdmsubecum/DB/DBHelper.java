@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
 
-    public static final int DB_VERSION = 12;
+    public static final int DB_VERSION = 15;
 
 
 
@@ -47,6 +47,12 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_EQUIPO);
 
+        //rl08017
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_EXISTENCIA);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO_DETALLE);
+        db.execSQL(ConstantesDB.SQL_CREATE_TABLE_TIPO_MOV_DOCUMENTO);
+
 
     }
 
@@ -81,6 +87,12 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO);
         db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO);
 
+
+        //rl08017
+        db.execSQL(ConstantesDB.SQL_DELETE_TIPO_MOV_DOCUMENTO);
+        db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_MOVIMIENTO);
+        db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_MOVIMIENTO_DETALLE);
+        db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_EXISTENCIA);
 
         onCreate(db);
     }

@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class RL08017 extends ListActivity {
-    String[] menu={"Tabla Tipos Movimiento Documento","Tabla Documento Movimiento","Tabla Documento Existencia ","LLenar Base de Datos"};
+    String[] menu={"Tabla Tipos Movimiento Documento","Tabla Documento Movimiento","Tabla Documento Existencia "};
     String[] activities={"TiposDeMovimientoParaDocumentoMenuActivity","DocumentoMovimientoMenuActivity","DocumentoExistenciaMenuActivity"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
