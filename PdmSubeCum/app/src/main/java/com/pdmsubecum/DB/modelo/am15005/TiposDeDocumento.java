@@ -33,7 +33,7 @@ public class TiposDeDocumento {
    public ContentValues toValues(){
       ContentValues contentValues = new ContentValues(2);
       contentValues.put("idtiposdedocumento", idTiposDeDocumentos);
-      contentValues.put("descripciontipodocumento",descripcionTipoDeDocumento);
+      contentValues.put("descripciontipodedocumento",descripcionTipoDeDocumento);
       return contentValues;
    }
 }
