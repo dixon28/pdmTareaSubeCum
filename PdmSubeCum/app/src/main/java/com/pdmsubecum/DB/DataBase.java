@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.pdmsubecum.DB.modelo.AsignacionEquipo;
+import com.pdmsubecum.DB.modelo.AsignacionEquipoDetalle;
 import com.pdmsubecum.DB.modelo.Docente;
 import com.pdmsubecum.DB.modelo.DocumentoAsignacion;
 import com.pdmsubecum.DB.modelo.RolUsuario;
@@ -36,6 +37,7 @@ import com.pdmsubecum.DB.modelo.pm15007.EquipoMovimientoDetalle;
 import com.pdmsubecum.DB.modelo.pm15007.TipoMovimientoEquipo;
 import com.pdmsubecum.DB.modelo.pm15007.UnidadAdministrativa;
 import com.pdmsubecum.rl08017.DocumentoExistencia;
+import com.pdmsubecum.rl08017.DocumentoMovimiento;
 import com.pdmsubecum.rl08017.TiposDeMovimientoParaDocumento;
 
 
@@ -45,6 +47,7 @@ import java.util.List;
 
 import static com.pdmsubecum.DB.ConstantesDB.CAMPOS_DOCUMENTO_EXISTENCIA;
 import static com.pdmsubecum.DB.ConstantesDB.CAMPOS_TIPO_MOV_DOCUMENTO;
+import static com.pdmsubecum.DB.ConstantesDB.TABLA_EQUIPO;
 import static com.pdmsubecum.DB.ConstantesDB.campos_AsignacionEquipo;
 import static com.pdmsubecum.DB.ConstantesDB.campos_Docente;
 import static com.pdmsubecum.DB.ConstantesDB.campos_DocumentoAsignacion;
@@ -1358,6 +1361,11 @@ public class DataBase {
         final String[] VDOmotivo = {"Apoyo en clase", "Apoyo en clase", "Tarea de investigacion", "Lectura"};
         final String[] VDOfechaAsignacionDoc = {"2019-05-16", "2019-05-17", "2019-05-18", "2019-05-19"};
 
+
+        final int[] VADidAsignacionEquipoDetalle = {100, 101, 102, 103};
+        final int[] VADidEquipo = {200, 201, 202, 203};
+        final int[] VADidAsignacionEquipo = {2222222, 2222220, 2222200, 2222000};
+
         abrir();
         if (getItemsDocente() == 0) {
             Docente docente = new Docente();
@@ -1391,9 +1399,19 @@ public class DataBase {
                  insertar(documentoAsignacion);
             }
         }
+        if (getItemsAsignacionEquipoDetalle() == 0) {
+            AsignacionEquipoDetalle asignacionEquipoDetalle = new AsignacionEquipoDetalle();
+            for (int i = 0; i < 3; i++) {
+                asignacionEquipoDetalle.setIdAsignacionEquipoDetalle(VADidAsignacionEquipoDetalle[i]);
+                asignacionEquipoDetalle.setIdEquipo(VADidEquipo[i]);
+                asignacionEquipoDetalle.setIdAsignacionEquipo(VADidAsignacionEquipo[i]);
+
+                insertar(asignacionEquipoDetalle);
+            }
+        }
 
         cerrar();
-        return "Guardo Correctamente";
+        return "Guardo  en la Base de Datos";
     }
 
     //******************************************INICIO CRUD DE TS14004*****************************************************************
@@ -1445,6 +1463,23 @@ public class DataBase {
         documentoAsignado.put("motivo", documentoAsignacion.getMotivo());
         documentoAsignado.put("fechaAsignacionDoc", documentoAsignacion.getFechaAsignacionDoc());
         contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DocumentoAsignacion, null, documentoAsignado);
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
+    public String insertar(AsignacionEquipoDetalle asignacionEquipoDetalle) {
+        String regInsertados = "Registro Insertado Nº= ";
+        long contador = 0;
+
+        ContentValues asignaEquipoDetalle = new ContentValues();
+        asignaEquipoDetalle.put("idAsignacionEquipoDetalle", asignacionEquipoDetalle.getIdAsignacionEquipoDetalle());
+        asignaEquipoDetalle.put("idEquipo", asignacionEquipoDetalle.getIdEquipo());
+        asignaEquipoDetalle.put("idAsignacionEquipo", asignacionEquipoDetalle.getIdAsignacionEquipo());
+        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_AsignacionEquipoDetalle, null, asignaEquipoDetalle );
         if (contador == -1 || contador == 0) {
             regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
         } else {
@@ -1702,5 +1737,47 @@ public class DataBase {
         return regAfectados;
     }
 
+    public String insertarMovDoc(DocumentoMovimiento doc){
+        String regInsertados="Registro Insertado Nº= ";
+        long contador=0;
+        ContentValues tipo = new ContentValues();
+        tipo.put("id_documento_movimiento", doc.getIdDocMov());
+        tipo.put("id_tipo_movimiento_documento", doc.getIdTipoMovDoc());
+        tipo.put("id_unidad_admin_origen", doc.getIdUnidadAdmOrigen());
+        tipo.put("id_unidad_admin_destino", doc.getIdUnidadAdmDestino());
+        tipo.put("comentario", doc.getComentario());
+        tipo.put("fecha_movimiento", doc.getFecha());
+        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, null, tipo);
+        if(contador==-1 || contador==0)
+        {
+            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        }
+        else {
+            ContentValues tipo2 = new ContentValues();
+            tipo2.put("id_documento_movimiento_detalle",doc.getIdMovDocDetalle());
+            tipo2.put("isbn", doc.getIsbn());
+            tipo2.put("id_documento_movimiento", doc.getIdDocMov());
+            contador += sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, null, tipo2);
+            if(contador==-1 || contador==0)
+            {
+                regInsertados= "erro en tabla";
+            }
+            else{
+
+                regInsertados=regInsertados+contador;
+            }
+        }
+        return regInsertados;
+    }
+
+    public String eliminar(DocumentoMovimiento tipo){
+        String regAfectados="filas afectadas= ";
+        int contador=0;
+        contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, "id_documento_movimiento='"+ tipo.getIdDocMov() +"'", null);
+        contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, "id_documento_movimiento='"+ tipo.getIdDocMov() +"'", null);
+
+        regAfectados+=contador;
+        return regAfectados;
+    }
 }
 //***************************************************FIN CRUD DE TS14004**********************************************************************
