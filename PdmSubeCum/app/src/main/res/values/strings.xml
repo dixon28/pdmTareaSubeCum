@@ -188,8 +188,7 @@
     <string name="consultar_tipo_movimiento_equipo">Consultar Tipo Movimiento Equipo</string>
     <string name="actualizar_tipo_movimiento_equipo">Actualizar Tipo Movimiento Equipo</string>
     <string name="eliminar_tipo_movimiento_equipo">Eliminar Tipo Movimiento Equipo</string>
-
-
+    <string name="eliminar_equipo">Eliminar equipo</string>
 
 
 </resources>

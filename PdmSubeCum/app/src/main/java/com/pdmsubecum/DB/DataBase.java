@@ -341,6 +341,41 @@ public class DataBase {
         }
     }
 
+
+    public Equipo consultarE(String idequipo) {
+
+
+        String[] id = {idequipo};
+        Cursor cursor = sqLiteDatabase.query("equipo", ConstantesDB.CAMPOS_EQUIPO, "idequipo = ?", id, null,
+                null, null);
+        if (cursor.moveToFirst()) {
+
+
+            Equipo equipo= new Equipo();
+            equipo.setIdequipo(Integer.parseInt(cursor.getString(0)));
+            equipo.setIdtiposdeequipo(Integer.parseInt(cursor.getString(1)));
+            equipo.setIdmarca(Integer.parseInt(cursor.getString(2)));
+            equipo.setSerie(cursor.getString(3));
+            equipo.setCaracteristicas(cursor.getString(4));
+            equipo.setModelo(cursor.getString(5));
+
+            equipo.setFechaingreso(cursor.getString(6));
+
+            if (Integer.parseInt(cursor.getString(7))==1) {
+                equipo.setEquipodisponible(true);
+            }
+            else {
+
+                equipo.setEquipodisponible(false);
+            }
+
+            return equipo;
+        } else {
+            return null;
+        }
+    }
+
+
     public ArrayList<Marca> llenarspinner() {
 
 
@@ -448,7 +483,19 @@ public class DataBase {
 
     }
 
-    //    insertar Datos
+
+    public String eliminar(Equipo equipo) {
+        String conteo;
+
+        String where = "idequipo='" + equipo.getIdequipo() + "'";
+        sqLiteDatabase.delete("equipo", where, null);
+        conteo = String.valueOf(getItemsMarca());
+        return conteo;
+    }
+
+
+
+        //    insertar Datos
     public void llenarMarca(List<Marca> marcas) {
         long items = getItemsMarca();
         if (items == 0) {

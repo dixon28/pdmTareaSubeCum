@@ -12,7 +12,7 @@ import android.util.Log;
 public class DBHelper extends SQLiteOpenHelper {
 
 
-    public static final int DB_VERSION = 13;
+    public static final int DB_VERSION = 15;
     //version actual 15
 
 
