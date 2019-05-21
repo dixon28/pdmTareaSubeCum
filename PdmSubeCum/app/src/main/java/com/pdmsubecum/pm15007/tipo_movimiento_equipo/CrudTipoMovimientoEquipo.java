@@ -1,5 +1,6 @@
 package com.pdmsubecum.pm15007.tipo_movimiento_equipo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -42,10 +43,19 @@ public class CrudTipoMovimientoEquipo extends AppCompatActivity implements Adapt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //obteniendo la fila clickeada
-        String nombreTablaClick = crud.get(position);
-
-        //hacer llamar a activities segun click
-        Toast.makeText(this, "Click a tabla: "+nombreTablaClick, Toast.LENGTH_SHORT).show();
+       switch (position){
+           case 0:
+               startActivity(new Intent(this, CreateTipoMovimientoEquipo.class));
+               break;
+           case 1:
+               startActivity(new Intent(this, RetrieveTipoMovimientoEquipo.class));
+               break;
+           case 2:
+               startActivity(new Intent(this, UpdateTipoMovimientoEquipo.class));
+               break;
+           case 3:
+               startActivity(new Intent(this, DeleteTipoMovimientoEquipo.class));
+               break;
+       }
     }
 }

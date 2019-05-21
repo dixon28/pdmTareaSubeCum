@@ -1,6 +1,7 @@
 package com.pdmsubecum.am15005.fragmentos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.AdaptiveIconDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,6 +26,11 @@ public class EquipoFragment extends Fragment  {
     ListView lista;
 
     List<String> tablasCrud;
+    String[] menu={"Actualizar Registro","Consultar Registro","Eliminar Registro",
+            "Ingresar Registro"};
+    String[]
+            activities={"ActualizarEquipoActivity","ConsultarEquipoActivity","EliminarEquipoActivity","InsertarEquipoActivity"};
+
     private EquipoFragment equipoFragment;
 
 
@@ -41,8 +47,11 @@ public class EquipoFragment extends Fragment  {
         super.onActivityCreated(state);
         ListView listView = (ListView)getView().findViewById(R.id.menu_am15005_1);
         tablasCrud = new ArrayList<>();
-        tablasCrud.add("primera tabla");
-        tablasCrud.add("actualizar tabla");
+        tablasCrud.add(menu[0]);
+        tablasCrud.add(menu[1]);
+        tablasCrud.add(menu[2]);
+        tablasCrud.add(menu[3]);
+
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1
@@ -52,7 +61,16 @@ public class EquipoFragment extends Fragment  {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String nombreTablaClick = tablasCrud.get(position);
+                String nombreValue=activities[position];
                 Toast.makeText(getActivity().getApplicationContext(),"Click a tabla"+nombreTablaClick,Toast.LENGTH_SHORT).show();
+                try{
+                    Class<?> clase=Class.forName("com.pdmsubecum.am15005.Activities.Equipo."+nombreValue);
+                    Intent inte = new Intent(getActivity().getApplicationContext(),clase);
+                    getActivity().getApplicationContext().startActivity(inte);
+                }catch(ClassNotFoundException e){
+
+                    e.printStackTrace();
+                }
 
             }
         });

@@ -36,18 +36,16 @@
 
     <!-- Titulos de botones de CRUD -->
     <string name="opciones">Opciones a realizar</string>
-
     <!--
    <string name="insertar">INSERTAR</string>
    <string name="consultar">CONSULTAR</string>
    <string name="actualizar">ACTUALIZAR</string>
    <string name="eliminar">ELIMINAR</string>
    -->
-   <string name="limpiarTexto">LIMPIAR</string>
+    <string name="limpiarTexto">LIMPIAR</string>
 
 
-
-   <!-- VALORES PARA MATERIA, HORARIO Y GRUPO -->
+    <!-- VALORES PARA MATERIA, HORARIO Y GRUPO -->
 
     <string name="codigoMateria">Codigo Materia</string>
     <string name="nombreMateria">Nombre</string>
@@ -108,8 +106,6 @@
     <string name="actualAsignado">Asignacion Actual</string>
 
 
-
-
     <!--PM15007-->
     <string name="crud_unidad_administrativa">Unidad Administrativa</string>
     <string name="crud_equipo_existencia">Equipo Existencia</string>
@@ -149,6 +145,7 @@
     <string name="update_unidad_administrativa">Actualizar Unidad Administrativa</string>
     <string name="delete_unidad_administrativa">Eliminar Unidad Administrativa</string>
 
+
     <!-- * STRING USADOS POR JOEL **-->
     <string name="idTipo">id tipo Movimiento</string>
     <string name="descTipoM">descripcion</string>
@@ -163,6 +160,16 @@
     <string name="idUniDestino"> Unidad Destino </string>
     <string name="fecha"> fecha </string>
     <string name="idMovDetalle"> id Movimiento detalle </string>
+
+    <string name="idTipos_Equipo">Tipos equipo</string>
+    <string name="id_del_Equipo">id del equipo</string>
+    <string name="serie_equipo">serie del equipo</string>
+    <string name="Caracteristicas_equipo">caracteristicas equipo</string>
+    <string name="Modelo">modelo del equipo</string>
+    <string name="Fecha_ingreso">fecha de ingreso</string>
+    <string name="equipodisponible">Equipo disponible</string>
+    <string name="ingreseFecha">ingrese la fecha</string>
+
 
 
 </resources>
