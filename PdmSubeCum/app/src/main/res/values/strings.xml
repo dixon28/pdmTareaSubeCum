@@ -43,11 +43,10 @@
    <string name="actualizar">ACTUALIZAR</string>
    <string name="eliminar">ELIMINAR</string>
    -->
-   <string name="limpiarTexto">LIMPIAR</string>
+    <string name="limpiarTexto">LIMPIAR</string>
 
 
-
-   <!-- VALORES PARA MATERIA, HORARIO Y GRUPO -->
+    <!-- VALORES PARA MATERIA, HORARIO Y GRUPO -->
 
     <string name="codigoMateria">Codigo Materia</string>
     <string name="nombreMateria">Nombre</string>
@@ -108,8 +107,6 @@
     <string name="actualAsignado">Asignacion Actual</string>
 
 
-
-
     <!--PM15007-->
     <string name="crud_unidad_administrativa">Unidad Administrativa</string>
     <string name="crud_equipo_existencia">Equipo Existencia</string>
@@ -158,6 +155,11 @@
     <string name="descIdDocente">ID Docente</string>
     <string name="descUnidasAdm">Unidad Administrativa</string>
     <string name="descActual"> Actual </string>
+    <string name="crear_tipo_movimiento_equipo">Crear Tipo Movimiento Equipo</string>
+    <string name="tipo_movimiento_equipo">Tipo Movimiento Equipo</string>
+    <string name="consultar_tipo_movimiento_equipo">Consultar Tipo Movimiento Equipo</string>
+    <string name="actualizar_tipo_movimiento_equipo">Actualizar Tipo Movimiento Equipo</string>
+    <string name="eliminar_tipo_movimiento_equipo">Eliminar Tipo Movimiento Equipo</string>
 
 
 </resources>

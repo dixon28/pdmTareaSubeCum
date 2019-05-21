@@ -574,6 +574,17 @@ public class DataBase {
         }
     }
 
+    public int getLastIdTipoMovimientoEquipo(){
+        if(getItemsTipoMovimientoEquipo() == 0){
+            return 0;
+        }else{
+            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_TIPO_MOVIMIENTO_EQUIPO, ConstantesDB.CAMPOS_TIPO_MOVIMIENTO_EQUIPO,
+                    null,null,null,null,null);
+            cursor.moveToLast();
+            return cursor.getInt(0);
+        }
+    }
+
 
     /* ------------------------------------------------------
      -------------   ACTUALIZACION DE DATOS -----------------

@@ -36,9 +36,7 @@ public class PM15007 extends AppCompatActivity implements AdapterView.OnItemClic
         //agregando los item de la tabla
         tablasCrud = new ArrayList<>();
         tablasCrud.add("Unidad Administrativa");
-        tablasCrud.add("Equipo Movimiento");
         tablasCrud.add("Tipo de Movimiento de Equipo");
-        tablasCrud.add("Equipo Movimiento Detalle");
         tablasCrud.add("Equipo Existencia");
 
         ArrayAdapter adapter = new ArrayAdapter(
@@ -67,18 +65,10 @@ public class PM15007 extends AppCompatActivity implements AdapterView.OnItemClic
                 startActivity(intent);
                 break;
             case 1:
-                intent = new Intent(this, CrudEquipoMovimiento.class);
-                startActivity(intent);
-                break;
-            case 2:
                 intent = new Intent(this, CrudTipoMovimientoEquipo.class);
                 startActivity(intent);
                 break;
-            case 3:
-                intent = new Intent(this, CrudEquipoMovimientoDetalle.class);
-                startActivity(intent);
-                break;
-            case 4:
+            case 2:
                 intent = new Intent(this, CrudEquipoExistencia.class);
                 startActivity(intent);
                 break;
