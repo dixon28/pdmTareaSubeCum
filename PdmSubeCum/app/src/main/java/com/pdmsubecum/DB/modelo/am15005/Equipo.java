@@ -4,7 +4,9 @@ import android.content.ContentValues;
 
 import com.pdmsubecum.DB.DataBase;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Equipo {
 
@@ -14,14 +16,14 @@ public class Equipo {
  private String serie;
  private String caracteristicas;
  private  String modelo;
- private Date fechaingreso;
+ private String fechaingreso;
  private boolean equipodisponible;
 
 
     public Equipo() {
     }
 
-    public Equipo(int idequipo, int idtiposdeequipo, int idmarca, String serie, String caracteristicas, String modelo, Date fechaingreso, boolean equipodisponible) {
+    public Equipo(int idequipo, int idtiposdeequipo, int idmarca, String serie, String caracteristicas, String modelo, String fechaingreso, boolean equipodisponible) {
         this.idequipo = idequipo;
         this.idtiposdeequipo = idtiposdeequipo;
         this.idmarca = idmarca;
@@ -81,11 +83,11 @@ public class Equipo {
         this.modelo = modelo;
     }
 
-    public Date getFechaingreso() {
+    public String getFechaingreso() {
         return fechaingreso;
     }
 
-    public void setFechaingreso(Date fechaingreso) {
+    public void setFechaingreso(String fechaingreso) {
         this.fechaingreso = fechaingreso;
     }
 
@@ -100,14 +102,14 @@ public class Equipo {
 
     public ContentValues toValues(){
         ContentValues contentValues = new ContentValues(8);
-        contentValues.put("idequipo",idequipo);
+         contentValues.put("idequipo",idequipo);
         contentValues.put("idmarca",idmarca);
         contentValues.put("idtiposdeequipo",idtiposdeequipo);
         contentValues.put("serie",serie);
         contentValues.put("caracteristicas",caracteristicas);
         contentValues.put("modelo",modelo);
-        contentValues.put("fechaingreso",String.valueOf(fechaingreso));
-        contentValues.put("fechaingreso",equipodisponible);
+        contentValues.put("fechaingreso",fechaingreso);
+        contentValues.put("equipodisponible",equipodisponible);
         return contentValues;
     }
 
