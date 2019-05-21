@@ -338,6 +338,82 @@ public class DataBase {
         }
     }
 
+    public ArrayList<Marca> llenarspinner() {
+
+
+        ArrayList<Marca> marcas = new ArrayList<Marca>();
+
+       //Cursor cursor = sqLiteDatabase.query("marca", ConstantesDB.CAMPOS_MARCA, null, null, null,null, null);
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from marca",null);
+
+        while (cursor.moveToNext()) {
+
+
+
+                Marca marca = new Marca();
+                marca.setIdmarca(parseInt(cursor.getString(0)));
+                marca.setDescripcionmarca(cursor.getString(1));
+                marcas.add(marca);
+
+
+        }
+
+        return  marcas;
+    }
+
+    public ArrayList<TiposDeEquipo> llenarSpinerEquipos() {
+
+
+        ArrayList<TiposDeEquipo> tiposDeEquip = new ArrayList<TiposDeEquipo>();
+
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_TIPOS_DE_EQUIPO, ConstantesDB.CAMPOS_TIPOS_EQUIPO, null, null, null,null, null);
+        //Cursor cursor = sqLiteDatabase.rawQuery("select * from" + ConstantesDB.TABLA_TIPOS_DE_EQUIPO,null);
+
+        while (cursor.moveToNext()) {
+
+
+
+            TiposDeEquipo tiposDeEquipo = new TiposDeEquipo();
+            tiposDeEquipo.setIdTiposDeEquipo(parseInt(cursor.getString(0)));
+            tiposDeEquipo.setDescripcionTipEquipo(cursor.getString(1));
+            tiposDeEquip.add(tiposDeEquipo);
+
+
+        }
+
+        return  tiposDeEquip;
+    }
+
+
+    public void ingresarFecha(String fecha ,int idf){
+
+        String[] id = {String.valueOf(idf)};
+
+
+      //  status = sqLiteDatabase.update(ConstantesDB.TABLA_MARCA, contentValues, "idmarca = ? ", id)
+
+        Log.d("fecha",fecha);
+
+          sqLiteDatabase.rawQuery("update equipo set fechaingreso=" + fecha + " where idequipo=" + idf, null);
+
+
+
+      //  sqLiteDatabase.update(ConstantesDB.TABLA_MARCA, contentValues, "idequipo = ? ", id);
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     public int actualizar(Marca marca, int idmarca) {
         int status;
