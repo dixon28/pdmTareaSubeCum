@@ -15,7 +15,7 @@ public class DocumentoMovimientoMenuActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ListView listView = getListView();
-        listView.setBackgroundColor(Color.rgb(255, 0, 0));
+        listView.setBackgroundColor(Color.rgb(255, 255, 255));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, menu);
         setListAdapter(adapter);
     }

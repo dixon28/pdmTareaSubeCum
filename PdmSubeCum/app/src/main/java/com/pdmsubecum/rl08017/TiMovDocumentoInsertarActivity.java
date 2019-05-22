@@ -21,16 +21,23 @@ public class TiMovDocumentoInsertarActivity extends Activity {
         editDescricion = (EditText) findViewById(R.id.editDescricion);
     }
     public void insertarTipoMovimiento(View v) {
-        int carnet=Integer.parseInt(editID.getText().toString());
-        String nombre=editDescricion.getText().toString();
-        String regInsertados;
-        TiposDeMovimientoParaDocumento movdoc=new TiposDeMovimientoParaDocumento();
-        movdoc.setIdTiposDeMovimientoParaDocumento(carnet);
-        movdoc.setDescripcionMovimientoDoc(nombre);
-        helper.abrir();
-        regInsertados=helper.insertar(movdoc);
-        helper.cerrar();
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        try{
+            int carnet=Integer.parseInt(editID.getText().toString());
+            String nombre=editDescricion.getText().toString();
+            String regInsertados;
+            TiposDeMovimientoParaDocumento movdoc=new TiposDeMovimientoParaDocumento();
+            movdoc.setIdTiposDeMovimientoParaDocumento(carnet);
+            movdoc.setDescripcionMovimientoDoc(nombre);
+            helper.abrir();
+            regInsertados=helper.insertar(movdoc);
+            helper.cerrar();
+            Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+
+        }
+        catch (Exception e){
+        Toast.makeText(this,"datos incompletos o incorrectos",Toast.LENGTH_SHORT).show();
+        }
+
     }
     public void limpiarTexto(View v) {
         editID.setText("");

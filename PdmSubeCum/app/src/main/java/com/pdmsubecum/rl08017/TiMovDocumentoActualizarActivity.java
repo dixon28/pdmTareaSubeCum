@@ -24,13 +24,20 @@ public class TiMovDocumentoActualizarActivity extends Activity {
         editDescripcion = (EditText) findViewById(R.id.editDescripcion);
     }
     public void actualizar(View v) {
-        TiposDeMovimientoParaDocumento tipo = new TiposDeMovimientoParaDocumento();
-        tipo.setIdTiposDeMovimientoParaDocumento(Integer.parseInt(editTipo.getText().toString()));
-        tipo.setDescripcionMovimientoDoc(editDescripcion.getText().toString());
-        helper.abrir();
-        String estado = helper.actualizar(tipo);
-        helper.cerrar();
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+        try{
+            TiposDeMovimientoParaDocumento tipo = new TiposDeMovimientoParaDocumento();
+            tipo.setIdTiposDeMovimientoParaDocumento(Integer.parseInt(editTipo.getText().toString()));
+            tipo.setDescripcionMovimientoDoc(editDescripcion.getText().toString());
+            helper.abrir();
+            String estado = helper.actualizar(tipo);
+            helper.cerrar();
+            Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+
+        }
+        catch (Exception e){
+            Toast.makeText(this,"datos incompletos o incorrectos",Toast.LENGTH_SHORT).show();
+        }
+
     }
     public void limpiarTexto(View v) {
         editTipo.setText("");
