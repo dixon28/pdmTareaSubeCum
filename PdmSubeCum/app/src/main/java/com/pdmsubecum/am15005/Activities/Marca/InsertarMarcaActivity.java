@@ -43,10 +43,18 @@ public class InsertarMarcaActivity extends AppCompatActivity {
         marca.setIdmarca(id);
         marca.setDescripcionmarca(descripcion);
 
-        db.abrir();
-        db.insertar(marca);
-        db.cerrar();
-        Toast.makeText(this,Idmarca , Toast.LENGTH_SHORT).show();
+        if (db.verificarIntegridadAM15005(marca,1)){
+
+            Toast.makeText(this,"Ya existe un registro con el id "+Idmarca , Toast.LENGTH_SHORT).show();
+        }
+        else {
+
+            db.abrir();
+            db.insertar(marca);
+            db.cerrar();
+            Toast.makeText(this,Idmarca , Toast.LENGTH_SHORT).show();
+        }
+
 
     }
     public void limpiarTexto(View v) {

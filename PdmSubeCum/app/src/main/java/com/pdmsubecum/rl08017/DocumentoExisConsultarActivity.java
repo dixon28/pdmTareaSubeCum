@@ -32,20 +32,27 @@ public class DocumentoExisConsultarActivity extends Activity {
         editActual = (EditText) findViewById(R.id.editActual);
     }
     public void consultar(View v) {
-        helper.abrir();
-        DocumentoExistencia tipo = helper.consultarDocExistencia(editID.getText().toString());
-        helper.cerrar();
-        if(tipo == null)
-            Toast.makeText(this, "Tipo de movimiento " + editID.getText().toString() +
-                    " no encontrado", Toast.LENGTH_LONG).show();
-        else{
+        try{
+            helper.abrir();
+            DocumentoExistencia tipo = helper.consultarDocExistencia(editID.getText().toString());
+            helper.cerrar();
+            if(tipo == null)
+                Toast.makeText(this, "Tipo de movimiento " + editID.getText().toString() +
+                        " no encontrado", Toast.LENGTH_LONG).show();
+            else{
 
-            editID2.setText(String.valueOf(tipo.getIdDocumentoExistencia()));
-            editIsbn.setText(tipo.getIsbn());
-            editIdDocente.setText(String.valueOf(tipo.getIdDocente()));
-            editUnidadAdm.setText(String.valueOf(tipo.getIdUnidadAdministrativa()));
-            editActual.setText(String.valueOf(tipo.getActual()));
+                editID2.setText(String.valueOf(tipo.getIdDocumentoExistencia()));
+                editIsbn.setText(tipo.getIsbn());
+                editIdDocente.setText(String.valueOf(tipo.getIdDocente()));
+                editUnidadAdm.setText(String.valueOf(tipo.getIdUnidadAdministrativa()));
+                editActual.setText(String.valueOf(tipo.getActual()));
+            }
+
         }
+        catch (Exception e){
+            Toast.makeText(this,"datos incompletos o incorrectos",Toast.LENGTH_SHORT).show();
+        }
+
     }
     public void limpiarTexto(View v){
         editID.setText("");

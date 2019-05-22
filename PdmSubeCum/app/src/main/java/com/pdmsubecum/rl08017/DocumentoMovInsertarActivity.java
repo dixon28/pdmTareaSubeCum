@@ -36,19 +36,26 @@ public class DocumentoMovInsertarActivity extends Activity {
         editidMovDetalle = (EditText) findViewById(R.id.editidMovDetalle);
     }
     public void insertar(View v) {
-        DocumentoMovimiento tipo = new DocumentoMovimiento();
-        tipo.setIdDocMov(Integer.parseInt(editocMov.getText().toString()));
-        tipo.setIdUnidadAdmOrigen(Integer.parseInt(editUnOrigen.getText().toString()));
-        tipo.setIdUnidadAdmDestino(Integer.parseInt(editUniDestino.getText().toString()));
-        tipo.setIdTipoMovDoc(Integer.parseInt(editTipo.getText().toString()));
-        tipo.setComentario(editdescTipoM.getText().toString());
-        tipo.setFecha(editfecha.getText().toString());
-        tipo.setIdMovDocDetalle(Integer.parseInt(editidMovDetalle.getText().toString()));
-        tipo.setIsbn(editisbnDoc.getText().toString());
-        helper.abrir();
-        String estado = helper.insertarMovDoc(tipo);
-        helper.cerrar();
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+        try{
+            DocumentoMovimiento tipo = new DocumentoMovimiento();
+            tipo.setIdDocMov(Integer.parseInt(editocMov.getText().toString()));
+            tipo.setIdUnidadAdmOrigen(Integer.parseInt(editUnOrigen.getText().toString()));
+            tipo.setIdUnidadAdmDestino(Integer.parseInt(editUniDestino.getText().toString()));
+            tipo.setIdTipoMovDoc(Integer.parseInt(editTipo.getText().toString()));
+            tipo.setComentario(editdescTipoM.getText().toString());
+            tipo.setFecha(editfecha.getText().toString());
+            tipo.setIdMovDocDetalle(Integer.parseInt(editidMovDetalle.getText().toString()));
+            tipo.setIsbn(editisbnDoc.getText().toString());
+            helper.abrir();
+            String estado = helper.insertarMovDoc(tipo);
+            helper.cerrar();
+            Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+
+        }
+        catch (Exception e){
+            Toast.makeText(this,"datos incompletos o incorrectos",Toast.LENGTH_SHORT).show();
+        }
+
     }
     public void limpiarTexto(View v) {
         editocMov.setText("");

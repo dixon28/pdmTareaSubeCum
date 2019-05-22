@@ -23,17 +23,25 @@ public class TiMovDocumentoConsultarActivity extends Activity {
         editDescripcion = (EditText) findViewById(R.id.editDescripcion);
     }
     public void consultarAlumno(View v) {
-        helper.abrir();
-        TiposDeMovimientoParaDocumento tipo = helper.consultarTipoMov(editTipo.getText().toString());
-        helper.cerrar();
-        if(tipo == null)
-            Toast.makeText(this, "Tipo de movimiento " + editTipo.getText().toString() +
-                    " no encontrado", Toast.LENGTH_LONG).show();
-        else{
 
-            editTipo.setText(String.valueOf(tipo.getIdTiposDeMovimientoParaDocumento()));
-            editDescripcion.setText(tipo.getDescripcionMovimientoDoc());
+        try{
+            helper.abrir();
+            TiposDeMovimientoParaDocumento tipo = helper.consultarTipoMov(editTipo.getText().toString());
+            helper.cerrar();
+            if(tipo == null)
+                Toast.makeText(this, "Tipo de movimiento " + editTipo.getText().toString() +
+                        " no encontrado", Toast.LENGTH_LONG).show();
+            else{
+
+                editTipo.setText(String.valueOf(tipo.getIdTiposDeMovimientoParaDocumento()));
+                editDescripcion.setText(tipo.getDescripcionMovimientoDoc());
+            }
+
         }
+        catch (Exception e){
+            Toast.makeText(this,"datos incompletos o incorrectos",Toast.LENGTH_SHORT).show();
+        }
+
     }
     public void limpiarTexto(View v){
         editTipo.setText("");

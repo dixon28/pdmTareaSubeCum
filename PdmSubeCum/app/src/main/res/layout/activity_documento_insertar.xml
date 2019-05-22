@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".am15005.Activities.Equipo.ActualizarEquipoActivity">
+    tools:context=".am15005.Activities.Documento.DocumentoInsertarActivity">
+
+
     <ScrollView
 
         android:layout_width="match_parent"
@@ -17,50 +19,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/ingreseidequipo"
-                />
 
-            <EditText
-                android:id="@+id/consultidEquipo"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:maxLength="7"
-                android:textColor="#4CAF50" />
-
-
-
-            <Button
-                android:onClick="ConsultarEquipo"
-                android:text="@string/consultar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:onClick="LimpiarTexto"
-                android:text="@string/limpiar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-
-
-            <TextView android:text="@string/idmarca"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <Spinner
-                android:id="@+id/sp_marcas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                />
-            <TextView android:text="@string/idTipos_Equipo"
+            <TextView android:text="@string/idTipos_De_Doc"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent" />
             <Spinner
-                android:id="@+id/sp_tipos_equipos"
+                android:id="@+id/sp_tipos_doc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -68,43 +32,28 @@
 
 
 
-            <TextView android:text="@string/equipodisponible"
+            <TextView android:text="@string/documentodisponible"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent" />
 
             <Spinner
-                android:id="@+id/sp_equipodisponible"
+                android:id="@+id/sp_documentodisponible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
                 />
 
 
-            <TextView android:text="@string/idmarca"
+
+
+
+
+            <TextView android:text="@string/idTipos_De_Doc"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent" />
 
             <EditText
-                android:id="@+id/EdtIdMarca"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:cursorVisible="false"
-                android:enabled="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:inputType="text"
-                android:longClickable="false"
-                android:textColor="@color/update" />
-
-
-
-
-            <TextView android:text="@string/idTipos_Equipo"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
-
-            <EditText
-                android:id="@+id/EdtIdTiposEquipo"
+                android:id="@+id/EdtIdTiposDoc"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:cursorVisible="false"
@@ -119,12 +68,12 @@
 
 
 
-            <TextView android:text="@string/equipodisponible"
+            <TextView android:text="@string/documentodisponible"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent" />
 
             <EditText
-                android:id="@+id/Edtequipodisponible"
+                android:id="@+id/EdtDocdisponible"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:cursorVisible="false"
@@ -137,25 +86,33 @@
 
 
 
-            <TextView android:text="@string/id_del_Equipo"
+            <TextView android:text="@string/isbnDelDoc"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent" />
 
             <EditText
-                android:id="@+id/editequipo"
+                android:id="@+id/editisbndeldoc"
                 android:inputType="number"
-                android:maxLength="8"
+                android:maxLength="10"
                 android:textColor="@color/update"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent" />
 
 
 
-            <TextView android:text="@string/serie_equipo"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+
+
+
+
+
+            <TextView android:text="@string/nombredoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
             <EditText
-                android:id="@+id/editserie"
+                android:id="@+id/editnombredoc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -164,29 +121,12 @@
 
 
 
-
-            <TextView android:text="@string/Caracteristicas_equipo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-
-
-            <EditText
-                android:id="@+id/editcaracteristicas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:maxLength="150"
-                android:textColor="@color/update" />
-
-
-
-            <TextView android:text="@string/Modelo"
+            <TextView android:text="@string/Idioma"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <EditText
-                android:id="@+id/editmodelo"
+                android:id="@+id/editIdioma"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -195,30 +135,32 @@
 
 
 
-            <TextView android:text="@string/Fecha_ingreso"
+            <TextView android:text="@string/descripcion"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent" />
 
             <EditText
-                android:id="@+id/editfechaingreso"
+                android:id="@+id/editDescricionDoc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:hint="@string/ingreseFecha"
-                android:inputType="date"
+                android:inputType="text"
                 android:textColor="@color/update"
 
                 />
 
 
-
             <Button
-                android:onClick="ActualizarEquipo"
-                android:text="@string/actualizar"
+                android:onClick="insertarDocumento"
+                android:text="@string/insertar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
-
+            <Button
+                android:onClick="limpiarTexto"
+                android:text="@string/limpiar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
 
 
@@ -226,10 +168,9 @@
 
 
 
-
-
-
     </ScrollView>
+
+
 
 
 

@@ -4,23 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".am15005.Activities.Equipo.EliminarEquipoActivity"
+    tools:context=".am15005.Activities.Documento.DocumentoEliminarActivity"
     android:orientation="vertical">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/id_del_Equipo" />
+        android:text="@string/isbnDelDoc" />
     <EditText
-        android:id="@+id/elimequipo"
+        android:id="@+id/elimDoc"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:maxLength="7"/>
+        android:maxLength="10"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/eliminar_equipo"
-        android:onClick="eliminarEquipo"/>
+        android:onClick="eliminarDoc"/>
 </LinearLayout>

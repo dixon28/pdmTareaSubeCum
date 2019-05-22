@@ -73,7 +73,7 @@ public class IntegranteFragment extends Fragment {
                     integranteList.add(new Integrante("Nelson Miranda Miranda","MM14031","Tablas: Materia, Horario y Grupo",R.drawable.mm14031));
                     integranteList.add(new Integrante("Rodrigo Presa Mariona","PM15007",
                             "UnidadAdministrativa / EquipoExistencia / TipoMovimientoEquipo",R.drawable.pm15007));
-                    integranteList.add(new Integrante("Joel Ramos Lopez","RL08017","bastantes tablas",R.drawable.man2));
+                    integranteList.add(new Integrante("Joel Ramos Lopez","RL08017","TipoMovDoc/DocumentoMov/DocumentoMovDetalle",R.drawable.joel));
                     integranteList.add(new Integrante("Raul Trigueros Santamaria","TS14004","Docente/AsignacionEquipo/DocumentoAsignacion",R.drawable.rulo));
                     break;
                 case "usuario":
@@ -89,7 +89,7 @@ public class IntegranteFragment extends Fragment {
                                     "UnidadAdministrativa / EquipoExistencia / TipoMovimientoEquipo",R.drawable.man1));
                             break;
                         case "rl08017":
-                            integranteList.add(new Integrante("Joel Ramos Lopez","RL08017","bastantes tablas",R.drawable.pm15007));
+                            integranteList.add(new Integrante("Joel Ramos Lopez","RL08017","TipoMovDoc/DocumentoMov/DocumentoMovDetalle",R.drawable.joel));
                             break;
                         case "ts14004":
                             integranteList.add(new Integrante("Raul Trigueros Santamaria","TS14004",

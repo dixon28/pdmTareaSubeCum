@@ -50,6 +50,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                     if(user.getPassword().equals(this.edt_password.getText().toString())){
                         intent = new Intent(Login.this, Carnets.class);
                         intent.putExtra("usuario",user.getUsuario());
+                        Log.d("msj","Antes de carnets");
                         startActivity(intent);
                     }else{
                         Toast.makeText(this, "Password incorrecto" , Toast.LENGTH_SHORT).show();

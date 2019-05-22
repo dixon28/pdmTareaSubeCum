@@ -9,7 +9,7 @@ public class ConstantesDB {
     //----------------------------------------------------
     // nombre base de datos
     //----------------------------------------------------
-    public static final String DATABASE = "inventario.s3db";
+    public static final String DATABASE = "inventario_test.s3db";
 
 
     //-----------------------------------------------------
@@ -204,7 +204,7 @@ public class ConstantesDB {
     "NOMBREDOC            VARCHAR2(50)         not null,"+
     "IDIOMA               VARCHAR2(50)         not null,"+
     "DESCRIPCIONDOC       VARCHAR2(50)         not null,"+
-    "DISPONIBLEDOC        VARCHAR2(50)         not null,"+
+    "DISPONIBLEDOC        SMALLINT         not null,"+
     "constraint PK_DOCUMENTO primary key (ISBN))";
 
 

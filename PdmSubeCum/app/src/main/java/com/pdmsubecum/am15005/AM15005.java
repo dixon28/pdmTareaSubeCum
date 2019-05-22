@@ -53,10 +53,7 @@ public class AM15005 extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, tipo).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack(null).commit();
                         break;
 
-                    case R.id.navigation_mas:
-                        Intent intent= new Intent(AM15005.this, DocActivity.class);
-                        startActivity(intent);
-                        break;
+
 
 
 

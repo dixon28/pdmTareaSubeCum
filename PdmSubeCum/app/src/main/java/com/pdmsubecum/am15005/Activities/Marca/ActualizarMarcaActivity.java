@@ -54,18 +54,24 @@ public class ActualizarMarcaActivity extends AppCompatActivity {
     }
 
     public void ActualizarMar(View v) {
-        int id=Integer.parseInt(idmarca.getText().toString());
+        int id = Integer.parseInt(idmarca.getText().toString());
         Marca marca = new Marca();
         marca.setIdmarca(Integer.parseInt(conidmarca.getText().toString()));
         marca.setDescripcionmarca(desmarca.getText().toString());
-        helper.abrir();
+        if (helper.verificarIntegridadAM15005(marca, 1)) {
 
-        int estado = helper.actualizar(marca,id);
-        helper.cerrar();
-        if (estado==0){
-            Toast.makeText(this, "Error no se pudo actualizar el registro", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Ya existe un registro con el id " + conidmarca.getText().toString(), Toast.LENGTH_SHORT).show();
+        } else {
+            helper.abrir();
 
+            int estado = helper.actualizar(marca, id);
+            helper.cerrar();
+
+            if (estado == 0) {
+                Toast.makeText(this, "Error no se pudo actualizar el registro", Toast.LENGTH_SHORT).show();
+
+            }
+            Toast.makeText(this, String.valueOf(estado) + " un registro se ha actualizado", Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(this, String.valueOf(estado)+ " un registro se ha actualizado", Toast.LENGTH_SHORT).show();
     }
 }

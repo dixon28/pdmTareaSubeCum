@@ -21,12 +21,19 @@ public class DocumentoExisEliminarActivity extends Activity {
         idDoc=(EditText)findViewById(R.id.idDoc);
     }
     public void eliminar(View v){
-        String regEliminadas;
-        DocumentoExistencia tipo=new DocumentoExistencia();
-        tipo.setIdDocumentoExistencia(Integer.parseInt(idDoc.getText().toString()));
-        controlhelper.abrir();
-        regEliminadas=controlhelper.eliminar(tipo);
-        controlhelper.cerrar();
-        Toast.makeText(this, regEliminadas, Toast.LENGTH_SHORT).show();
+        try{
+            String regEliminadas;
+            DocumentoExistencia tipo=new DocumentoExistencia();
+            tipo.setIdDocumentoExistencia(Integer.parseInt(idDoc.getText().toString()));
+            controlhelper.abrir();
+            regEliminadas=controlhelper.eliminar(tipo);
+            controlhelper.cerrar();
+            Toast.makeText(this, regEliminadas, Toast.LENGTH_SHORT).show();
+
+        }
+        catch (Exception e){
+            Toast.makeText(this,"datos incompletos o incorrectos",Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

@@ -30,16 +30,23 @@ public class DocumentoExisActualizarActivity extends Activity {
         editActual = (EditText) findViewById(R.id.editActual);
     }
     public void actualizar(View v) {
-        DocumentoExistencia tipo = new DocumentoExistencia();
-        tipo.setIdDocumentoExistencia(Integer.parseInt(editID.getText().toString()));
-        tipo.setIsbn(editIsbn.getText().toString());
-        tipo.setIdDocente(Integer.parseInt(editIdDocente.getText().toString()));
-        tipo.setIdUnidadAdministrativa(Integer.parseInt(editUnidadAdm.getText().toString()));
-        tipo.setActual(Integer.parseInt(editActual.getText().toString()));
-        helper.abrir();
-        String estado = helper.actualizar(tipo);
-        helper.cerrar();
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+        try{
+            DocumentoExistencia tipo = new DocumentoExistencia();
+            tipo.setIdDocumentoExistencia(Integer.parseInt(editID.getText().toString()));
+            tipo.setIsbn(editIsbn.getText().toString());
+            tipo.setIdDocente(Integer.parseInt(editIdDocente.getText().toString()));
+            tipo.setIdUnidadAdministrativa(Integer.parseInt(editUnidadAdm.getText().toString()));
+            tipo.setActual(Integer.parseInt(editActual.getText().toString()));
+            helper.abrir();
+            String estado = helper.actualizar(tipo);
+            helper.cerrar();
+            Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+
+        }
+        catch (Exception e){
+            Toast.makeText(this,"datos incompletos o incorrectos",Toast.LENGTH_SHORT).show();
+        }
+
     }
     public void limpiarTexto(View v) {
         editID.setText("");
