@@ -173,6 +173,7 @@
     <string name="idUniDestino"> Unidad Destino </string>
     <string name="fecha"> fecha </string>
     <string name="idMovDetalle"> id Movimiento detalle </string>
+    <string name="eliminar_equipo">Eliminar Equipo</string>
 
 
 </resources>

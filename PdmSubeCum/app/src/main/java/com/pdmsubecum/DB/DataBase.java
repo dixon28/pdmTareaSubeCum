@@ -905,6 +905,70 @@ public class DataBase {
 
 
     // FIN LLENADO TABLAS MM
+    //LLENADO DE TABLAS PM15007
+    public void llenarEquipoExistencia(List<EquipoExistencia> equipoExistencias){
+        long items = getItemsEquipoExistencia();
+        if(items == 0){
+            for (EquipoExistencia equipoExistencia: equipoExistencias){
+                try {
+                    insertar(equipoExistencia);
+                }catch (SQLiteException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    public void llenarEquipoMovimiento(List<EquipoMovimiento> equipoMovimientos){
+        long items = getItemsEquipoMovimiento();
+        if(items == 0){
+            for (EquipoMovimiento equipoMovimiento: equipoMovimientos){
+                try {
+                    insertar(equipoMovimiento);
+                }catch (SQLiteException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    public void llenarEquipoMovimientoDetalle(List<EquipoMovimientoDetalle> equipoMovimientoDetalles){
+        long items = getItemsEquipoMovimientoDetalle();
+        if(items == 0){
+            for (EquipoMovimientoDetalle equipoMovimientoDetalle: equipoMovimientoDetalles){
+                try {
+                    insertar(equipoMovimientoDetalle);
+                }catch (SQLiteException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    public void llenarTipoMovimientoEquipo(List<TipoMovimientoEquipo> tipoMovimientoEquipos){
+        long items = getItemsTipoMovimientoEquipo();
+        if(items == 0){
+            for (TipoMovimientoEquipo tipoMovimientoEquipo: tipoMovimientoEquipos){
+                try {
+                    insertar(tipoMovimientoEquipo);
+                }catch (SQLiteException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    public void llenarUnidadAdministrativa(List<UnidadAdministrativa> unidadAdministrativas){
+        long items = getItemsUnidadAdministrativa();
+        if(items == 0){
+            for (UnidadAdministrativa unidadAdministrativa: unidadAdministrativas){
+                try {
+                    insertar(unidadAdministrativa);
+                }catch (SQLiteException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    ///////////////////////////////////////////////////////////
+    ////// FIN LLENADO PM15007 //////////////////////////////
+    /////////////////////////////////////////////////////////////
 
     private boolean aulaExiste(Aula aula) throws SQLException{
 

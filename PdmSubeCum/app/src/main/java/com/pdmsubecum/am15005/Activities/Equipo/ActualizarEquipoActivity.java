@@ -103,7 +103,7 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
         marcas=helper.llenarspinner();
         eq=helper.llenarSpinerEquipos();
 
-        conteo=Integer.parseInt(String.valueOf(db.getItemsMarca()));
+        conteo=Integer.parseInt(String.valueOf(helper.getItemsMarca()));
         //conteo2=Integer.parseInt(String.valueOf(db.getItems))
 
 
@@ -167,7 +167,7 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
             @Override
             public void onClick(View view) {
 
-                new DatePickerDialog(InsertarEquipoActivity.this, date, calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DAY_OF_MONTH)).show();
+               // new DatePickerDialog(InsertarEquipoActivity.this, date, calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
