@@ -13,7 +13,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public static final int DB_VERSION = 15;
-
+    //version actual 15
 
 
     public DBHelper(Context context) {

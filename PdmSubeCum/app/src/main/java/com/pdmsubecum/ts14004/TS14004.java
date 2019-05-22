@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TS14004 extends ListActivity {
-    String[] menu = {"Docente", "AsignacionEquipo", "DocumentoAsignacion"};
+    String[] menu = {"Tabla Docente", "Tabla AsignacionEquipo", "Tabla DocumentoAsignacion"};
     String[] activities = {"DocenteMenuActivity", "AsignacionEquipoMenuActivity", "DocumentoAsignacionMenuActivity"};
     DataBase sqLiteOpenHelper;
 
