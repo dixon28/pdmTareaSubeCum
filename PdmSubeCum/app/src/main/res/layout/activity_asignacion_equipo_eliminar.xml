@@ -18,9 +18,16 @@
         android:maxLength="7" />
 
     <Button
-        android:layout_width="209dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F84234"
         android:onClick="eliminarAsignacionEquipo"
         android:text="@string/eliminar" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E2EE7D"
+        android:onClick="limpiarTexto"
+        android:text="@string/limpiarTexto" />
 </LinearLayout>

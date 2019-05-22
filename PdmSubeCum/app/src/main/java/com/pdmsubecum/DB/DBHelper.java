@@ -12,7 +12,7 @@ import android.util.Log;
 public class DBHelper extends SQLiteOpenHelper {
 
 
-    public static final int DB_VERSION = 13;
+    public static final int DB_VERSION = 17;
     //version actual 15
 
 
@@ -30,6 +30,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DocumentoAsignacion);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_AsignacionEquipoDetalle);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DocumentoAsignacionDetalle);
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_ELIMINARDOCENTE);
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_ELIMINARASIGNACIONEQUIPO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_ELIMINARDOCUMENTOASIGNACION);
 
         //pm15007
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_EQUIPO_EXISTENCIA);
@@ -77,12 +80,15 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_DELETE_USUARIO);
         db.execSQL(ConstantesDB.SQL_DELETE_ROL_USUARIO);
 
-
+        //TS14004
         db.execSQL(ConstantesDB.SQL_DELETE_Docente);
         db.execSQL(ConstantesDB.SQL_DELETE_AsignacionEquipo);
         db.execSQL(ConstantesDB.SQL_DELETE_DocumentoAsignacion);
         db.execSQL(ConstantesDB.SQL_DELETE_AsignacionEquipoDetalle);
         db.execSQL(ConstantesDB.SQL_DELETE_DocumentoAsignacionDetalle);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_ELIMINARDOCENTE);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_ELIMINARASIGNACIONEQUIPO);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_ELIMINARDOCUMENTOASIGNACION);
 
 
         //pm15007

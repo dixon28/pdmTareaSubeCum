@@ -14,6 +14,7 @@ import com.pdmsubecum.DB.modelo.AsignacionEquipo;
 import com.pdmsubecum.DB.modelo.AsignacionEquipoDetalle;
 import com.pdmsubecum.DB.modelo.Docente;
 import com.pdmsubecum.DB.modelo.DocumentoAsignacion;
+import com.pdmsubecum.DB.modelo.DocumentoAsignacionDetalle;
 import com.pdmsubecum.DB.modelo.RolUsuario;
 import com.pdmsubecum.DB.modelo.Usuario;
 import com.pdmsubecum.mm14031.Aula;
@@ -1351,12 +1352,12 @@ public class DataBase {
         final String[] VDemail = {"presa@gmail.com", "Miranda@gmail.com", "Ramos@gmail.com", "Argueta@gmail.com"};
 
 
-        final int[] VAidAsignacionEquipo = {2222222, 2222220, 2222200, 2222000};
+        final int[] VAidAsignacionEquipo = {2123, 2124, 2125, 2126};
         final int[] VAidDocente = {8888881, 8888882, 8888883, 8888884};
         final String[] VAfechaAsignacionEquipo = {"2019-05-01", "2019-05-19", "2019-05-21", "2019-05-25"};
 
 
-        final int[] VDOidDocumentoAsignacion = {3222222, 3222220, 3222200, 3222000};
+        final int[] VDOidDocumentoAsignacion = {3123, 3124, 3125, 3126};
         final int[] VDOidDocente = {8888881, 8888882, 8888883, 8888884};
         final String[] VDOmotivo = {"Apoyo en clase", "Apoyo en clase", "Tarea de investigacion", "Lectura"};
         final String[] VDOfechaAsignacionDoc = {"2019-05-16", "2019-05-17", "2019-05-18", "2019-05-19"};
@@ -1364,7 +1365,11 @@ public class DataBase {
 
         final int[] VADidAsignacionEquipoDetalle = {100, 101, 102, 103};
         final int[] VADidEquipo = {200, 201, 202, 203};
-        final int[] VADidAsignacionEquipo = {2222222, 2222220, 2222200, 2222000};
+        final int[] VADidAsignacionEquipo = {2123, 2124, 2125, 2126};
+
+        final int[] VDODidDocumentoAsignacionDetalle = {300, 301, 302, 303};
+        final String[] VDODisbn = {"02-2850-678-6", "07-2653-321-5", "04-2261-312-1", "05-2512-333-3"};
+        final int[] VDODidDocumentoAsignacion = {3123, 3124, 3125, 3126};
 
         abrir();
         if (getItemsDocente() == 0) {
@@ -1407,6 +1412,16 @@ public class DataBase {
                 asignacionEquipoDetalle.setIdAsignacionEquipo(VADidAsignacionEquipo[i]);
 
                 insertar(asignacionEquipoDetalle);
+            }
+        }
+        if (getItemsDocumentoAsignacionDetalle() == 0) {
+            DocumentoAsignacionDetalle documentoAsignacionDetalle = new DocumentoAsignacionDetalle();
+            for (int i = 0; i < 3; i++) {
+                documentoAsignacionDetalle.setIdDocumentoAsignacionDetalle(VDODidDocumentoAsignacionDetalle[i]);
+                documentoAsignacionDetalle.setIsbn(VDODisbn[i]);
+                documentoAsignacionDetalle.setIdDocumentoAsignacion(VDODidDocumentoAsignacion[i]);
+
+                insertar(documentoAsignacionDetalle);
             }
         }
 
@@ -1480,6 +1495,22 @@ public class DataBase {
         asignaEquipoDetalle.put("idEquipo", asignacionEquipoDetalle.getIdEquipo());
         asignaEquipoDetalle.put("idAsignacionEquipo", asignacionEquipoDetalle.getIdAsignacionEquipo());
         contador = sqLiteDatabase.insert(ConstantesDB.TABLA_AsignacionEquipoDetalle, null, asignaEquipoDetalle );
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+    public String insertar(DocumentoAsignacionDetalle documentoAsignacionDetalle) {
+        String regInsertados = "Registro Insertado Nº= ";
+        long contador = 0;
+
+        ContentValues docuAsignaDetalle = new ContentValues();
+        docuAsignaDetalle.put("idDocumentoAsignacionDetalle", documentoAsignacionDetalle.getIdDocumentoAsignacionDetalle());
+        docuAsignaDetalle.put("isbn", documentoAsignacionDetalle.getIsbn());
+        docuAsignaDetalle.put("idDocumentoAsignacion", documentoAsignacionDetalle.getIdDocumentoAsignacion());
+        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DocumentoAsignacionDetalle, null, docuAsignaDetalle );
         if (contador == -1 || contador == 0) {
             regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
         } else {

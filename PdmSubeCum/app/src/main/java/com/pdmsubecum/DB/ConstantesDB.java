@@ -47,7 +47,7 @@ public class ConstantesDB {
     public static final String SQL_CREATE_TABLE_ROL_USUARIO = "CREATE TABLE " + TABLA_ROL_USUARIO +
             "( nombre_rol VARCHAR(20) NOT NULL, usuario VARCHAR(20) NOT NULL, PRIMARY KEY(nombre_rol,usuario))";
 
-   //-------------------------------Raul------------------------------------------------------------------------------------
+   //-------------------------------TS14004------------------------------------------------------------------------------------
     public static final String SQL_CREATE_TABLE_Docente = "CREATE TABLE " + TABLA_Docente +
 
             "(  idDocente               INTEGER              not null primary key,\n" +
@@ -76,6 +76,18 @@ public class ConstantesDB {
             "(idAsignacionEquipoDetalle INTEGER              not null primary key,\n" +
             "   idEquipo            INTEGER,\n" +
             "   idAsignacionEquipo   INTEGER)";
+
+    public static final String SQL_CREATE_TRIGGER_ELIMINARDOCENTE = "CREATE TRIGGER tr_EliminarDocente " +
+            "BEFORE DELETE ON docente BEGIN DELETE FROM DocumentoAsignacion  WHERE DocumentoAsignacion.idDocente = OLD.idDocente;" +
+            "DELETE FROM AsignacionEquipo  WHERE AsignacionEquipo.idDocente = OLD.idDocente; END";
+
+    public static final String SQL_CREATE_TRIGGER_ELIMINARASIGNACIONEQUIPO = "CREATE TRIGGER tr_EliminarAsignacionEquipo " +
+            "BEFORE DELETE ON AsignacionEquipo BEGIN DELETE FROM AsignacionEquipoDetalle  WHERE AsignacionEquipoDetalle.idAsignacionEquipo = OLD.idAsignacionEquipo;" +
+            "END";
+
+    public static final String SQL_CREATE_TRIGGER_ELIMINARDOCUMENTOASIGNACION = "CREATE TRIGGER tr_EliminarDocumentoAsignacion " +
+            "BEFORE DELETE ON DocumentoAsignacion BEGIN DELETE FROM DocumentoAsignacionDetalle  WHERE DocumentoAsignacionDetalle.idDocumentoAsignacion = OLD.idDocumentoAsignacion;" +
+            "END";
     //------------------------------------------------------------------------------------------------------------------------------
     //Consultas para crear tablas
 
@@ -119,6 +131,9 @@ public class ConstantesDB {
     public static final String SQL_DELETE_DocumentoAsignacion = "DROP TABLE " + TABLA_DocumentoAsignacion;
     public static final String SQL_DELETE_DocumentoAsignacionDetalle = "DROP TABLE " + TABLA_DocumentoAsignacionDetalle;
     public static final String SQL_DELETE_AsignacionEquipoDetalle = "DROP TABLE " + TABLA_AsignacionEquipoDetalle;
+    public static final String SQL_DELETE_TRIGGER_ELIMINARDOCENTE = "DROP TRIGGER tr_EliminarDocente;";
+    public static final String SQL_DELETE_TRIGGER_ELIMINARASIGNACIONEQUIPO = "DROP TRIGGER tr_EliminarAsignacionEquipo;";
+    public static final String SQL_DELETE_TRIGGER_ELIMINARDOCUMENTOASIGNACION = "DROP TRIGGER tr_EliminarDocumentoAsignacion;";
     //------------------------------------------------------------------------------------------------------------------------------
 
     //Borrar Tablas

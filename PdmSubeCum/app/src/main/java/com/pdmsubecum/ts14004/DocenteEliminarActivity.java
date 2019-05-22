@@ -32,5 +32,8 @@ public class DocenteEliminarActivity extends AppCompatActivity {
         controlhelper.cerrar();
         Toast.makeText(this, regEliminadas, Toast.LENGTH_SHORT).show();
     }
+    public void limpiarTexto(View v) {
+        edt_CodDocente.setText("");
+    }
 }
 
