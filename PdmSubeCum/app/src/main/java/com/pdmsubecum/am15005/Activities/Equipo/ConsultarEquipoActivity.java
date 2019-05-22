@@ -54,7 +54,7 @@ public class ConsultarEquipoActivity extends AppCompatActivity {
                     " no encontrado", Toast.LENGTH_LONG).show();
         else{
             edtmarca.setText(String.valueOf(equipo.getIdmarca()));
-            edtTipoEquipo.setText(String.valueOf(equipo.getIdequipo()));
+            edtTipoEquipo.setText(String.valueOf(equipo.getIdtiposdeequipo()));
             if (equipo.isEquipodisponible()) {
                 edtEquipoDis.setText("si");
             }

@@ -189,6 +189,7 @@
     <string name="actualizar_tipo_movimiento_equipo">Actualizar Tipo Movimiento Equipo</string>
     <string name="eliminar_tipo_movimiento_equipo">Eliminar Tipo Movimiento Equipo</string>
     <string name="eliminar_equipo">Eliminar equipo</string>
+    <string name="ingreseidequipo">ingrese el id del equipo</string>
 
 
 </resources>

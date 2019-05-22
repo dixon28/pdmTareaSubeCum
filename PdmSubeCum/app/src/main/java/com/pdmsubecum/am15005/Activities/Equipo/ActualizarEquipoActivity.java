@@ -3,9 +3,11 @@ package com.pdmsubecum.am15005.Activities.Equipo;
 import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -16,9 +18,11 @@ import com.pdmsubecum.DB.modelo.am15005.Marca;
 import com.pdmsubecum.DB.modelo.am15005.TiposDeEquipo;
 import com.pdmsubecum.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Objects;
 
 public class ActualizarEquipoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -35,6 +39,8 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
     private ArrayAdapter comboAdaptertequipos;
     private ArrayAdapter comboAdapterteDisponible;
     int conteo;
+
+    private String nombreDisponible;
 
 
     Spinner spinner;
@@ -103,7 +109,7 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
         marcas=helper.llenarspinner();
         eq=helper.llenarSpinerEquipos();
 
-        conteo=Integer.parseInt(String.valueOf(db.getItemsMarca()));
+        conteo=Integer.parseInt(String.valueOf(helper.getItemsMarca()));
         //conteo2=Integer.parseInt(String.valueOf(db.getItems))
 
 
@@ -167,7 +173,7 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
             @Override
             public void onClick(View view) {
 
-                new DatePickerDialog(InsertarEquipoActivity.this, date, calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(ActualizarEquipoActivity.this, date, calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
@@ -179,7 +185,69 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
 
 
 
+
+
     }
+
+    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+
+
+            anyo=year;
+            mes=monthOfYear+1;
+            dia=dayOfMonth;
+            // TODO Auto-generated method stub
+            calendario.set(Calendar.YEAR, year);
+            calendario.set(Calendar.MONTH, monthOfYear);
+            calendario.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            //     actualizarInput();
+
+            if ((dia<10)||(mes<10))
+            {
+
+                if (dia<10){
+
+                    fechaingreso.setText(anyo+"-"+mes+"-"+"0"+dia);
+
+                }
+                if (mes<10){
+
+
+
+                    fechaingreso.setText(anyo+"-"+"0"+mes+"-"+dia);
+                }
+                if ((dia<10)&&(mes<10))
+                {
+
+                    fechaingreso.setText(anyo+"-"+"0"+mes+"-"+"0"+dia);
+
+
+
+
+                }
+
+
+
+            }
+
+//            if (mes<10)
+            //          {
+
+            //            fechaingreso.setText(dia+"/"+"0"+mes+"/"+anyo);
+
+            //      }
+
+
+            else {
+
+                fechaingreso.setText(anyo + "-" + mes + "-" + dia);
+            }
+        }
+
+    };
 
     public void ConsultarEquipo(View view) {
         String id;
@@ -193,7 +261,7 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
                     " no encontrado", Toast.LENGTH_LONG).show();
         else{
             edtmarca.setText(String.valueOf(equipo.getIdmarca()));
-            edtTipoEquipo.setText(String.valueOf(equipo.getIdequipo()));
+            edtTipoEquipo.setText(String.valueOf(equipo.getIdtiposdeequipo()));
             if (equipo.isEquipodisponible()) {
                 edtEquipoDis.setText("si");
             }
@@ -207,6 +275,8 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
             serie.setText(equipo.getSerie());
             carac.setText(equipo.getCaracteristicas());
             fechaingreso.setText(equipo.getFechaingreso());
+
+            conid.setEnabled(false);
 
 
 
@@ -223,10 +293,43 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
         modelo.setText("");
         carac.setText("");
         fechaingreso.setText("");
+
+        conid.setEnabled(true);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        switch (parent.getId()){
+            case R.id.sp_marcas:
+                //Almaceno el nombre de la fruta seleccionada
+                nombreMarca = marcs[position];
+                id_guardado_Marca=ides[position];
+
+                edtmarca.setText(id_guardado_Marca);
+
+
+                Toast.makeText(this, "Nombre marca: " + nombreMarca, Toast.LENGTH_SHORT).show();
+
+                break;
+
+            case R.id.sp_tipos_equipos:
+                nombreEquipo =tequipos[position];
+                id_guardado_tequipo=ides_tequipos[position];
+                edtTipoEquipo.setText(id_guardado_tequipo);
+
+                Toast.makeText(this,"nombre del tipo de equipo :"+nombreEquipo,Toast.LENGTH_SHORT).show();
+                break;
+
+
+            case R.id.sp_equipodisponible:
+                nombreDisponible=disponibles[position];
+                id_guardado_disponible=ides_disponible[position];
+                edtEquipoDis.setText(nombreDisponible);
+
+                Toast.makeText(this,"disponible :"+nombreDisponible,Toast.LENGTH_SHORT).show();
+                break;
+        }
 
     }
 
@@ -234,4 +337,70 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
+    public void ActualizarEquipo(View view)
+    {
+        String formatoDeFecha = "DD-MM-YYYY"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha);
+        boolean disp;
+        Equipo equipo = new Equipo();
+        String fe=fechaingreso.getText().toString();
+
+        Log.d("fecha",fe);
+
+
+
+
+
+        String id=edtEq.getText().toString();
+
+
+        equipo.setIdmarca(Integer.parseInt(edtmarca.getText().toString()));
+        equipo.setIdtiposdeequipo(Integer.parseInt(edtTipoEquipo.getText().toString()));
+        equipo.setIdequipo(Integer.parseInt(edtEq.getText().toString()));
+        equipo.setCaracteristicas(carac.getText().toString());
+        equipo.setModelo(modelo.getText().toString());
+        equipo.setSerie(serie.getText().toString());
+        equipo.setFechaingreso(fe);
+
+
+
+        if(Objects.equals("si",edtEquipoDis.getText().toString())){
+
+
+            disp=true;
+
+            Log.d("disponible","true");
+
+            equipo.setEquipodisponible(disp);
+        }
+        else
+        {
+
+            Log.d("disponible","false");
+
+            disp=false;
+            equipo.setEquipodisponible(disp);
+        }
+
+
+
+
+
+
+
+        helper.abrir();
+     int s=   helper.actualizarEquipo(equipo,Integer.parseInt(conid.getText().toString()));
+//        db.ingresarFecha(fe,equipo.getIdequipo());
+        helper.cerrar();
+
+        conid.setText(String.valueOf(equipo.getIdequipo()));
+        Toast.makeText(this, String.valueOf(s), Toast.LENGTH_SHORT).show();
+
+
+
+
+    }
+
 }

@@ -9,14 +9,14 @@ private int idtiposdedocumento;
 private String nombredoc ;
 private  String idioma;
 private String        descripciondoc;
-private String        disponibledoc;
+private boolean        disponibledoc;
 
 
     public Documento() {
 
     }
 
-    public Documento(String isbn, int idtiposdedocumento, String nombredoc, String idioma, String descripciondoc, String disponibledoc) {
+    public Documento(String isbn, int idtiposdedocumento, String nombredoc, String idioma, String descripciondoc, boolean disponibledoc) {
         this.isbn = isbn;
         this.idtiposdedocumento = idtiposdedocumento;
         this.nombredoc = nombredoc;
@@ -66,23 +66,22 @@ private String        disponibledoc;
         this.descripciondoc = descripciondoc;
     }
 
-    public String getDisponibledoc() {
+    public boolean isDisponibledoc() {
         return disponibledoc;
     }
 
-    public void setDisponibledoc(String disponibledoc) {
+    public void setDisponibledoc(boolean disponibledoc) {
         this.disponibledoc = disponibledoc;
     }
-
 
     public ContentValues toValues(){
         ContentValues contentValues = new ContentValues(2);
         contentValues.put("isbn", isbn);
-        contentValues.put("idtiposdedocumentos",idtiposdedocumento);
+        contentValues.put("idtiposdedocumento",idtiposdedocumento);
         contentValues.put("nombredoc",nombredoc);
         contentValues.put("idioma",idioma);
         contentValues.put("descripciondoc",descripciondoc);
-        contentValues.put("disponible",disponibledoc);
+        contentValues.put("disponibledoc",disponibledoc);
         return contentValues;
     }
 }

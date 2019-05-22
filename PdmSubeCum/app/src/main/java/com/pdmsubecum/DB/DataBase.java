@@ -493,6 +493,17 @@ public class DataBase {
         return conteo;
     }
 
+    public int actualizarEquipo(Equipo equipo, int ideq) {
+
+        ContentValues contentValues = equipo.toValues();
+        String[] id = {String.valueOf(ideq)};
+        Log.d("ide", String.valueOf(id));
+        Log.d("values",String.valueOf(contentValues));
+
+
+        return sqLiteDatabase.update(ConstantesDB.TABLA_EQUIPO, contentValues, "idequipo = ?",id);
+    }
+
 
 
         //    insertar Datos
@@ -521,6 +532,62 @@ public class DataBase {
             }
         }
     }
+
+    public void llenarDocumento(ArrayList<Documento> documentos) {
+
+        long items = getItemsDocumento();
+        if (items == 0) {
+            for (Documento documento: documentos) {
+                try {
+                    insertar(documento);
+                } catch (SQLiteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarEquipos(List<Equipo> equipos) {
+        long items = getItemsEquipo();
+        if (items == 0) {
+            for (Equipo equipo: equipos) {
+                try {
+                    insertar(equipo);
+                } catch (SQLiteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void llenarAutorDetalle(ArrayList<AutorDetalle> autorDetalles) {
+        long items = getItemsAutorDetalle();
+        if (items == 0) {
+            for (AutorDetalle autorDetalle: autorDetalles) {
+                try {
+                    insertar(autorDetalle);
+                } catch (SQLiteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+
+    public void llenarDocumentosDetalle(ArrayList<Documento> documentos) {
+        long items = getItemsDocumento();
+        if (items == 0) {
+            for (Documento doc: documentos) {
+                try {
+                    insertar(doc);
+                } catch (SQLiteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+
 
     public void llenarTiposEquipo(List<TiposDeEquipo> tiposDeEquipos) {
         long items = getItemsTiposEquipo();
@@ -1826,5 +1893,8 @@ public class DataBase {
         regAfectados+=contador;
         return regAfectados;
     }
+
+
+
 }
 //***************************************************FIN CRUD DE TS14004**********************************************************************

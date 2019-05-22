@@ -17,12 +17,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ingreseidequipo"
+                />
+
             <EditText
                 android:id="@+id/consultidEquipo"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:maxLength="7"/>
+                android:maxLength="7"
+                android:textColor="#4CAF50" />
 
 
 
@@ -205,8 +212,20 @@
 
 
 
+            <Button
+                android:onClick="ActualizarEquipo"
+                android:text="@string/actualizar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+
+
 
         </LinearLayout>
+
+
+
 
 
 

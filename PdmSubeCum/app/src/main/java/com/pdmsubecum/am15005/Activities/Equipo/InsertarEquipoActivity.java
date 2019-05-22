@@ -248,23 +248,6 @@ public class InsertarEquipoActivity extends AppCompatActivity implements Adapter
     };
 
 
-    private void actualizarInput() {
-        String f="0";
-        String formatoDeFecha = "DD-MM-YYYY"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha);
-
-        if (dia<10||mes<10)
-        {
-
-
-            fechaingreso.setText("0"+dia+"/"+"0"+mes+"/"+anyo);
-        }else {
-
-            fechaingreso.setText(dia + "/" + mes + "/" + anyo);
-        }
-    }
-
-
 
 
     @Override
@@ -330,7 +313,7 @@ public class InsertarEquipoActivity extends AppCompatActivity implements Adapter
         equipo.setIdequipo(Integer.parseInt(edtEq.getText().toString()));
         equipo.setCaracteristicas(carac.getText().toString());
         equipo.setModelo(modelo.getText().toString());
-        equipo.setSerie(modelo.getText().toString());
+        equipo.setSerie(serie.getText().toString());
         equipo.setFechaingreso(fe);
 
 
