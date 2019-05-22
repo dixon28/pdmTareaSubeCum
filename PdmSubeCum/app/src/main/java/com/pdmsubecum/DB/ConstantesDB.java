@@ -189,7 +189,7 @@ public class ConstantesDB {
     "NOMBREDOC            VARCHAR2(50)         not null,"+
     "IDIOMA               VARCHAR2(50)         not null,"+
     "DESCRIPCIONDOC       VARCHAR2(50)         not null,"+
-    "DISPONIBLEDOC        VARCHAR2(50)         not null,"+
+    "DISPONIBLEDOC        SMALLINT         not null,"+
     "constraint PK_DOCUMENTO primary key (ISBN))";
 
 

@@ -339,21 +339,17 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
     }
 
 
-    public void ActualizarEquipo(View view)
-    {
+    public void ActualizarEquipo(View view) {
         String formatoDeFecha = "DD-MM-YYYY"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha);
         boolean disp;
         Equipo equipo = new Equipo();
-        String fe=fechaingreso.getText().toString();
+        String fe = fechaingreso.getText().toString();
 
-        Log.d("fecha",fe);
-
-
+        Log.d("fecha", fe);
 
 
-
-        String id=edtEq.getText().toString();
+        String id = edtEq.getText().toString();
 
 
         equipo.setIdmarca(Integer.parseInt(edtmarca.getText().toString()));
@@ -365,42 +361,39 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
         equipo.setFechaingreso(fe);
 
 
+        if (Objects.equals("si", edtEquipoDis.getText().toString())) {
 
-        if(Objects.equals("si",edtEquipoDis.getText().toString())){
 
+            disp = true;
 
-            disp=true;
-
-            Log.d("disponible","true");
+            Log.d("disponible", "true");
 
             equipo.setEquipodisponible(disp);
-        }
-        else
-        {
+        } else {
 
-            Log.d("disponible","false");
+            Log.d("disponible", "false");
 
-            disp=false;
+            disp = false;
             equipo.setEquipodisponible(disp);
         }
 
 
+        if (helper.verificarIntegridadAM15005(equipo, 2)) {
+
+            Toast.makeText(this, "Ya existe un registro con el id " + edtEq.getText().toString(), Toast.LENGTH_SHORT).show();
+        } else {
 
 
-
-
-
-        helper.abrir();
-     int s=   helper.actualizarEquipo(equipo,Integer.parseInt(conid.getText().toString()));
+            helper.abrir();
+            int s = helper.actualizarEquipo(equipo, Integer.parseInt(conid.getText().toString()));
 //        db.ingresarFecha(fe,equipo.getIdequipo());
-        helper.cerrar();
+            helper.cerrar();
 
-        conid.setText(String.valueOf(equipo.getIdequipo()));
-        Toast.makeText(this, String.valueOf(s), Toast.LENGTH_SHORT).show();
-
-
+            conid.setText(String.valueOf(equipo.getIdequipo()));
+            Toast.makeText(this, String.valueOf(s), Toast.LENGTH_SHORT).show();
 
 
+        }
     }
 
 }

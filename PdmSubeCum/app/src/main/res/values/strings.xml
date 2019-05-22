@@ -175,7 +175,12 @@
     <string name="idMovDetalle"> id Movimiento detalle </string>
     <string name="ingreseidequipo">ingrese el id del equipo</string>
     <string name="eliminar_equipo">Eliminar Equipo</string>
-
+    <string name="documento">Documento</string>
+    <string name="idTipos_De_Doc">Tipo de documento</string>
+    <string name="nombredoc">Nombre del documento</string>
+    <string name="Idioma">Idioma del documento</string>
+    <string name="isbnDelDoc">ISBN</string>
+    <string name="documentodisponible">Documento disponible</string>
 
 
 </resources>

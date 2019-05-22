@@ -341,12 +341,19 @@ public class InsertarEquipoActivity extends AppCompatActivity implements Adapter
 
 
 
+        if (db.verificarIntegridadAM15005(equipo,2)){
 
-        db.abrir();
-        db.insertar(equipo);
+            Toast.makeText(this,"Ya existe un registro con el id "+id , Toast.LENGTH_SHORT).show();
+        }
+        else {
+
+
+            db.abrir();
+            db.insertar(equipo);
 //        db.ingresarFecha(fe,equipo.getIdequipo());
-        db.cerrar();
-        Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
+            db.cerrar();
+            Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
+        }
 
 
 

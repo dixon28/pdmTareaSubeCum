@@ -169,27 +169,27 @@ public class DataBase {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_MARCA);
     }
 
-    private long getItemsAutor() {
+    public long getItemsAutor() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_AUTOR);
     }
 
-    private long getItemsAutorDetalle() {
+    public long getItemsAutorDetalle() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_AUTOR_DETALLE);
     }
 
-    private long getItemsTiposEquipo() {
+    public long getItemsTiposEquipo() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_TIPOS_DE_EQUIPO);
 
 
     }
 
-    private long getItemsTiposDocumento() {
+    public long getItemsTiposDocumento() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_TIPOS_DE_DOCUMENTO);
     }
-    private long getItemsDocumento() {
+    public long getItemsDocumento() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_DOCUMENTO);
     }
-    private long getItemsEquipo() {
+    public long getItemsEquipo() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_EQUIPO);
     }
 
@@ -377,6 +377,39 @@ public class DataBase {
         }
     }
 
+    public Documento consultarD(String isbn) {
+
+
+        String[] id = {isbn};
+        Cursor cursor = sqLiteDatabase.query("documento", ConstantesDB.CAMPOS_DOCUMENTO, "isbn = ?", id, null,
+                null, null);
+        if (cursor.moveToFirst()) {
+
+            Documento documento= new Documento();
+
+            documento.setIsbn(cursor.getString(0));
+            documento.setIdtiposdedocumento(Integer.parseInt(cursor.getString(1)));
+            documento.setNombredoc(cursor.getString(2));
+            documento.setIdioma(cursor.getString(3));
+            documento.setDescripciondoc(cursor.getString(4));
+
+
+
+
+            if (Integer.parseInt(cursor.getString(5))==1) {
+                documento.setDisponibledoc(true);
+            }
+            else {
+
+                documento.setDisponibledoc(false);
+            }
+
+            return documento;
+        } else {
+            return null;
+        }
+    }
+
 
     public ArrayList<Marca> llenarspinner() {
 
@@ -400,6 +433,31 @@ public class DataBase {
 
         return  marcas;
     }
+
+
+    public ArrayList<TiposDeDocumento> llenarspinnerDoc() {
+
+
+        ArrayList<TiposDeDocumento> tiposDeDocumentos = new ArrayList<>();
+
+        //Cursor cursor = sqLiteDatabase.query("marca", ConstantesDB.CAMPOS_MARCA, null, null, null,null, null);
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from "+ConstantesDB.TABLA_TIPOS_DE_DOCUMENTO,null);
+
+        while (cursor.moveToNext()) {
+
+
+
+            TiposDeDocumento tiposDeDocumento= new TiposDeDocumento();
+            tiposDeDocumento.setIdTiposDeDocumentos(parseInt(cursor.getString(0)));
+            tiposDeDocumento.setDescripcionTipoDeDocumento(cursor.getString(1));
+            tiposDeDocumentos.add(tiposDeDocumento);
+
+
+        }
+
+        return  tiposDeDocumentos;
+    }
+
 
     public ArrayList<TiposDeEquipo> llenarSpinerEquipos() {
 
@@ -495,6 +553,15 @@ public class DataBase {
         return conteo;
     }
 
+    public String eliminar(Documento doc) {
+        String conteo;
+
+        String where = "isbn='" + doc.getIsbn() + "'";
+        sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO, where, null);
+        conteo = String.valueOf(getItemsDocumento());
+        return conteo;
+    }
+
     public int actualizarEquipo(Equipo equipo, int ideq) {
 
         ContentValues contentValues = equipo.toValues();
@@ -506,9 +573,78 @@ public class DataBase {
         return sqLiteDatabase.update(ConstantesDB.TABLA_EQUIPO, contentValues, "idequipo = ?",id);
     }
 
+    public int actualizar(Documento documento, String idoc) {
+
+        ContentValues contentValues = documento.toValues();
+        String[] id = {String.valueOf(idoc)};
+        Log.d("ide", String.valueOf(id));
+        Log.d("values",String.valueOf(contentValues));
 
 
-        //    insertar Datos
+        return sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO, contentValues, "isbn = ?",id);
+    }
+
+    public boolean verificarIntegridadAM15005(Object dato, int relacion) throws
+            SQLException{
+        switch(relacion) {
+            case 1: {
+
+              Marca  marca = (Marca) dato;
+                String[] id1 = {String.valueOf(marca.getIdmarca())};
+
+                abrir();
+                Cursor cursor1 = sqLiteDatabase.query(ConstantesDB.TABLA_MARCA, null, "idmarca = ?", id1, null,
+                        null, null);
+                if(cursor1.moveToFirst()){
+//Se encontro Marca
+                    return true;
+                }
+                return false;
+
+        }
+            case 2: {
+
+                Equipo  equipo = (Equipo) dato;
+                String[] id1 = {String.valueOf(equipo.getIdequipo())};
+
+                abrir();
+                Cursor cursor1 = sqLiteDatabase.query(TABLA_EQUIPO, null, "idequipo = ?", id1, null,
+                        null, null);
+                if(cursor1.moveToFirst()){
+//Se encontro equipo
+                    return true;
+                }
+                return false;
+
+            }
+            case 3: {
+
+                Documento documento = (Documento) dato;
+                String[] id1 = {String.valueOf(documento.getIsbn())};
+
+                abrir();
+                Cursor cursor1 = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO, null, "isbn = ?", id1, null,
+                        null, null);
+                if(cursor1.moveToFirst()){
+//Se encontro Documento
+                    return true;
+                }
+                return false;
+
+            }
+
+            default:
+                return false;
+
+        }
+
+
+    }
+
+
+
+
+                //    insertar Datos
     public void llenarMarca(List<Marca> marcas) {
         long items = getItemsMarca();
         if (items == 0) {
@@ -2135,7 +2271,6 @@ public class DataBase {
             return e.toString();
         }
     }
-
 
 
 }

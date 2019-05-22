@@ -9,13 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
-        <activity android:name=".pm15007.tipo_movimiento_equipo.UpdateTipoMovimientoEquipo"></activity>
+        <activity android:name=".am15005.Activities.Documento.DocumentoActualizarActivity"></activity>
+        <activity android:name=".am15005.Activities.Documento.DocumentoConsultarActivity" />
+        <activity android:name=".am15005.Activities.Documento.DocumentoEliminarActivity" />
+        <activity android:name=".am15005.Activities.Documento.DocumentoInsertarActivity" />
+        <activity android:name=".pm15007.tipo_movimiento_equipo.UpdateTipoMovimientoEquipo" />
         <activity android:name=".pm15007.tipo_movimiento_equipo.RetrieveTipoMovimientoEquipo" />
         <activity android:name=".pm15007.tipo_movimiento_equipo.DeleteTipoMovimientoEquipo" />
         <activity android:name=".pm15007.tipo_movimiento_equipo.CreateTipoMovimientoEquipo" />
-        <activity android:name=".am15005.Activities.Equipo.ConsultarEquipoActivity"/>
+        <activity android:name=".am15005.Activities.Equipo.ConsultarEquipoActivity" />
         <activity android:name=".am15005.Activities.Equipo.ActualizarEquipoActivity" />
         <activity android:name=".am15005.Activities.Equipo.EliminarEquipoActivity" />
         <activity android:name=".am15005.Activities.Equipo.InsertarEquipoActivity" />

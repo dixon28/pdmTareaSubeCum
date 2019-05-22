@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".am15005.Activities.Documento.DocumentoInsertarActivity">
+
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView android:text="@string/idTipos_De_Doc"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+            <Spinner
+                android:id="@+id/sp_tipos_doc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+
+
+
+            <TextView android:text="@string/documentodisponible"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <Spinner
+                android:id="@+id/sp_documentodisponible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+
+
+
+
+
+
+            <TextView android:text="@string/idTipos_De_Doc"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <EditText
+                android:id="@+id/EdtIdTiposDoc"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:enabled="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="text"
+                android:longClickable="false"
+                android:textColor="@color/update" />
+
+
+
+
+
+            <TextView android:text="@string/documentodisponible"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <EditText
+                android:id="@+id/EdtDocdisponible"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:enabled="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="text"
+                android:longClickable="false"
+                android:textColor="@color/update" />
+
+
+
+            <TextView android:text="@string/isbnDelDoc"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <EditText
+                android:id="@+id/editisbndeldoc"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="@color/update"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+
+
+
+
+
+
+
+            <TextView android:text="@string/nombredoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <EditText
+                android:id="@+id/editnombredoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLength="150"
+                android:textColor="@color/update" />
+
+
+
+            <TextView android:text="@string/Idioma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/editIdioma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLength="50"
+                android:textColor="@color/update" />
+
+
+
+            <TextView android:text="@string/descripcion"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <EditText
+                android:id="@+id/editDescricionDoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/update"
+
+                />
+
+
+            <Button
+                android:onClick="insertarDocumento"
+                android:text="@string/insertar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:onClick="limpiarTexto"
+                android:text="@string/limpiar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+
+
+
+
+</TableLayout>
