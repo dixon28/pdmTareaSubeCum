@@ -9,7 +9,7 @@ public class ConstantesDB {
     //----------------------------------------------------
     // nombre base de datos
     //----------------------------------------------------
-    public static final String DATABASE = "inventario.s3db";
+    public static final String DATABASE = "inventario_test.s3db";
 
 
     //-----------------------------------------------------

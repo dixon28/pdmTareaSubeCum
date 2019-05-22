@@ -144,10 +144,23 @@
     <string name="consultar_unidad_administrativa">Consultar Unidad Administrativa</string>
     <string name="update_unidad_administrativa">Actualizar Unidad Administrativa</string>
     <string name="delete_unidad_administrativa">Eliminar Unidad Administrativa</string>
+    <string name="idTipos_Equipo">Tipos equipo</string>
+    <string name="id_del_Equipo">id del equipo</string>
+    <string name="serie_equipo">serie del equipo</string>
+    <string name="Caracteristicas_equipo">caracteristicas equipo</string>
+    <string name="Modelo">modelo del equipo</string>
+    <string name="Fecha_ingreso">fecha de ingreso</string>
+    <string name="equipodisponible">Equipo disponible</string>
+    <string name="ingreseFecha">ingrese la fecha</string>
 
+    <string name="crear_tipo_movimiento_equipo">Crear Tipo Movimiento Equipo</string>
+    <string name="tipo_movimiento_equipo">Tipo Movimiento Equipo</string>
+    <string name="consultar_tipo_movimiento_equipo">Consultar Tipo Movimiento Equipo</string>
+    <string name="actualizar_tipo_movimiento_equipo">Actualizar Tipo Movimiento Equipo</string>
+    <string name="eliminar_tipo_movimiento_equipo">Eliminar Tipo Movimiento Equipo</string>
 
     <!-- * STRING USADOS POR JOEL **-->
-    <string name="idTipo">id tipo Movimiento</string>
+    <string name="idTipo">id tipo</string>
     <string name="descTipoM">descripcion</string>
     <string name="opcionesTM">opciones</string>
     <string name="idDocExi">id Doc Existencia</string>
@@ -160,36 +173,9 @@
     <string name="idUniDestino"> Unidad Destino </string>
     <string name="fecha"> fecha </string>
     <string name="idMovDetalle"> id Movimiento detalle </string>
-
-    <string name="idTipos_Equipo">Tipos equipo</string>
-    <string name="id_del_Equipo">id del equipo</string>
-    <string name="serie_equipo">serie del equipo</string>
-    <string name="Caracteristicas_equipo">caracteristicas equipo</string>
-    <string name="Modelo">modelo del equipo</string>
-    <string name="Fecha_ingreso">fecha de ingreso</string>
-    <string name="equipodisponible">Equipo disponible</string>
-    <string name="ingreseFecha">ingrese la fecha</string>
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- * STRING USADOS POR JOEL **-->
-
-    <string name="crear_tipo_movimiento_equipo">Crear Tipo Movimiento Equipo</string>
-    <string name="tipo_movimiento_equipo">Tipo Movimiento Equipo</string>
-    <string name="consultar_tipo_movimiento_equipo">Consultar Tipo Movimiento Equipo</string>
-    <string name="actualizar_tipo_movimiento_equipo">Actualizar Tipo Movimiento Equipo</string>
-    <string name="eliminar_tipo_movimiento_equipo">Eliminar Tipo Movimiento Equipo</string>
-    <string name="eliminar_equipo">Eliminar equipo</string>
     <string name="ingreseidequipo">ingrese el id del equipo</string>
+    <string name="eliminar_equipo">Eliminar Equipo</string>
+
 
 
 </resources>

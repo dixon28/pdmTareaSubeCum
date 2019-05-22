@@ -12,7 +12,7 @@ import android.util.Log;
 public class DBHelper extends SQLiteOpenHelper {
 
 
-    public static final int DB_VERSION = 15;
+    public static final int DB_VERSION = 16;
     //version actual 15
 
 
@@ -110,6 +110,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_DELETE_MATERIA);
         db.execSQL(ConstantesDB.SQL_DELETE_HORARIO);
         db.execSQL(ConstantesDB.SQL_DELETE_GRUPO);
+
         db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_MATERIAELIMINAR);
         db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_GRUPOELIMINAR);
         db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_HORARIOELIMINAR);

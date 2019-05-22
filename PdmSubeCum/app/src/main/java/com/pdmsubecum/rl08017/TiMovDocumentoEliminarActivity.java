@@ -21,12 +21,19 @@ public class TiMovDocumentoEliminarActivity extends Activity {
         editTipo=(EditText)findViewById(R.id.editTipo);
     }
     public void eliminar(View v){
-        String regEliminadas;
-        TiposDeMovimientoParaDocumento tipo=new TiposDeMovimientoParaDocumento();
-        tipo.setIdTiposDeMovimientoParaDocumento(Integer.parseInt(editTipo.getText().toString()));
-        controlhelper.abrir();
-        regEliminadas=controlhelper.eliminar(tipo);
-        controlhelper.cerrar();
-        Toast.makeText(this, regEliminadas, Toast.LENGTH_SHORT).show();
+        try{
+            String regEliminadas;
+            TiposDeMovimientoParaDocumento tipo=new TiposDeMovimientoParaDocumento();
+            tipo.setIdTiposDeMovimientoParaDocumento(Integer.parseInt(editTipo.getText().toString()));
+            controlhelper.abrir();
+            regEliminadas=controlhelper.eliminar(tipo);
+            controlhelper.cerrar();
+            Toast.makeText(this, regEliminadas, Toast.LENGTH_SHORT).show();
+
+        }
+        catch (Exception e){
+            Toast.makeText(this,"datos incompletos o incorrectos",Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

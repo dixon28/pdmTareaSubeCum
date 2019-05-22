@@ -173,7 +173,7 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
             @Override
             public void onClick(View view) {
 
-                new DatePickerDialog(ActualizarEquipoActivity.this, date, calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DAY_OF_MONTH)).show();
+
             }
         });
 

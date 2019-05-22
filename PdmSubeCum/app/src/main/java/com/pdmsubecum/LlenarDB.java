@@ -7,6 +7,11 @@ import android.widget.ArrayAdapter;
 import com.pdmsubecum.DB.DataBase;
 import com.pdmsubecum.DB.modelo.RolUsuario;
 import com.pdmsubecum.DB.modelo.Usuario;
+import com.pdmsubecum.DB.modelo.pm15007.EquipoExistencia;
+import com.pdmsubecum.DB.modelo.pm15007.EquipoMovimiento;
+import com.pdmsubecum.DB.modelo.pm15007.EquipoMovimientoDetalle;
+import com.pdmsubecum.DB.modelo.pm15007.TipoMovimientoEquipo;
+import com.pdmsubecum.DB.modelo.pm15007.UnidadAdministrativa;
 import com.pdmsubecum.mm14031.Aula;
 import com.pdmsubecum.mm14031.Ciclo;
 import com.pdmsubecum.mm14031.Dia;
@@ -36,6 +41,12 @@ public class LlenarDB {
     public ArrayList<HorarioDetalle> horarioDetalles;
     //Fin Tablas MM
 
+    //Tablas PM15007
+    public ArrayList<EquipoExistencia> equipoExistencias;
+    public ArrayList<EquipoMovimiento> equipoMovimientos;
+    public ArrayList<EquipoMovimientoDetalle> equipoMovimientoDetalles;
+    public ArrayList<TipoMovimientoEquipo> tipoMovimientoEquipos;
+    public ArrayList<UnidadAdministrativa> unidadAdministrativas;
 
     public DataBase dataBase;
 
@@ -67,6 +78,14 @@ public class LlenarDB {
         crearHorariosDetalle();
 
         //Fin tablas MM
+
+        // pm15007
+        crearEquipoExistencia();
+        crearEquipoMovimiento();
+        crearEquipoMovimientoDetalle();
+        crearTipoMovimientoEquipo();
+        crearUnidadAdministrativa();
+        //fin
 
         dataBase.cerrar();
     }
@@ -158,5 +177,49 @@ public class LlenarDB {
 
     //Fin Tablas MM
 
+    //Tablas PM15007
 
+    public void crearEquipoExistencia(){
+        equipoExistencias = new ArrayList<>();
+        equipoExistencias.add(new EquipoExistencia(1,1,1,1,2));
+        equipoExistencias.add(new EquipoExistencia(2,2,2,1,4));
+        equipoExistencias.add(new EquipoExistencia(3,3,1,2,3));
+
+        dataBase.llenarEquipoExistencia(equipoExistencias);
+    }
+    public void crearEquipoMovimiento(){
+        equipoMovimientos = new ArrayList<>();
+        equipoMovimientos.add(new EquipoMovimiento(1,1,1,
+                2,"transferencia de equipo","10-10-2018"));
+        equipoMovimientos.add(new EquipoMovimiento(2,2,1,
+                2,"transferencia de equipo","11-10-2018"));
+        equipoMovimientos.add(new EquipoMovimiento(3,1,2,
+                3,"transferencia de equipo","12-10-2018"));
+
+        dataBase.llenarEquipoMovimiento(equipoMovimientos);
+    }
+    public void crearEquipoMovimientoDetalle(){
+        equipoMovimientoDetalles = new ArrayList<>();
+        equipoMovimientoDetalles.add(new EquipoMovimientoDetalle(1,1,1));
+        equipoMovimientoDetalles.add(new EquipoMovimientoDetalle(2,1,1));
+        equipoMovimientoDetalles.add(new EquipoMovimientoDetalle(3,2,2));
+
+        dataBase.llenarEquipoMovimientoDetalle(equipoMovimientoDetalles);
+    }
+    public void crearTipoMovimientoEquipo(){
+        tipoMovimientoEquipos = new ArrayList<>();
+        tipoMovimientoEquipos.add(new TipoMovimientoEquipo(1,"movimiento 1"));
+        tipoMovimientoEquipos.add(new TipoMovimientoEquipo(2,"movimiento 2"));
+        tipoMovimientoEquipos.add(new TipoMovimientoEquipo(3,"movimiento 3"));
+
+        dataBase.llenarTipoMovimientoEquipo(tipoMovimientoEquipos);
+    }
+    public void crearUnidadAdministrativa(){
+        unidadAdministrativas = new ArrayList<>();
+        unidadAdministrativas.add(new UnidadAdministrativa(1,"Unidad 1","area 1"));
+        unidadAdministrativas.add(new UnidadAdministrativa(2,"Unidad 2","area 2"));
+        unidadAdministrativas.add(new UnidadAdministrativa(3,"Unidad 3","area 3"));
+
+        dataBase.llenarUnidadAdministrativa(unidadAdministrativas);
+    }
 }
