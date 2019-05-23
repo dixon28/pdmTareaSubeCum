@@ -181,6 +181,10 @@
     <string name="Idioma">Idioma del documento</string>
     <string name="isbnDelDoc">ISBN</string>
     <string name="documentodisponible">Documento disponible</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancelar</string>
+    <string name="mensaje_eliminar">Tablas Afectadas: </string>
+    <string name="titulo_dialogo">¿Esta seguro de eliminar?</string>
 
 
 </resources>
