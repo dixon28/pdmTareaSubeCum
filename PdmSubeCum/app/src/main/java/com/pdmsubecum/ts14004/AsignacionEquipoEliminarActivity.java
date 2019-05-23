@@ -28,8 +28,8 @@ public class AsignacionEquipoEliminarActivity extends AppCompatActivity {
 
     public void eliminarAsignacionEquipo(View v){
         AlertDialog.Builder dialogo = new AlertDialog.Builder(AsignacionEquipoEliminarActivity.this);
-        // dialogo.setIcon(R.mipmap.ic_launcher).
-        dialogo.setMessage("Importante").
+        dialogo.setIcon(R.mipmap.ic_launcher).
+        setMessage("Importante").
                 setMessage("El identificador está asociado a otras registros\n\n ¿Desea eliminar en cascada?").
                 setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
