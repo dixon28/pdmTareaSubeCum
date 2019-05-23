@@ -181,6 +181,7 @@
     <string name="Idioma">Idioma del documento</string>
     <string name="isbnDelDoc">ISBN</string>
     <string name="documentodisponible">Documento disponible</string>
+    <string name="nombre_app">Sistema de inventario</string>
 
 
 </resources>
