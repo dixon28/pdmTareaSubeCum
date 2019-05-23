@@ -13,7 +13,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
-    public static final int DB_VERSION = 18;
+
+    public static final int DB_VERSION = 19;
+
 
 
 

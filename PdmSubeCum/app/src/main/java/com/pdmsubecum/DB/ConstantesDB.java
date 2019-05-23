@@ -86,7 +86,8 @@ public class ConstantesDB {
             "END";
 
     public static final String SQL_CREATE_TRIGGER_ELIMINARDOCUMENTOASIGNACION = "CREATE TRIGGER tr_EliminarDocumentoAsignacion " +
-            "BEFORE DELETE ON DocumentoAsignacion BEGIN DELETE FROM DocumentoAsignacionDetalle  WHERE DocumentoAsignacionDetalle.idDocumentoAsignacion = OLD.idDocumentoAsignacion;" +
+            "BEFORE DELETE ON DocumentoAsignacion BEGIN DELETE FROM DocumentoAsignacionDetalle  " +
+            "WHERE DocumentoAsignacionDetalle.idDocumentoAsignacion = OLD.idDocumentoAsignacion;" +
             "END";
     //------------------------------------------------------------------------------------------------------------------------------
     //Consultas para crear tablas
