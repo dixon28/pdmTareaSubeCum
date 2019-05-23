@@ -1,5 +1,7 @@
 package com.pdmsubecum.ts14004;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +25,32 @@ public class DocumentoAsignacionEliminarActivity extends AppCompatActivity {
         edt_CodDocuAsignacion = (EditText) findViewById(R.id.edt_CodDocuAsignacion);
     }
 
-    public void eliminarDocumentoAsignacion(View v) {
+
+    public void eliminarDocumentoAsignacion(View v){
+
+            AlertDialog.Builder dialogo = new AlertDialog.Builder(DocumentoAsignacionEliminarActivity.this);
+            // dialogo.setIcon(R.mipmap.ic_launcher).
+            dialogo.setMessage("Importante").
+                    setMessage("El identificador está asociado a otras registros\n\n ¿Desea eliminar en cascada?").
+                    setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            aceptar();
+                            Toast.makeText(DocumentoAsignacionEliminarActivity.this, "Eliminado Satisfactoriamente", Toast.LENGTH_SHORT).show();
+                        }
+                    }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            dialogo.create();
+
+            dialogo.show();
+
+    }
+
+    public void aceptar() {
         String regEliminadas;
         DocumentoAsignacion documentoAsignacion = new DocumentoAsignacion();
         documentoAsignacion.setIdDocumentoAsignacion(Integer.parseInt(edt_CodDocuAsignacion.getText().toString()));
