@@ -2259,6 +2259,7 @@ public class DataBase {
         }
 
 
+
         public String llenarBDInicio () {
             // tabla tipo movimiento
             final int[] Vid = {1, 2, 3, 4, 5};

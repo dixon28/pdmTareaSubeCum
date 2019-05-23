@@ -182,5 +182,12 @@
     <string name="isbnDelDoc">ISBN</string>
     <string name="documentodisponible">Documento disponible</string>
 
+    <string name="nombre_app">Sistema de inventario</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Cancelar</string>
+    <string name="mensaje_eliminar">Tablas Afectadas: </string>
+    <string name="titulo_dialogo">¿Esta seguro de eliminar?</string>
+
 
 </resources>

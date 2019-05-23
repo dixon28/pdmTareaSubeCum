@@ -252,6 +252,109 @@ public class ConstantesDB {
       "descripciondoc",
       "disponibledoc"};
 
+    //Triggers
+
+    public static final String SQL_CREATE_TRIGGER_MARCA = "CREATE TRIGGER tr_MarcaEliminar " +
+            "BEFORE DELETE ON marca BEGIN DELETE FROM equipo WHERE idmarca = OLD.idmarca; END";
+    public static final String SQL_DELETE_TRIGGER_MARCA = "DROP TRIGGER tr_MarcaEliminar;";
+
+
+
+    public static final String SQL_CREATE_TRIGGER_DOCUMENTO= "CREATE TRIGGER tr_DocumentoEliminar " +
+            "BEFORE DELETE ON documento BEGIN DELETE FROM autordetalle WHERE isbn = OLD.isbn; END";
+    public static final String SQL_DELETE_TRIGGER_DOCUMENTO = "DROP TRIGGER tr_DocumentoEliminar;";
+
+
+    public static final String SQL_CREATE_TRIGGER_EQUIPO = "CREATE TRIGGER tr_EquipoEliminar BEFORE DELETE ON equipo BEGIN DELETE FROM equipo_existencia WHERE id_equipo = OLD.idequipo; END;";
+
+    public static final String SQL_DELETE_TRIGGER_EQUIPO= "DROP TRIGGER tr_EquipoEliminar;";
+
+    public static final String SQL_CREATE_TRIGGER_EQUIPO2 = "CREATE TRIGGER tr_EquipoEliminar2 BEFORE DELETE ON equipo BEGIN DELETE FROM asignacionequipodetalle WHERE idequipo = OLD.idequipo; END;";
+
+    public static final String SQL_DELETE_TRIGGER_EQUIPO2= "DROP TRIGGER tr_EquipoEliminar2;";
+
+
+    public static final String SQL_CREATE_TRIGGER_EQUIPO3 = "CREATE TRIGGER tr_EquipoEliminar3 BEFORE DELETE ON equipo BEGIN DELETE FROM equipo_movimiento_detalle WHERE idequipo = OLD.idequipo; END;";
+
+    public static final String SQL_DELETE_TRIGGER_EQUIPO3= "DROP TRIGGER tr_EquipoEliminar3;";
+
+
+
+
+
+
+    public static final String SQL_CREATE_TRIGGER_DOCUMENTO2 = "CREATE TRIGGER tr_Documento2Eliminar " +
+            "BEFORE DELETE ON documento BEGIN DELETE FROM documento_movimiento_detalle WHERE isbn = OLD.isbn; END";
+    public static final String SQL_DELETE_TRIGGER_DOCUMENTO2= "DROP TRIGGER tr_Documento2Eliminar;";
+
+    public static final String SQL_CREATE_TRIGGER_DOCUMENTO3= "CREATE TRIGGER tr_Documento3Eliminar " +
+            "BEFORE DELETE ON documento BEGIN DELETE FROM documentoasignaciondetalle WHERE isbn = OLD.isbn; END";
+    public static final String SQL_DELETE_TRIGGER_DOCUMENTO3 = "DROP TRIGGER tr_Documento3Eliminar;";
+
+    public static final String SQL_CREATE_TRIGGER_DOCUMENTO4= "CREATE TRIGGER tr_Documento4Eliminar " +
+            "BEFORE DELETE ON documento BEGIN DELETE FROM documento_existencia   WHERE isbn = OLD.isbn; END";
+    public static final String SQL_DELETE_TRIGGER_DOCUMENTO4 = "DROP TRIGGER tr_Documento4Eliminar;";
+
+
+    public static final String SQL_UPDATE_TRIGGER_MARCA="CREATE TRIGGER update_marca\n" +
+            "\n" +
+            "AFTER UPDATE OF idmarca ON marca BEGIN\n" +
+            "\n" +
+            "\n" +
+            "UPDATE equipo SET idmarca = new.idmarca WHERE idmarca= old.idmarca;END;";
+
+    public static final String SQL_DELETE_TRIGGER_MARCAUPDATE = "DROP TRIGGER update_marca;";
+
+
+    public static final String SQL_UPDATE_TRIGGER_DOCUMENTO="CREATE TRIGGER update_documento\n" +
+            "\n" +
+            "AFTER UPDATE OF isbn ON documento BEGIN\n" +
+            "\n" +
+            "\n" +
+            "UPDATE autordetalle SET isbn = new.isbn WHERE isbn= old.isbn;END;";
+
+    public static final String SQL_DELETE_TRIGGER_DOCUMENTOUPDATE = "DROP TRIGGER update_documento;";
+
+
+    public static final String SQL_UPDATE_TRIGGER_EQUIPOUPDATE="CREATE TRIGGER update_equipo\n" +
+            "\n" +
+            "AFTER UPDATE OF idequipo ON equipo BEGIN\n" +
+            "\n" +
+            "\n" +
+            "UPDATE equipo_existencia SET id_equipo = new.idequipo WHERE id_equipo= old.idequipo;END;";
+
+    public static final String SQL_DELETE_TRIGGER_EQUIPOUPDATE = "DROP TRIGGER update_equipo;";
+
+
+    public static final String SQL_UPDATE_TRIGGER_DOCUMENTO2="CREATE TRIGGER update_documento2\n" +
+            "\n" +
+            "AFTER UPDATE OF isbn ON documento BEGIN\n" +
+            "\n" +
+            "\n" +
+            "UPDATE documento_existencia SET isbn = new.isbn WHERE isbn= old.isbn;END;";
+
+    public static final String SQL_DELETE_TRIGGER_DOCUMENTOUPDATE2 = "DROP TRIGGER update_documento2;";
+
+
+    public static final String SQL_UPDATE_TRIGGER_EQUIPOUPDATE3="CREATE TRIGGER update_equipo2\n" +
+            "\n" +
+            "AFTER UPDATE OF idequipo ON equipo BEGIN\n" +
+            "\n" +
+            "\n" +
+            "UPDATE asignacionequipodetalle SET idequipo = new.idequipo WHERE idequipo= old.idequipo;END;";
+
+    public static final String SQL_DELETE_TRIGGER_EQUIPOUPDATE3 = "DROP TRIGGER update_equipo2;";
+
+
+
+
+
+
+
+
+
+    //
+
 
     public static final String TABLA_CICLO = "ciclo";
     public static final String TABLA_DIA = "dia";
