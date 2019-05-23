@@ -1661,8 +1661,9 @@ public class DataBase {
     }
     //TS14004---------------------------------------------------------------------------
     public String llenarBase() {
+
         final int[] VDidDocente = {8888881, 8888882, 8888883, 8888884};
-        final int[] VDidUnidadAdministrativa = {1111111, 1111110, 1111100, 1111000};
+        final int[] VDidUnidadAdministrativa = {1,2,3,4};
         final String[] VDnombre = {"Rodrigo", "Nelson", "Joel", "Dixon"};
         final String[] VDapellido = {"Orantes", "Ortiz", "Gonzales", "Coto"};
         final String[] VDemail = {"presa@gmail.com", "Miranda@gmail.com", "Ramos@gmail.com", "Argueta@gmail.com"};
@@ -1690,6 +1691,7 @@ public class DataBase {
         abrir();
         if (getItemsDocente() == 0) {
             Docente docente = new Docente();
+
             for (int i = 0; i < 4; i++) {
                 docente.setIdDocente(VDidDocente[i]);
                 docente.setIdUnidadAdministrativa(VDidUnidadAdministrativa[i]);
@@ -1746,8 +1748,14 @@ public class DataBase {
     }
 
     //******************************************INICIO CRUD DE TS14004*****************************************************************
+
+
+
+
+
     //METODOS INSERTAR <--TS14004-->
     public String insertar(Docente docente) {
+
         String regInsertados = "Registro Insertado Nº= ";
         long contador = 0;
 
