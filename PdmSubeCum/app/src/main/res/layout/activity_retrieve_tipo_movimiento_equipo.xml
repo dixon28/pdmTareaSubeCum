@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:enabled="false"
-            android:hint="Descripcion (string)"
+            android:hint="@string/txt_descripcion_tipo_mov_equipo"
             android:inputType="text"
             android:textColor="@color/colorAccentDark" />
     </android.support.design.widget.TextInputLayout>
