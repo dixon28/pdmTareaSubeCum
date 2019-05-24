@@ -61,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/actualizar_marca"
-        android:onClick="ActualizarMar"
+        android:onClick="actualizar"
         android:layout_marginLeft="30dp"
         />
 

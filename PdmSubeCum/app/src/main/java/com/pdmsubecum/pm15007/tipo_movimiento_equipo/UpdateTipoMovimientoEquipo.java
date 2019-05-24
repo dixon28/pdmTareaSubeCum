@@ -51,7 +51,7 @@ public class UpdateTipoMovimientoEquipo extends AppCompatActivity implements Vie
             case R.id.btn_update_tipo_movimiento_equipo:
                 if(til_id_tipo_movimiento_equipo.getEditText().getText().toString().isEmpty() ||
                         til_descripcion.getEditText().getText().toString().isEmpty()){
-                    Toast.makeText(this,"Por favor rellene todos los campos",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.please_fill),Toast.LENGTH_SHORT).show();
                 }else {
                     try {
                         tipoMovimientoEquipo = new TipoMovimientoEquipo();
@@ -60,16 +60,16 @@ public class UpdateTipoMovimientoEquipo extends AppCompatActivity implements Vie
                         tipoMovimientoEquipo.setDescripcion(til_descripcion.getEditText().getText().toString());
 
                     }catch (Exception e){
-                        Toast.makeText(this,"Uno o mas Campos no son del tipo solicitado",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.bad_fields),Toast.LENGTH_SHORT).show();
                     }
                     dataBase.abrir();
                     if(dataBase.getTipoMovimientoEquipo(tipoMovimientoEquipo.getId_tipo_movimiento_equipo()) != null){
                         dataBase.actualizar(tipoMovimientoEquipo);
                         dataBase.cerrar();
-                        Toast.makeText(this,"Tipo Equipo ha sido actualizado",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.tipo_movimiento_equipo)+" "+getString(R.string.updated),Toast.LENGTH_SHORT).show();
                         limpiar();
                     }else{
-                        Toast.makeText(this,"No Existe Tipo Movimiento Equipo con el ID ingresado",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.tipo_movimiento_equipo)+" "+getString(R.string.not_exists),Toast.LENGTH_SHORT).show();
                         limpiar();
                     }
                 }

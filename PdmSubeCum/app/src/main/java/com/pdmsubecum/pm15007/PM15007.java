@@ -55,9 +55,6 @@ public class PM15007 extends AppCompatActivity implements AdapterView.OnItemClic
         //obteniendo la fila clickeada
         String nombreTablaClick = tablasCrud.get(position);
 
-        //hacer llamar a activities segun click
-        Toast.makeText(this, "Click a tabla: "+nombreTablaClick, Toast.LENGTH_SHORT).show();
-
         Intent intent;
         switch (position){
             case 0:

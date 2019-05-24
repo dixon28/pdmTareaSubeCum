@@ -69,7 +69,7 @@ public class IntegranteFragment extends Fragment {
             RolUsuario rolUsuario = dataBase.getRolUsuario(usuario);
             switch (rolUsuario.getNombre_rol()){
                 case "admin":
-                    integranteList.add(new Integrante("Edilson Argueta Medina","AM15005",getString(R.string.tablas_am15005), R.drawable.am15005));
+                    integranteList.add(new Integrante("Edilson Argueta Medina","AM15005",getString(R.string.tablas_am15005), R.drawable.f1));
                     integranteList.add(new Integrante("Nelson Miranda Miranda","MM14031",getString(R.string.tablas_mm14031),R.drawable.mm14031));
                     integranteList.add(new Integrante("Rodrigo Presa Mariona","PM15007",
                             getString(R.string.tablas_pm15007),R.drawable.pm15007));
@@ -79,7 +79,7 @@ public class IntegranteFragment extends Fragment {
                 case "usuario":
                     switch (rolUsuario.getUsuario()){
                         case "am15005":
-                            integranteList.add(new Integrante("Edilson Argueta Medina","AM15005",getString(R.string.tablas_am15005), R.drawable.man1));
+                            integranteList.add(new Integrante("Edilson Argueta Medina","AM15005",getString(R.string.tablas_am15005), R.drawable.f1));
                             break;
                         case "mm14031":
                             integranteList.add(new Integrante("Nelson Miranda Miranda","MM14031",getString(R.string.tablas_mm14031),R.drawable.mm14031));

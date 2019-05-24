@@ -1673,6 +1673,41 @@ public class DataBase {
 
     }
 
+    //grupoRelacionExiste
+
+    public boolean grupoRelacionExiste(String codigoMateria) throws SQLException {
+
+        String[] codMateria = {codigoMateria};
+
+        Cursor c = sqLiteDatabase.query("grupo", null, "codigoMateria = ?",
+                codMateria, null, null, null);
+
+        if (c.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    //horarioRelacionExiste
+
+    public boolean grupoRelacionExiste(int idHorario) throws SQLException {
+
+        String[] codHorario = {String.valueOf(idHorario)};
+
+        Cursor c = sqLiteDatabase.query("horariodetalle", null, "idHorario = ?",
+                codHorario, null, null, null);
+
+        if (c.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+
     //TS14004---------------------------------------------------------------------------
     public String llenarBase() {
 
@@ -2090,323 +2125,509 @@ public class DataBase {
 
         //rl08017
 
-        public String insertar (TiposDeMovimientoParaDocumento
-        tiposDeMovimientoParaDocumento){
-            try {
-                String regInsertados = "Registro Insertado Nº= ";
-                long contador = 0;
-                ContentValues tipo = new ContentValues();
-                tipo.put("id_tipo_de_movimiento_para_documento", tiposDeMovimientoParaDocumento.getIdTiposDeMovimientoParaDocumento());
-                tipo.put("descripcion", tiposDeMovimientoParaDocumento.getDescripcionMovimientoDoc());
-                contador = sqLiteDatabase.insert(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, null, tipo);
-                if (contador == -1 || contador == 0) {
-                    regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
-                } else {
-                    regInsertados = regInsertados + contador;
-                }
-                return regInsertados;
-
-            } catch (SQLException e) {
-                return "datos incorrectos o faltantes";
+    public String insertar(TiposDeMovimientoParaDocumento tiposDeMovimientoParaDocumento){
+        try{
+            String regInsertados="Registro Insertado Nº= ";
+            long contador=0;
+            ContentValues tipo = new ContentValues();
+            tipo.put("id_tipo_de_movimiento_para_documento", tiposDeMovimientoParaDocumento.getIdTiposDeMovimientoParaDocumento());
+            tipo.put("descripcion", tiposDeMovimientoParaDocumento.getDescripcionMovimientoDoc());
+            contador = sqLiteDatabase.insert(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, null, tipo);
+            if(contador==-1 || contador==0)
+            {
+                regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
             }
+            else {
+                regInsertados=regInsertados+contador;
+            }
+            return regInsertados;
 
         }
-
-        public String insertar (DocumentoExistencia documentoExistencia){
-
-            try {
-                String regInsertados = "Registro Insertado Nº= ";
-                long contador = 0;
-                ContentValues tipo = new ContentValues();
-                tipo.put("id_documento_existencia", documentoExistencia.getIdDocumentoExistencia());
-                tipo.put("isbn", documentoExistencia.getIsbn());
-                tipo.put("id_docente", documentoExistencia.getIdDocente());
-                tipo.put("id_unidad_admin", documentoExistencia.getIdUnidadAdministrativa());
-                tipo.put("actual", documentoExistencia.getActual());
-                contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, null, tipo);
-                if (contador == -1 || contador == 0) {
-                    regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
-                } else {
-                    regInsertados = regInsertados + contador;
-                }
-                return regInsertados;
-
-            } catch (SQLException e) {
-                return "datos incorrectos o faltantes";
-            }
-
+        catch (SQLException e ){
+            return "datos incorrectos o faltantes";
         }
 
-        public TiposDeMovimientoParaDocumento consultarTipoMov (String idMov){
-            String[] id = {idMov};
-            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, CAMPOS_TIPO_MOV_DOCUMENTO, "id_tipo_de_movimiento_para_documento = ?", id, null, null, null);
-            if (cursor.moveToFirst()) {
-                TiposDeMovimientoParaDocumento tipo = new TiposDeMovimientoParaDocumento();
-                tipo.setIdTiposDeMovimientoParaDocumento(parseInt(cursor.getString(0)));
-                tipo.setDescripcionMovimientoDoc(cursor.getString(1));
-                return tipo;
-            } else {
-                return null;
-            }
-        }
+    }
 
-        public DocumentoExistencia consultarDocExistencia (String idExis){
-            String[] id = {idExis};
-            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, CAMPOS_DOCUMENTO_EXISTENCIA, "id_documento_existencia = ?", id, null, null, null);
-            if (cursor.moveToFirst()) {
-                DocumentoExistencia tipo = new DocumentoExistencia();
-                tipo.setIdDocumentoExistencia(parseInt(cursor.getString(0)));
-                tipo.setIsbn(cursor.getString(1));
-                tipo.setIdDocente(parseInt(cursor.getString(2)));
-                tipo.setIdUnidadAdministrativa(parseInt(cursor.getString(3)));
-                tipo.setActual(parseInt(cursor.getString(4)));
-                return tipo;
-            } else {
-                return null;
-            }
-        }
+    public String insertar(DocumentoExistencia documentoExistencia){
 
-        public String actualizar (TiposDeMovimientoParaDocumento tipo){
-            try {
-                String[] id = {String.valueOf(tipo.getIdTiposDeMovimientoParaDocumento())};
-                ContentValues cv = new ContentValues();
-                cv.put("id_tipo_de_movimiento_para_documento", tipo.getIdTiposDeMovimientoParaDocumento());
-                cv.put("descripcion", tipo.getDescripcionMovimientoDoc());
-                sqLiteDatabase.update(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, cv, "id_tipo_de_movimiento_para_documento = ?", id);
-                return "Registro Actualizado Correctamente";
-            } catch (SQLException e) {
-                return e.toString();
-            }
-        }
+        try{
+            String regInsertados="Registro Insertado Nº= ";
+            long contador=0;
 
-        public String actualizar (DocumentoExistencia tipo){
-            try {
-                String[] id = {String.valueOf(tipo.getIdDocumentoExistencia())};
-                ContentValues cv = new ContentValues();
-                cv.put("id_documento_existencia", tipo.getIdDocumentoExistencia());
-                cv.put("isbn", tipo.getIsbn());
-                cv.put("id_docente", tipo.getIdDocente());
-                cv.put("id_unidad_admin", tipo.getIdUnidadAdministrativa());
-                cv.put("actual", tipo.getActual());
-                sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, cv, "id_documento_existencia = ?", id);
-                return "Registro Actualizado Correctamente";
-            } catch (SQLException e) {
-                return e.toString();
-            }
-        }
-
-        public String eliminar (TiposDeMovimientoParaDocumento tipo){
-
-            try {
-                String regAfectados = "filas afectadas= ";
-                int contador = 0;
-                contador += sqLiteDatabase.delete(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, "id_tipo_de_movimiento_para_documento='" + tipo.getIdTiposDeMovimientoParaDocumento() + "'", null);
-
-                regAfectados += contador;
-                return regAfectados;
-
-            } catch (SQLException e) {
-                return "datos incorrectos o faltantes";
-            }
-
-        }
-
-        public String eliminar (DocumentoExistencia tipo){
-
-            try {
-                String regAfectados = "filas afectadas= ";
-                int contador = 0;
-                contador += sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, "id_documento_existencia='" + tipo.getIdDocumentoExistencia() + "'", null);
-
-                regAfectados += contador;
-                return regAfectados;
-
-            } catch (SQLException e) {
-                return "datos incorrectos o faltantes";
-            }
-
-        }
-
-        public String insertarMovDoc (DocumentoMovimiento doc){
-
-            try {
-                String regInsertados = "Registro Insertado Nº= ";
-                long contador = 0;
-                if (movtipo(doc)) {
-                    ContentValues tipo = new ContentValues();
-                    tipo.put("id_documento_movimiento", doc.getIdDocMov());
-                    tipo.put("id_tipo_movimiento_documento", doc.getIdTipoMovDoc());
-                    tipo.put("id_unidad_admin_origen", doc.getIdUnidadAdmOrigen());
-                    tipo.put("id_unidad_admin_destino", doc.getIdUnidadAdmDestino());
-                    tipo.put("comentario", doc.getComentario());
-                    tipo.put("fecha_movimiento", doc.getFecha());
-                    contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, null, tipo);
-                    if (contador == -1 || contador == 0) {
-                        regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
-                    } else {
-                        ContentValues tipo2 = new ContentValues();
-                        tipo2.put("id_documento_movimiento_detalle", doc.getIdMovDocDetalle());
-                        tipo2.put("isbn", doc.getIsbn());
-                        tipo2.put("id_documento_movimiento", doc.getIdDocMov());
-                        contador += sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, null, tipo2);
-                        if (contador == -1 || contador == 0) {
-                            regInsertados = "erro en tabla";
-                        } else {
-
-                            regInsertados = regInsertados + contador;
+            if (exiIsbn(documentoExistencia)){
+                if (exiUnidad(documentoExistencia)){
+                    if (exiDocente(documentoExistencia)){
+                        ContentValues tipo = new ContentValues();
+                        tipo.put("id_documento_existencia", documentoExistencia.getIdDocumentoExistencia());
+                        tipo.put("isbn", documentoExistencia.getIsbn());
+                        tipo.put("id_docente", documentoExistencia.getIdDocente());
+                        tipo.put("id_unidad_admin", documentoExistencia.getIdUnidadAdministrativa());
+                        tipo.put("actual", documentoExistencia.getActual());
+                        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, null, tipo);
+                        if(contador==-1 || contador==0)
+                        {
+                            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
                         }
+                        else {
+                            regInsertados=regInsertados+contador;
+                        }
+                        return regInsertados;
+
 
                     }
-                } else {
+                    else{
+                        return "no existe docente";
+                    }
+
+                }
+                else{
+                    return "no existe unidad administrativa";
+                }
+
+
+            }
+            else{
+                return "no existe documento con ese isbn";
+            }
+
+        }
+        catch (SQLException e ){
+            return "datos incorrectos o faltantes";
+        }
+
+    }
+
+    public TiposDeMovimientoParaDocumento consultarTipoMov(String idMov){
+        String[] id = {idMov};
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, CAMPOS_TIPO_MOV_DOCUMENTO, "id_tipo_de_movimiento_para_documento = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            TiposDeMovimientoParaDocumento tipo = new TiposDeMovimientoParaDocumento();
+            tipo.setIdTiposDeMovimientoParaDocumento(parseInt(cursor.getString(0)));
+            tipo.setDescripcionMovimientoDoc(cursor.getString(1));
+            return tipo;
+        }else{ return null;
+        }
+    }
+
+    public DocumentoExistencia consultarDocExistencia(String idExis){
+        String[] id = {idExis};
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, CAMPOS_DOCUMENTO_EXISTENCIA, "id_documento_existencia = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            DocumentoExistencia tipo = new DocumentoExistencia();
+            tipo.setIdDocumentoExistencia(parseInt(cursor.getString(0)));
+            tipo.setIsbn(cursor.getString(1));
+            tipo.setIdDocente(parseInt(cursor.getString(2)));
+            tipo.setIdUnidadAdministrativa(parseInt(cursor.getString(3)));
+            tipo.setActual(parseInt(cursor.getString(4)));
+            return tipo;
+        }else{ return null;
+        }
+    }
+
+    public String actualizar(TiposDeMovimientoParaDocumento tipo){
+        try{
+            String[] id = {String.valueOf(tipo.getIdTiposDeMovimientoParaDocumento())};
+            ContentValues cv = new ContentValues();
+            cv.put("id_tipo_de_movimiento_para_documento", tipo.getIdTiposDeMovimientoParaDocumento());
+            cv.put("descripcion", tipo.getDescripcionMovimientoDoc());
+            sqLiteDatabase.update(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, cv, "id_tipo_de_movimiento_para_documento = ?", id);
+            return "Registro Actualizado Correctamente";
+        }
+        catch (SQLException e ){
+            return e.toString();
+        }
+    }
+
+    public String actualizar(DocumentoExistencia tipo){
+        try{
+            String[] id = {String.valueOf(tipo.getIdDocumentoExistencia())};
+            ContentValues cv = new ContentValues();
+            cv.put("id_documento_existencia", tipo.getIdDocumentoExistencia());
+            cv.put("isbn", tipo.getIsbn());
+            cv.put("id_docente", tipo.getIdDocente());
+            cv.put("id_unidad_admin", tipo.getIdUnidadAdministrativa());
+            cv.put("actual", tipo.getActual());
+            sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, cv, "id_documento_existencia = ?", id);
+            return "Registro Actualizado Correctamente";
+        }
+        catch (SQLException e ){
+            return e.toString();
+        }
+    }
+
+    public String eliminar(TiposDeMovimientoParaDocumento tipo){
+
+        try{
+            String regAfectados="filas afectadas= ";
+            int contador=0;
+            contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, "id_tipo_de_movimiento_para_documento='"+ tipo.getIdTiposDeMovimientoParaDocumento() +"'", null);
+
+            regAfectados+=contador;
+            return regAfectados;
+
+        }
+        catch (SQLException e ){
+            return "datos incorrectos o faltantes";
+        }
+
+    }
+
+    public String eliminar(DocumentoExistencia tipo){
+
+        try{
+            String regAfectados="filas afectadas= ";
+            int contador=0;
+            contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, "id_documento_existencia='"+ tipo.getIdDocumentoExistencia() +"'", null);
+
+            regAfectados+=contador;
+            return regAfectados;
+
+        }
+        catch (SQLException e ){
+            return "datos incorrectos o faltantes";
+        }
+
+    }
+
+    public String insertarMovDoc(DocumentoMovimiento doc){
+
+        try{
+            String regInsertados="Registro Insertado Nº= ";
+            long contador=0;
+            if (exiIdDetalle(doc)){
+
+                return "ya existe el id del detalle";
+
+            }
+            else{
+                if (movtipo(doc)){
+                    if (exiUnidadO(doc)){
+                        if (exiUnidadD(doc)){
+                            if (exiIsbn(doc)){
+                                ContentValues tipo = new ContentValues();
+                                tipo.put("id_documento_movimiento", doc.getIdDocMov());
+                                tipo.put("id_tipo_movimiento_documento", doc.getIdTipoMovDoc());
+                                tipo.put("id_unidad_admin_origen", doc.getIdUnidadAdmOrigen());
+                                tipo.put("id_unidad_admin_destino", doc.getIdUnidadAdmDestino());
+                                tipo.put("comentario", doc.getComentario());
+                                tipo.put("fecha_movimiento", doc.getFecha());
+                                contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, null, tipo);
+                                if(contador==-1 || contador==0)
+                                {
+                                    regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+                                }
+                                else {
+                                    ContentValues tipo2 = new ContentValues();
+                                    tipo2.put("id_documento_movimiento_detalle",doc.getIdMovDocDetalle());
+                                    tipo2.put("isbn", doc.getIsbn());
+                                    tipo2.put("id_documento_movimiento", doc.getIdDocMov());
+                                    contador += sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, null, tipo2);
+                                    if(contador==-1 || contador==0)
+                                    {
+                                        regInsertados= "erro en tabla";
+                                    }
+                                    else{
+
+                                        regInsertados=regInsertados+contador;
+                                    }
+
+                                }
+                            }
+                            else{
+                                return "no existe documento con ese isbn";
+                            }
+
+                        }
+                        else{
+                            return "no existe unidad de destino";
+                        }
+
+
+                    }
+                    else{
+                        return "no existe unidad de origen";
+                    }
+                }
+                else{
                     return "no existe el tipo de mov";
                 }
 
-                return regInsertados;
-
-            } catch (SQLException e) {
-                return "datos incorrectos o faltantes";
             }
 
+            return regInsertados;
 
         }
-
-        public String eliminar (DocumentoMovimiento tipo){
-            try {
-                String regAfectados = "filas afectadas= ";
-                int contador = 0;
-                contador += sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, "id_documento_movimiento='" + tipo.getIdDocMov() + "'", null);
-                contador += sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, "id_documento_movimiento='" + tipo.getIdDocMov() + "'", null);
-
-                regAfectados += contador;
-                return regAfectados;
-
-            } catch (SQLException e) {
-                return "datos incorrectos o faltantes";
-            }
-
+        catch (SQLException e ){
+            return "datos incorrectos o faltantes";
         }
 
 
+    }
 
-        public String llenarBDInicio () {
-            // tabla tipo movimiento
-            final int[] Vid = {1, 2, 3, 4, 5};
-            final String[] Vdes = {"Cambio", "Traslado", "Reparado", "Compra", "Donado"};
+    public String eliminar(DocumentoMovimiento tipo){
+        try{
+            String regAfectados="filas afectadas= ";
+            int contador=0;
+            contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, "id_documento_movimiento='"+ tipo.getIdDocMov() +"'", null);
+            contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, "id_documento_movimiento='"+ tipo.getIdDocMov() +"'", null);
 
-            // tabla documento movimiento
-            final int[] Vid2 = {1, 2, 3, 4, 5};
-            final int[] Vtipo = {1, 2, 3, 4, 5};
-            final int[] Vori = {1, 2, 3, 4, 5};
-            final int[] Vdest = {5, 4, 2, 3, 1};
-            final String[] Vcom = {"Cambio", "Traslado", "Reparado", "Compra", "Donado"};
-            final String[] Vfecha = {"2019-04-02", "2019-04-01", "2019-04-08", "2019-04-06", "2019-04-12"};
-
-            // tabla documento movimiento detalle
-            final int[] Vid3 = {1, 2, 3, 4, 5};
-            final String[] Visbn = {"11111", "22222", "33333", "44444", "55555"};
-
-            // tabla documento existencia
-            final int[] Vid4 = {1, 2, 3, 4, 5};
-            final String[] Visbn2 = {"11111", "22222", "33333", "44444", "55555"};
-            final int[] Vdocente = {1, 2, 3, 4, 5};
-            final int[] Vunidad = {1, 2, 3, 4, 5};
-            final int[] Vactual = {1, 1, 1, 1, 1};
-
-
-            abrir();
-
-            TiposDeMovimientoParaDocumento Vnu = new TiposDeMovimientoParaDocumento();
-            DocumentoMovimiento Vnu1 = new DocumentoMovimiento();
-            DocumentoExistencia Vnu2 = new DocumentoExistencia();
-            for (int i = 0; i < 4; i++) {
-                Vnu.setIdTiposDeMovimientoParaDocumento(Vid[i]);
-                Vnu.setDescripcionMovimientoDoc(Vdes[i]);
-
-                Vnu1.setIdDocMov(Vid2[i]);
-                Vnu1.setIdTipoMovDoc(Vtipo[i]);
-                Vnu1.setIdUnidadAdmOrigen(Vori[i]);
-                Vnu1.setIdUnidadAdmDestino(Vdest[i]);
-                Vnu1.setComentario(Vcom[i]);
-                Vnu1.setFecha(Vfecha[i]);
-                Vnu1.setIdMovDocDetalle(Vid3[i]);
-                Vnu1.setIsbn(Visbn[i]);
-
-
-                Vnu2.setIdDocumentoExistencia(Vid4[i]);
-                Vnu2.setIsbn(Visbn2[i]);
-                Vnu2.setIdDocente(Vdocente[i]);
-                Vnu2.setIdUnidadAdministrativa(Vunidad[i]);
-                Vnu2.setActual(Vactual[i]);
-
-                insertar(Vnu);
-                insertarMovDoc(Vnu1);
-                insertar(Vnu2);
-            }
-            return "no llena";
+            regAfectados+=contador;
+            return regAfectados;
 
         }
-
-        private boolean movtipo (DocumentoMovimiento tipo) throws SQLException {
-
-            String[] idTipo = {String.valueOf(tipo.getIdTipoMovDoc())};
-
-            Cursor c = sqLiteDatabase.query("tipo_movimiento_para_documento", null, "id_tipo_de_movimiento_para_documento = ?",
-                    idTipo, null, null, null);
-
-            if (c.moveToFirst()) {
-                return true;
-            } else {
-                return false;
-            }
-
-
+        catch (SQLException e ){
+            return "datos incorrectos o faltantes";
         }
 
-
-        public DocumentoMovimiento consultarDocMov (String idExis){
-            String[] id = {idExis};
-            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, CAMPOS_DOCUMENTO_MOVIMIENTO, "id_documento_movimiento = ?", id, null, null, null);
-            Cursor cursor2 = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, CAMPOS_DOCUMENTO_MOVIMIENTO_DETALLE, "id_documento_movimiento = ?", id, null, null, null);
+    }
 
 
-            if (cursor.moveToFirst() && cursor2.moveToFirst()) {
-                DocumentoMovimiento tipo = new DocumentoMovimiento();
-                tipo.setIdDocMov(parseInt(cursor.getString(0)));
-                tipo.setIdTipoMovDoc(parseInt(cursor.getString(1)));
-                tipo.setIdUnidadAdmOrigen(parseInt(cursor.getString(2)));
-                tipo.setIdUnidadAdmDestino(parseInt(cursor.getString(3)));
-                tipo.setComentario(cursor.getString(4));
-                tipo.setFecha(cursor.getString(5));
-                tipo.setIdMovDocDetalle(parseInt(cursor2.getString(0)));
-                tipo.setIsbn(cursor2.getString(1));
-                return tipo;
-            } else {
-                return null;
-            }
+    public String llenarBDInicio() {
+        // tabla tipo movimiento
+        final int[] Vid = {1, 2, 3, 4, 5};
+        final String[] Vdes = {"Cambio", "Traslado", "Reparado", "Compra", "Donado"};
+
+        // tabla documento movimiento
+        final int[] Vid2 = {1, 2, 3, 4, 5};
+        final int[] Vtipo = {1, 2, 3, 4, 5};
+        final int[] Vori = {1, 2, 3, 1, 2};
+        final int[] Vdest = {1, 2, 2, 3, 1};
+        final String[] Vcom = {"Cambio", "Traslado", "Reparado", "Compra", "Donado"};
+        final String[] Vfecha = {"2019-04-02", "2019-04-01", "2019-04-08", "2019-04-06", "2019-04-12"};
+
+        // tabla documento movimiento detalle
+        final int[] Vid3 = {1, 2, 3, 4, 5};
+        final String[] Visbn = {"00000001", "00000001", "00000001", "00000001", "00000001"};
+
+        // tabla documento existencia
+        final int[] Vid4 = {1, 2, 3, 4, 5};
+        final String[] Visbn2 = {"00000001", "00000001", "00000001", "00000001", "00000001"};
+        final int[] Vdocente = {8888881, 8888881, 8888881, 8888881, 8888881};
+        final int[] Vunidad = {1, 2, 3, 1, 2};
+        final int[] Vactual = {1, 1, 1, 1, 1};
+
+
+        abrir();
+
+        TiposDeMovimientoParaDocumento Vnu=new TiposDeMovimientoParaDocumento();
+        DocumentoMovimiento Vnu1=new DocumentoMovimiento();
+        DocumentoExistencia Vnu2=new DocumentoExistencia();
+        for(int i=0;i<4;i++){
+            Vnu.setIdTiposDeMovimientoParaDocumento(Vid[i]);
+            Vnu.setDescripcionMovimientoDoc(Vdes[i]);
+
+            Vnu1.setIdDocMov(Vid2[i]);
+            Vnu1.setIdTipoMovDoc(Vtipo[i]);
+            Vnu1.setIdUnidadAdmOrigen(Vori[i]);
+            Vnu1.setIdUnidadAdmDestino(Vdest[i]);
+            Vnu1.setComentario(Vcom[i]);
+            Vnu1.setFecha(Vfecha[i]);
+            Vnu1.setIdMovDocDetalle(Vid3[i]);
+            Vnu1.setIsbn(Visbn[i]);
+
+
+            Vnu2.setIdDocumentoExistencia(Vid4[i]);
+            Vnu2.setIsbn(Visbn2[i]);
+            Vnu2.setIdDocente(Vdocente[i]);
+            Vnu2.setIdUnidadAdministrativa(Vunidad[i]);
+            Vnu2.setActual(Vactual[i]);
+
+            insertar(Vnu);
+            insertarMovDoc(Vnu1);
+            insertar(Vnu2);
+        }
+        return "no llena";
+
+    }
+
+    private boolean movtipo(DocumentoMovimiento tipo) throws SQLException{
+
+        String[] idTipo = {String.valueOf(tipo.getIdTipoMovDoc())};
+
+        Cursor c = sqLiteDatabase.query("tipo_movimiento_para_documento",null,"id_tipo_de_movimiento_para_documento = ?",
+                idTipo,null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
         }
 
 
-        public String actualizar (DocumentoMovimiento tipo){
-            try {
-                String[] id = {String.valueOf(tipo.getIdDocMov())};
-                ContentValues cv = new ContentValues();
-                ContentValues cv2 = new ContentValues();
-                cv.put("id_documento_movimiento", tipo.getIdDocMov());
-                cv.put("id_tipo_movimiento_documento", tipo.getIdTipoMovDoc());
-                cv.put("id_unidad_admin_origen", tipo.getIdUnidadAdmOrigen());
-                cv.put("id_unidad_admin_destino", tipo.getIdUnidadAdmDestino());
-                cv.put("comentario", tipo.getComentario());
-                cv.put("fecha_movimiento", tipo.getFecha());
-                cv2.put("id_documento_movimiento_detalle", tipo.getIdMovDocDetalle());
-                cv2.put("isbn", tipo.getIsbn());
-                cv2.put("id_documento_movimiento", tipo.getIdDocMov());
-                sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, cv, "id_documento_movimiento = ?", id);
-                sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, cv2, "id_documento_movimiento = ?", id);
-                return "Registro Actualizado Correctamente";
-            } catch (SQLException e) {
-                return e.toString();
-            }
+
+    }
+
+
+    public DocumentoMovimiento consultarDocMov(String idExis){
+        String[] id = {idExis};
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, CAMPOS_DOCUMENTO_MOVIMIENTO, "id_documento_movimiento = ?", id, null, null, null);
+        Cursor cursor2 = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, CAMPOS_DOCUMENTO_MOVIMIENTO_DETALLE, "id_documento_movimiento = ?", id, null, null, null);
+
+
+        if(cursor.moveToFirst()&& cursor2.moveToFirst()){
+            DocumentoMovimiento tipo = new DocumentoMovimiento();
+            tipo.setIdDocMov(parseInt(cursor.getString(0)));
+            tipo.setIdTipoMovDoc(parseInt(cursor.getString(1)));
+            tipo.setIdUnidadAdmOrigen(parseInt(cursor.getString(2)));
+            tipo.setIdUnidadAdmDestino(parseInt(cursor.getString(3)));
+            tipo.setComentario(cursor.getString(4));
+            tipo.setFecha(cursor.getString(5));
+            tipo.setIdMovDocDetalle(parseInt(cursor2.getString(0)));
+            tipo.setIsbn(cursor2.getString(1));
+            return tipo;
+        }else{ return null;
         }
+    }
+
+
+    public String actualizar(DocumentoMovimiento tipo){
+        try {
+            String[] id = {String.valueOf(tipo.getIdDocMov())};
+            ContentValues cv = new ContentValues();
+            ContentValues cv2 = new ContentValues();
+            cv.put("id_documento_movimiento", tipo.getIdDocMov());
+            cv.put("id_tipo_movimiento_documento", tipo.getIdTipoMovDoc());
+            cv.put("id_unidad_admin_origen", tipo.getIdUnidadAdmOrigen());
+            cv.put("id_unidad_admin_destino", tipo.getIdUnidadAdmDestino());
+            cv.put("comentario", tipo.getComentario());
+            cv.put("fecha_movimiento", tipo.getFecha());
+            cv2.put("id_documento_movimiento_detalle", tipo.getIdMovDocDetalle());
+            cv2.put("isbn", tipo.getIsbn());
+            cv2.put("id_documento_movimiento", tipo.getIdDocMov());
+            sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, cv, "id_documento_movimiento = ?", id);
+            sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, cv2, "id_documento_movimiento = ?", id);
+            return "Registro Actualizado Correctamente";
+        }
+        catch (SQLException e ){
+            return e.toString();
+        }
+    }
+
+    private boolean exiUnidadO(DocumentoMovimiento tipo) throws SQLException{
+
+        String[] idTipo = {String.valueOf(tipo.getIdUnidadAdmOrigen())};
+
+        Cursor c = sqLiteDatabase.query("unidad_administrativa",null,"id_unidad_administrativa = ?",
+                idTipo,null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private boolean exiUnidadD(DocumentoMovimiento tipo) throws SQLException{
+
+        String[] idTipo = {String.valueOf(tipo.getIdUnidadAdmDestino())};
+
+        Cursor c = sqLiteDatabase.query("unidad_administrativa",null,"id_unidad_administrativa = ?",
+                idTipo,null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private boolean exiUnidad(DocumentoExistencia tipo) throws SQLException{
+
+        String[] idTipo = {String.valueOf(tipo.getIdUnidadAdministrativa())};
+
+        Cursor c = sqLiteDatabase.query("unidad_administrativa",null,"id_unidad_administrativa = ?",
+                idTipo,null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private boolean exiDocente(DocumentoExistencia tipo) throws SQLException{
+
+        String[] idTipo = {String.valueOf(tipo.getIdDocente())};
+
+        Cursor c = sqLiteDatabase.query("docente",null,"idDocente = ?",
+                idTipo,null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    private boolean exiIsbn(DocumentoExistencia tipo) throws SQLException{
+
+        String[] idTipo = {String.valueOf(tipo.getIsbn())};
+
+        Cursor c = sqLiteDatabase.query("documento",null,"ISBN = ?",
+                idTipo,null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private boolean exiIsbn(DocumentoMovimiento tipo) throws SQLException{
+
+        String[] idTipo = {String.valueOf(tipo.getIsbn())};
+
+        Cursor c = sqLiteDatabase.query("documento",null,"ISBN = ?",
+                idTipo,null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private boolean exiIdDetalle(DocumentoMovimiento tipo) throws SQLException{
+
+        String[] idTipo = {String.valueOf(tipo.getIdMovDocDetalle())};
+
+        Cursor c = sqLiteDatabase.query("movimiento_documento_detalle",null,"id_documento_movimiento_detalle = ?",
+                idTipo,null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean exiDocMov(DocumentoMovimiento tipo) throws SQLException{
+
+        String[] idTipo = {String.valueOf(tipo.getIdDocMov())};
+
+        Cursor c = sqLiteDatabase.query("movimiento_documento",null,"id_documento_movimiento = ?",
+                idTipo,null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean exiTipoDocMov(TiposDeMovimientoParaDocumento tipo) throws SQLException{
+
+        String[] idTipo = {String.valueOf(tipo.getIdTiposDeMovimientoParaDocumento())};
+
+        Cursor c = sqLiteDatabase.query("tipo_movimiento_para_documento",null,"id_tipo_de_movimiento_para_documento = ?",
+                idTipo,null,null,null);
+
+        if (c.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 
     }

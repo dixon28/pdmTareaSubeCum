@@ -9,7 +9,7 @@ public class ConstantesDB {
     //----------------------------------------------------
     // nombre base de datos
     //----------------------------------------------------
-    public static final String DATABASE = "inventario_test.s3db";
+    public static final String DATABASE = "inventario_test4.s3db";
 
 
     //-----------------------------------------------------
@@ -118,6 +118,14 @@ public class ConstantesDB {
             "id_unidad_administrativa INTEGER NOT NULL, "+
             "actual INTEGER NOT NULL)";
 
+    public static final String SQL_CREATE_TRIGGER_DELETE_TIPO_MOVIMIENTO_EQUIPO1= "CREATE TRIGGER tr_eliminarTipoMovimientoEquipo1 "+
+            "BEFORE DELETE ON "+TABLA_TIPO_MOVIMIENTO_EQUIPO +" BEGIN DELETE FROM "+ TABLA_EQUIPO_MOVIMIENTO+
+            " WHERE id_tipo_movimiento_equipo = OLD.id_tipo_movimiento_equipo; END;";
+    public static final String SQL_CREATE_TRIGGER_DELETE_TIPO_MOVIMIENTO_EQUIPO2= "CREATE TRIGGER tr_eliminarTipoMovimientoEquipo2 "+
+            "BEFORE DELETE ON "+TABLA_EQUIPO_MOVIMIENTO +" BEGIN DELETE FROM "+ TABLA_EQUIPO_MOVIMIENTO_DETALLE+
+            " WHERE id_equipo_movimiento = OLD.id_equipo_movimiento; END;";
+
+
 
 
 
@@ -145,6 +153,9 @@ public class ConstantesDB {
     public static final String SQL_DELETE_TIPO_MOVIMIENTO_EQUIPO = "DROP TABLE "+TABLA_TIPO_MOVIMIENTO_EQUIPO;
     public static final String SQL_DELETE_EQUIPO_MOVIMIENTO_DETALLE ="DROP TABLE "+TABLA_EQUIPO_MOVIMIENTO_DETALLE;
     public static final String SQL_DELETE_EQUIPO_EXISTENCIA = "DROP TABLE "+TABLA_EQUIPO_EXISTENCIA;
+
+    public static final String SQL_DELETE_TRIGGER_DELETE_TIPO_MOVIMIENTO_EQUIPO1 = "DROP TRIGGER tr_eliminarTipoMovimientoEquipo1";
+    public static final String SQL_DELETE_TRIGGER_DELETE_TIPO_MOVIMIENTO_EQUIPO2 = "DROP TRIGGER tr_eliminarTipoMovimientoEquipo2";
 
     //-----------------------------------------------------
     // campos de las tablas
@@ -274,7 +285,7 @@ public class ConstantesDB {
     public static final String SQL_DELETE_TRIGGER_EQUIPO2= "DROP TRIGGER tr_EquipoEliminar2;";
 
 
-    public static final String SQL_CREATE_TRIGGER_EQUIPO3 = "CREATE TRIGGER tr_EquipoEliminar3 BEFORE DELETE ON equipo BEGIN DELETE FROM equipo_movimiento_detalle WHERE idequipo = OLD.idequipo; END;";
+    public static final String SQL_CREATE_TRIGGER_EQUIPO3 = "CREATE TRIGGER tr_EquipoEliminar3 BEFORE DELETE ON equipo BEGIN DELETE FROM equipo_movimiento_detalle WHERE id_equipo = OLD.idequipo; END;";
 
     public static final String SQL_DELETE_TRIGGER_EQUIPO3= "DROP TRIGGER tr_EquipoEliminar3;";
 
@@ -284,7 +295,7 @@ public class ConstantesDB {
 
 
     public static final String SQL_CREATE_TRIGGER_DOCUMENTO2 = "CREATE TRIGGER tr_Documento2Eliminar " +
-            "BEFORE DELETE ON documento BEGIN DELETE FROM documento_movimiento_detalle WHERE isbn = OLD.isbn; END";
+            "BEFORE DELETE ON documento BEGIN DELETE FROM movimiento_documento_detalle WHERE isbn = OLD.isbn; END";
     public static final String SQL_DELETE_TRIGGER_DOCUMENTO2= "DROP TRIGGER tr_Documento2Eliminar;";
 
     public static final String SQL_CREATE_TRIGGER_DOCUMENTO3= "CREATE TRIGGER tr_Documento3Eliminar " +
@@ -294,6 +305,9 @@ public class ConstantesDB {
     public static final String SQL_CREATE_TRIGGER_DOCUMENTO4= "CREATE TRIGGER tr_Documento4Eliminar " +
             "BEFORE DELETE ON documento BEGIN DELETE FROM documento_existencia   WHERE isbn = OLD.isbn; END";
     public static final String SQL_DELETE_TRIGGER_DOCUMENTO4 = "DROP TRIGGER tr_Documento4Eliminar;";
+
+    //Triggers para actualizacion de datos
+    //actualiza los ids
 
 
     public static final String SQL_UPDATE_TRIGGER_MARCA="CREATE TRIGGER update_marca\n" +
@@ -447,6 +461,10 @@ public class ConstantesDB {
             "id_docente INTEGER NOT NULL, "+
             "id_unidad_admin INTEGER NOT NULL, "+
             "actual INTEGER NOT NULL)";
+    public static final String SQL_CREATE_TRIGGER_ELIMINATIPOMOVDOC = "CREATE TRIGGER tr_EliminartipoMDoc " +
+            "BEFORE DELETE ON tipo_movimiento_para_documento BEGIN DELETE FROM movimiento_documento  WHERE movimiento_documento.id_tipo_movimiento_documento = OLD.id_tipo_de_movimiento_para_documento;" +
+            "DELETE FROM movimiento_documento_detalle  WHERE movimiento_documento_detalle.id_documento_movimiento = OLD.id_tipo_de_movimiento_para_documento; END";
+
 
     // query para borrar la DB
 
@@ -454,7 +472,7 @@ public class ConstantesDB {
     public static final String SQL_DELETE_DOCUMENTO_MOVIMIENTO = "DROP TABLE "+TABLA_DOCUMENTO_MOVIMIENTO;
     public static final String SQL_DELETE_DOCUMENTO_MOVIMIENTO_DETALLE ="DROP TABLE "+TABLA_DOCUMENTO_MOVIMIENTO_DETALLE;
     public static final String SQL_DELETE_DOCUMENTO_EXISTENCIA = "DROP TABLE "+TABLA_DOCUMENTO_EXISTENCIA;
-
+    public static final String SQL_DELETE_TRIGGER_ELIMINATIPOMOVDOC = "DROP TRIGGER tr_EliminartipoMDoc;";
     // campos de las tablas
 
     public static final String[] CAMPOS_TIPO_MOV_DOCUMENTO = {"id_tipo_de_movimiento_para_documento","descripcion"};

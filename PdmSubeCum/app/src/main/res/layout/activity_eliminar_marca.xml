@@ -14,8 +14,9 @@
         android:inputType="text"
         android:maxLength="7"/>
     <Button
+        android:id="@+id/eliminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/eliminar_marca"
-        android:onClick="eliminarMarca"/>
+        android:onClick="eliminar"/>
 </LinearLayout>

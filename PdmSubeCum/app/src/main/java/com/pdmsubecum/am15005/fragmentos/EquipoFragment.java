@@ -26,12 +26,32 @@ public class EquipoFragment extends Fragment  {
     ListView lista;
 
     List<String> tablasCrud;
-    String[] menu={"Actualizar Registro","Consultar Registro","Eliminar Registro",
-            "Ingresar Registro"};
+    String[] menu;
     String[]
             activities={"ActualizarEquipoActivity","ConsultarEquipoActivity","EliminarEquipoActivity","InsertarEquipoActivity"};
 
     private EquipoFragment equipoFragment;
+    private String actualizar;
+    private String insertar;
+    private String eliminar;
+    private String consultar;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        actualizar=getString(R.string.actualizar_registro);
+        insertar=getString(R.string.insertar_registro);
+        eliminar=getString(R.string.eliminar_registro);
+        consultar=getString(R.string.consultar_registro);
+        menu= new String[4];
+        menu[0]=actualizar;
+        menu[3]=insertar;
+        menu[2]=eliminar;
+        menu[1]=consultar;
+
+    }
+
 
 
     @Override
@@ -41,6 +61,8 @@ public class EquipoFragment extends Fragment  {
 
         return inflater.inflate(R.layout.fragment_equipo, container, false);
     }
+
+
 
     @Override
     public void onActivityCreated(Bundle state) {

@@ -152,44 +152,60 @@ public class DocumentoInsertarActivity extends AppCompatActivity implements Adap
 
 
     public void insertarDocumento(View view) {
-        Documento documento= new Documento();
-        boolean disp;
 
-        documento.setIdtiposdedocumento(Integer.parseInt(edtTipoDoc.getText().toString()));
-        documento.setIsbn(isbn.getText().toString());
-        documento.setDescripciondoc(descripcion.getText().toString());
-        documento.setIdioma(idioma.getText().toString());
-        documento.setNombredoc(nombredoc.getText().toString());
+        try {
 
-        if(Objects.equals("si",edtdisponible.getText().toString())){
+            if (isbn.getText().toString().isEmpty()||idioma.getText().toString().isEmpty()||nombredoc.getText().toString().isEmpty()||descripcion.getText().toString().isEmpty()){
+                Toast.makeText(this,getText(R.string.nulo),Toast.LENGTH_SHORT);
+
+            }else{
 
 
-            disp=true;
+                Documento documento = new Documento();
+                boolean disp;
 
-            Log.d("disponible","true");
+                documento.setIdtiposdedocumento(Integer.parseInt(edtTipoDoc.getText().toString()));
+                documento.setIsbn(isbn.getText().toString());
+                documento.setDescripciondoc(descripcion.getText().toString());
+                documento.setIdioma(idioma.getText().toString());
+                documento.setNombredoc(nombredoc.getText().toString());
 
-            documento.setDisponibledoc(disp);
-        }
-        else
+                if (Objects.equals("si", edtdisponible.getText().toString())) {
+
+
+                    disp = true;
+
+                    Log.d("disponible", "true");
+
+                    documento.setDisponibledoc(disp);
+                } else {
+
+                    Log.d("disponible", "false");
+
+                    disp = false;
+                    documento.setDisponibledoc(disp);
+                }
+
+                if (db.verificarIntegridadAM15005(documento, 3)) {
+
+                    Toast.makeText(this, "Ya existe un registro con el isbn " + isbn, Toast.LENGTH_SHORT).show();
+                } else {
+
+                    db.abrir();
+                    db.insertar(documento);
+//        db.ingresarFecha(fe,equipo.getIdequipo());
+                    db.cerrar();
+                    Toast.makeText(this, documento.getIsbn(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }catch (Exception e)
         {
 
-            Log.d("disponible","false");
+            Toast.makeText(this,getString(R.string.nulo),Toast.LENGTH_SHORT).show();
 
-            disp=false;
-            documento.setDisponibledoc(disp);
-        }
 
-        if (db.verificarIntegridadAM15005(documento,3)){
 
-            Toast.makeText(this,"Ya existe un registro con el isbn "+isbn , Toast.LENGTH_SHORT).show();
-        }
-        else {
 
-            db.abrir();
-            db.insertar(documento);
-//        db.ingresarFecha(fe,equipo.getIdequipo());
-            db.cerrar();
-            Toast.makeText(this, documento.getIsbn(), Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -30,6 +30,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class InsertarEquipoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
+
     EditText fechaingreso;
     Calendar calendario = Calendar.getInstance();
 
@@ -262,7 +263,6 @@ public class InsertarEquipoActivity extends AppCompatActivity implements Adapter
                        edtmarca.setText(id_guardado_Marca);
 
 
-                Toast.makeText(this, "Nombre marca: " + nombreMarca, Toast.LENGTH_SHORT).show();
 
               break;
 
@@ -270,8 +270,6 @@ public class InsertarEquipoActivity extends AppCompatActivity implements Adapter
                 nombreEquipo =tequipos[position];
                 id_guardado_tequipo=ides_tequipos[position];
                 edtTipoEquipo.setText(id_guardado_tequipo);
-
-                Toast.makeText(this,"nombre del tipo de equipo :"+nombreEquipo,Toast.LENGTH_SHORT).show();
                 break;
 
 
@@ -280,7 +278,7 @@ public class InsertarEquipoActivity extends AppCompatActivity implements Adapter
                 id_guardado_disponible=ides_disponible[position];
                 edtEquipoDis.setText(nombreDisponible);
 
-                Toast.makeText(this,"disponible :"+nombreDisponible,Toast.LENGTH_SHORT).show();
+
                 break;
         }
 
@@ -293,72 +291,76 @@ public class InsertarEquipoActivity extends AppCompatActivity implements Adapter
     }
 
     public void insertarEquipo(View view) {
-        String formatoDeFecha = "DD-MM-YYYY"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha);
-        boolean disp;
-        Equipo equipo = new Equipo();
-        String fe=fechaingreso.getText().toString();
+        try {
+            if (edtEq.getText().toString().isEmpty() || serie.getText().toString().isEmpty() || modelo.getText().toString().isEmpty() || carac.getText().toString().isEmpty()) {
 
-        Log.d("fecha",fe);
+            } else {
 
 
+                String formatoDeFecha = "DD-MM-YYYY"; //In which you need put here
+                SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha);
+                boolean disp;
+                Equipo equipo = new Equipo();
+                String fe = fechaingreso.getText().toString();
+
+                Log.d("fecha", fe);
 
 
-
-        String id=edtEq.getText().toString();
-
-
-        equipo.setIdmarca(Integer.parseInt(edtmarca.getText().toString()));
-        equipo.setIdtiposdeequipo(Integer.parseInt(edtTipoEquipo.getText().toString()));
-        equipo.setIdequipo(Integer.parseInt(edtEq.getText().toString()));
-        equipo.setCaracteristicas(carac.getText().toString());
-        equipo.setModelo(modelo.getText().toString());
-        equipo.setSerie(serie.getText().toString());
-        equipo.setFechaingreso(fe);
+                String id = edtEq.getText().toString();
 
 
-
-        if(Objects.equals("si",edtEquipoDis.getText().toString())){
-
-
-        disp=true;
-
-            Log.d("disponible","true");
-
-            equipo.setEquipodisponible(disp);
-        }
-        else
-        {
-
-            Log.d("disponible","false");
-
-            disp=false;
-            equipo.setEquipodisponible(disp);
-        }
+                equipo.setIdmarca(Integer.parseInt(edtmarca.getText().toString()));
+                equipo.setIdtiposdeequipo(Integer.parseInt(edtTipoEquipo.getText().toString()));
+                equipo.setIdequipo(Integer.parseInt(edtEq.getText().toString()));
+                equipo.setCaracteristicas(carac.getText().toString());
+                equipo.setModelo(modelo.getText().toString());
+                equipo.setSerie(serie.getText().toString());
+                equipo.setFechaingreso(fe);
 
 
+                if (Objects.equals("si", edtEquipoDis.getText().toString())) {
 
 
+                    disp = true;
+
+                    Log.d("disponible", "true");
+
+                    equipo.setEquipodisponible(disp);
+                } else {
+
+                    Log.d("disponible", "false");
+
+                    disp = false;
+                    equipo.setEquipodisponible(disp);
+                }
 
 
-        if (db.verificarIntegridadAM15005(equipo,2)){
+                if (db.verificarIntegridadAM15005(equipo, 2)) {
 
-            Toast.makeText(this,"Ya existe un registro con el id "+id , Toast.LENGTH_SHORT).show();
-        }
-        else {
+                    Toast.makeText(this, "Ya existe un registro con el id " + id, Toast.LENGTH_SHORT).show();
+                } else {
 
 
-            db.abrir();
-            db.insertar(equipo);
+                    db.abrir();
+                    db.insertar(equipo);
 //        db.ingresarFecha(fe,equipo.getIdequipo());
-            db.cerrar();
-            Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
+                    db.cerrar();
+                    Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        }catch(Exception e)
+            {
+
+                Toast.makeText(this, getString(R.string.nulo), Toast.LENGTH_SHORT).show();
+
+
+            }
+
+
         }
 
 
-
-
-    }
 
     public void limpiarTexto(View view) {
         edtmarca.setText("");

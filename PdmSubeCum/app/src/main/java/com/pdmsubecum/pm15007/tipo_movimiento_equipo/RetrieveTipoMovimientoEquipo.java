@@ -48,7 +48,7 @@ public class RetrieveTipoMovimientoEquipo extends AppCompatActivity implements V
                 break;
             case R.id.btn_retrieve_tipo_movimiento_equipo:
                 if(til_id_tipo_movimiento_equipo.getEditText().getText().toString().isEmpty()){
-                    Toast.makeText(this,"Por favor rellene todos los campos",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.please_id),Toast.LENGTH_SHORT).show();
                 }else{
                     try {
                         tipoMovimientoEquipo = new TipoMovimientoEquipo();
@@ -57,14 +57,14 @@ public class RetrieveTipoMovimientoEquipo extends AppCompatActivity implements V
                         tipoMovimientoEquipo = dataBase.getTipoMovimientoEquipo(id);
                         dataBase.cerrar();
                     }catch (Exception e){
-                        Toast.makeText(this,"El ID debe ser un tipo entero",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.not_number),Toast.LENGTH_SHORT).show();
                         limpiar();
                     }
                     if(tipoMovimientoEquipo != null){
                         til_descripcion.getEditText().setText(tipoMovimientoEquipo.getDescripcion());
-                        Toast.makeText(this,"Se muestran los datos del registro",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.showRecord),Toast.LENGTH_SHORT).show();
                     }else{
-                        Toast.makeText(this,"No Existe Tipo Movimiento Equipo con el ID ingresado",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.tipo_movimiento_equipo)+" "+getString(R.string.not_exists),Toast.LENGTH_SHORT).show();
                         limpiar();
                     }
                 }
