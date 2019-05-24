@@ -36,7 +36,7 @@ public class AsignacionEquipoConsultarActivity extends AppCompatActivity {
     }
 
     public void consultarAsignacionEquipo(View v) {
-
+        try {
         helper.abrir();
         AsignacionEquipo asignacionEquipo = helper.consultarAsignacionEquipo(parseInt(edt_CodAsignaEquipo.getText().toString()));
         helper.cerrar();
@@ -45,8 +45,9 @@ public class AsignacionEquipoConsultarActivity extends AppCompatActivity {
         else {
             edt_CodDocente.setText(String.valueOf(asignacionEquipo.getIdDocente()));
             edt_fechaAsignaEquipo.setText(asignacionEquipo.getFechaAsignacionEquipo());
-
-
+        }
+        }catch (Exception e){
+            Toast.makeText(this,"Por favor Ingrese el ID ", Toast.LENGTH_SHORT).show();
         }
     }
 

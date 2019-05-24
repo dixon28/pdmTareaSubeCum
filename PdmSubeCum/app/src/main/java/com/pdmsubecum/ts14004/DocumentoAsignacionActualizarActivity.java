@@ -32,6 +32,7 @@ public class DocumentoAsignacionActualizarActivity extends AppCompatActivity {
 
     }
     public void actualizarDocumentoAsignacion(View v) {
+        try{
         DocumentoAsignacion documentoAsignacion = new DocumentoAsignacion();
         documentoAsignacion.setIdDocumentoAsignacion (parseInt(edt_CodDocuAsignacion.getText().toString()));
         documentoAsignacion.setIdDocente (parseInt(edt_CodDocente.getText().toString()));
@@ -43,7 +44,9 @@ public class DocumentoAsignacionActualizarActivity extends AppCompatActivity {
         helper.cerrar();
 
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
-
+        }catch (Exception e){
+            Toast.makeText(this,"Por favor rellene todos los campos ", Toast.LENGTH_SHORT).show();
+        }
     }
     public void limpiarTexto(View v) {
 

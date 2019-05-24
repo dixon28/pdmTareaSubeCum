@@ -69,6 +69,7 @@
 
         <Button
             android:id="@+id/btn_insertar"
+            android:layout_width="165dp"
             android:background="#52C956"
             android:onClick="insertarDocente"
             android:text="@string/insertar" />

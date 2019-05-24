@@ -30,6 +30,7 @@ public class AsignacionEquipoInsertarActivity extends AppCompatActivity {
     }
 
     public void insertarAsignacionEquipo(View v) {
+        try {
         int idAsignacionEquipo = Integer.parseInt(edt_CodAsignaEquipo.getText().toString());
         int idDocente = Integer.parseInt(edt_CodDocente.getText().toString());
         String fechaAsignacionEquipo = edt_fechaAsignaEquipo.getText().toString();
@@ -44,6 +45,9 @@ public class AsignacionEquipoInsertarActivity extends AppCompatActivity {
         regInsertados = helper.insertar(asignaEquipo);
         helper.cerrar();
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            Toast.makeText(this,"Por favor rellene todos los campos ", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void limpiarTexto(View v) {

@@ -32,7 +32,7 @@ public class DocumentoAsignacionConsultarActivity extends AppCompatActivity {
 
     }
     public void consultarDocumentoAsignacion(View v) {
-
+        try{
         helper.abrir();
         DocumentoAsignacion documentoAsignacion = helper.consultarDocumentoAsignacion(parseInt(edt_CodDocuAsignacion.getText().toString()));
         helper.cerrar();
@@ -42,8 +42,9 @@ public class DocumentoAsignacionConsultarActivity extends AppCompatActivity {
             edt_CodDocente.setText(String.valueOf(documentoAsignacion.getIdDocente()));
             edt_Motivo.setText(documentoAsignacion.getMotivo());
             edt_fechaDocuAsignacion.setText(documentoAsignacion.getFechaAsignacionDoc());
-
-
+        }
+        }catch (Exception e){
+            Toast.makeText(this,"Por favor ingrese el ID ", Toast.LENGTH_SHORT).show();
         }
     }
 

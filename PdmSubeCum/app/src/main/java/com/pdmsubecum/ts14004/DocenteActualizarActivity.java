@@ -38,6 +38,7 @@ public class DocenteActualizarActivity extends AppCompatActivity {
     }
 
     public void actualizarDocente(View v) {
+        try{
         Docente docente = new Docente();
         docente.setIdDocente (parseInt(edt_CodDocente.getText().toString()));
         docente.setIdUnidadAdministrativa (parseInt(edt_CodUnidad.getText().toString()));
@@ -50,7 +51,9 @@ public class DocenteActualizarActivity extends AppCompatActivity {
         helper.cerrar();
 
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
-
+        }catch (Exception e){
+            Toast.makeText(this,"Por favor rellene todos los campos ", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void limpiarTexto(View v) {

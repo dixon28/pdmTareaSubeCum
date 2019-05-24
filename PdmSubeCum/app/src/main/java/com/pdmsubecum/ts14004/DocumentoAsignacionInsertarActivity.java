@@ -31,6 +31,7 @@ public class DocumentoAsignacionInsertarActivity extends AppCompatActivity {
     }
 
     public void insertarDocumentoAsignacion(View v) {
+        try{
         int idDocumentoAsignacion = Integer.parseInt(edt_CodDocuAsignacion.getText().toString());
         int idDocente = Integer.parseInt(edt_CodDocente.getText().toString());
         String motivo = edt_Motivo.getText().toString();
@@ -47,6 +48,9 @@ public class DocumentoAsignacionInsertarActivity extends AppCompatActivity {
         regInsertados = helper.insertar(documentoAsignacion);
         helper.cerrar();
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            Toast.makeText(this,"Por favor rellene todos los campos ", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void limpiarTexto(View v) {

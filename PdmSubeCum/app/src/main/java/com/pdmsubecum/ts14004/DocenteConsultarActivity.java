@@ -38,7 +38,7 @@ public class DocenteConsultarActivity extends AppCompatActivity {
     }
 
     public void consultarDocente(View v) {
-
+        try{
         helper.abrir();
         Docente docente = helper.consultarDocente(parseInt(edt_CodDocente.getText().toString()));
         helper.cerrar();
@@ -50,6 +50,9 @@ public class DocenteConsultarActivity extends AppCompatActivity {
             edt_apellido.setText(docente.getApellido());
             edt_email.setText(docente.getEmail());
 
+        }
+        }catch (Exception e){
+            Toast.makeText(this,"Por favor ingrese el ID  ", Toast.LENGTH_SHORT).show();
         }
     }
 

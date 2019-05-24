@@ -31,18 +31,22 @@ public class AsignacionEquipoActualizarActivity extends AppCompatActivity {
 
     }
     public void actualizarEquipoAsignacion(View v) {
-        AsignacionEquipo asignacionEquipo = new AsignacionEquipo();
-        asignacionEquipo.setIdAsignacionEquipo (parseInt(edt_CodAsignaEquipo.getText().toString()));
-        asignacionEquipo.setIdDocente (parseInt(edt_CodDocente.getText().toString()));
-        asignacionEquipo.setFechaAsignacionEquipo(edt_fechaAsignaEquipo.getText().toString());
+        try {
+            AsignacionEquipo asignacionEquipo = new AsignacionEquipo();
+            asignacionEquipo.setIdAsignacionEquipo(parseInt(edt_CodAsignaEquipo.getText().toString()));
+            asignacionEquipo.setIdDocente(parseInt(edt_CodDocente.getText().toString()));
+            asignacionEquipo.setFechaAsignacionEquipo(edt_fechaAsignaEquipo.getText().toString());
 
-        helper.abrir();
-        String estado = helper.actualizar(asignacionEquipo);
-        helper.cerrar();
+            helper.abrir();
+            String estado = helper.actualizar(asignacionEquipo);
+            helper.cerrar();
 
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            Toast.makeText(this,"Por favor rellene todos los campos ", Toast.LENGTH_SHORT).show();
+        }
+        }
 
-    }
 
 
     public void limpiarTexto(View v) {
