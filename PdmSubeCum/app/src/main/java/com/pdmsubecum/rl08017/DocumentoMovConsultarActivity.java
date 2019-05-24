@@ -21,12 +21,14 @@ public class DocumentoMovConsultarActivity extends Activity {
     EditText editfecha;
     EditText editisbnDoc;
     EditText editidMovDetalle;
+    EditText editId;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); setContentView(R.layout.activity_documento_mov_consultar);
         helper = new DataBase(this);
+        editId = findViewById(R.id.editID);
         editocMov = (EditText) findViewById(R.id.editocMov);
         editUnOrigen = (EditText) findViewById(R.id.editUnOrigen);
         editUniDestino = (EditText) findViewById(R.id.editUniDestino);
@@ -40,13 +42,12 @@ public class DocumentoMovConsultarActivity extends Activity {
 
         try{
             helper.abrir();
-            DocumentoMovimiento tipo = helper.consultarDocMov(editocMov.getText().toString());
+            DocumentoMovimiento tipo = helper.consultarDocMov(editId.getText().toString());
             helper.cerrar();
             if(tipo == null)
-                Toast.makeText(this, "Tipo de movimiento " + editocMov.getText().toString() +
+                Toast.makeText(this, "Tipo de movimiento " + editId.getText().toString() +
                         " no encontrado", Toast.LENGTH_LONG).show();
             else{
-
                 editocMov.setText(String.valueOf(tipo.getIdDocMov()));
                 editUnOrigen.setText(String.valueOf(tipo.getIdUnidadAdmOrigen()));
                 editUniDestino.setText(String.valueOf(tipo.getIdUnidadAdmDestino()));
@@ -54,7 +55,7 @@ public class DocumentoMovConsultarActivity extends Activity {
                 editdescTipoM.setText(tipo.getComentario());
                 editfecha.setText(tipo.getFecha());
                 editisbnDoc.setText(String.valueOf(tipo.getIsbn()));
-                editidMovDetalle.setText(tipo.getIdMovDocDetalle());
+                editidMovDetalle.setText(String.valueOf(tipo.getIdMovDocDetalle()));
             }
 
         }

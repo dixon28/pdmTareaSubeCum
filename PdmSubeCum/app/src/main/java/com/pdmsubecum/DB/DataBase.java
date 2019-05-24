@@ -2231,8 +2231,13 @@ public class DataBase {
             ContentValues cv = new ContentValues();
             cv.put("id_tipo_de_movimiento_para_documento", tipo.getIdTiposDeMovimientoParaDocumento());
             cv.put("descripcion", tipo.getDescripcionMovimientoDoc());
-            sqLiteDatabase.update(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, cv, "id_tipo_de_movimiento_para_documento = ?", id);
-            return "Registro Actualizado Correctamente";
+            if(sqLiteDatabase.update(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, cv, "id_tipo_de_movimiento_para_documento = ?", id) > 0){
+                return "Registro Actualizado Correctamente";
+            }else{
+                return "El Registro no existe";
+            }
+
+
         }
         catch (SQLException e ){
             return e.toString();
@@ -2248,8 +2253,12 @@ public class DataBase {
             cv.put("id_docente", tipo.getIdDocente());
             cv.put("id_unidad_admin", tipo.getIdUnidadAdministrativa());
             cv.put("actual", tipo.getActual());
-            sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, cv, "id_documento_existencia = ?", id);
-            return "Registro Actualizado Correctamente";
+
+            if( sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, cv, "id_documento_existencia = ?", id) > 0){
+                return "Registro Actualizado Correctamente";
+            }else{
+                return "El Registro no existe";
+            }
         }
         catch (SQLException e ){
             return e.toString();
@@ -2464,20 +2473,28 @@ public class DataBase {
         Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, CAMPOS_DOCUMENTO_MOVIMIENTO, "id_documento_movimiento = ?", id, null, null, null);
         Cursor cursor2 = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, CAMPOS_DOCUMENTO_MOVIMIENTO_DETALLE, "id_documento_movimiento = ?", id, null, null, null);
 
+        DocumentoMovimiento tipo = new DocumentoMovimiento();
 
-        if(cursor.moveToFirst()&& cursor2.moveToFirst()){
-            DocumentoMovimiento tipo = new DocumentoMovimiento();
+        if(cursor.moveToFirst()){
+
             tipo.setIdDocMov(parseInt(cursor.getString(0)));
             tipo.setIdTipoMovDoc(parseInt(cursor.getString(1)));
             tipo.setIdUnidadAdmOrigen(parseInt(cursor.getString(2)));
             tipo.setIdUnidadAdmDestino(parseInt(cursor.getString(3)));
             tipo.setComentario(cursor.getString(4));
             tipo.setFecha(cursor.getString(5));
-            tipo.setIdMovDocDetalle(parseInt(cursor2.getString(0)));
-            tipo.setIsbn(cursor2.getString(1));
-            return tipo;
+
+
         }else{ return null;
         }
+        if(cursor2.moveToFirst()){
+            tipo.setIdMovDocDetalle(parseInt(cursor2.getString(0)));
+            tipo.setIsbn(cursor2.getString(1));
+
+        }else{ return null;
+        }
+        return tipo;
+
     }
 
 
@@ -2495,9 +2512,15 @@ public class DataBase {
             cv2.put("id_documento_movimiento_detalle", tipo.getIdMovDocDetalle());
             cv2.put("isbn", tipo.getIsbn());
             cv2.put("id_documento_movimiento", tipo.getIdDocMov());
-            sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, cv, "id_documento_movimiento = ?", id);
-            sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, cv2, "id_documento_movimiento = ?", id);
-            return "Registro Actualizado Correctamente";
+            if(sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, cv, "id_documento_movimiento = ?", id)>0
+            ){
+                sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, cv2, "id_documento_movimiento = ?", id);
+                return "Registro Actualizado Correctamente";
+            }
+            else{
+                return "no existe registro";
+            }
+
         }
         catch (SQLException e ){
             return e.toString();
