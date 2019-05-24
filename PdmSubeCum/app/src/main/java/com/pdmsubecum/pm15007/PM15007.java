@@ -35,9 +35,9 @@ public class PM15007 extends AppCompatActivity implements AdapterView.OnItemClic
 
         //agregando los item de la tabla
         tablasCrud = new ArrayList<>();
-        tablasCrud.add("Unidad Administrativa");
-        tablasCrud.add("Tipo de Movimiento de Equipo");
-        tablasCrud.add("Equipo Existencia");
+        tablasCrud.add(getString(R.string.unidad_administrativa));
+        tablasCrud.add(getString(R.string.tipo_movimiento_equipo));
+        tablasCrud.add(getString(R.string.equipo_existencia));
 
         ArrayAdapter adapter = new ArrayAdapter(
                 this, android.R.layout.simple_list_item_1,tablasCrud

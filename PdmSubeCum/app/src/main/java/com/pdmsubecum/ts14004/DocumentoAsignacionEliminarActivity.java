@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.pdmsubecum.DB.DataBase;
 import com.pdmsubecum.DB.modelo.AsignacionEquipo;
+import com.pdmsubecum.DB.modelo.Docente;
 import com.pdmsubecum.DB.modelo.DocumentoAsignacion;
 import com.pdmsubecum.R;
 
@@ -27,7 +28,18 @@ public class DocumentoAsignacionEliminarActivity extends AppCompatActivity {
 
 
     public void eliminarDocumentoAsignacion(View v){
-
+        try {
+            DocumentoAsignacion documentoAsignacion1 = new DocumentoAsignacion();
+            documentoAsignacion1.setIdDocumentoAsignacion(Integer.parseInt(edt_CodDocuAsignacion.getText().toString()));
+            boolean existe;
+            controlhelper.abrir();
+            if (controlhelper.verificarIntegridadTS14004(documentoAsignacion1, 5)) {
+                existe = true;
+            } else {
+                existe = false;
+            }
+            controlhelper.cerrar();
+            if (existe) {
             AlertDialog.Builder dialogo = new AlertDialog.Builder(DocumentoAsignacionEliminarActivity.this);
              dialogo.setIcon(R.mipmap.ic_launcher).
             setMessage("Importante").
@@ -44,9 +56,14 @@ public class DocumentoAsignacionEliminarActivity extends AppCompatActivity {
                     dialog.dismiss();
                 }
             });
-            dialogo.create();
+           // dialogo.create();
 
             dialogo.show();
+            } else {
+                Toast.makeText(this, "Registro No Existe", Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception e){
+            Toast.makeText(this,"Por favor rellene el ID ", Toast.LENGTH_SHORT).show();}
 
     }
 

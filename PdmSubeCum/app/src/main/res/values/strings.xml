@@ -188,24 +188,17 @@
     <string name="cancel">Cancelar</string>
     <string name="mensaje_eliminar">Tablas Afectadas: </string>
     <string name="titulo_dialogo">¿Esta seguro de eliminar?</string>
-    <string name="cancelar">Cancelar</string>
-    <string name="confirmar">aceptar</string>
-    <string name="tablas">Equipo</string>
-    <string name="rellenarid">por favor rellene el id o ingrese un id valido </string>
-    <string name="verificar">lo sentimos el id no exite</string>
-    <string name="verificarISBN">lo sentimos no existe el isbn</string>
-    <string name="asignacionEquipoDetalle">asignacionEquipoDetalle</string>
-    <string name="EquipoMovimientoDetalle">EquipoMovimientoDetalle</string>
-    <string name="autorDetalle">autorDetalle</string>
-    <string name="DocumentoAsignacionDetalle">DocumentoAsignacionDetalle</string>
-    <string name="DocumentoMovimientoDetalle">DocumentoMovimientoDetalle</string>
-    <string name="mensaje_actualizar">los siguientes registros se actualizaran en la tabla :</string>
-    <string name="titulo_dialogo_update">¿Esta seguro de actualizar?</string>
-    <string name="marcaconid">Marca con id</string>
-    <string name="nulo">por favor llene todos los campos</string>
-    <string name="verificarintegridad">ya existe un registro con el id</string>
-    <string name="actualizado">registros actualizados</string>
-    <string name="noactualizado">no se actualizo el registro</string>
+    <string name="tablas_ts14004">Docente/AsignacionEquipo/DocumentoAsignaciongnment</string>
+    <string name="tablas_rl08017">TipoMovDoc/DocumentoMov/DocumentoMovDetalle</string>
+    <string name="tablas_pm15007">UnidadAdministrativa / EquipoExistencia / TipoMovimientoEquipo</string>
+    <string name="tablas_mm14031">Tablas: Materia, Horario y Grupo</string>
+    <string name="tablas_am15005">Autor/AutorDetalle/Documento/Equipo/Marca/TiposEquipo/TiposDocumento</string>
+    <string name="btn_login">Iniciar Sesión</string>
+    <string name="txt_descripcion_tipo_mov_equipo">Descripcion (string)</string>
+    <string name="txt_id_equipo_equipo_existencia">ID Equipo (int)</string>
+    <string name="txt_id_docente_equipo_existencia">ID Docente (int)</string>
+    <string name="txt_id_unidad_admin_equipo_existencia">ID Unidad Administrativa (int)</string>
+    <string name="txt_nombre_unidad_administrativa">nombre (string)</string>
 
 
 </resources>
