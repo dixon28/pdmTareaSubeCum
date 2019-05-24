@@ -306,6 +306,9 @@ public class ConstantesDB {
             "BEFORE DELETE ON documento BEGIN DELETE FROM documento_existencia   WHERE isbn = OLD.isbn; END";
     public static final String SQL_DELETE_TRIGGER_DOCUMENTO4 = "DROP TRIGGER tr_Documento4Eliminar;";
 
+    //Triggers para actualizacion de datos
+    //actualiza los ids
+
 
     public static final String SQL_UPDATE_TRIGGER_MARCA="CREATE TRIGGER update_marca\n" +
             "\n" +
