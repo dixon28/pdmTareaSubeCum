@@ -1673,6 +1673,41 @@ public class DataBase {
 
     }
 
+    //grupoRelacionExiste
+
+    public boolean grupoRelacionExiste(String codigoMateria) throws SQLException {
+
+        String[] codMateria = {codigoMateria};
+
+        Cursor c = sqLiteDatabase.query("grupo", null, "codigoMateria = ?",
+                codMateria, null, null, null);
+
+        if (c.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    //horarioRelacionExiste
+
+    public boolean grupoRelacionExiste(int idHorario) throws SQLException {
+
+        String[] codHorario = {String.valueOf(idHorario)};
+
+        Cursor c = sqLiteDatabase.query("horariodetalle", null, "idHorario = ?",
+                codHorario, null, null, null);
+
+        if (c.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+
     //TS14004---------------------------------------------------------------------------
     public String llenarBase() {
 
