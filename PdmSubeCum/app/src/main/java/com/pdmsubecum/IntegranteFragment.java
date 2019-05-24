@@ -70,6 +70,7 @@ public class IntegranteFragment extends Fragment {
             switch (rolUsuario.getNombre_rol()){
                 case "admin":
                     integranteList.add(new Integrante("Edilson Argueta Medina","AM15005",getString(R.string.tablas_am15005), R.drawable.f1));
+                    integranteList.add(new Integrante("Nelson Miranda Miranda","MM14031",getString(R.string.tablas_mm14031),R.drawable.mm14031));
                     integranteList.add(new Integrante("Rodrigo Presa Mariona","PM15007",
                             getString(R.string.tablas_pm15007),R.drawable.pm15007));
                     integranteList.add(new Integrante("Joel Ramos Lopez","RL08017",getString(R.string.tablas_rl08017),R.drawable.joel));
