@@ -43,11 +43,13 @@ public class ConsultarEquipoActivity extends AppCompatActivity {
     }
 
     public void ConsultarEquipo(View view) {
+
+
         String id;
         helper.abrir();
         Equipo equipo = helper.consultarE(conid.getText().toString());
         helper.cerrar();
-        id=Integer.toString(equipo.getIdequipo());
+       // id=Integer.toString(equipo.getIdequipo());
         if(equipo == null)
             Toast.makeText(this, "Marca con id  " +
                     edtEq.getText().toString() +
