@@ -24,12 +24,31 @@ public class TipoFragment extends Fragment {
     ListView lista;
 
     List<String> tablasCrud;
-    String[] menu={"Actualizar Registro","Consultar Registro","Eliminar Registro",
-            "Ingresar Registro"};
+    String[] menu;
     String[]
             activities={"DocumentoActualizarActivity","DocumentoConsultarActivity","DocumentoEliminarActivity","DocumentoInsertarActivity"};
 
     private TipoFragment docFragment;
+    private String actualizar;
+    private String insertar;
+    private String eliminar;
+    private String consultar;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        actualizar=getString(R.string.actualizar_registro);
+        insertar=getString(R.string.insertar_registro);
+        eliminar=getString(R.string.eliminar_registro);
+        consultar=getString(R.string.consultar_registro);
+        menu= new String[4];
+        menu[0]=actualizar;
+        menu[3]=insertar;
+        menu[2]=eliminar;
+        menu[1]=consultar;
+
+    }
 
 
     @Override

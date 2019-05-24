@@ -46,7 +46,7 @@ public class RetrieveUnidadAdministrativa extends AppCompatActivity implements V
                 break;
             case R.id.btn_retrieve_unidad_administrativa:
                 if(til_id_unidad_administrativa.getEditText().getText().toString().isEmpty()){
-                    Toast.makeText(this, "Por favor rellene el ID", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.please_id), Toast.LENGTH_SHORT).show();
                 }else{
                     try{
                         unidadAdministrativa = new UnidadAdministrativa();
@@ -56,15 +56,15 @@ public class RetrieveUnidadAdministrativa extends AppCompatActivity implements V
                         dataBase.cerrar();
 
                     }catch (Exception e){
-                        Toast.makeText(this,"El ID debe ser un tipo entero",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.not_number),Toast.LENGTH_SHORT).show();
                         limpiar();
                     }
                     if(unidadAdministrativa != null){
                         til_nombre.getEditText().setText(unidadAdministrativa.getNombre());
                         til_descripcion.getEditText().setText(unidadAdministrativa.getDescripcion());
-                        Toast.makeText(this,"Se muestran los datos del registro",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.showRecord),Toast.LENGTH_SHORT).show();
                     }else{
-                        Toast.makeText(this,"No Existe Unidad Administrativa con el ID ingresado",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.unidad_administrativa)+" "+getString(R.string.not_exists),Toast.LENGTH_SHORT).show();
                         limpiar();
                     }
 

@@ -40,10 +40,10 @@ public class DeleteEquipoExistencia extends AppCompatActivity implements View.On
         btn_delete.setOnClickListener(this);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getString(R.string.mensaje_eliminar) + "Tabla 1, etc")
+        builder.setMessage(getString(R.string.mensaje_eliminar) + getString(R.string.equipo_existencia))
                 .setTitle(R.string.titulo_dialogo);
 
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok , new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 eliminar();
@@ -66,7 +66,7 @@ public class DeleteEquipoExistencia extends AppCompatActivity implements View.On
                 break;
             case R.id.btn_delete_equipo_existencia:
                 if(til_id_equipo_existencia.getEditText().getText().toString().isEmpty()){
-                    Toast.makeText(this,"Por favor rellene el ID ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.please_id), Toast.LENGTH_SHORT).show();
                 }else{
                     // Create the AlertDialog
                     dialog.show();
@@ -82,21 +82,21 @@ public class DeleteEquipoExistencia extends AppCompatActivity implements View.On
             equipoExistencia = dataBase.getEquipoExistencia(id);
             dataBase.cerrar();
         } catch (Exception e){
-            Toast.makeText(this,"El valor ingresado no es un numero", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.not_number), Toast.LENGTH_SHORT).show();
             limpiar();
         }
         if(equipoExistencia != null){
             dataBase.abrir();
             dataBase.eliminar(equipoExistencia);
             dataBase.cerrar();
-            Toast.makeText(this,"Equipo Existencia ha sido Eliminado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.equipo_existencia)+" "+getString(R.string.deleted), Toast.LENGTH_SHORT).show();
             limpiar();
         }else{
-            Toast.makeText(this,"No existe Equipo existencia con ese ID", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.equipo_existencia)+" "+getString(R.string.not_exists), Toast.LENGTH_SHORT).show();
         }
     }
     public void cancelar(){
-        Toast.makeText(this, "Cancelado",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.canceled),Toast.LENGTH_SHORT).show();
     }
     public void limpiar(){
         til_id_equipo_existencia.getEditText().setText("");

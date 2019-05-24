@@ -44,7 +44,7 @@ public class DeleteTipoMovimientoEquipo extends AppCompatActivity implements Vie
         btn_delete_tipo_movimiento_equipo.setOnClickListener(this);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getString(R.string.mensaje_eliminar) + "Tabla 1, etc")
+        builder.setMessage(getString(R.string.mensaje_eliminar) + getString(R.string.tipo_movimiento_equipo)+", EquipoMovimiento, EquipoMovimeintoDetalle")
                 .setTitle(R.string.titulo_dialogo);
 
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
@@ -71,7 +71,7 @@ public class DeleteTipoMovimientoEquipo extends AppCompatActivity implements Vie
                 break;
             case R.id.btn_delete_tipo_movimiento_equipo:
                 if (til_id_tipo_movimiento_equipo.getEditText().getText().toString().isEmpty()) {
-                    Toast.makeText(this, "Por favor rellene todos los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.please_id), Toast.LENGTH_SHORT).show();
                 } else {
                     dialog.show();
                 }
@@ -85,21 +85,21 @@ public class DeleteTipoMovimientoEquipo extends AppCompatActivity implements Vie
             tipoMovimientoEquipo = dataBase.getTipoMovimientoEquipo(id);
             dataBase.cerrar();
         } catch (Exception e) {
-            Toast.makeText(this,"El valor ingresado no es un numero", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.not_number), Toast.LENGTH_SHORT).show();
             limpiar();
         }
         if(tipoMovimientoEquipo != null){
             dataBase.abrir();
             dataBase.eliminar(tipoMovimientoEquipo);
             dataBase.cerrar();
-            Toast.makeText(this,"Tipo Movimiento Equipo ha sido Eliminado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.tipo_movimiento_equipo)+" "+getString(R.string.deleted), Toast.LENGTH_SHORT).show();
             limpiar();
         }else{
-            Toast.makeText(this,"No existe Tipo Movimiento Equipo con ese ID", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.tipo_movimiento_equipo)+" "+getString(R.string.not_exists), Toast.LENGTH_SHORT).show();
         }
     }
     public void cancelar(){
-        Toast.makeText(this, "Cancelado",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.canceled),Toast.LENGTH_SHORT).show();
     }
     public void limpiar(){
         til_id_tipo_movimiento_equipo.getEditText().setText("");
