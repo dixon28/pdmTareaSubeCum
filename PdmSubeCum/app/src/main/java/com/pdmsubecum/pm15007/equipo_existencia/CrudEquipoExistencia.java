@@ -46,9 +46,6 @@ public class CrudEquipoExistencia extends AppCompatActivity implements AdapterVi
         //obteniendo la fila clickeada
         String nombreTablaClick = crud.get(position);
 
-        //hacer llamar a activities segun click
-        Toast.makeText(this, "Click a tabla: "+nombreTablaClick, Toast.LENGTH_SHORT).show();
-
         Intent intent;
         switch (position){
             case 0:

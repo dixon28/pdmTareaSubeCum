@@ -44,7 +44,7 @@ public class DeleteTipoMovimientoEquipo extends AppCompatActivity implements Vie
         btn_delete_tipo_movimiento_equipo.setOnClickListener(this);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getString(R.string.mensaje_eliminar) + "Tabla 1, etc")
+        builder.setMessage(getString(R.string.mensaje_eliminar) + "TipoMovimientoEquipo, EquipoMovimiento, EquipoMovimeintoDetalle")
                 .setTitle(R.string.titulo_dialogo);
 
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {

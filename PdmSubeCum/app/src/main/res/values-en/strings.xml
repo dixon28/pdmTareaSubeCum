@@ -199,6 +199,6 @@
     <string name="txt_id_unidad_admin_equipo_existencia">Administrative Unit ID(int)</string>
     <string name="txt_id_equipo_equipo_existencia">Equipment ID (int)</string>
     <string name="txt_id_docente_equipo_existencia">Teacher ID (int)</string>
-    <string name="txt_nombre_unidad_administrativa">nombre (string)</string>
+    <string name="txt_nombre_unidad_administrativa">Name (string)</string>
 
 </resources>

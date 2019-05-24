@@ -40,7 +40,7 @@ public class DeleteEquipoExistencia extends AppCompatActivity implements View.On
         btn_delete.setOnClickListener(this);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getString(R.string.mensaje_eliminar) + "Tabla 1, etc")
+        builder.setMessage(getString(R.string.mensaje_eliminar) + getString(R.string.equipo_existencia))
                 .setTitle(R.string.titulo_dialogo);
 
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {

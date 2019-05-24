@@ -42,7 +42,7 @@ public class DeleteUnidadAdministrativa extends AppCompatActivity implements Vie
         btn_delete_unidad_administrativa.setOnClickListener(this);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getString(R.string.mensaje_eliminar) + "tabla 1, etc")
+        builder.setMessage(getString(R.string.mensaje_eliminar) + getString(R.string.unidad_administrativa))
                 .setTitle(R.string.titulo_dialogo);
 
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
