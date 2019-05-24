@@ -200,5 +200,23 @@
     <string name="txt_id_equipo_equipo_existencia">Equipment ID (int)</string>
     <string name="txt_id_docente_equipo_existencia">Teacher ID (int)</string>
     <string name="txt_nombre_unidad_administrativa">nombre (string)</string>
+    <string name="cancelar">Cancel</string>
+    <string name="confirmar">Confirm</string>
+    <string name="tablas">Equitment</string>
+    <string name="rellenarid">please fill in the id or enter a valid id </string>
+    <string name="verificar">sorry the id does not exist</string>
+    <string name="verificarISBN">sorry the isbn does not exist </string>
+    <string name="asignacionEquipoDetalle">EquipmentDetailassignment</string>
+    <string name="EquipoMovimientoDetalle">EquipmentMovementDetail</string>
+    <string name="autorDetalle">authorDetail</string>
+    <string name="DocumentoAsignacionDetalle">DocumentAsignmentDetail</string>
+    <string name="DocumentoMovimientoDetalle">DocumentMovimentDetalail</string>
+    <string name="mensaje_actualizar">the following records will be updated in the table:</string>
+    <string name="titulo_dialogo_update">Are you sure to update?</string>
+    <string name="marcaconid">Brand with id</string>
+    <string name="nulo">Please fill all fields</string>
+    <string name="verificarintegridad">there is already a record with the id</string>
+    <string name="actualizado">updated records</string>
+    <string name="noactualizado">the registration was not updated</string>
 
 </resources>
