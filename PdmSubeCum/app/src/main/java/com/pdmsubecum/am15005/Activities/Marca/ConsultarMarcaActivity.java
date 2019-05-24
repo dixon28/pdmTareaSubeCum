@@ -37,13 +37,13 @@ public class ConsultarMarcaActivity extends AppCompatActivity {
         Marca marca =
                 helper.consultarM(idmarca.getText().toString());
         helper.cerrar();
-        id=Integer.toString(marca.getIdmarca());
+       // id=Integer.toString(marca.getIdmarca());
         if(marca == null)
             Toast.makeText(this, "Marca con id  " +
                     idmarca.getText().toString() +
                     " no encontrado", Toast.LENGTH_LONG).show();
         else{
-            conidmarca.setText(id);
+            conidmarca.setText(idmarca.getText().toString());
             desmarca.setText(marca.getDescripcionmarca());
 
         }

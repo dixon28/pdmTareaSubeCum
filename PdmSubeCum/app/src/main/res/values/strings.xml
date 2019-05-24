@@ -228,6 +228,7 @@
     <string name="not_exists">no existe con ese ID</string>
     <string name="showRecord">Se muestran los datos del registro</string>
     <string name="updated">ha sido actualizado</string>
+    <string name="ingreseisbndocumento">ingrese isbn</string>
 
 
 </resources>

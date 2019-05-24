@@ -229,6 +229,7 @@
     <string name="not_exists">does not exist with that ID</string>
     <string name="showRecord">The registration data is displayed</string>
     <string name="updated">has been updated</string>
+    <string name="ingreseisbndocumento">ingrese isbn</string>
 
 
 </resources>
