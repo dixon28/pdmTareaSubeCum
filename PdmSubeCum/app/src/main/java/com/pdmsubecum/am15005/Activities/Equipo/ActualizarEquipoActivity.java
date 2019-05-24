@@ -171,16 +171,6 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
         spinner3.setAdapter(comboAdapterteDisponible);
 
 
-        fechaingreso = findViewById(R.id.editfechaingreso);
-        fechaingreso.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-            }
-        });
-
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(getString(R.string.mensaje_actualizar) +" "+ getString(R.string.equipo_existencia)+" "+ getString(R.string.asignacionEquipoDetalle)+" "+ getString(R.string.EquipoMovimientoDetalle))
                 .setTitle(R.string.titulo_dialogo_update);
@@ -198,6 +188,16 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
         });
 
         dialog = builder.create();
+
+        fechaingreso = findViewById(R.id.editfechaingreso);
+        fechaingreso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new DatePickerDialog(ActualizarEquipoActivity.this, date, calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
     }
 
 
@@ -283,7 +283,7 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
             helper.cerrar();
             id = Integer.toString(equipo.getIdequipo());
             if (equipo == null)
-                Toast.makeText(this,  getString(R.string.rellenarid), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.rellenarid), Toast.LENGTH_LONG).show();
             else {
                 edtmarca.setText(String.valueOf(equipo.getIdmarca()));
                 edtTipoEquipo.setText(String.valueOf(equipo.getIdtiposdeequipo()));
@@ -456,24 +456,15 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
 
             case R.id.actualizaEquipo:
                 if(edtEq.getText().toString().isEmpty()||serie.getText().toString().isEmpty()||modelo.getText().toString().isEmpty()||carac.getText().toString().isEmpty()){
-                    Toast.makeText(this,R.string.rellenarid, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.nulo), Toast.LENGTH_SHORT).show();
                 }
 
                 else{
                     // Create the AlertDialog
 
-                    helper.abrir();
-                    Equipo equipo =helper.consultarE(conid.getText().toString());
-                    helper.cerrar();
-                    if (equipo==null)
-                    {
-
-                        Toast.makeText(this,R.string.verificar,Toast.LENGTH_SHORT).show();
-
-                    }else {
                         // Create the AlertDialog
                         dialog.show();
-                    }
+
                 }
                 break;
 

@@ -34,28 +34,36 @@ public class InsertarMarcaActivity extends AppCompatActivity {
 
         try{
 
-        String Idmarca= editIdMarca.getText().toString();
+            if (editIdMarca.getText().toString().isEmpty()||editDescripcionMarca.getText().toString().isEmpty())
+            {
 
-        int id=Integer.parseInt(Idmarca);
-        
+                Toast.makeText(this,getString(R.string.nulo),Toast.LENGTH_SHORT);
 
-      String descripcion=editDescripcionMarca.getText().toString();
-       String regInsertados;
-        Marca marca= new Marca();
-        marca.setIdmarca(id);
-        marca.setDescripcionmarca(descripcion);
 
-        if (db.verificarIntegridadAM15005(marca,1)){
+            }
+            else {
+                String Idmarca = editIdMarca.getText().toString();
 
-            Toast.makeText(this,"Ya existe un registro con el id "+Idmarca , Toast.LENGTH_SHORT).show();
-        }
-        else {
+                int id = Integer.parseInt(Idmarca);
 
-            db.abrir();
-            db.insertar(marca);
-            db.cerrar();
-            Toast.makeText(this,Idmarca , Toast.LENGTH_SHORT).show();
-        }
+
+                String descripcion = editDescripcionMarca.getText().toString();
+                String regInsertados;
+                Marca marca = new Marca();
+                marca.setIdmarca(id);
+                marca.setDescripcionmarca(descripcion);
+
+                if (db.verificarIntegridadAM15005(marca, 1)) {
+
+                    Toast.makeText(this, "Ya existe un registro con el id " + Idmarca, Toast.LENGTH_SHORT).show();
+                } else {
+
+                    db.abrir();
+                    db.insertar(marca);
+                    db.cerrar();
+                    Toast.makeText(this, Idmarca, Toast.LENGTH_SHORT).show();
+                }
+            }
         }catch (Exception e)
         {
 

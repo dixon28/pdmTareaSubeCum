@@ -274,7 +274,7 @@ public class ConstantesDB {
     public static final String SQL_DELETE_TRIGGER_EQUIPO2= "DROP TRIGGER tr_EquipoEliminar2;";
 
 
-    public static final String SQL_CREATE_TRIGGER_EQUIPO3 = "CREATE TRIGGER tr_EquipoEliminar3 BEFORE DELETE ON equipo BEGIN DELETE FROM equipo_movimiento_detalle WHERE idequipo = OLD.idequipo; END;";
+    public static final String SQL_CREATE_TRIGGER_EQUIPO3 = "CREATE TRIGGER tr_EquipoEliminar3 BEFORE DELETE ON equipo BEGIN DELETE FROM equipo_movimiento_detalle WHERE id_equipo = OLD.idequipo; END;";
 
     public static final String SQL_DELETE_TRIGGER_EQUIPO3= "DROP TRIGGER tr_EquipoEliminar3;";
 
@@ -284,7 +284,7 @@ public class ConstantesDB {
 
 
     public static final String SQL_CREATE_TRIGGER_DOCUMENTO2 = "CREATE TRIGGER tr_Documento2Eliminar " +
-            "BEFORE DELETE ON documento BEGIN DELETE FROM documento_movimiento_detalle WHERE isbn = OLD.isbn; END";
+            "BEFORE DELETE ON documento BEGIN DELETE FROM movimiento_documento_detalle WHERE isbn = OLD.isbn; END";
     public static final String SQL_DELETE_TRIGGER_DOCUMENTO2= "DROP TRIGGER tr_Documento2Eliminar;";
 
     public static final String SQL_CREATE_TRIGGER_DOCUMENTO3= "CREATE TRIGGER tr_Documento3Eliminar " +

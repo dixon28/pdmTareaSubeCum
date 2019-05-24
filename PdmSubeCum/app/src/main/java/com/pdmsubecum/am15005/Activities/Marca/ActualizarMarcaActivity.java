@@ -119,7 +119,7 @@ public class ActualizarMarcaActivity extends AppCompatActivity {
 
             case R.id.botonActualizar:
                 if (conidmarca.getText().toString().isEmpty()||desmarca.getText().toString().isEmpty()) {
-                    Toast.makeText(this, R.string.rellenarid, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.nulo), Toast.LENGTH_SHORT).show();
                 } else {
 
                     helper.abrir();
