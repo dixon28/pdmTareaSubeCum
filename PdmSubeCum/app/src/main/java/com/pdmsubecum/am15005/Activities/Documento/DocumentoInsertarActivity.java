@@ -152,6 +152,10 @@ public class DocumentoInsertarActivity extends AppCompatActivity implements Adap
 
 
     public void insertarDocumento(View view) {
+
+        try {
+
+
         Documento documento= new Documento();
         boolean disp;
 
@@ -190,6 +194,15 @@ public class DocumentoInsertarActivity extends AppCompatActivity implements Adap
 //        db.ingresarFecha(fe,equipo.getIdequipo());
             db.cerrar();
             Toast.makeText(this, documento.getIsbn(), Toast.LENGTH_SHORT).show();
+        }
+        }catch (Exception e)
+        {
+
+            Toast.makeText(this,getString(R.string.nulo),Toast.LENGTH_SHORT).show();
+
+
+
+
         }
 
     }

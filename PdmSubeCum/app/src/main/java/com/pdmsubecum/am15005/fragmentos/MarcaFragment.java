@@ -24,6 +24,7 @@ public class MarcaFragment extends Fragment {
 
     ListView lista;
 
+
     List<String> tablasCrud;
     private EquipoFragment equipoFragment;
     String[] menu={"Actualizar Registro","Consultar Registro","Eliminar Registro",

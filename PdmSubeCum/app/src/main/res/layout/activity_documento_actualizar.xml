@@ -170,7 +170,8 @@
 
 
         <Button
-            android:onClick="actualizararDocumento"
+            android:id="@+id/ActualizarDocumento"
+            android:onClick="ActualizarDocumento"
             android:text="@string/actualizar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

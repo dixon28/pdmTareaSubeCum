@@ -1,6 +1,8 @@
 package com.pdmsubecum.am15005.Activities.Equipo;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -82,6 +84,7 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
     private EditText modelo;
     private EditText carac;
     private EditText conid;
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,16 +181,37 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
         });
 
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.mensaje_actualizar) +" "+ getString(R.string.equipo_existencia)+" "+ getString(R.string.asignacionEquipoDetalle)+" "+ getString(R.string.EquipoMovimientoDetalle))
+                .setTitle(R.string.titulo_dialogo_update);
 
+        builder.setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ActualizarEquipo();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                cancelar();
+            }
+        });
 
-
-
-
-
-
-
-
+        dialog = builder.create();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -250,37 +274,50 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
     };
 
     public void ConsultarEquipo(View view) {
-        String id;
-        helper.abrir();
-        Equipo equipo = helper.consultarE(conid.getText().toString());
-        helper.cerrar();
-        id=Integer.toString(equipo.getIdequipo());
-        if(equipo == null)
-            Toast.makeText(this, "Marca con id  " +
-                    edtEq.getText().toString() +
-                    " no encontrado", Toast.LENGTH_LONG).show();
-        else{
-            edtmarca.setText(String.valueOf(equipo.getIdmarca()));
-            edtTipoEquipo.setText(String.valueOf(equipo.getIdtiposdeequipo()));
-            if (equipo.isEquipodisponible()) {
-                edtEquipoDis.setText("si");
-            }
+        try {
+
+
+            String id;
+            helper.abrir();
+            Equipo equipo = helper.consultarE(conid.getText().toString());
+            helper.cerrar();
+            id = Integer.toString(equipo.getIdequipo());
+            if (equipo == null)
+                Toast.makeText(this,  getString(R.string.rellenarid), Toast.LENGTH_LONG).show();
             else {
+                edtmarca.setText(String.valueOf(equipo.getIdmarca()));
+                edtTipoEquipo.setText(String.valueOf(equipo.getIdtiposdeequipo()));
+                if (equipo.isEquipodisponible()) {
+                    edtEquipoDis.setText("si");
+                } else {
 
-                edtEquipoDis.setText("no");
+                    edtEquipoDis.setText("no");
+
+                }
+                edtEq.setText(String.valueOf(equipo.getIdequipo()));
+                modelo.setText(equipo.getModelo());
+                serie.setText(equipo.getSerie());
+                carac.setText(equipo.getCaracteristicas());
+                fechaingreso.setText(equipo.getFechaingreso());
+
+                conid.setEnabled(false);
+
 
             }
-            edtEq.setText(String.valueOf(equipo.getIdequipo()));
-            modelo.setText(equipo.getModelo());
-            serie.setText(equipo.getSerie());
-            carac.setText(equipo.getCaracteristicas());
-            fechaingreso.setText(equipo.getFechaingreso());
+        }catch (Exception e)
+            {
 
-            conid.setEnabled(false);
+                Toast.makeText(this,getString(R.string.nulo),Toast.LENGTH_SHORT).show();
 
 
 
-        }
+
+            }
+
+
+
+
+
     }
 
     public void LimpiarTexto(View view) {
@@ -309,7 +346,6 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
                 edtmarca.setText(id_guardado_Marca);
 
 
-                Toast.makeText(this, "Nombre marca: " + nombreMarca, Toast.LENGTH_SHORT).show();
 
                 break;
 
@@ -318,7 +354,7 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
                 id_guardado_tequipo=ides_tequipos[position];
                 edtTipoEquipo.setText(id_guardado_tequipo);
 
-                Toast.makeText(this,"nombre del tipo de equipo :"+nombreEquipo,Toast.LENGTH_SHORT).show();
+
                 break;
 
 
@@ -327,7 +363,7 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
                 id_guardado_disponible=ides_disponible[position];
                 edtEquipoDis.setText(nombreDisponible);
 
-                Toast.makeText(this,"disponible :"+nombreDisponible,Toast.LENGTH_SHORT).show();
+
                 break;
         }
 
@@ -339,7 +375,10 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
     }
 
 
-    public void ActualizarEquipo(View view) {
+    public void ActualizarEquipo() {
+        try {
+
+
         String formatoDeFecha = "DD-MM-YYYY"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha);
         boolean disp;
@@ -380,7 +419,7 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
 
         if (helper.verificarIntegridadAM15005(equipo, 2)) {
 
-            Toast.makeText(this, "Ya existe un registro con el id " + edtEq.getText().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.verificarintegridad) + edtEq.getText().toString(), Toast.LENGTH_SHORT).show();
         } else {
 
 
@@ -390,10 +429,61 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
             helper.cerrar();
 
             conid.setText(String.valueOf(equipo.getIdequipo()));
-            Toast.makeText(this, String.valueOf(s), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.actualizado) +String.valueOf(s), Toast.LENGTH_SHORT).show();
+
+
+        }
+        }catch (Exception e)
+        {
+
+            Toast.makeText(this,getString(R.string.nulo),Toast.LENGTH_SHORT).show();
+
+
 
 
         }
     }
+
+    public void cancelar(){
+        Toast.makeText(this,R.string.cancelar,Toast.LENGTH_SHORT).show();
+    }
+
+
+    public  void ActualizarEquipo( View view)
+    {
+
+        switch (view.getId()){
+
+            case R.id.actualizaEquipo:
+                if(edtEq.getText().toString().isEmpty()||serie.getText().toString().isEmpty()||modelo.getText().toString().isEmpty()||carac.getText().toString().isEmpty()){
+                    Toast.makeText(this,R.string.rellenarid, Toast.LENGTH_SHORT).show();
+                }
+
+                else{
+                    // Create the AlertDialog
+
+                    helper.abrir();
+                    Equipo equipo =helper.consultarE(conid.getText().toString());
+                    helper.cerrar();
+                    if (equipo==null)
+                    {
+
+                        Toast.makeText(this,R.string.verificar,Toast.LENGTH_SHORT).show();
+
+                    }else {
+                        // Create the AlertDialog
+                        dialog.show();
+                    }
+                }
+                break;
+
+
+        }
+
+
+
+
+    }
+
 
 }

@@ -188,6 +188,24 @@
     <string name="cancel">Cancelar</string>
     <string name="mensaje_eliminar">Tablas Afectadas: </string>
     <string name="titulo_dialogo">¿Esta seguro de eliminar?</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="confirmar">aceptar</string>
+    <string name="tablas">Equipo</string>
+    <string name="rellenarid">por favor rellene el id o ingrese un id valido </string>
+    <string name="verificar">lo sentimos el id no exite</string>
+    <string name="verificarISBN">lo sentimos no existe el isbn</string>
+    <string name="asignacionEquipoDetalle">asignacionEquipoDetalle</string>
+    <string name="EquipoMovimientoDetalle">EquipoMovimientoDetalle</string>
+    <string name="autorDetalle">autorDetalle</string>
+    <string name="DocumentoAsignacionDetalle">DocumentoAsignacionDetalle</string>
+    <string name="DocumentoMovimientoDetalle">DocumentoMovimientoDetalle</string>
+    <string name="mensaje_actualizar">los siguientes registros se actualizaran en la tabla :</string>
+    <string name="titulo_dialogo_update">¿Esta seguro de actualizar?</string>
+    <string name="marcaconid">Marca con id</string>
+    <string name="nulo">por favor llene todos los campos</string>
+    <string name="verificarintegridad">ya existe un registro con el id</string>
+    <string name="actualizado">registros actualizados</string>
+    <string name="noactualizado">no se actualizo el registro</string>
 
 
 </resources>
