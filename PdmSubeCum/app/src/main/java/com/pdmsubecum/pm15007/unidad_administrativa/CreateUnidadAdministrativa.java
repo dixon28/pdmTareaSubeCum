@@ -52,7 +52,7 @@ public class CreateUnidadAdministrativa extends AppCompatActivity implements Vie
                 if(til_id_unidad_administrativa.getEditText().getText().toString().isEmpty() ||
                 til_nombre.getEditText().getText().toString().isEmpty() ||
                 til_descripcion.getEditText().getText().toString().isEmpty()){
-                    Toast.makeText(this, "Por favor rellene todo los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.please_fill), Toast.LENGTH_SHORT).show();
                 }else{
                     try{
                         unidadAdministrativa = new UnidadAdministrativa();
@@ -62,12 +62,12 @@ public class CreateUnidadAdministrativa extends AppCompatActivity implements Vie
                         unidadAdministrativa.setDescripcion(til_descripcion.getEditText().getText().toString());
 
                     }catch (Exception e){
-                        Toast.makeText(this,"Uno o mas Campos no son del tipo solicitado",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.bad_fields),Toast.LENGTH_SHORT).show();
                     }
                     dataBase.abrir();
                     dataBase.insertar(unidadAdministrativa);
                     dataBase.cerrar();
-                    Toast.makeText(this,"Unidad Administrativa ha sido creada",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.unidad_administrativa)+" "+getString(R.string.created),Toast.LENGTH_SHORT).show();
                     limpiar();
                     til_id_unidad_administrativa.getEditText().setText(String.valueOf(Integer.parseInt(til_id_unidad_administrativa
                             .getEditText().getText().toString()) + 1));

@@ -218,10 +218,16 @@
     <string name="verificarintegridad">ya existe un registro con el id</string>
     <string name="actualizado">registros actualizados</string>
     <string name="noactualizado">no se actualizo el registro</string>
-
-
-
-
+    <string name="please_fill">Por Favor rellene todos los campos</string>
+    <string name="bad_fields">Uno o mas Campos no son del tipo solicitado</string>
+    <string name="created">ha sido creado</string>
+    <string name="canceled">Cancelado</string>
+    <string name="please_id">Por favor rellene el ID</string>
+    <string name="not_number">El valor ingresado no es un numero</string>
+    <string name="deleted">ha sido eliminado</string>
+    <string name="not_exists">no existe con ese ID</string>
+    <string name="showRecord">Se muestran los datos del registro</string>
+    <string name="updated">ha sido actualizado</string>
 
 
 </resources>

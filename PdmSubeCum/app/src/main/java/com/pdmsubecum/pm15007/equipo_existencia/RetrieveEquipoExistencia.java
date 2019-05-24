@@ -50,7 +50,7 @@ public class RetrieveEquipoExistencia extends AppCompatActivity implements View.
                 break;
             case R.id.btn_retrieve_equipo_existencia:
                 if(til_id_equipo_existencia_r.getEditText().getText().toString().isEmpty()){
-                    Toast.makeText(this,"Por Favor llene el ID de equipo existencia",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.please_id),Toast.LENGTH_SHORT).show();
                 }else{
                     try{
                         equipoExistencia = new EquipoExistencia();
@@ -59,7 +59,7 @@ public class RetrieveEquipoExistencia extends AppCompatActivity implements View.
                         equipoExistencia = dataBase.getEquipoExistencia(id);
                         dataBase.cerrar();
                     }catch (Exception e){
-                        Toast.makeText(this,"El ID debe ser un tipo entero",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.not_number),Toast.LENGTH_SHORT).show();
                         limpiar();
                     }
                    if(equipoExistencia != null){
@@ -67,9 +67,9 @@ public class RetrieveEquipoExistencia extends AppCompatActivity implements View.
                        til_id_docente_r.getEditText().setText(String.valueOf(equipoExistencia.getId_docente()));
                        til_id_unidad_administrativa_r.getEditText().setText(String.valueOf(equipoExistencia.getId_unidad_administrativa()));
                        til_actual_r.getEditText().setText(String.valueOf(equipoExistencia.getActual()));
-                       Toast.makeText(this,"Se muestran los datos del registro",Toast.LENGTH_SHORT).show();
+                       Toast.makeText(this,getString(R.string.showRecord),Toast.LENGTH_SHORT).show();
                    }else{
-                       Toast.makeText(this,"No Existe Equipo Existencia con el ID ingresado",Toast.LENGTH_SHORT).show();
+                       Toast.makeText(this,getString(R.string.equipo_existencia)+" "+getString(R.string.not_exists),Toast.LENGTH_SHORT).show();
                        limpiar();
                    }
 

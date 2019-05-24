@@ -51,7 +51,7 @@ public class CreateTipoMovimientoEquipo extends AppCompatActivity implements Vie
             case R.id.btn_create_tipo_movimiento_equipo:
                 if(til_id_tipo_movimiento_equipo.getEditText().getText().toString().isEmpty() ||
                 til_descripcion.getEditText().getText().toString().isEmpty()){
-                    Toast.makeText(this,"Por favor rellene todos los campos",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.please_fill),Toast.LENGTH_SHORT).show();
                 }else{
                     try{
                         tipoMovimientoEquipo = new TipoMovimientoEquipo();
@@ -59,13 +59,13 @@ public class CreateTipoMovimientoEquipo extends AppCompatActivity implements Vie
                                 getEditText().getText().toString()));
                         tipoMovimientoEquipo.setDescripcion(til_descripcion.getEditText().getText().toString());
                     }catch (Exception e){
-                        Toast.makeText(this,"Los datos deben ser del tipo indicado",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.bad_fields),Toast.LENGTH_SHORT).show();
                     }
 
                     dataBase.abrir();
                     dataBase.insertar(tipoMovimientoEquipo);
                     dataBase.cerrar();
-                    Toast.makeText(this,"Tipo Movimiento Equipo ha sido creada",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.tipo_movimiento_equipo)+" "+getString(R.string.created),Toast.LENGTH_SHORT).show();
                     limpiar();
                     til_id_tipo_movimiento_equipo.getEditText().setText(String.valueOf(Integer.parseInt(
                             til_id_tipo_movimiento_equipo.getEditText().getText().toString()) +1 ));
