@@ -31,6 +31,9 @@ public class DocumentoAsignacionInsertarActivity extends AppCompatActivity {
     }
 
     public void insertarDocumentoAsignacion(View v) {
+        if(edt_CodDocuAsignacion.getText().toString().isEmpty()||edt_CodDocente.getText().toString().isEmpty()||edt_Motivo.getText().toString().isEmpty()||edt_fechaDocuAsignacion.getText().toString().isEmpty()){
+            Toast.makeText(this,"Por favor rellene todos los campos ", Toast.LENGTH_SHORT).show();
+        }else{
         try{
         int idDocumentoAsignacion = Integer.parseInt(edt_CodDocuAsignacion.getText().toString());
         int idDocente = Integer.parseInt(edt_CodDocente.getText().toString());
@@ -50,6 +53,7 @@ public class DocumentoAsignacionInsertarActivity extends AppCompatActivity {
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
         }catch (Exception e){
             Toast.makeText(this,"Por favor rellene todos los campos ", Toast.LENGTH_SHORT).show();
+        }
         }
     }
 

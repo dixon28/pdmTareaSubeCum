@@ -50,22 +50,22 @@ public class ConstantesDB {
    //-------------------------------TS14004------------------------------------------------------------------------------------
     public static final String SQL_CREATE_TABLE_Docente = "CREATE TABLE " + TABLA_Docente +
 
-            "(  idDocente               INTEGER              not null primary key,\n" +
-           "   idUnidadAdministrativa   INTEGER, \n" +
-           "   nombre                   VARCHAR2(50)         not null,\n" +
-           "   apellido                  VARCHAR2(50)         not null,\n" +
-           "   email                    VARCHAR2(50)         not null)";
+            "(  idDocente               INTEGER              NOT NULL PRIMARY KEY,\n" +
+           "   idUnidadAdministrativa   INTEGER               NOT NULL, \n"           +
+           "   nombre                   VARCHAR2(50)        NOT NULL,\n" +
+           "   apellido                  VARCHAR2(50)         NOT NULL,\n" +
+           "   email                    VARCHAR2(50)        NOT NULL )";
     public static final String SQL_CREATE_TABLE_AsignacionEquipo = "CREATE TABLE " + TABLA_AsignacionEquipo +
-            "( idAsignacionEquipo     INTEGER              not null primary key,\n" +
-            "   idDocente             INTEGER,\n" +
-            "   fechaAsignacionEquipo TEXT                 not null)";
+            "( idAsignacionEquipo     INTEGER              NOT NULL PRIMARY KEY,\n" +
+            "   idDocente             INTEGER NOT NULL,\n" +
+            "   fechaAsignacionEquipo TEXT                 NOT NULL)";
 
 
     public static final String SQL_CREATE_TABLE_DocumentoAsignacion = "CREATE TABLE " + TABLA_DocumentoAsignacion +
-            "(  idDocumentoAsignacion INTEGER              not null primary key,\n" +
-            "   idDocente            INTEGER,\n" +
-            "   motivo               VARCHAR2(120)        not null,\n" +
-            "   fechaAsignacionDoc   TEXT         not null)" ;
+            "(  idDocumentoAsignacion INTEGER              NOT NULL PRIMARY KEY,\n" +
+            "   idDocente            INTEGER               NOT NULL,\n" +
+            "   motivo               VARCHAR2(120),\n" +
+            "   fechaAsignacionDoc   TEXT         NOT NULL)" ;
     public static final String SQL_CREATE_TABLE_DocumentoAsignacionDetalle = "CREATE TABLE " + TABLA_DocumentoAsignacionDetalle +
 
             "(  idDocumentoAsignacionDetalle INTEGER              not null primary key,\n" +

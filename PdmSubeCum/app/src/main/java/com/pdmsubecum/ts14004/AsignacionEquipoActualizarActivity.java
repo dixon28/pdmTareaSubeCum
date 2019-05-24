@@ -31,6 +31,9 @@ public class AsignacionEquipoActualizarActivity extends AppCompatActivity {
 
     }
     public void actualizarEquipoAsignacion(View v) {
+        if(edt_CodAsignaEquipo.getText().toString().isEmpty()||edt_CodDocente.getText().toString().isEmpty()||edt_fechaAsignaEquipo.getText().toString().isEmpty()){
+            Toast.makeText(this,"Por favor rellene todos los campos ", Toast.LENGTH_SHORT).show();
+        }else {
         try {
             AsignacionEquipo asignacionEquipo = new AsignacionEquipo();
             asignacionEquipo.setIdAsignacionEquipo(parseInt(edt_CodAsignaEquipo.getText().toString()));
@@ -44,6 +47,7 @@ public class AsignacionEquipoActualizarActivity extends AppCompatActivity {
             Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
         }catch (Exception e){
             Toast.makeText(this,"Por favor rellene todos los campos ", Toast.LENGTH_SHORT).show();
+        }
         }
         }
 

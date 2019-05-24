@@ -30,6 +30,9 @@ public class AsignacionEquipoInsertarActivity extends AppCompatActivity {
     }
 
     public void insertarAsignacionEquipo(View v) {
+        if(edt_CodAsignaEquipo.getText().toString().isEmpty()||edt_CodDocente.getText().toString().isEmpty()||edt_fechaAsignaEquipo.getText().toString().isEmpty()){
+            Toast.makeText(this,"Por favor rellene todos los campos ", Toast.LENGTH_SHORT).show();
+        }else {
         try {
         int idAsignacionEquipo = Integer.parseInt(edt_CodAsignaEquipo.getText().toString());
         int idDocente = Integer.parseInt(edt_CodDocente.getText().toString());
@@ -47,6 +50,7 @@ public class AsignacionEquipoInsertarActivity extends AppCompatActivity {
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
         }catch (Exception e){
             Toast.makeText(this,"Por favor rellene todos los campos ", Toast.LENGTH_SHORT).show();
+        }
         }
     }
 

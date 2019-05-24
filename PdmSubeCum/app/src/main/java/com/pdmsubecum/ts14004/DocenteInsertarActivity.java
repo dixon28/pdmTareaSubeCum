@@ -32,6 +32,10 @@ public class DocenteInsertarActivity extends AppCompatActivity  {
     }
 
     public void insertarDocente(View v) {
+        if(edt_CodUnidad.getText().toString().isEmpty() || edt_CodUnidad.getText().toString().isEmpty()||edt_Nombre.getText().toString().isEmpty()||edt_apellido.getText().toString().isEmpty()||edt_email.getText().toString().isEmpty()){
+            Toast.makeText(this,"Por favor rellene todos los campos ", Toast.LENGTH_SHORT).show();
+        }
+        else{
         try{
         int idDocente = Integer.parseInt(edt_CodDocente.getText().toString());
         int idUnidadAdministrativa = Integer.parseInt(edt_CodUnidad.getText().toString());
@@ -52,6 +56,7 @@ public class DocenteInsertarActivity extends AppCompatActivity  {
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
         }catch (Exception e){
             Toast.makeText(this,"Por favor rellene todos los campos ", Toast.LENGTH_SHORT).show();
+        }
         }
     }
 
