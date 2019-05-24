@@ -9,7 +9,7 @@ public class ConstantesDB {
     //----------------------------------------------------
     // nombre base de datos
     //----------------------------------------------------
-    public static final String DATABASE = "inventario_test.s3db";
+    public static final String DATABASE = "inventario_test4.s3db";
 
 
     //-----------------------------------------------------
@@ -343,6 +343,10 @@ public class ConstantesDB {
             "id_docente INTEGER NOT NULL, "+
             "id_unidad_admin INTEGER NOT NULL, "+
             "actual INTEGER NOT NULL)";
+    public static final String SQL_CREATE_TRIGGER_ELIMINATIPOMOVDOC = "CREATE TRIGGER tr_EliminartipoMDoc " +
+            "BEFORE DELETE ON tipo_movimiento_para_documento BEGIN DELETE FROM movimiento_documento  WHERE movimiento_documento.id_tipo_movimiento_documento = OLD.id_tipo_de_movimiento_para_documento;" +
+            "DELETE FROM movimiento_documento_detalle  WHERE movimiento_documento_detalle.id_documento_movimiento = OLD.id_tipo_de_movimiento_para_documento; END";
+
 
     // query para borrar la DB
 
@@ -350,7 +354,7 @@ public class ConstantesDB {
     public static final String SQL_DELETE_DOCUMENTO_MOVIMIENTO = "DROP TABLE "+TABLA_DOCUMENTO_MOVIMIENTO;
     public static final String SQL_DELETE_DOCUMENTO_MOVIMIENTO_DETALLE ="DROP TABLE "+TABLA_DOCUMENTO_MOVIMIENTO_DETALLE;
     public static final String SQL_DELETE_DOCUMENTO_EXISTENCIA = "DROP TABLE "+TABLA_DOCUMENTO_EXISTENCIA;
-
+    public static final String SQL_DELETE_TRIGGER_ELIMINATIPOMOVDOC = "DROP TRIGGER tr_EliminartipoMDoc;";
     // campos de las tablas
 
     public static final String[] CAMPOS_TIPO_MOV_DOCUMENTO = {"id_tipo_de_movimiento_para_documento","descripcion"};
