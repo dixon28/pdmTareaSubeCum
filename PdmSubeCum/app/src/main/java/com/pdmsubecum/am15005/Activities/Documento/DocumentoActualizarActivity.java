@@ -172,10 +172,10 @@ public class DocumentoActualizarActivity extends AppCompatActivity implements Ad
             documento.setDisponibledoc(disp);
         }
 
-        if (db.verificarIntegridadAM15005(documento, 3)) {
+     //   if (db.verificarIntegridadAM15005(documento, 3)) {
 
-            Toast.makeText(this, "Ya existe un registro con el isbn " + isbn.getText().toString(), Toast.LENGTH_SHORT).show();
-        } else {
+       //     Toast.makeText(this, "Ya existe un registro con el isbn " + isbn.getText().toString(), Toast.LENGTH_SHORT).show();
+       // } else {
 
 
             db.abrir();
@@ -184,7 +184,7 @@ public class DocumentoActualizarActivity extends AppCompatActivity implements Ad
             db.cerrar();
             Toast.makeText(this, documento.getIsbn(), Toast.LENGTH_SHORT).show();
 
-        }
+       // }
 
         }catch (Exception e)
         {
