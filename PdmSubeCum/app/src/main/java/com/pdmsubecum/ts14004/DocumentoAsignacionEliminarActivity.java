@@ -1,5 +1,7 @@
 package com.pdmsubecum.ts14004;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.widget.Toast;
 
 import com.pdmsubecum.DB.DataBase;
 import com.pdmsubecum.DB.modelo.AsignacionEquipo;
+import com.pdmsubecum.DB.modelo.Docente;
 import com.pdmsubecum.DB.modelo.DocumentoAsignacion;
 import com.pdmsubecum.R;
 
@@ -23,7 +26,48 @@ public class DocumentoAsignacionEliminarActivity extends AppCompatActivity {
         edt_CodDocuAsignacion = (EditText) findViewById(R.id.edt_CodDocuAsignacion);
     }
 
-    public void eliminarDocumentoAsignacion(View v) {
+
+    public void eliminarDocumentoAsignacion(View v){
+        try {
+            DocumentoAsignacion documentoAsignacion1 = new DocumentoAsignacion();
+            documentoAsignacion1.setIdDocumentoAsignacion(Integer.parseInt(edt_CodDocuAsignacion.getText().toString()));
+            boolean existe;
+            controlhelper.abrir();
+            if (controlhelper.verificarIntegridadTS14004(documentoAsignacion1, 5)) {
+                existe = true;
+            } else {
+                existe = false;
+            }
+            controlhelper.cerrar();
+            if (existe) {
+            AlertDialog.Builder dialogo = new AlertDialog.Builder(DocumentoAsignacionEliminarActivity.this);
+             dialogo.setIcon(R.mipmap.ic_launcher).
+            setMessage("Importante").
+                    setMessage("El identificador está asociado a otras registros\n\n ¿Desea eliminar en cascada?").
+                    setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            aceptar();
+                            Toast.makeText(DocumentoAsignacionEliminarActivity.this, "Eliminado Satisfactoriamente", Toast.LENGTH_SHORT).show();
+                        }
+                    }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+           // dialogo.create();
+
+            dialogo.show();
+            } else {
+                Toast.makeText(this, "Registro No Existe", Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception e){
+            Toast.makeText(this,"Por favor rellene el ID ", Toast.LENGTH_SHORT).show();}
+
+    }
+
+    public void aceptar() {
         String regEliminadas;
         DocumentoAsignacion documentoAsignacion = new DocumentoAsignacion();
         documentoAsignacion.setIdDocumentoAsignacion(Integer.parseInt(edt_CodDocuAsignacion.getText().toString()));

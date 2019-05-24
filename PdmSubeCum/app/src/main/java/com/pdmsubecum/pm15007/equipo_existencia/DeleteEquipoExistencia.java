@@ -1,6 +1,8 @@
 package com.pdmsubecum.pm15007.equipo_existencia;
 
+import android.content.DialogInterface;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +21,8 @@ public class DeleteEquipoExistencia extends AppCompatActivity implements View.On
 
     DataBase dataBase;
     EquipoExistencia equipoExistencia;
+
+    AlertDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,23 @@ public class DeleteEquipoExistencia extends AppCompatActivity implements View.On
         btn_clean.setOnClickListener(this);
         btn_delete.setOnClickListener(this);
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.mensaje_eliminar) + "Tabla 1, etc")
+                .setTitle(R.string.titulo_dialogo);
+
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                eliminar();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                cancelar();
+            }
+        });
+
+        dialog = builder.create();
     }
 
     @Override
@@ -47,28 +68,35 @@ public class DeleteEquipoExistencia extends AppCompatActivity implements View.On
                 if(til_id_equipo_existencia.getEditText().getText().toString().isEmpty()){
                     Toast.makeText(this,"Por favor rellene el ID ", Toast.LENGTH_SHORT).show();
                 }else{
-                    try{
-                        int id = Integer.parseInt(til_id_equipo_existencia.getEditText().getText().toString());
-                        dataBase.abrir();
-                        equipoExistencia = dataBase.getEquipoExistencia(id);
-                        dataBase.cerrar();
-                    } catch (Exception e){
-                        Toast.makeText(this,"El valor ingresado no es un numero", Toast.LENGTH_SHORT).show();
-                        limpiar();
-                    }
-                    if(equipoExistencia != null){
-                        dataBase.abrir();
-                        dataBase.eliminar(equipoExistencia);
-                        dataBase.cerrar();
-                        Toast.makeText(this,"Equipo Existencia ha sido Eliminado", Toast.LENGTH_SHORT).show();
-                        limpiar();
-                    }else{
-                        Toast.makeText(this,"No existe Equipo existencia con ese ID", Toast.LENGTH_SHORT).show();
-                    }
-
+                    // Create the AlertDialog
+                    dialog.show();
                 }
                 break;
         }
+    }
+
+    public void eliminar(){
+        try{
+            int id = Integer.parseInt(til_id_equipo_existencia.getEditText().getText().toString());
+            dataBase.abrir();
+            equipoExistencia = dataBase.getEquipoExistencia(id);
+            dataBase.cerrar();
+        } catch (Exception e){
+            Toast.makeText(this,"El valor ingresado no es un numero", Toast.LENGTH_SHORT).show();
+            limpiar();
+        }
+        if(equipoExistencia != null){
+            dataBase.abrir();
+            dataBase.eliminar(equipoExistencia);
+            dataBase.cerrar();
+            Toast.makeText(this,"Equipo Existencia ha sido Eliminado", Toast.LENGTH_SHORT).show();
+            limpiar();
+        }else{
+            Toast.makeText(this,"No existe Equipo existencia con ese ID", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void cancelar(){
+        Toast.makeText(this, "Cancelado",Toast.LENGTH_SHORT).show();
     }
     public void limpiar(){
         til_id_equipo_existencia.getEditText().setText("");

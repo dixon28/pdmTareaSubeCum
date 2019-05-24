@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.view.View;
 
 import com.pdmsubecum.DB.modelo.AsignacionEquipo;
 import com.pdmsubecum.DB.modelo.AsignacionEquipoDetalle;
@@ -65,13 +66,13 @@ public class DataBase {
     SQLiteDatabase sqLiteDatabase;
     SQLiteOpenHelper sqLiteOpenHelper;
 
-    public DataBase(Context context){
+    public DataBase(Context context) {
         this.context = context;
         sqLiteOpenHelper = new DBHelper(context);
         sqLiteDatabase = sqLiteOpenHelper.getWritableDatabase();
     }
 
-    public void abrir(){
+    public void abrir() {
         sqLiteDatabase = sqLiteOpenHelper.getWritableDatabase();
     }
 
@@ -84,40 +85,43 @@ public class DataBase {
      -------------   CONTADORES DE TABLAS -------------------
      -------------------------------------------------------*/
 
-    public long getItemsUsuario(){
+    public long getItemsUsuario() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_USUARIO);
     }
-    public long getItemsRol(){
+
+    public long getItemsRol() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_ROL_USUARIO);
     }
 
 
     //Tablas MM
 
-    public long getItemsAula(){
-        return  DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_AULA);
+    public long getItemsAula() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_AULA);
     }
 
-    public long getItemsDia(){
-        return  DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_DIA);
+    public long getItemsDia() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_DIA);
     }
 
-    public long getItemsCiclo(){
-        return  DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_CICLO);
+    public long getItemsCiclo() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_CICLO);
     }
 
-    public long getItemsMateria(){
+    public long getItemsMateria() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_MATERIA);
     }
-    public long getItemsHorario(){
+
+    public long getItemsHorario() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_HORARIO);
     }
-    public long getItemsGrupo(){
+
+    public long getItemsGrupo() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_GRUPO);
     }
 
-    public long getItemsHorarioDetalle(){
-        return  DatabaseUtils.queryNumEntries(sqLiteDatabase,ConstantesDB.TABLA_HORARIODETALLE);
+    public long getItemsHorarioDetalle() {
+        return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_HORARIODETALLE);
     }
 
     //Fin Tablas MM
@@ -187,9 +191,11 @@ public class DataBase {
     public long getItemsTiposDocumento() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_TIPOS_DE_DOCUMENTO);
     }
+
     public long getItemsDocumento() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_DOCUMENTO);
     }
+
     public long getItemsEquipo() {
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, ConstantesDB.TABLA_EQUIPO);
     }
@@ -198,51 +204,52 @@ public class DataBase {
     /* ------------------------------------------------------
      -------------   INSERCIONES EN TABLAS -------------------
      -------------------------------------------------------*/
-    public void insertar(Usuario usuario){
+    public void insertar(Usuario usuario) {
         ContentValues contentValues = usuario.toValues();
         sqLiteDatabase.insert(ConstantesDB.TABLA_USUARIO, null, contentValues);
     }
 
-    public void insertar(RolUsuario rolUsuario){
+    public void insertar(RolUsuario rolUsuario) {
         ContentValues contentValues = rolUsuario.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_ROL_USUARIO, null,contentValues);
+        sqLiteDatabase.insert(ConstantesDB.TABLA_ROL_USUARIO, null, contentValues);
     }
 
     //INSERT TABLAS MM
 
-    public void insertar(Aula aula){
+    public void insertar(Aula aula) {
         ContentValues contentValues = aula.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_AULA,null,contentValues);
+        sqLiteDatabase.insert(ConstantesDB.TABLA_AULA, null, contentValues);
     }
 
-    public void insertar(Dia dia){
+    public void insertar(Dia dia) {
         ContentValues contentValues = dia.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_DIA,null,contentValues);
+        sqLiteDatabase.insert(ConstantesDB.TABLA_DIA, null, contentValues);
     }
 
-    public void insertar(Ciclo ciclo){
+    public void insertar(Ciclo ciclo) {
         ContentValues contentValues = ciclo.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_CICLO,null,contentValues);
+        sqLiteDatabase.insert(ConstantesDB.TABLA_CICLO, null, contentValues);
 
     }
 
-    public void insertar(Materia materia){
+    public void insertar(Materia materia) {
         ContentValues contentValues = materia.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_MATERIA,null,contentValues);
+        sqLiteDatabase.insert(ConstantesDB.TABLA_MATERIA, null, contentValues);
     }
 
-    public void insertar(Grupo grupo){
+    public void insertar(Grupo grupo) {
         ContentValues contentValues = grupo.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_GRUPO,null,contentValues);
-    }
-    public void insertar(Horario horario){
-        ContentValues contentValues = horario.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_HORARIO,null,contentValues);
+        sqLiteDatabase.insert(ConstantesDB.TABLA_GRUPO, null, contentValues);
     }
 
-    public void insertar(HorarioDetalle horarioDetalle){
+    public void insertar(Horario horario) {
+        ContentValues contentValues = horario.toValues();
+        sqLiteDatabase.insert(ConstantesDB.TABLA_HORARIO, null, contentValues);
+    }
+
+    public void insertar(HorarioDetalle horarioDetalle) {
         ContentValues contentValues = horarioDetalle.toValues();
-        sqLiteDatabase.insert(ConstantesDB.TABLA_HORARIODETALLE,null,contentValues);
+        sqLiteDatabase.insert(ConstantesDB.TABLA_HORARIODETALLE, null, contentValues);
     }
 
     //FIN INSERT TABLAS MM
@@ -354,7 +361,7 @@ public class DataBase {
         if (cursor.moveToFirst()) {
 
 
-            Equipo equipo= new Equipo();
+            Equipo equipo = new Equipo();
             equipo.setIdequipo(Integer.parseInt(cursor.getString(0)));
             equipo.setIdtiposdeequipo(Integer.parseInt(cursor.getString(1)));
             equipo.setIdmarca(Integer.parseInt(cursor.getString(2)));
@@ -364,10 +371,9 @@ public class DataBase {
 
             equipo.setFechaingreso(cursor.getString(6));
 
-            if (Integer.parseInt(cursor.getString(7))==1) {
+            if (Integer.parseInt(cursor.getString(7)) == 1) {
                 equipo.setEquipodisponible(true);
-            }
-            else {
+            } else {
 
                 equipo.setEquipodisponible(false);
             }
@@ -386,7 +392,7 @@ public class DataBase {
                 null, null);
         if (cursor.moveToFirst()) {
 
-            Documento documento= new Documento();
+            Documento documento = new Documento();
 
             documento.setIsbn(cursor.getString(0));
             documento.setIdtiposdedocumento(Integer.parseInt(cursor.getString(1)));
@@ -395,12 +401,9 @@ public class DataBase {
             documento.setDescripciondoc(cursor.getString(4));
 
 
-
-
-            if (Integer.parseInt(cursor.getString(5))==1) {
+            if (Integer.parseInt(cursor.getString(5)) == 1) {
                 documento.setDisponibledoc(true);
-            }
-            else {
+            } else {
 
                 documento.setDisponibledoc(false);
             }
@@ -417,22 +420,21 @@ public class DataBase {
 
         ArrayList<Marca> marcas = new ArrayList<Marca>();
 
-       //Cursor cursor = sqLiteDatabase.query("marca", ConstantesDB.CAMPOS_MARCA, null, null, null,null, null);
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from marca",null);
+        //Cursor cursor = sqLiteDatabase.query("marca", ConstantesDB.CAMPOS_MARCA, null, null, null,null, null);
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from marca", null);
 
         while (cursor.moveToNext()) {
 
 
-
-                Marca marca = new Marca();
-                marca.setIdmarca(parseInt(cursor.getString(0)));
-                marca.setDescripcionmarca(cursor.getString(1));
-                marcas.add(marca);
+            Marca marca = new Marca();
+            marca.setIdmarca(parseInt(cursor.getString(0)));
+            marca.setDescripcionmarca(cursor.getString(1));
+            marcas.add(marca);
 
 
         }
 
-        return  marcas;
+        return marcas;
     }
 
 
@@ -442,13 +444,12 @@ public class DataBase {
         ArrayList<TiposDeDocumento> tiposDeDocumentos = new ArrayList<>();
 
         //Cursor cursor = sqLiteDatabase.query("marca", ConstantesDB.CAMPOS_MARCA, null, null, null,null, null);
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from "+ConstantesDB.TABLA_TIPOS_DE_DOCUMENTO,null);
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from " + ConstantesDB.TABLA_TIPOS_DE_DOCUMENTO, null);
 
         while (cursor.moveToNext()) {
 
 
-
-            TiposDeDocumento tiposDeDocumento= new TiposDeDocumento();
+            TiposDeDocumento tiposDeDocumento = new TiposDeDocumento();
             tiposDeDocumento.setIdTiposDeDocumentos(parseInt(cursor.getString(0)));
             tiposDeDocumento.setDescripcionTipoDeDocumento(cursor.getString(1));
             tiposDeDocumentos.add(tiposDeDocumento);
@@ -456,7 +457,7 @@ public class DataBase {
 
         }
 
-        return  tiposDeDocumentos;
+        return tiposDeDocumentos;
     }
 
 
@@ -465,11 +466,10 @@ public class DataBase {
 
         ArrayList<TiposDeEquipo> tiposDeEquip = new ArrayList<TiposDeEquipo>();
 
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_TIPOS_DE_EQUIPO, ConstantesDB.CAMPOS_TIPOS_EQUIPO, null, null, null,null, null);
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_TIPOS_DE_EQUIPO, ConstantesDB.CAMPOS_TIPOS_EQUIPO, null, null, null, null, null);
         //Cursor cursor = sqLiteDatabase.rawQuery("select * from" + ConstantesDB.TABLA_TIPOS_DE_EQUIPO,null);
 
         while (cursor.moveToNext()) {
-
 
 
             TiposDeEquipo tiposDeEquipo = new TiposDeEquipo();
@@ -480,38 +480,26 @@ public class DataBase {
 
         }
 
-        return  tiposDeEquip;
+        return tiposDeEquip;
     }
 
 
-    public void ingresarFecha(String fecha ,int idf){
+    public void ingresarFecha(String fecha, int idf) {
 
         String[] id = {String.valueOf(idf)};
 
 
-      //  status = sqLiteDatabase.update(ConstantesDB.TABLA_MARCA, contentValues, "idmarca = ? ", id)
+        //  status = sqLiteDatabase.update(ConstantesDB.TABLA_MARCA, contentValues, "idmarca = ? ", id)
 
-        Log.d("fecha",fecha);
+        Log.d("fecha", fecha);
 
-          sqLiteDatabase.rawQuery("update equipo set fechaingreso=" + fecha + " where idequipo=" + idf, null);
+        sqLiteDatabase.rawQuery("update equipo set fechaingreso=" + fecha + " where idequipo=" + idf, null);
 
 
-
-      //  sqLiteDatabase.update(ConstantesDB.TABLA_MARCA, contentValues, "idequipo = ? ", id);
+        //  sqLiteDatabase.update(ConstantesDB.TABLA_MARCA, contentValues, "idequipo = ? ", id);
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     public int actualizar(Marca marca, int idmarca) {
@@ -568,10 +556,10 @@ public class DataBase {
         ContentValues contentValues = equipo.toValues();
         String[] id = {String.valueOf(ideq)};
         Log.d("ide", String.valueOf(id));
-        Log.d("values",String.valueOf(contentValues));
+        Log.d("values", String.valueOf(contentValues));
 
 
-        return sqLiteDatabase.update(ConstantesDB.TABLA_EQUIPO, contentValues, "idequipo = ?",id);
+        return sqLiteDatabase.update(ConstantesDB.TABLA_EQUIPO, contentValues, "idequipo = ?", id);
     }
 
     public int actualizar(Documento documento, String idoc) {
@@ -579,39 +567,39 @@ public class DataBase {
         ContentValues contentValues = documento.toValues();
         String[] id = {String.valueOf(idoc)};
         Log.d("ide", String.valueOf(id));
-        Log.d("values",String.valueOf(contentValues));
+        Log.d("values", String.valueOf(contentValues));
 
 
-        return sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO, contentValues, "isbn = ?",id);
+        return sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO, contentValues, "isbn = ?", id);
     }
 
     public boolean verificarIntegridadAM15005(Object dato, int relacion) throws
-            SQLException{
-        switch(relacion) {
+            SQLException {
+        switch (relacion) {
             case 1: {
 
-              Marca  marca = (Marca) dato;
+                Marca marca = (Marca) dato;
                 String[] id1 = {String.valueOf(marca.getIdmarca())};
 
                 abrir();
                 Cursor cursor1 = sqLiteDatabase.query(ConstantesDB.TABLA_MARCA, null, "idmarca = ?", id1, null,
                         null, null);
-                if(cursor1.moveToFirst()){
+                if (cursor1.moveToFirst()) {
 //Se encontro Marca
                     return true;
                 }
                 return false;
 
-        }
+            }
             case 2: {
 
-                Equipo  equipo = (Equipo) dato;
+                Equipo equipo = (Equipo) dato;
                 String[] id1 = {String.valueOf(equipo.getIdequipo())};
 
                 abrir();
                 Cursor cursor1 = sqLiteDatabase.query(TABLA_EQUIPO, null, "idequipo = ?", id1, null,
                         null, null);
-                if(cursor1.moveToFirst()){
+                if (cursor1.moveToFirst()) {
 //Se encontro equipo
                     return true;
                 }
@@ -626,7 +614,7 @@ public class DataBase {
                 abrir();
                 Cursor cursor1 = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO, null, "isbn = ?", id1, null,
                         null, null);
-                if(cursor1.moveToFirst()){
+                if (cursor1.moveToFirst()) {
 //Se encontro Documento
                     return true;
                 }
@@ -642,10 +630,32 @@ public class DataBase {
 
     }
 
+    //Verificando integridad
+    public List<String> verificarEquipoExistencia(EquipoExistencia equipoExistencia){
+        List<String> mensaje = new ArrayList<>();
+
+        if(consultarE(String.valueOf(equipoExistencia.getId_equipo())) == null){
+            mensaje.add("NO existe Equipo con ese ID");
+            mensaje.add("false");
+            return mensaje;
+        }
+        if(consultarDocente(equipoExistencia.getId_docente()) == null){
+            mensaje.add("NO existe Docente con ese ID");
+            mensaje.add("false");
+            return mensaje;
+        }
+        if(getUnidadAdministrativa(equipoExistencia.getId_unidad_administrativa()) == null){
+            mensaje.add("NO existe Unidad Administrativa con ese ID");
+            mensaje.add("false");
+            return mensaje;
+        }
+        mensaje.add("Exito");
+        mensaje.add("true");
+        return mensaje;
+    }
 
 
-
-                //    insertar Datos
+    //    insertar Datos
     public void llenarMarca(List<Marca> marcas) {
         long items = getItemsMarca();
         if (items == 0) {
@@ -662,7 +672,7 @@ public class DataBase {
     public void llenarAutor(List<Autor> autors) {
         long items = getItemsAutor();
         if (items == 0) {
-            for (Autor autor: autors) {
+            for (Autor autor : autors) {
                 try {
                     insertar(autor);
                 } catch (SQLiteException e) {
@@ -676,7 +686,7 @@ public class DataBase {
 
         long items = getItemsDocumento();
         if (items == 0) {
-            for (Documento documento: documentos) {
+            for (Documento documento : documentos) {
                 try {
                     insertar(documento);
                 } catch (SQLiteException e) {
@@ -689,7 +699,7 @@ public class DataBase {
     public void llenarEquipos(List<Equipo> equipos) {
         long items = getItemsEquipo();
         if (items == 0) {
-            for (Equipo equipo: equipos) {
+            for (Equipo equipo : equipos) {
                 try {
                     insertar(equipo);
                 } catch (SQLiteException e) {
@@ -702,7 +712,7 @@ public class DataBase {
     public void llenarAutorDetalle(ArrayList<AutorDetalle> autorDetalles) {
         long items = getItemsAutorDetalle();
         if (items == 0) {
-            for (AutorDetalle autorDetalle: autorDetalles) {
+            for (AutorDetalle autorDetalle : autorDetalles) {
                 try {
                     insertar(autorDetalle);
                 } catch (SQLiteException e) {
@@ -716,7 +726,7 @@ public class DataBase {
     public void llenarDocumentosDetalle(ArrayList<Documento> documentos) {
         long items = getItemsDocumento();
         if (items == 0) {
-            for (Documento doc: documentos) {
+            for (Documento doc : documentos) {
                 try {
                     insertar(doc);
                 } catch (SQLiteException e) {
@@ -731,7 +741,7 @@ public class DataBase {
     public void llenarTiposEquipo(List<TiposDeEquipo> tiposDeEquipos) {
         long items = getItemsTiposEquipo();
         if (items == 0) {
-            for (TiposDeEquipo equipo: tiposDeEquipos) {
+            for (TiposDeEquipo equipo : tiposDeEquipos) {
                 try {
                     insertar(equipo);
                 } catch (SQLiteException e) {
@@ -744,7 +754,7 @@ public class DataBase {
     public void llenarTiposDeDocumento(List<TiposDeDocumento> td) {
         long items = getItemsTiposDocumento();
         if (items == 0) {
-            for (TiposDeDocumento d: td) {
+            for (TiposDeDocumento d : td) {
                 try {
                     insertar(d);
                 } catch (SQLiteException e) {
@@ -755,17 +765,14 @@ public class DataBase {
     }
 
 
-
-
-
     /* ------------------------------------------------------
      -------------   CONSULTAS DE TABLAS -------------------
      -------------------------------------------------------*/
-    public  List<Usuario> getUsuarios(){
+    public List<Usuario> getUsuarios() {
         List<Usuario> usuarios = new ArrayList<>();
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_USUARIO, ConstantesDB.CAMPOS_USUARIO,null,
-                null,null,null,null);
-        while(cursor.moveToNext()){
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_USUARIO, ConstantesDB.CAMPOS_USUARIO, null,
+                null, null, null, null);
+        while (cursor.moveToNext()) {
             Usuario usuario = new Usuario();
             usuario.setUsuario(cursor.getString(0));
             usuario.setPassword(cursor.getString(1));
@@ -774,25 +781,26 @@ public class DataBase {
         return usuarios;
     }
 
-    public Usuario getUsuario(String user){
+    public Usuario getUsuario(String user) {
         String[] id = {user};
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_USUARIO, ConstantesDB.CAMPOS_USUARIO,"usuario = ?",
-                id,null,null,null);
-        if(cursor.moveToFirst()){
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_USUARIO, ConstantesDB.CAMPOS_USUARIO, "usuario = ?",
+                id, null, null, null);
+        if (cursor.moveToFirst()) {
             Usuario usuario = new Usuario();
             usuario.setUsuario(cursor.getString(0));
             usuario.setPassword(cursor.getString(1));
             return usuario;
-        }else{
+        } else {
             return null;
         }
 
     }
-    public RolUsuario getRolUsuario(String user){
+
+    public RolUsuario getRolUsuario(String user) {
         String[] id = {user};
-            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_ROL_USUARIO, ConstantesDB.CAMPOS_ROL_USUARIO,"usuario = ?",
-                id,null,null,null);
-        if(cursor.moveToFirst()){
+        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_ROL_USUARIO, ConstantesDB.CAMPOS_ROL_USUARIO, "usuario = ?",
+                id, null, null, null);
+        if (cursor.moveToFirst()) {
             RolUsuario rolUsuario = new RolUsuario();
             rolUsuario.setNombre_rol(cursor.getString(0));
             rolUsuario.setUsuario(cursor.getString(1));
@@ -906,12 +914,12 @@ public class DataBase {
         }
     }
 
-    public int getLastIdTipoMovimientoEquipo(){
-        if(getItemsTipoMovimientoEquipo() == 0){
+    public int getLastIdTipoMovimientoEquipo() {
+        if (getItemsTipoMovimientoEquipo() == 0) {
             return 0;
-        }else{
+        } else {
             Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_TIPO_MOVIMIENTO_EQUIPO, ConstantesDB.CAMPOS_TIPO_MOVIMIENTO_EQUIPO,
-                    null,null,null,null,null);
+                    null, null, null, null, null);
             cursor.moveToLast();
             return cursor.getInt(0);
         }
@@ -989,25 +997,26 @@ public class DataBase {
     /* ------------------------------------------------------
      -------------   QUEMADO DE DATOS -----------------------
      -------------------------------------------------------*/
-    public void llenarUsuario(List<Usuario> usuarios){
+    public void llenarUsuario(List<Usuario> usuarios) {
         long items = getItemsUsuario();
-        if(items == 0){
-            for (Usuario usuario: usuarios){
+        if (items == 0) {
+            for (Usuario usuario : usuarios) {
                 try {
                     insertar(usuario);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-    public void llenarRolUsuario(List<RolUsuario> roles){
+
+    public void llenarRolUsuario(List<RolUsuario> roles) {
         long items = getItemsRol();
-        if(items == 0){
-            for (RolUsuario rolUsuario: roles){
+        if (items == 0) {
+            for (RolUsuario rolUsuario : roles) {
                 try {
                     insertar(rolUsuario);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
@@ -1016,91 +1025,91 @@ public class DataBase {
 
     //LLENADO TABLAS MM
 
-    public void llenarAula(List<Aula> aulas){
+    public void llenarAula(List<Aula> aulas) {
         long items = getItemsAula();
-        if (items == 0){
-            for (Aula aula: aulas){
+        if (items == 0) {
+            for (Aula aula : aulas) {
                 try {
                     insertar(aula);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
 
-    public void llenarDia(List<Dia> dias){
+    public void llenarDia(List<Dia> dias) {
         long items = getItemsDia();
-        if (items == 0){
-            for (Dia dia: dias){
+        if (items == 0) {
+            for (Dia dia : dias) {
                 try {
                     insertar(dia);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
 
-    public void llenarCiclo(List<Ciclo> ciclos){
+    public void llenarCiclo(List<Ciclo> ciclos) {
         long items = getItemsCiclo();
-        if (items == 0){
-            for (Ciclo ciclo: ciclos){
+        if (items == 0) {
+            for (Ciclo ciclo : ciclos) {
                 try {
                     insertar(ciclo);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
 
-    public void llenarMateria(List<Materia> materias){
+    public void llenarMateria(List<Materia> materias) {
         long items = getItemsMateria();
-        if (items == 0){
-            for (Materia materia: materias){
+        if (items == 0) {
+            for (Materia materia : materias) {
                 try {
                     insertar(materia);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
 
-    public void llenarHorario(List<Horario> horarios){
+    public void llenarHorario(List<Horario> horarios) {
         long items = getItemsHorario();
-        if (items == 0){
-            for (Horario horario: horarios){
+        if (items == 0) {
+            for (Horario horario : horarios) {
                 try {
                     insertar(horario);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
 
-    public void llenarGrupo(List<Grupo> grupos){
+    public void llenarGrupo(List<Grupo> grupos) {
         long items = getItemsGrupo();
-        if (items == 0){
-            for (Grupo grupo: grupos){
+        if (items == 0) {
+            for (Grupo grupo : grupos) {
                 try {
                     insertar(grupo);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
 
-    public void llenarHorarioDetalle(List<HorarioDetalle> horarioDetalles){
+    public void llenarHorarioDetalle(List<HorarioDetalle> horarioDetalles) {
         long items = getItemsHorarioDetalle();
-        if (items == 0){
-            for (HorarioDetalle horarioDetalle : horarioDetalles){
+        if (items == 0) {
+            for (HorarioDetalle horarioDetalle : horarioDetalles) {
                 try {
                     insertar(horarioDetalle);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
@@ -1110,61 +1119,65 @@ public class DataBase {
 
     // FIN LLENADO TABLAS MM
     //LLENADO DE TABLAS PM15007
-    public void llenarEquipoExistencia(List<EquipoExistencia> equipoExistencias){
+    public void llenarEquipoExistencia(List<EquipoExistencia> equipoExistencias) {
         long items = getItemsEquipoExistencia();
-        if(items == 0){
-            for (EquipoExistencia equipoExistencia: equipoExistencias){
+        if (items == 0) {
+            for (EquipoExistencia equipoExistencia : equipoExistencias) {
                 try {
                     insertar(equipoExistencia);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-    public void llenarEquipoMovimiento(List<EquipoMovimiento> equipoMovimientos){
+
+    public void llenarEquipoMovimiento(List<EquipoMovimiento> equipoMovimientos) {
         long items = getItemsEquipoMovimiento();
-        if(items == 0){
-            for (EquipoMovimiento equipoMovimiento: equipoMovimientos){
+        if (items == 0) {
+            for (EquipoMovimiento equipoMovimiento : equipoMovimientos) {
                 try {
                     insertar(equipoMovimiento);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-    public void llenarEquipoMovimientoDetalle(List<EquipoMovimientoDetalle> equipoMovimientoDetalles){
+
+    public void llenarEquipoMovimientoDetalle(List<EquipoMovimientoDetalle> equipoMovimientoDetalles) {
         long items = getItemsEquipoMovimientoDetalle();
-        if(items == 0){
-            for (EquipoMovimientoDetalle equipoMovimientoDetalle: equipoMovimientoDetalles){
+        if (items == 0) {
+            for (EquipoMovimientoDetalle equipoMovimientoDetalle : equipoMovimientoDetalles) {
                 try {
                     insertar(equipoMovimientoDetalle);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-    public void llenarTipoMovimientoEquipo(List<TipoMovimientoEquipo> tipoMovimientoEquipos){
+
+    public void llenarTipoMovimientoEquipo(List<TipoMovimientoEquipo> tipoMovimientoEquipos) {
         long items = getItemsTipoMovimientoEquipo();
-        if(items == 0){
-            for (TipoMovimientoEquipo tipoMovimientoEquipo: tipoMovimientoEquipos){
+        if (items == 0) {
+            for (TipoMovimientoEquipo tipoMovimientoEquipo : tipoMovimientoEquipos) {
                 try {
                     insertar(tipoMovimientoEquipo);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-    public void llenarUnidadAdministrativa(List<UnidadAdministrativa> unidadAdministrativas){
+
+    public void llenarUnidadAdministrativa(List<UnidadAdministrativa> unidadAdministrativas) {
         long items = getItemsUnidadAdministrativa();
-        if(items == 0){
-            for (UnidadAdministrativa unidadAdministrativa: unidadAdministrativas){
+        if (items == 0) {
+            for (UnidadAdministrativa unidadAdministrativa : unidadAdministrativas) {
                 try {
                     insertar(unidadAdministrativa);
-                }catch (SQLiteException e){
+                } catch (SQLiteException e) {
                     e.printStackTrace();
                 }
             }
@@ -1174,432 +1187,432 @@ public class DataBase {
     ////// FIN LLENADO PM15007 //////////////////////////////
     /////////////////////////////////////////////////////////////
 
-    private boolean aulaExiste(Aula aula) throws SQLException{
+    private boolean aulaExiste(Aula aula) throws SQLException {
 
         String[] idAula = {String.valueOf(aula.getIdAula())};
         abrir();
-        Cursor c = sqLiteDatabase.query("aula",null,"idAula = ?",idAula,
-                null,null,null);
+        Cursor c = sqLiteDatabase.query("aula", null, "idAula = ?", idAula,
+                null, null, null);
 
-        if (c.moveToFirst()){
+        if (c.moveToFirst()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public Aula consultarAula(int idAula){
+    public Aula consultarAula(int idAula) {
 
         String[] columnas = {"idAula,descripcion"};
-        String[] codAula ={String.valueOf(idAula)};
-        Cursor c = sqLiteDatabase.query("aula",columnas,"idAula = ?",codAula,
-                null,null,null);
-        if (c.moveToFirst()){
+        String[] codAula = {String.valueOf(idAula)};
+        Cursor c = sqLiteDatabase.query("aula", columnas, "idAula = ?", codAula,
+                null, null, null);
+        if (c.moveToFirst()) {
             Aula aula = new Aula();
             aula.setIdAula(c.getInt(0));
             aula.setDescripcion(c.getString(1));
             return aula;
-        }else{
+        } else {
             return null;
         }
     }
 
-    private boolean diaExiste(Dia dia) throws SQLException{
+    private boolean diaExiste(Dia dia) throws SQLException {
 
         String[] idDia = {String.valueOf(dia.getIdDia())};
-        Cursor c = sqLiteDatabase.query("dia",null,"idDia = ?",idDia,
-                null,null,null);
+        Cursor c = sqLiteDatabase.query("dia", null, "idDia = ?", idDia,
+                null, null, null);
 
-        if (c.moveToFirst()){
+        if (c.moveToFirst()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public Dia consultarDia(int idDia){
+    public Dia consultarDia(int idDia) {
 
         String[] columnas = {"idDia,descripcion"};
-        String[] codDia ={String.valueOf(idDia)};
-        Cursor c = sqLiteDatabase.query("dia",columnas,"idDia = ?",codDia,
-                null,null,null);
-        if (c.moveToFirst()){
+        String[] codDia = {String.valueOf(idDia)};
+        Cursor c = sqLiteDatabase.query("dia", columnas, "idDia = ?", codDia,
+                null, null, null);
+        if (c.moveToFirst()) {
             Dia dia = new Dia();
             dia.setIdDia(c.getInt(0));
             dia.setDescripcion(c.getString(1));
 
             return dia;
-        }else{
+        } else {
             return null;
         }
     }
 
-    private boolean cicloExiste(Ciclo ciclo) throws SQLException{
+    private boolean cicloExiste(Ciclo ciclo) throws SQLException {
 
         String[] idCiclo = {String.valueOf(ciclo.getIdCiclo())};
         abrir();
-        Cursor c = sqLiteDatabase.query("ciclo",null,"idCiclo = ?",idCiclo,
-                null,null,null);
+        Cursor c = sqLiteDatabase.query("ciclo", null, "idCiclo = ?", idCiclo,
+                null, null, null);
 
-        if (c.moveToFirst()){
+        if (c.moveToFirst()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public Ciclo consultarCiclo(int idCiclo){
+    public Ciclo consultarCiclo(int idCiclo) {
 
         String[] columnas = {"idCiclo,numero,year"};
-        String[] codCiclo ={String.valueOf(idCiclo)};
-        Cursor c = sqLiteDatabase.query("ciclo",columnas,"idCiclo = ?",codCiclo,
-                null,null,null);
-        if (c.moveToFirst()){
+        String[] codCiclo = {String.valueOf(idCiclo)};
+        Cursor c = sqLiteDatabase.query("ciclo", columnas, "idCiclo = ?", codCiclo,
+                null, null, null);
+        if (c.moveToFirst()) {
             Ciclo ciclo = new Ciclo();
             ciclo.setIdCiclo(c.getInt(0));
             ciclo.setNumero(c.getString(1));
             ciclo.setYear(c.getInt(2));
             return ciclo;
-        }else{
+        } else {
             return null;
         }
     }
 
 
-    public String insertarMateria(Materia materia){
+    public String insertarMateria(Materia materia) {
 
         String mensaje = "Registro No: ";
-        long contador = 0 ;
+        long contador = 0;
 
-        if (materiaExiste(materia)==false){
+        if (materiaExiste(materia) == false) {
             Ciclo ciclo = new Ciclo();
             ciclo.setIdCiclo(materia.getIdCiclo());
 
-            if (cicloExiste(ciclo)){
+            if (cicloExiste(ciclo)) {
 
                 ContentValues contentValues = materia.toValues();
-                contador= sqLiteDatabase.insert(ConstantesDB.TABLA_MATERIA,null,contentValues);
+                contador = sqLiteDatabase.insert(ConstantesDB.TABLA_MATERIA, null, contentValues);
 
-                if(contador == -1 || contador == 0){
+                if (contador == -1 || contador == 0) {
                     mensaje = "Error al insertar el registro. Registro duplicado";
-                }else{
+                } else {
                     mensaje = "Registro insertado correctamente";
                 }
 
-            }else {
+            } else {
                 mensaje = "El ciclo: " + materia.getIdCiclo() + " No Existe.";
             }
 
-        }else{
+        } else {
             mensaje = "Materia con Codigo: " + materia.getCodigoMateria() + " ya Existe.";
         }
 
-        return  mensaje;
+        return mensaje;
     }
 
-    public String actualizarMateria(Materia materia){
+    public String actualizarMateria(Materia materia) {
 
         String mensaje;
 
-        if (materiaExiste(materia)){
+        if (materiaExiste(materia)) {
             Ciclo ciclo = new Ciclo();
             ciclo.setIdCiclo(materia.getIdCiclo());
 
-            if (cicloExiste(ciclo)){
+            if (cicloExiste(ciclo)) {
                 String[] codigo = {materia.getCodigoMateria()};
                 ContentValues contentValues = materia.toValues();
-                sqLiteDatabase.update("materia",contentValues,"codigoMateria = ?",codigo);
+                sqLiteDatabase.update("materia", contentValues, "codigoMateria = ?", codigo);
                 mensaje = "Registro actualizado correctamente";
 
-            }else {
+            } else {
                 mensaje = "El ciclo: " + materia.getIdCiclo() + " No Existe.";
             }
 
 
-        }else{
+        } else {
             mensaje = "Materia con Codigo: " + materia.getCodigoMateria() + " no existe";
         }
 
         return mensaje;
     }
 
-    public String eliminarMateria(Materia materia){
+    public String eliminarMateria(Materia materia) {
 
         int contador = 0;
 
-        if (materiaExiste(materia)){
+        if (materiaExiste(materia)) {
             String[] codigoMateria = {materia.getCodigoMateria()};
 
-            contador = sqLiteDatabase.delete("materia","codigoMateria = ?",codigoMateria);
+            contador = sqLiteDatabase.delete("materia", "codigoMateria = ?", codigoMateria);
 
-            if (contador != 0){
+            if (contador != 0) {
                 return "Registro eliminado correctamente";
-            }else{
+            } else {
                 return "Registro No fue eliminado";
             }
 
-        }else{
+        } else {
             return "Materia con codigo: " + materia.getCodigoMateria() + " no existe";
         }
 
     }
 
-    public Materia consultarMateria(String codigoMateria){
+    public Materia consultarMateria(String codigoMateria) {
 
         String[] columnas = {"codigoMateria,nombreMateria,UV,idCiclo"};
-        String[] codMateria ={codigoMateria};
-        Cursor c = sqLiteDatabase.query("materia",columnas,"codigoMateria = ?",codMateria,
-                null,null,null);
-        if (c.moveToFirst()){
+        String[] codMateria = {codigoMateria};
+        Cursor c = sqLiteDatabase.query("materia", columnas, "codigoMateria = ?", codMateria,
+                null, null, null);
+        if (c.moveToFirst()) {
             Materia materia = new Materia();
             materia.setCodigoMateria(c.getString(0));
             materia.setNombreMateria(c.getString(1));
             materia.setUV(c.getString(2));
             materia.setIdCiclo(c.getInt(3));
             return materia;
-        }else{
+        } else {
             return null;
         }
     }
 
-    private boolean materiaExiste(Materia materia) throws SQLException{
+    private boolean materiaExiste(Materia materia) throws SQLException {
 
         String[] codigoMateria = {materia.getCodigoMateria()};
 
         abrir();
-        Cursor c = sqLiteDatabase.query("materia",null,"codigoMateria = ?",codigoMateria,
-                null,null,null);
+        Cursor c = sqLiteDatabase.query("materia", null, "codigoMateria = ?", codigoMateria,
+                null, null, null);
 
-        if (c.moveToFirst()){
+        if (c.moveToFirst()) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
     }
 
-    public String insertarHorario(Horario horario){
+    public String insertarHorario(Horario horario) {
 
         String mensaje = "Registro No: ";
-        long contador = 0 ;
+        long contador = 0;
 
-        if (horarioExiste(horario) == false){
+        if (horarioExiste(horario) == false) {
             Aula aula = new Aula();
             aula.setIdAula(horario.getIdAula());
 
-            if (aulaExiste(aula)){
+            if (aulaExiste(aula)) {
                 Dia dia = new Dia();
                 dia.setIdDia(horario.getIdDia());
-                if(diaExiste(dia)){
+                if (diaExiste(dia)) {
 
                     ContentValues contentValues = horario.toValues();
-                    contador= sqLiteDatabase.insert(ConstantesDB.TABLA_HORARIO,null,contentValues);
+                    contador = sqLiteDatabase.insert(ConstantesDB.TABLA_HORARIO, null, contentValues);
 
-                    if(contador == -1 || contador == 0){
+                    if (contador == -1 || contador == 0) {
                         mensaje = "Error al insertar el registro. Registro duplicado";
-                    }else{
+                    } else {
                         mensaje = "Registro insertado correctamente";
                     }
 
-                }else{
+                } else {
                     mensaje = "Dia con ID: " + dia.getIdDia() + " No existe";
                 }
-            }else{
+            } else {
                 mensaje = "Aula con ID: " + aula.getIdAula() + " No Existe.";
             }
 
-        }else{
+        } else {
             mensaje = "Horario con ID: " + horario.getIdHorario() + " ya Existe.";
-        }
-
-        return  mensaje;
-    }
-
-    public String actualizarHorario(Horario horario){
-
-        String mensaje;
-        if (horarioExiste(horario)){
-            Aula aula = new Aula();
-            aula.setIdAula(horario.getIdAula());
-            if (aulaExiste(aula)){
-                Dia dia = new Dia();
-                dia.setIdDia(horario.getIdDia());
-                if(diaExiste(dia)){
-                    String[] codigo = {String.valueOf(horario.getIdHorario())};
-                    ContentValues contentValues = horario.toValues();
-                    sqLiteDatabase.update("horario",contentValues,"idHorario = ?",codigo);
-                    mensaje = "Registro actualizado correctamente";
-
-                }else{
-                    mensaje = "Dia con ID: " + dia.getIdDia() + " No existe";
-                }
-            }else{
-                mensaje = "Aula con ID: " + aula.getIdAula() + " No Existe.";
-            }
-        }else{
-            mensaje ="Horario con ID: " + horario.getIdHorario() + " no existe";
         }
 
         return mensaje;
     }
 
-    public String eliminarHorario(Horario horario){
+    public String actualizarHorario(Horario horario) {
 
-        if (horarioExiste(horario)){
+        String mensaje;
+        if (horarioExiste(horario)) {
+            Aula aula = new Aula();
+            aula.setIdAula(horario.getIdAula());
+            if (aulaExiste(aula)) {
+                Dia dia = new Dia();
+                dia.setIdDia(horario.getIdDia());
+                if (diaExiste(dia)) {
+                    String[] codigo = {String.valueOf(horario.getIdHorario())};
+                    ContentValues contentValues = horario.toValues();
+                    sqLiteDatabase.update("horario", contentValues, "idHorario = ?", codigo);
+                    mensaje = "Registro actualizado correctamente";
+
+                } else {
+                    mensaje = "Dia con ID: " + dia.getIdDia() + " No existe";
+                }
+            } else {
+                mensaje = "Aula con ID: " + aula.getIdAula() + " No Existe.";
+            }
+        } else {
+            mensaje = "Horario con ID: " + horario.getIdHorario() + " no existe";
+        }
+
+        return mensaje;
+    }
+
+    public String eliminarHorario(Horario horario) {
+
+        if (horarioExiste(horario)) {
             int contador = 0;
             String[] idHorario = {String.valueOf(horario.getIdHorario())};
 
-            contador = sqLiteDatabase.delete("horario","idHorario = ?",idHorario);
+            contador = sqLiteDatabase.delete("horario", "idHorario = ?", idHorario);
 
-            if (contador != 0){
+            if (contador != 0) {
                 return "Registro eliminado correctamente";
-            }else{
+            } else {
                 return "Registro No fue eliminado";
             }
 
-        }else{
+        } else {
             return "Horario con ID: " + horario.getIdHorario() + " no existe";
         }
 
     }
 
-    public Horario consultarHorario(int idHorario){
+    public Horario consultarHorario(int idHorario) {
 
         String[] columnas = {"idHorario,idDia,idAula,hora"};
-        String[] codHorario ={String.valueOf(idHorario)};
-        Cursor c = sqLiteDatabase.query("horario",columnas,"idHorario = ?",codHorario,
-                null,null,null);
-        if (c.moveToFirst()){
+        String[] codHorario = {String.valueOf(idHorario)};
+        Cursor c = sqLiteDatabase.query("horario", columnas, "idHorario = ?", codHorario,
+                null, null, null);
+        if (c.moveToFirst()) {
             Horario horario = new Horario();
             horario.setIdHorario(c.getInt(0));
             horario.setIdDia(c.getInt(1));
             horario.setIdAula(c.getInt(2));
             horario.setHora(c.getString(3));
             return horario;
-        }else{
+        } else {
             return null;
         }
 
     }
 
-    private boolean horarioExiste(Horario horario) throws SQLException{
+    private boolean horarioExiste(Horario horario) throws SQLException {
 
         String[] idHorario = {String.valueOf(horario.getIdHorario())};
 
-        Cursor c = sqLiteDatabase.query("Horario",null,"idhorario = ?",
-                idHorario,null,null,null);
-        Log.d("HORARIO EXISTE","HORARIO RETURN CURSOR");
-        if (c.moveToFirst()){
+        Cursor c = sqLiteDatabase.query("Horario", null, "idhorario = ?",
+                idHorario, null, null, null);
+        Log.d("HORARIO EXISTE", "HORARIO RETURN CURSOR");
+        if (c.moveToFirst()) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
     }
 
-    public String insertarGrupo(Grupo grupo, HorarioDetalle horarioDetalle){
+    public String insertarGrupo(Grupo grupo, HorarioDetalle horarioDetalle) {
 
         String mensaje = "Registro No: ";
-        long contador = 0 ;
+        long contador = 0;
         Materia materia = new Materia();
         materia.setCodigoMateria(grupo.getCodigoMateria());
 
-        if (grupoExiste(grupo)== false){
-            if (materiaExiste(materia)){
+        if (grupoExiste(grupo) == false) {
+            if (materiaExiste(materia)) {
                 Horario horario = new Horario();
                 horario.setIdHorario(horarioDetalle.getIdHoraio());
 
-                if(horarioExiste(horario)){
+                if (horarioExiste(horario)) {
                     ContentValues contentValues = grupo.toValues();
-                    contador= sqLiteDatabase.insert(ConstantesDB.TABLA_GRUPO,null,contentValues);
+                    contador = sqLiteDatabase.insert(ConstantesDB.TABLA_GRUPO, null, contentValues);
 
-                    if(contador == -1 || contador == 0){
+                    if (contador == -1 || contador == 0) {
                         mensaje = "Error al insertar el registro. Registro duplicado";
-                    }else{
-                       if(insertarHorarioDetalle(horarioDetalle)){
-                           mensaje = "Registro insertado correctamente";
-                       }
+                    } else {
+                        if (insertarHorarioDetalle(horarioDetalle)) {
+                            mensaje = "Registro insertado correctamente";
+                        }
                     }
 
-                }else{
+                } else {
                     mensaje = "Horario con ID: " + horarioDetalle.getIdHoraio() + " no existe.";
                 }
 
-            }else{
+            } else {
                 mensaje = "Materia con Codigo: " + materia.getCodigoMateria() + " no existe";
             }
-        }else{
+        } else {
             mensaje = "Grupo con ID: " + grupo.getIdGrupo() + " ya Existe.";
         }
 
-        return  mensaje;
+        return mensaje;
     }
 
-    public boolean insertarHorarioDetalle(HorarioDetalle horarioDetalle){
-        long contador = 0 ;
+    public boolean insertarHorarioDetalle(HorarioDetalle horarioDetalle) {
+        long contador = 0;
 
         ContentValues contentValues = horarioDetalle.toValues();
-        contador= sqLiteDatabase.insert(ConstantesDB.TABLA_HORARIODETALLE,null,contentValues);
+        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_HORARIODETALLE, null, contentValues);
 
         return true;
     }
 
-    public boolean actualizarHorarioDetalle(HorarioDetalle horarioDetalle){
+    public boolean actualizarHorarioDetalle(HorarioDetalle horarioDetalle) {
         String[] idGrupo = {String.valueOf(horarioDetalle.getIdGrupo())};
         ContentValues contentValues = horarioDetalle.toValues();
-        sqLiteDatabase.update("horarioDetalle",contentValues,"idGrupo=?",idGrupo);
+        sqLiteDatabase.update("horarioDetalle", contentValues, "idGrupo=?", idGrupo);
         return true;
     }
 
 
-    public HorarioDetalle consultarHorarioDetallePorIdGrupo(int idGrupo){
+    public HorarioDetalle consultarHorarioDetallePorIdGrupo(int idGrupo) {
 
         String[] columnas = {"idGrupo,idHorario"};
-        String[] codigoGrupo ={String.valueOf(idGrupo)};
-        Cursor c = sqLiteDatabase.query("horarioDetalle",columnas,"idGrupo = ?",codigoGrupo,
-                null,null,null);
-        if (c.moveToFirst()){
+        String[] codigoGrupo = {String.valueOf(idGrupo)};
+        Cursor c = sqLiteDatabase.query("horarioDetalle", columnas, "idGrupo = ?", codigoGrupo,
+                null, null, null);
+        if (c.moveToFirst()) {
             HorarioDetalle horarioDetalle = new HorarioDetalle();
             horarioDetalle.setIdGrupo(c.getInt(0));
             horarioDetalle.setIdHoraio(c.getInt(1));
             return horarioDetalle;
-        }else{
+        } else {
             return null;
         }
 
     }
 
-    public String actualizarGrupo(Grupo grupo, HorarioDetalle horarioDetalle){
+    public String actualizarGrupo(Grupo grupo, HorarioDetalle horarioDetalle) {
 
         String mensaje;
-        if (grupoExiste(grupo)){
+        if (grupoExiste(grupo)) {
             Materia materia = new Materia();
             materia.setCodigoMateria(grupo.getCodigoMateria());
 
-            if(materiaExiste(materia)){
-                Horario  horario = new Horario();
+            if (materiaExiste(materia)) {
+                Horario horario = new Horario();
                 horario.setIdHorario(horarioDetalle.getIdHoraio());
 
-                if (horarioExiste(horario)){
+                if (horarioExiste(horario)) {
                     String[] codigo = {String.valueOf(grupo.getIdGrupo())};
                     ContentValues contentValues = grupo.toValues();
-                    sqLiteDatabase.update("grupo",contentValues,"idGrupo = ?",codigo);
+                    sqLiteDatabase.update("grupo", contentValues, "idGrupo = ?", codigo);
 
-                    if(actualizarHorarioDetalle(horarioDetalle)){
+                    if (actualizarHorarioDetalle(horarioDetalle)) {
                         mensaje = "Registro actualizado correctamente";
-                    }else{
+                    } else {
                         mensaje = "Grupo actualizado correctamente";
                     }
 
-                }else{
+                } else {
                     mensaje = "Horario con ID: " + horarioDetalle.getIdHoraio() + " no existe";
                 }
 
-            }else{
+            } else {
                 mensaje = "Materia con Codigo: " + grupo.getCodigoMateria() + " no existe.";
             }
 
-        }else{
+        } else {
             mensaje = "Grupo con ID: " + grupo.getIdGrupo() + " no existe";
         }
 
@@ -1607,62 +1620,64 @@ public class DataBase {
 
     }
 
-    public String eliminarGrupo(Grupo grupo){
+    public String eliminarGrupo(Grupo grupo) {
 
         int contador = 0;
 
-        if (grupoExiste(grupo)){
+        if (grupoExiste(grupo)) {
             String[] idGrupo = {String.valueOf(grupo.getIdGrupo())};
 
-            contador = sqLiteDatabase.delete("grupo","idGrupo = ?",idGrupo);
+            contador = sqLiteDatabase.delete("grupo", "idGrupo = ?", idGrupo);
 
-            if (contador != 0){
+            if (contador != 0) {
                 return "Registro eliminado correctamente";
-            }else{
+            } else {
                 return "Registro No fue eliminado";
             }
 
-        }else{
+        } else {
             return "Grupo con ID: " + grupo.getIdGrupo() + " no existe";
         }
     }
 
-    public Grupo consultarGrupo(int idGrupo ){
+    public Grupo consultarGrupo(int idGrupo) {
 
         String[] columnas = {"idGrupo,codigoMateria,idDocente,descripcion"};
-        int[] codGrupo ={idGrupo};
-        Cursor c = sqLiteDatabase.query("grupo",columnas,"idGrupo = ?",new String[]{String.valueOf(idGrupo)},
-                null,null,null);
-        if (c.moveToFirst()){
+        int[] codGrupo = {idGrupo};
+        Cursor c = sqLiteDatabase.query("grupo", columnas, "idGrupo = ?", new String[]{String.valueOf(idGrupo)},
+                null, null, null);
+        if (c.moveToFirst()) {
             Grupo grupo = new Grupo();
             grupo.setIdGrupo(c.getInt(0));
             grupo.setCodigoMateria(c.getString(1));
             grupo.setIdDocente(c.getInt(2));
             grupo.setDescripcion(c.getString(3));
             return grupo;
-        }else{
+        } else {
             return null;
         }
     }
 
-    private boolean grupoExiste(Grupo grupo) throws SQLException{
+    private boolean grupoExiste(Grupo grupo) throws SQLException {
 
         String[] idGrupo = {String.valueOf(grupo.getIdGrupo())};
 
-        Cursor c = sqLiteDatabase.query("grupo",null,"idGrupo = ?",
-                idGrupo,null,null,null);
+        Cursor c = sqLiteDatabase.query("grupo", null, "idGrupo = ?",
+                idGrupo, null, null, null);
 
-        if (c.moveToFirst()){
+        if (c.moveToFirst()) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
     }
+
     //TS14004---------------------------------------------------------------------------
     public String llenarBase() {
+
         final int[] VDidDocente = {8888881, 8888882, 8888883, 8888884};
-        final int[] VDidUnidadAdministrativa = {1111111, 1111110, 1111100, 1111000};
+        final int[] VDidUnidadAdministrativa = {1, 2, 3, 4};
         final String[] VDnombre = {"Rodrigo", "Nelson", "Joel", "Dixon"};
         final String[] VDapellido = {"Orantes", "Ortiz", "Gonzales", "Coto"};
         final String[] VDemail = {"presa@gmail.com", "Miranda@gmail.com", "Ramos@gmail.com", "Argueta@gmail.com"};
@@ -1690,6 +1705,7 @@ public class DataBase {
         abrir();
         if (getItemsDocente() == 0) {
             Docente docente = new Docente();
+
             for (int i = 0; i < 4; i++) {
                 docente.setIdDocente(VDidDocente[i]);
                 docente.setIdUnidadAdministrativa(VDidUnidadAdministrativa[i]);
@@ -1706,7 +1722,7 @@ public class DataBase {
                 asignacionEquipo.setIdDocente(VAidDocente[i]);
                 asignacionEquipo.setFechaAsignacionEquipo(VAfechaAsignacionEquipo[i]);
 
-                 insertar(asignacionEquipo);
+                insertar(asignacionEquipo);
             }
         }
         if (getItemsDocumentoAsignacion() == 0) {
@@ -1717,7 +1733,7 @@ public class DataBase {
                 documentoAsignacion.setMotivo(VDOmotivo[i]);
                 documentoAsignacion.setFechaAsignacionDoc(VDOfechaAsignacionDoc[i]);
 
-                 insertar(documentoAsignacion);
+                insertar(documentoAsignacion);
             }
         }
         if (getItemsAsignacionEquipoDetalle() == 0) {
@@ -1745,736 +1761,652 @@ public class DataBase {
         return "Guardo  en la Base de Datos";
     }
 
-    //******************************************INICIO CRUD DE TS14004*****************************************************************
-    //METODOS INSERTAR <--TS14004-->
-    public String insertar(Docente docente) {
-        String regInsertados = "Registro Insertado Nº= ";
-        long contador = 0;
+    //******************************************INTEGRIDAD REFERENCIAL TS14004*****************************************************************
 
-        ContentValues doce = new ContentValues();
-        doce.put("idDocente", docente.getIdDocente());
-        doce.put("idUnidadAdministrativa", docente.getIdUnidadAdministrativa());
-        doce.put("nombre", docente.getNombre());
-        doce.put("apellido", docente.getApellido());
-        doce.put("email", docente.getEmail());
-        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_Docente, null, doce);
-        if (contador == -1 || contador == 0) {
-            regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
-        } else {
-            regInsertados = regInsertados + contador;
-        }
-        return regInsertados;
-    }
+    public boolean verificarIntegridadTS14004(Object dato, int relacion) throws SQLException {
+        switch (relacion) {
 
-    public String insertar(AsignacionEquipo asignacionEquipo) {
-        String regInsertados = "Registro Insertado Nº= ";
-        long contador = 0;
-
-        ContentValues asignaEquipo = new ContentValues();
-        asignaEquipo.put("idAsignacionEquipo", asignacionEquipo.getIdAsignacionEquipo());
-        asignaEquipo.put("idDocente", asignacionEquipo.getIdDocente());
-        asignaEquipo.put("fechaAsignacionEquipo", asignacionEquipo.getFechaAsignacionEquipo());
-        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_AsignacionEquipo, null, asignaEquipo);
-        if (contador == -1 || contador == 0) {
-            regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
-        } else {
-            regInsertados = regInsertados + contador;
-        }
-        return regInsertados;
-    }
-
-
-    public String insertar(DocumentoAsignacion documentoAsignacion){
-        String regInsertados = "Registro Insertado Nº= ";
-        long contador = 0;
-
-        ContentValues documentoAsignado = new ContentValues();
-        documentoAsignado.put("idDocumentoAsignacion", documentoAsignacion.getIdDocumentoAsignacion());
-        documentoAsignado.put("idDocente", documentoAsignacion.getIdDocente());
-        documentoAsignado.put("motivo", documentoAsignacion.getMotivo());
-        documentoAsignado.put("fechaAsignacionDoc", documentoAsignacion.getFechaAsignacionDoc());
-        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DocumentoAsignacion, null, documentoAsignado);
-        if (contador == -1 || contador == 0) {
-            regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
-        } else {
-            regInsertados = regInsertados + contador;
-        }
-        return regInsertados;
-    }
-
-    public String insertar(AsignacionEquipoDetalle asignacionEquipoDetalle) {
-        String regInsertados = "Registro Insertado Nº= ";
-        long contador = 0;
-
-        ContentValues asignaEquipoDetalle = new ContentValues();
-        asignaEquipoDetalle.put("idAsignacionEquipoDetalle", asignacionEquipoDetalle.getIdAsignacionEquipoDetalle());
-        asignaEquipoDetalle.put("idEquipo", asignacionEquipoDetalle.getIdEquipo());
-        asignaEquipoDetalle.put("idAsignacionEquipo", asignacionEquipoDetalle.getIdAsignacionEquipo());
-        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_AsignacionEquipoDetalle, null, asignaEquipoDetalle );
-        if (contador == -1 || contador == 0) {
-            regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
-        } else {
-            regInsertados = regInsertados + contador;
-        }
-        return regInsertados;
-    }
-    public String insertar(DocumentoAsignacionDetalle documentoAsignacionDetalle) {
-        String regInsertados = "Registro Insertado Nº= ";
-        long contador = 0;
-
-        ContentValues docuAsignaDetalle = new ContentValues();
-        docuAsignaDetalle.put("idDocumentoAsignacionDetalle", documentoAsignacionDetalle.getIdDocumentoAsignacionDetalle());
-        docuAsignaDetalle.put("isbn", documentoAsignacionDetalle.getIsbn());
-        docuAsignaDetalle.put("idDocumentoAsignacion", documentoAsignacionDetalle.getIdDocumentoAsignacion());
-        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DocumentoAsignacionDetalle, null, docuAsignaDetalle );
-        if (contador == -1 || contador == 0) {
-            regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
-        } else {
-            regInsertados = regInsertados + contador;
-        }
-        return regInsertados;
-    }
-
-    //METODOS CONSULTAR <--TS14004-->
-
-    public Docente consultarDocente(int idDocente) {
-        String[] id = {String.valueOf(idDocente)};
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_Docente, campos_Docente, "idDocente = ?", id, null, null, null);
-        if (cursor.moveToFirst()) {
-            Docente docente = new Docente();
-            docente.setIdDocente(cursor.getInt(0));
-            docente.setIdUnidadAdministrativa(cursor.getInt(1));
-            docente.setNombre(cursor.getString(2));
-            docente.setApellido(cursor.getString(3));
-            docente.setEmail(cursor.getString(4));
-
-            return docente;
-        } else {
-            return null;
-        }
-    }
-
-    public AsignacionEquipo consultarAsignacionEquipo(int idAsignacionEquipo) {
-        String[] id = {String.valueOf(idAsignacionEquipo)};
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_AsignacionEquipo, campos_AsignacionEquipo, "idAsignacionEquipo = ?", id, null, null, null);
-        if (cursor.moveToFirst()) {
-            AsignacionEquipo asignacionEquipo = new AsignacionEquipo();
-            asignacionEquipo.setIdAsignacionEquipo(cursor.getInt(0));
-            asignacionEquipo.setIdDocente(cursor.getInt(1));
-            asignacionEquipo.setFechaAsignacionEquipo(cursor.getString(2));
-
-            return asignacionEquipo;
-        } else {
-            return null;
-        }
-    }
-
-    public DocumentoAsignacion consultarDocumentoAsignacion(int idDocumentoAsignacion) {
-        String[] id = {String.valueOf(idDocumentoAsignacion)};
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DocumentoAsignacion, campos_DocumentoAsignacion, "idDocumentoAsignacion = ?", id, null, null, null);
-        if (cursor.moveToFirst()) {
-           DocumentoAsignacion documentoAsignacion = new DocumentoAsignacion();
-            documentoAsignacion.setIdDocumentoAsignacion(cursor.getInt(0));
-            documentoAsignacion.setIdDocente(cursor.getInt(1));
-            documentoAsignacion.setMotivo(cursor.getString(2));
-            documentoAsignacion.setFechaAsignacionDoc(cursor.getString(3));
-
-            return documentoAsignacion;
-        } else {
-            return null;
-        }
-    }
-
-
-    //METODOS ACTUALIZAR <--TS14004-->
-
-    public String actualizar(Docente docente) {
-        //if (verificarIntegridad(alumno, 5)) {
-
-        String[] id = {String.valueOf(docente.getIdDocente())};
-        ContentValues cv = new ContentValues();
-        cv.put("idUnidadAdministrativa", docente.getIdUnidadAdministrativa());
-        cv.put("nombre", docente.getNombre());
-        cv.put("apellido", docente.getApellido());
-        cv.put("email", docente.getEmail());
-        sqLiteDatabase.update(ConstantesDB.TABLA_Docente, cv, "idDocente = ?", id);
-        return "Registro Actualizado Correctamente";
-        // } else {
-        //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
-        //}
-
-    }
-    public String actualizar(AsignacionEquipo asignacionEquipo) {
-        //if (verificarIntegridad(alumno, 5)) {
-
-        String[] id = {String.valueOf(asignacionEquipo.getIdAsignacionEquipo())};
-        ContentValues cv = new ContentValues();
-        cv.put("idDocente", asignacionEquipo.getIdDocente());
-        cv.put("fechaAsignacionEquipo", asignacionEquipo.getFechaAsignacionEquipo());
-        sqLiteDatabase.update(ConstantesDB.TABLA_AsignacionEquipo, cv, "idAsignacionEquipo = ?", id);
-        return "Registro Actualizado Correctamente";
-        // } else {
-        //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
-        //}
-    }
-
-    public String actualizar(DocumentoAsignacion documentoAsignacion) {
-        //if (verificarIntegridad(alumno, 5)) {
-
-        String[] id = {String.valueOf(documentoAsignacion.getIdDocumentoAsignacion())};
-        ContentValues cv = new ContentValues();
-        cv.put("idDocente", documentoAsignacion.getIdDocente());
-        cv.put("motivo", documentoAsignacion.getMotivo());
-        cv.put("fechaAsignacionDoc", documentoAsignacion.getFechaAsignacionDoc());
-        sqLiteDatabase.update(ConstantesDB.TABLA_DocumentoAsignacion, cv, "idDocumentoAsignacion = ?", id);
-        return "Registro Actualizado Correctamente";
-        // } else {
-        //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
-        //}
-    }
-
-
-    //METODOS ELIMINAR <--TS14004-->
-    public String eliminar(Docente docente) {
-        String regAfectados = "filas afectadas= ";
-        int contador = 0;
-        /*if (verificarIntegridad(alumno, 3)) {
-            contador += db.delete("nota", "carnet='" + alumno.getCarnet() + "'", null);
-        }*/
-        contador += sqLiteDatabase.delete(ConstantesDB.TABLA_Docente, "idDocente='" + docente.getIdDocente() + "'", null);
-        regAfectados += contador;
-        return regAfectados;
-    }
-
-    public String eliminar(AsignacionEquipo asignacionEquipo) {
-        String regAfectados = "filas afectadas= ";
-        int contador = 0;
-        /*if (verificarIntegridad(alumno, 3)) {
-            contador += db.delete("nota", "carnet='" + alumno.getCarnet() + "'", null);
-        }*/
-        contador += sqLiteDatabase.delete(ConstantesDB.TABLA_AsignacionEquipo, "idAsignacionEquipo='" + asignacionEquipo.getIdAsignacionEquipo() + "'", null);
-        regAfectados += contador;
-        return regAfectados;
-    }
-
-    public String eliminar(DocumentoAsignacion documentoAsignacion) {
-        String regAfectados = "filas afectadas= ";
-        int contador = 0;
-        /*if (verificarIntegridad(alumno, 3)) {
-            contador += db.delete("nota", "carnet='" + alumno.getCarnet() + "'", null);
-        }*/
-        contador += sqLiteDatabase.delete(ConstantesDB.TABLA_DocumentoAsignacion, "idDocumentoAsignacion='" + documentoAsignacion.getIdDocumentoAsignacion() + "'", null);
-        regAfectados += contador;
-        return regAfectados;
-    }
-
-
-    //rl08017
-
-    public String insertar(TiposDeMovimientoParaDocumento tiposDeMovimientoParaDocumento){
-        try{
-            String regInsertados="Registro Insertado Nº= ";
-            long contador=0;
-            ContentValues tipo = new ContentValues();
-            tipo.put("id_tipo_de_movimiento_para_documento", tiposDeMovimientoParaDocumento.getIdTiposDeMovimientoParaDocumento());
-            tipo.put("descripcion", tiposDeMovimientoParaDocumento.getDescripcionMovimientoDoc());
-            contador = sqLiteDatabase.insert(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, null, tipo);
-            if(contador==-1 || contador==0)
-            {
-                regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+            case 1: {     //verificar que exista docente
+                Docente docente1 = (Docente)dato;
+                String[] id = {String.valueOf(docente1.getIdDocente())};
+                abrir();
+                Cursor c1 = sqLiteDatabase.query(ConstantesDB.TABLA_Docente, null, "idDocente = ?", id, null, null, null);
+                if (c1.moveToFirst()) {      //Se encontro Alumno
+                    return true;
+                }
+                return false;
             }
-            else {
-                regInsertados=regInsertados+contador;
+
+            case 2: {     //verificar que al insertar Docente exista unidadAdministrativa
+                Docente docente = (Docente)dato;
+                String[] id1 = {String.valueOf(docente.getIdUnidadAdministrativa())};
+                //abrir();
+                Cursor cursor1 = sqLiteDatabase.query(ConstantesDB.TABLA_UNIDAD_ADMINISTRATIVA, null, "id_unidad_administrativa = ?", id1, null, null, null);
+
+                if (cursor1.moveToFirst() ) {      //Se encontraron datos
+                    return true;
+                }
+                return false;
+            }
+
+            case 3: {     //verificar que al insertar AsignacionEquipo exista Docente
+                AsignacionEquipo asignacionEquipo = (AsignacionEquipo)dato;
+                String[] id1 = {String.valueOf(asignacionEquipo.getIdDocente())};
+                //abrir();
+                Cursor cursor1 = sqLiteDatabase.query(ConstantesDB.TABLA_Docente, null, "idDocente = ?", id1, null, null, null);
+
+                if (cursor1.moveToFirst() ) {      //Se encontraron datos
+                    return true;
+                }
+                return false;
+            }
+
+            case 4: {     //verificar que exista AsignacionEquipo
+                AsignacionEquipo asignacionEquipo = (AsignacionEquipo)dato;
+                String[] id1 = {String.valueOf(asignacionEquipo.getIdAsignacionEquipo())};
+                abrir();
+                Cursor c1 = sqLiteDatabase.query(ConstantesDB.TABLA_AsignacionEquipo, null, "idAsignacionEquipo = ?", id1, null, null, null);
+                if (c1.moveToFirst()) {      //Se encontro Alumno
+                    return true;
+                }
+                return false;
+            }
+
+            case 5: {     //verificar que exista DocumentoAsignacion
+                DocumentoAsignacion documentoAsignacion = (DocumentoAsignacion) dato;
+                String[] id1 = {String.valueOf(documentoAsignacion.getIdDocumentoAsignacion())};
+                abrir();
+                Cursor c1 = sqLiteDatabase.query(ConstantesDB.TABLA_DocumentoAsignacion, null, "idDocumentoAsignacion = ?", id1, null, null, null);
+                if (c1.moveToFirst()) {      //Se encontro Alumno
+                    return true;
+                }
+                return false;
+            }
+
+            case 6: {     //verificar que al insertar DocumentoAsignacion exista Docente
+                DocumentoAsignacion documentoAsignacion = (DocumentoAsignacion) dato;
+                String[] id1 = {String.valueOf(documentoAsignacion.getIdDocente())};
+                //abrir();
+                Cursor cursor1 = sqLiteDatabase.query(ConstantesDB.TABLA_Docente, null, "idDocente = ?", id1, null, null, null);
+
+                if (cursor1.moveToFirst() ) {      //Se encontraron datos
+                    return true;
+                }
+                return false;
+            }
+
+                default:
+                    return false;
+            }
+        }
+
+    //******************************************INICIO CRUD DE TS14004*****************************************************************
+        //METODOS INSERTAR <--TS14004-->
+        public String insertar (Docente docente){
+
+            String regInsertados = "Registro Insertado ID=";
+            long contador = 0;
+            if(verificarIntegridadTS14004(docente,1)==false) {
+                if (verificarIntegridadTS14004(docente, 2)) {
+                    ContentValues doce = new ContentValues();
+                    doce.put("idDocente", docente.getIdDocente());
+                    doce.put("idUnidadAdministrativa", docente.getIdUnidadAdministrativa());
+                    doce.put("nombre", docente.getNombre());
+                    doce.put("apellido", docente.getApellido());
+                    doce.put("email", docente.getEmail());
+                    contador = sqLiteDatabase.insert(ConstantesDB.TABLA_Docente, null, doce);
+                }
+                if (contador == -1 || contador == 0) {
+                    regInsertados = "Error al Insertar, Unidad administrativa " + docente.getIdUnidadAdministrativa() + " No existe";
+                } else {
+                    regInsertados = regInsertados + contador;
+                }
+                return regInsertados;
+
+            }else{
+                return "El codigo " + docente.getIdDocente() + " ya existe, asigne otro codigo al docente";
+            }
+        }
+
+        public String insertar (AsignacionEquipo asignacionEquipo){
+            String regInsertados = "Registro Insertado ID=";
+            long contador = 0;
+            if(verificarIntegridadTS14004(asignacionEquipo,4)==false){
+            if(verificarIntegridadTS14004(asignacionEquipo,3)) {
+                ContentValues asignaEquipo = new ContentValues();
+                asignaEquipo.put("idAsignacionEquipo", asignacionEquipo.getIdAsignacionEquipo());
+                asignaEquipo.put("idDocente", asignacionEquipo.getIdDocente());
+                asignaEquipo.put("fechaAsignacionEquipo", asignacionEquipo.getFechaAsignacionEquipo());
+                contador = sqLiteDatabase.insert(ConstantesDB.TABLA_AsignacionEquipo, null, asignaEquipo);
+            }
+            if (contador == -1 || contador == 0) {
+                regInsertados = "Error al Insertar el registro, Docente con codigo "+ asignacionEquipo.getIdDocente() + " NO EXISTE";
+            } else {
+                regInsertados = regInsertados + contador;
             }
             return regInsertados;
-
-        }
-        catch (SQLException e ){
-            return "datos incorrectos o faltantes";
-        }
-
-    }
-
-    public String insertar(DocumentoExistencia documentoExistencia){
-
-        try{
-            String regInsertados="Registro Insertado Nº= ";
-            long contador=0;
-
-            if (exiIsbn(documentoExistencia)){
-                if (exiUnidad(documentoExistencia)){
-                    if (exiDocente(documentoExistencia)){
-                        ContentValues tipo = new ContentValues();
-                        tipo.put("id_documento_existencia", documentoExistencia.getIdDocumentoExistencia());
-                        tipo.put("isbn", documentoExistencia.getIsbn());
-                        tipo.put("id_docente", documentoExistencia.getIdDocente());
-                        tipo.put("id_unidad_admin", documentoExistencia.getIdUnidadAdministrativa());
-                        tipo.put("actual", documentoExistencia.getActual());
-                        contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, null, tipo);
-                        if(contador==-1 || contador==0)
-                        {
-                            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
-                        }
-                        else {
-                            regInsertados=regInsertados+contador;
-                        }
-                        return regInsertados;
-
-
-                    }
-                    else{
-                        return "no existe docente";
-                    }
-
-                }
-                else{
-                    return "no existe unidad administrativa";
-                }
-
-
+        }else{
+                return "El codigo " + asignacionEquipo.getIdAsignacionEquipo() + " ya existe, asigne otro codigo a la Asignacion de Equipo";
             }
-            else{
-                return "no existe documento con ese isbn";
+    }
+
+
+        public String insertar (DocumentoAsignacion documentoAsignacion){
+            String regInsertados = "Registro Insertado ID=";
+            long contador = 0;
+            if(verificarIntegridadTS14004(documentoAsignacion,5)==false){
+                if(verificarIntegridadTS14004(documentoAsignacion,6)) {
+                    ContentValues documentoAsignado = new ContentValues();
+                    documentoAsignado.put("idDocumentoAsignacion", documentoAsignacion.getIdDocumentoAsignacion());
+                    documentoAsignado.put("idDocente", documentoAsignacion.getIdDocente());
+                    documentoAsignado.put("motivo", documentoAsignacion.getMotivo());
+                    documentoAsignado.put("fechaAsignacionDoc", documentoAsignacion.getFechaAsignacionDoc());
+                    contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DocumentoAsignacion, null, documentoAsignado);
+                }
+            if (contador == -1 || contador == 0) {
+                regInsertados = "Error al Insertar el registro, el docente con codigo " + documentoAsignacion.getIdDocente() + "NO EXISTE";
+            } else {
+                regInsertados = regInsertados + contador;
             }
-
-        }
-        catch (SQLException e ){
-            return "datos incorrectos o faltantes";
-        }
-
+            return regInsertados;
+        }else return "El codigo " + documentoAsignacion.getIdDocumentoAsignacion() + " ya existe, asigne otro codigo a la Asignacion de Documento";
     }
 
-    public TiposDeMovimientoParaDocumento consultarTipoMov(String idMov){
-        String[] id = {idMov};
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, CAMPOS_TIPO_MOV_DOCUMENTO, "id_tipo_de_movimiento_para_documento = ?", id, null, null, null);
-        if(cursor.moveToFirst()){
-            TiposDeMovimientoParaDocumento tipo = new TiposDeMovimientoParaDocumento();
-            tipo.setIdTiposDeMovimientoParaDocumento(parseInt(cursor.getString(0)));
-            tipo.setDescripcionMovimientoDoc(cursor.getString(1));
-            return tipo;
-        }else{ return null;
-        }
-    }
+        public String insertar (AsignacionEquipoDetalle asignacionEquipoDetalle){
+            String regInsertados = "Registro Insertado Nº= ";
+            long contador = 0;
 
-    public DocumentoExistencia consultarDocExistencia(String idExis){
-        String[] id = {idExis};
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, CAMPOS_DOCUMENTO_EXISTENCIA, "id_documento_existencia = ?", id, null, null, null);
-        if(cursor.moveToFirst()){
-            DocumentoExistencia tipo = new DocumentoExistencia();
-            tipo.setIdDocumentoExistencia(parseInt(cursor.getString(0)));
-            tipo.setIsbn(cursor.getString(1));
-            tipo.setIdDocente(parseInt(cursor.getString(2)));
-            tipo.setIdUnidadAdministrativa(parseInt(cursor.getString(3)));
-            tipo.setActual(parseInt(cursor.getString(4)));
-            return tipo;
-        }else{ return null;
+            ContentValues asignaEquipoDetalle = new ContentValues();
+            asignaEquipoDetalle.put("idAsignacionEquipoDetalle", asignacionEquipoDetalle.getIdAsignacionEquipoDetalle());
+            asignaEquipoDetalle.put("idEquipo", asignacionEquipoDetalle.getIdEquipo());
+            asignaEquipoDetalle.put("idAsignacionEquipo", asignacionEquipoDetalle.getIdAsignacionEquipo());
+            contador = sqLiteDatabase.insert(ConstantesDB.TABLA_AsignacionEquipoDetalle, null, asignaEquipoDetalle);
+            if (contador == -1 || contador == 0) {
+                regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
+            } else {
+                regInsertados = regInsertados + contador;
+            }
+            return regInsertados;
         }
-    }
+        public String insertar (DocumentoAsignacionDetalle documentoAsignacionDetalle){
+            String regInsertados = "Registro Insertado Nº= ";
+            long contador = 0;
 
-    public String actualizar(TiposDeMovimientoParaDocumento tipo){
-        try{
-            String[] id = {String.valueOf(tipo.getIdTiposDeMovimientoParaDocumento())};
+            ContentValues docuAsignaDetalle = new ContentValues();
+            docuAsignaDetalle.put("idDocumentoAsignacionDetalle", documentoAsignacionDetalle.getIdDocumentoAsignacionDetalle());
+            docuAsignaDetalle.put("isbn", documentoAsignacionDetalle.getIsbn());
+            docuAsignaDetalle.put("idDocumentoAsignacion", documentoAsignacionDetalle.getIdDocumentoAsignacion());
+            contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DocumentoAsignacionDetalle, null, docuAsignaDetalle);
+            if (contador == -1 || contador == 0) {
+                regInsertados = "Error al Insertar el registro, Registro, Registro duplicado. Verificar Insercion";
+            } else {
+                regInsertados = regInsertados + contador;
+            }
+            return regInsertados;
+        }
+
+        //METODOS CONSULTAR <--TS14004-->
+
+        public Docente consultarDocente ( int idDocente){
+            String[] id = {String.valueOf(idDocente)};
+            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_Docente, campos_Docente, "idDocente = ?", id, null, null, null);
+            if (cursor.moveToFirst()) {
+                Docente docente = new Docente();
+                docente.setIdDocente(cursor.getInt(0));
+                docente.setIdUnidadAdministrativa(cursor.getInt(1));
+                docente.setNombre(cursor.getString(2));
+                docente.setApellido(cursor.getString(3));
+                docente.setEmail(cursor.getString(4));
+
+                return docente;
+            } else {
+                return null;
+            }
+        }
+
+        public AsignacionEquipo consultarAsignacionEquipo ( int idAsignacionEquipo){
+            String[] id = {String.valueOf(idAsignacionEquipo)};
+            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_AsignacionEquipo, campos_AsignacionEquipo, "idAsignacionEquipo = ?", id, null, null, null);
+            if (cursor.moveToFirst()) {
+                AsignacionEquipo asignacionEquipo = new AsignacionEquipo();
+                asignacionEquipo.setIdAsignacionEquipo(cursor.getInt(0));
+                asignacionEquipo.setIdDocente(cursor.getInt(1));
+                asignacionEquipo.setFechaAsignacionEquipo(cursor.getString(2));
+
+                return asignacionEquipo;
+            } else {
+                return null;
+            }
+        }
+
+        public DocumentoAsignacion consultarDocumentoAsignacion ( int idDocumentoAsignacion)
+        {
+            String[] id = {String.valueOf(idDocumentoAsignacion)};
+            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DocumentoAsignacion, campos_DocumentoAsignacion, "idDocumentoAsignacion = ?", id, null, null, null);
+            if (cursor.moveToFirst()) {
+                DocumentoAsignacion documentoAsignacion = new DocumentoAsignacion();
+                documentoAsignacion.setIdDocumentoAsignacion(cursor.getInt(0));
+                documentoAsignacion.setIdDocente(cursor.getInt(1));
+                documentoAsignacion.setMotivo(cursor.getString(2));
+                documentoAsignacion.setFechaAsignacionDoc(cursor.getString(3));
+
+                return documentoAsignacion;
+            } else {
+                return null;
+            }
+        }
+
+
+        //METODOS ACTUALIZAR <--TS14004-->
+
+        public String actualizar (Docente docente){
+            if (verificarIntegridadTS14004(docente, 1)) {
+                if(verificarIntegridadTS14004(docente,2)){
+            String[] id = {String.valueOf(docente.getIdDocente())};
             ContentValues cv = new ContentValues();
-            cv.put("id_tipo_de_movimiento_para_documento", tipo.getIdTiposDeMovimientoParaDocumento());
-            cv.put("descripcion", tipo.getDescripcionMovimientoDoc());
-            sqLiteDatabase.update(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, cv, "id_tipo_de_movimiento_para_documento = ?", id);
-            return "Registro Actualizado Correctamente";
-        }
-        catch (SQLException e ){
-            return e.toString();
-        }
-    }
-
-    public String actualizar(DocumentoExistencia tipo){
-        try{
-            String[] id = {String.valueOf(tipo.getIdDocumentoExistencia())};
-            ContentValues cv = new ContentValues();
-            cv.put("id_documento_existencia", tipo.getIdDocumentoExistencia());
-            cv.put("isbn", tipo.getIsbn());
-            cv.put("id_docente", tipo.getIdDocente());
-            cv.put("id_unidad_admin", tipo.getIdUnidadAdministrativa());
-            cv.put("actual", tipo.getActual());
-            sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, cv, "id_documento_existencia = ?", id);
-            return "Registro Actualizado Correctamente";
-        }
-        catch (SQLException e ){
-            return e.toString();
-        }
-    }
-
-    public String eliminar(TiposDeMovimientoParaDocumento tipo){
-
-        try{
-            String regAfectados="filas afectadas= ";
-            int contador=0;
-            contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, "id_tipo_de_movimiento_para_documento='"+ tipo.getIdTiposDeMovimientoParaDocumento() +"'", null);
-
-            regAfectados+=contador;
-            return regAfectados;
-
-        }
-        catch (SQLException e ){
-            return "datos incorrectos o faltantes";
-        }
-
-    }
-
-    public String eliminar(DocumentoExistencia tipo){
-
-        try{
-            String regAfectados="filas afectadas= ";
-            int contador=0;
-            contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, "id_documento_existencia='"+ tipo.getIdDocumentoExistencia() +"'", null);
-
-            regAfectados+=contador;
-            return regAfectados;
-
-        }
-        catch (SQLException e ){
-            return "datos incorrectos o faltantes";
-        }
-
-    }
-
-    public String insertarMovDoc(DocumentoMovimiento doc){
-
-        try{
-            String regInsertados="Registro Insertado Nº= ";
-            long contador=0;
-            if (exiIdDetalle(doc)){
-
-                return "ya existe el id del detalle";
-
-            }
-            else{
-                if (movtipo(doc)){
-                    if (exiUnidadO(doc)){
-                        if (exiUnidadD(doc)){
-                            if (exiIsbn(doc)){
-                                ContentValues tipo = new ContentValues();
-                                tipo.put("id_documento_movimiento", doc.getIdDocMov());
-                                tipo.put("id_tipo_movimiento_documento", doc.getIdTipoMovDoc());
-                                tipo.put("id_unidad_admin_origen", doc.getIdUnidadAdmOrigen());
-                                tipo.put("id_unidad_admin_destino", doc.getIdUnidadAdmDestino());
-                                tipo.put("comentario", doc.getComentario());
-                                tipo.put("fecha_movimiento", doc.getFecha());
-                                contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, null, tipo);
-                                if(contador==-1 || contador==0)
-                                {
-                                    regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
-                                }
-                                else {
-                                    ContentValues tipo2 = new ContentValues();
-                                    tipo2.put("id_documento_movimiento_detalle",doc.getIdMovDocDetalle());
-                                    tipo2.put("isbn", doc.getIsbn());
-                                    tipo2.put("id_documento_movimiento", doc.getIdDocMov());
-                                    contador += sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, null, tipo2);
-                                    if(contador==-1 || contador==0)
-                                    {
-                                        regInsertados= "erro en tabla";
-                                    }
-                                    else{
-
-                                        regInsertados=regInsertados+contador;
-                                    }
-
-                                }
-                            }
-                            else{
-                                return "no existe documento con ese isbn";
-                            }
-
-                        }
-                        else{
-                            return "no existe unidad de destino";
-                        }
-
-
-                    }
-                    else{
-                        return "no existe unidad de origen";
-                    }
+            cv.put("idUnidadAdministrativa", docente.getIdUnidadAdministrativa());
+            cv.put("nombre", docente.getNombre());
+            cv.put("apellido", docente.getApellido());
+            cv.put("email", docente.getEmail());
+            sqLiteDatabase.update(ConstantesDB.TABLA_Docente, cv, "idDocente = ?", id);
+                    return "Registro Actualizado Correctamente";
+            }else{
+                    return "Error al Actualizar, Unidad administrativa con Codigo " + docente.getIdUnidadAdministrativa() + " NO EXISTE ";
                 }
-                else{
+
+            } else {
+                return "El Docente con Codigo " + docente.getIdDocente() + " NO EXISTE";
+            }
+
+        }
+        public String actualizar (AsignacionEquipo asignacionEquipo){
+            if (verificarIntegridadTS14004(asignacionEquipo, 4)) {
+                if(verificarIntegridadTS14004(asignacionEquipo,3)){
+            String[] id = {String.valueOf(asignacionEquipo.getIdAsignacionEquipo())};
+            ContentValues cv = new ContentValues();
+            cv.put("idDocente", asignacionEquipo.getIdDocente());
+            cv.put("fechaAsignacionEquipo", asignacionEquipo.getFechaAsignacionEquipo());
+            sqLiteDatabase.update(ConstantesDB.TABLA_AsignacionEquipo, cv, "idAsignacionEquipo = ?", id);
+            return "Registro Actualizado Correctamente";
+            }else{
+                return "Error al Actualizar, Docente con Codigo " + asignacionEquipo.getIdDocente() + " NO EXISTE ";
+            }
+
+        } else {
+        return "La Asignacion de Equipo con Codigo " + asignacionEquipo.getIdAsignacionEquipo() + " NO EXISTE";
+    }
+        }
+
+        public String actualizar (DocumentoAsignacion documentoAsignacion){
+            if (verificarIntegridadTS14004(documentoAsignacion, 5)) {
+                if(verificarIntegridadTS14004(documentoAsignacion,6)){
+            String[] id = {String.valueOf(documentoAsignacion.getIdDocumentoAsignacion())};
+            ContentValues cv = new ContentValues();
+            cv.put("idDocente", documentoAsignacion.getIdDocente());
+            cv.put("motivo", documentoAsignacion.getMotivo());
+            cv.put("fechaAsignacionDoc", documentoAsignacion.getFechaAsignacionDoc());
+            sqLiteDatabase.update(ConstantesDB.TABLA_DocumentoAsignacion, cv, "idDocumentoAsignacion = ?", id);
+            return "Registro Actualizado Correctamente";
+            }else{
+                return "Error al Actualizar, Docente con Codigo " + documentoAsignacion.getIdDocente() + " NO EXISTE ";
+            }
+
+        } else {
+        return "La Asignacion de Documento con Codigo " + documentoAsignacion.getIdDocumentoAsignacion() + " NO EXISTE";
+    }
+        }
+
+
+        //METODOS ELIMINAR <--TS14004-->
+        public String eliminar (Docente docente){
+            String regAfectados = "filas afectadas= ";
+            int contador = 0;
+            if(verificarIntegridadTS14004(docente,1)) {
+                contador += sqLiteDatabase.delete(ConstantesDB.TABLA_Docente, "idDocente='" + docente.getIdDocente() + "'", null);
+                regAfectados += contador;
+                return regAfectados;
+            }else{
+                return "El ID No Existe";
+            }
+        }
+
+        public String eliminar (AsignacionEquipo asignacionEquipo){
+            String regAfectados = "filas afectadas= ";
+            int contador = 0;
+            contador += sqLiteDatabase.delete(ConstantesDB.TABLA_AsignacionEquipo, "idAsignacionEquipo='" + asignacionEquipo.getIdAsignacionEquipo() + "'", null);
+            regAfectados += contador;
+            return regAfectados;
+        }
+
+        public String eliminar (DocumentoAsignacion documentoAsignacion){
+            String regAfectados = "filas afectadas= ";
+            int contador = 0;
+            contador += sqLiteDatabase.delete(ConstantesDB.TABLA_DocumentoAsignacion, "idDocumentoAsignacion='" + documentoAsignacion.getIdDocumentoAsignacion() + "'", null);
+            regAfectados += contador;
+            return regAfectados;
+        }
+//***************************************************FIN CRUD DE TS14004**********************************************************************
+
+
+        //rl08017
+
+        public String insertar (TiposDeMovimientoParaDocumento
+        tiposDeMovimientoParaDocumento){
+            try {
+                String regInsertados = "Registro Insertado Nº= ";
+                long contador = 0;
+                ContentValues tipo = new ContentValues();
+                tipo.put("id_tipo_de_movimiento_para_documento", tiposDeMovimientoParaDocumento.getIdTiposDeMovimientoParaDocumento());
+                tipo.put("descripcion", tiposDeMovimientoParaDocumento.getDescripcionMovimientoDoc());
+                contador = sqLiteDatabase.insert(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, null, tipo);
+                if (contador == -1 || contador == 0) {
+                    regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+                } else {
+                    regInsertados = regInsertados + contador;
+                }
+                return regInsertados;
+
+            } catch (SQLException e) {
+                return "datos incorrectos o faltantes";
+            }
+
+        }
+
+        public String insertar (DocumentoExistencia documentoExistencia){
+
+            try {
+                String regInsertados = "Registro Insertado Nº= ";
+                long contador = 0;
+                ContentValues tipo = new ContentValues();
+                tipo.put("id_documento_existencia", documentoExistencia.getIdDocumentoExistencia());
+                tipo.put("isbn", documentoExistencia.getIsbn());
+                tipo.put("id_docente", documentoExistencia.getIdDocente());
+                tipo.put("id_unidad_admin", documentoExistencia.getIdUnidadAdministrativa());
+                tipo.put("actual", documentoExistencia.getActual());
+                contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, null, tipo);
+                if (contador == -1 || contador == 0) {
+                    regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+                } else {
+                    regInsertados = regInsertados + contador;
+                }
+                return regInsertados;
+
+            } catch (SQLException e) {
+                return "datos incorrectos o faltantes";
+            }
+
+        }
+
+        public TiposDeMovimientoParaDocumento consultarTipoMov (String idMov){
+            String[] id = {idMov};
+            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, CAMPOS_TIPO_MOV_DOCUMENTO, "id_tipo_de_movimiento_para_documento = ?", id, null, null, null);
+            if (cursor.moveToFirst()) {
+                TiposDeMovimientoParaDocumento tipo = new TiposDeMovimientoParaDocumento();
+                tipo.setIdTiposDeMovimientoParaDocumento(parseInt(cursor.getString(0)));
+                tipo.setDescripcionMovimientoDoc(cursor.getString(1));
+                return tipo;
+            } else {
+                return null;
+            }
+        }
+
+        public DocumentoExistencia consultarDocExistencia (String idExis){
+            String[] id = {idExis};
+            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, CAMPOS_DOCUMENTO_EXISTENCIA, "id_documento_existencia = ?", id, null, null, null);
+            if (cursor.moveToFirst()) {
+                DocumentoExistencia tipo = new DocumentoExistencia();
+                tipo.setIdDocumentoExistencia(parseInt(cursor.getString(0)));
+                tipo.setIsbn(cursor.getString(1));
+                tipo.setIdDocente(parseInt(cursor.getString(2)));
+                tipo.setIdUnidadAdministrativa(parseInt(cursor.getString(3)));
+                tipo.setActual(parseInt(cursor.getString(4)));
+                return tipo;
+            } else {
+                return null;
+            }
+        }
+
+        public String actualizar (TiposDeMovimientoParaDocumento tipo){
+            try {
+                String[] id = {String.valueOf(tipo.getIdTiposDeMovimientoParaDocumento())};
+                ContentValues cv = new ContentValues();
+                cv.put("id_tipo_de_movimiento_para_documento", tipo.getIdTiposDeMovimientoParaDocumento());
+                cv.put("descripcion", tipo.getDescripcionMovimientoDoc());
+                sqLiteDatabase.update(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, cv, "id_tipo_de_movimiento_para_documento = ?", id);
+                return "Registro Actualizado Correctamente";
+            } catch (SQLException e) {
+                return e.toString();
+            }
+        }
+
+        public String actualizar (DocumentoExistencia tipo){
+            try {
+                String[] id = {String.valueOf(tipo.getIdDocumentoExistencia())};
+                ContentValues cv = new ContentValues();
+                cv.put("id_documento_existencia", tipo.getIdDocumentoExistencia());
+                cv.put("isbn", tipo.getIsbn());
+                cv.put("id_docente", tipo.getIdDocente());
+                cv.put("id_unidad_admin", tipo.getIdUnidadAdministrativa());
+                cv.put("actual", tipo.getActual());
+                sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, cv, "id_documento_existencia = ?", id);
+                return "Registro Actualizado Correctamente";
+            } catch (SQLException e) {
+                return e.toString();
+            }
+        }
+
+        public String eliminar (TiposDeMovimientoParaDocumento tipo){
+
+            try {
+                String regAfectados = "filas afectadas= ";
+                int contador = 0;
+                contador += sqLiteDatabase.delete(ConstantesDB.TABLA_TIPO_MOV_DOCUMENTO, "id_tipo_de_movimiento_para_documento='" + tipo.getIdTiposDeMovimientoParaDocumento() + "'", null);
+
+                regAfectados += contador;
+                return regAfectados;
+
+            } catch (SQLException e) {
+                return "datos incorrectos o faltantes";
+            }
+
+        }
+
+        public String eliminar (DocumentoExistencia tipo){
+
+            try {
+                String regAfectados = "filas afectadas= ";
+                int contador = 0;
+                contador += sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_EXISTENCIA, "id_documento_existencia='" + tipo.getIdDocumentoExistencia() + "'", null);
+
+                regAfectados += contador;
+                return regAfectados;
+
+            } catch (SQLException e) {
+                return "datos incorrectos o faltantes";
+            }
+
+        }
+
+        public String insertarMovDoc (DocumentoMovimiento doc){
+
+            try {
+                String regInsertados = "Registro Insertado Nº= ";
+                long contador = 0;
+                if (movtipo(doc)) {
+                    ContentValues tipo = new ContentValues();
+                    tipo.put("id_documento_movimiento", doc.getIdDocMov());
+                    tipo.put("id_tipo_movimiento_documento", doc.getIdTipoMovDoc());
+                    tipo.put("id_unidad_admin_origen", doc.getIdUnidadAdmOrigen());
+                    tipo.put("id_unidad_admin_destino", doc.getIdUnidadAdmDestino());
+                    tipo.put("comentario", doc.getComentario());
+                    tipo.put("fecha_movimiento", doc.getFecha());
+                    contador = sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, null, tipo);
+                    if (contador == -1 || contador == 0) {
+                        regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+                    } else {
+                        ContentValues tipo2 = new ContentValues();
+                        tipo2.put("id_documento_movimiento_detalle", doc.getIdMovDocDetalle());
+                        tipo2.put("isbn", doc.getIsbn());
+                        tipo2.put("id_documento_movimiento", doc.getIdDocMov());
+                        contador += sqLiteDatabase.insert(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, null, tipo2);
+                        if (contador == -1 || contador == 0) {
+                            regInsertados = "erro en tabla";
+                        } else {
+
+                            regInsertados = regInsertados + contador;
+                        }
+
+                    }
+                } else {
                     return "no existe el tipo de mov";
                 }
 
+                return regInsertados;
+
+            } catch (SQLException e) {
+                return "datos incorrectos o faltantes";
             }
 
-            return regInsertados;
 
         }
-        catch (SQLException e ){
-            return "datos incorrectos o faltantes";
+
+        public String eliminar (DocumentoMovimiento tipo){
+            try {
+                String regAfectados = "filas afectadas= ";
+                int contador = 0;
+                contador += sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, "id_documento_movimiento='" + tipo.getIdDocMov() + "'", null);
+                contador += sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, "id_documento_movimiento='" + tipo.getIdDocMov() + "'", null);
+
+                regAfectados += contador;
+                return regAfectados;
+
+            } catch (SQLException e) {
+                return "datos incorrectos o faltantes";
+            }
+
+        }
+
+
+
+        public String llenarBDInicio () {
+            // tabla tipo movimiento
+            final int[] Vid = {1, 2, 3, 4, 5};
+            final String[] Vdes = {"Cambio", "Traslado", "Reparado", "Compra", "Donado"};
+
+            // tabla documento movimiento
+            final int[] Vid2 = {1, 2, 3, 4, 5};
+            final int[] Vtipo = {1, 2, 3, 4, 5};
+            final int[] Vori = {1, 2, 3, 4, 5};
+            final int[] Vdest = {5, 4, 2, 3, 1};
+            final String[] Vcom = {"Cambio", "Traslado", "Reparado", "Compra", "Donado"};
+            final String[] Vfecha = {"2019-04-02", "2019-04-01", "2019-04-08", "2019-04-06", "2019-04-12"};
+
+            // tabla documento movimiento detalle
+            final int[] Vid3 = {1, 2, 3, 4, 5};
+            final String[] Visbn = {"11111", "22222", "33333", "44444", "55555"};
+
+            // tabla documento existencia
+            final int[] Vid4 = {1, 2, 3, 4, 5};
+            final String[] Visbn2 = {"11111", "22222", "33333", "44444", "55555"};
+            final int[] Vdocente = {1, 2, 3, 4, 5};
+            final int[] Vunidad = {1, 2, 3, 4, 5};
+            final int[] Vactual = {1, 1, 1, 1, 1};
+
+
+            abrir();
+
+            TiposDeMovimientoParaDocumento Vnu = new TiposDeMovimientoParaDocumento();
+            DocumentoMovimiento Vnu1 = new DocumentoMovimiento();
+            DocumentoExistencia Vnu2 = new DocumentoExistencia();
+            for (int i = 0; i < 4; i++) {
+                Vnu.setIdTiposDeMovimientoParaDocumento(Vid[i]);
+                Vnu.setDescripcionMovimientoDoc(Vdes[i]);
+
+                Vnu1.setIdDocMov(Vid2[i]);
+                Vnu1.setIdTipoMovDoc(Vtipo[i]);
+                Vnu1.setIdUnidadAdmOrigen(Vori[i]);
+                Vnu1.setIdUnidadAdmDestino(Vdest[i]);
+                Vnu1.setComentario(Vcom[i]);
+                Vnu1.setFecha(Vfecha[i]);
+                Vnu1.setIdMovDocDetalle(Vid3[i]);
+                Vnu1.setIsbn(Visbn[i]);
+
+
+                Vnu2.setIdDocumentoExistencia(Vid4[i]);
+                Vnu2.setIsbn(Visbn2[i]);
+                Vnu2.setIdDocente(Vdocente[i]);
+                Vnu2.setIdUnidadAdministrativa(Vunidad[i]);
+                Vnu2.setActual(Vactual[i]);
+
+                insertar(Vnu);
+                insertarMovDoc(Vnu1);
+                insertar(Vnu2);
+            }
+            return "no llena";
+
+        }
+
+        private boolean movtipo (DocumentoMovimiento tipo) throws SQLException {
+
+            String[] idTipo = {String.valueOf(tipo.getIdTipoMovDoc())};
+
+            Cursor c = sqLiteDatabase.query("tipo_movimiento_para_documento", null, "id_tipo_de_movimiento_para_documento = ?",
+                    idTipo, null, null, null);
+
+            if (c.moveToFirst()) {
+                return true;
+            } else {
+                return false;
+            }
+
+
+        }
+
+
+        public DocumentoMovimiento consultarDocMov (String idExis){
+            String[] id = {idExis};
+            Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, CAMPOS_DOCUMENTO_MOVIMIENTO, "id_documento_movimiento = ?", id, null, null, null);
+            Cursor cursor2 = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, CAMPOS_DOCUMENTO_MOVIMIENTO_DETALLE, "id_documento_movimiento = ?", id, null, null, null);
+
+
+            if (cursor.moveToFirst() && cursor2.moveToFirst()) {
+                DocumentoMovimiento tipo = new DocumentoMovimiento();
+                tipo.setIdDocMov(parseInt(cursor.getString(0)));
+                tipo.setIdTipoMovDoc(parseInt(cursor.getString(1)));
+                tipo.setIdUnidadAdmOrigen(parseInt(cursor.getString(2)));
+                tipo.setIdUnidadAdmDestino(parseInt(cursor.getString(3)));
+                tipo.setComentario(cursor.getString(4));
+                tipo.setFecha(cursor.getString(5));
+                tipo.setIdMovDocDetalle(parseInt(cursor2.getString(0)));
+                tipo.setIsbn(cursor2.getString(1));
+                return tipo;
+            } else {
+                return null;
+            }
+        }
+
+
+        public String actualizar (DocumentoMovimiento tipo){
+            try {
+                String[] id = {String.valueOf(tipo.getIdDocMov())};
+                ContentValues cv = new ContentValues();
+                ContentValues cv2 = new ContentValues();
+                cv.put("id_documento_movimiento", tipo.getIdDocMov());
+                cv.put("id_tipo_movimiento_documento", tipo.getIdTipoMovDoc());
+                cv.put("id_unidad_admin_origen", tipo.getIdUnidadAdmOrigen());
+                cv.put("id_unidad_admin_destino", tipo.getIdUnidadAdmDestino());
+                cv.put("comentario", tipo.getComentario());
+                cv.put("fecha_movimiento", tipo.getFecha());
+                cv2.put("id_documento_movimiento_detalle", tipo.getIdMovDocDetalle());
+                cv2.put("isbn", tipo.getIsbn());
+                cv2.put("id_documento_movimiento", tipo.getIdDocMov());
+                sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, cv, "id_documento_movimiento = ?", id);
+                sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, cv2, "id_documento_movimiento = ?", id);
+                return "Registro Actualizado Correctamente";
+            } catch (SQLException e) {
+                return e.toString();
+            }
         }
 
 
     }
-
-    public String eliminar(DocumentoMovimiento tipo){
-        try{
-            String regAfectados="filas afectadas= ";
-            int contador=0;
-            contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, "id_documento_movimiento='"+ tipo.getIdDocMov() +"'", null);
-            contador+=sqLiteDatabase.delete(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, "id_documento_movimiento='"+ tipo.getIdDocMov() +"'", null);
-
-            regAfectados+=contador;
-            return regAfectados;
-
-        }
-        catch (SQLException e ){
-            return "datos incorrectos o faltantes";
-        }
-
-    }
-
-
-    public String llenarBDInicio() {
-        // tabla tipo movimiento
-        final int[] Vid = {1, 2, 3, 4, 5};
-        final String[] Vdes = {"Cambio", "Traslado", "Reparado", "Compra", "Donado"};
-
-        // tabla documento movimiento
-        final int[] Vid2 = {1, 2, 3, 4, 5};
-        final int[] Vtipo = {1, 2, 3, 4, 5};
-        final int[] Vori = {1, 2, 3, 1, 2};
-        final int[] Vdest = {1, 2, 2, 3, 1};
-        final String[] Vcom = {"Cambio", "Traslado", "Reparado", "Compra", "Donado"};
-        final String[] Vfecha = {"2019-04-02", "2019-04-01", "2019-04-08", "2019-04-06", "2019-04-12"};
-
-        // tabla documento movimiento detalle
-        final int[] Vid3 = {1, 2, 3, 4, 5};
-        final String[] Visbn = {"00000001", "00000001", "00000001", "00000001", "00000001"};
-
-        // tabla documento existencia
-        final int[] Vid4 = {1, 2, 3, 4, 5};
-        final String[] Visbn2 = {"00000001", "00000001", "00000001", "00000001", "00000001"};
-        final int[] Vdocente = {8888881, 8888881, 8888881, 8888881, 8888881};
-        final int[] Vunidad = {1, 2, 3, 1, 2};
-        final int[] Vactual = {1, 1, 1, 1, 1};
-
-
-        abrir();
-
-        TiposDeMovimientoParaDocumento Vnu=new TiposDeMovimientoParaDocumento();
-        DocumentoMovimiento Vnu1=new DocumentoMovimiento();
-        DocumentoExistencia Vnu2=new DocumentoExistencia();
-        for(int i=0;i<4;i++){
-            Vnu.setIdTiposDeMovimientoParaDocumento(Vid[i]);
-            Vnu.setDescripcionMovimientoDoc(Vdes[i]);
-
-            Vnu1.setIdDocMov(Vid2[i]);
-            Vnu1.setIdTipoMovDoc(Vtipo[i]);
-            Vnu1.setIdUnidadAdmOrigen(Vori[i]);
-            Vnu1.setIdUnidadAdmDestino(Vdest[i]);
-            Vnu1.setComentario(Vcom[i]);
-            Vnu1.setFecha(Vfecha[i]);
-            Vnu1.setIdMovDocDetalle(Vid3[i]);
-            Vnu1.setIsbn(Visbn[i]);
-
-
-            Vnu2.setIdDocumentoExistencia(Vid4[i]);
-            Vnu2.setIsbn(Visbn2[i]);
-            Vnu2.setIdDocente(Vdocente[i]);
-            Vnu2.setIdUnidadAdministrativa(Vunidad[i]);
-            Vnu2.setActual(Vactual[i]);
-
-            insertar(Vnu);
-            insertarMovDoc(Vnu1);
-            insertar(Vnu2);
-        }
-        return "no llena";
-
-    }
-
-    private boolean movtipo(DocumentoMovimiento tipo) throws SQLException{
-
-        String[] idTipo = {String.valueOf(tipo.getIdTipoMovDoc())};
-
-        Cursor c = sqLiteDatabase.query("tipo_movimiento_para_documento",null,"id_tipo_de_movimiento_para_documento = ?",
-                idTipo,null,null,null);
-
-        if (c.moveToFirst()){
-            return true;
-        }else{
-            return false;
-        }
-
-
-
-    }
-
-
-    public DocumentoMovimiento consultarDocMov(String idExis){
-        String[] id = {idExis};
-        Cursor cursor = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, CAMPOS_DOCUMENTO_MOVIMIENTO, "id_documento_movimiento = ?", id, null, null, null);
-        Cursor cursor2 = sqLiteDatabase.query(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, CAMPOS_DOCUMENTO_MOVIMIENTO_DETALLE, "id_documento_movimiento = ?", id, null, null, null);
-
-
-        if(cursor.moveToFirst()&& cursor2.moveToFirst()){
-            DocumentoMovimiento tipo = new DocumentoMovimiento();
-            tipo.setIdDocMov(parseInt(cursor.getString(0)));
-            tipo.setIdTipoMovDoc(parseInt(cursor.getString(1)));
-            tipo.setIdUnidadAdmOrigen(parseInt(cursor.getString(2)));
-            tipo.setIdUnidadAdmDestino(parseInt(cursor.getString(3)));
-            tipo.setComentario(cursor.getString(4));
-            tipo.setFecha(cursor.getString(5));
-            tipo.setIdMovDocDetalle(parseInt(cursor2.getString(0)));
-            tipo.setIsbn(cursor2.getString(1));
-            return tipo;
-        }else{ return null;
-        }
-    }
-
-
-    public String actualizar(DocumentoMovimiento tipo){
-        try {
-            String[] id = {String.valueOf(tipo.getIdDocMov())};
-            ContentValues cv = new ContentValues();
-            ContentValues cv2 = new ContentValues();
-            cv.put("id_documento_movimiento", tipo.getIdDocMov());
-            cv.put("id_tipo_movimiento_documento", tipo.getIdTipoMovDoc());
-            cv.put("id_unidad_admin_origen", tipo.getIdUnidadAdmOrigen());
-            cv.put("id_unidad_admin_destino", tipo.getIdUnidadAdmDestino());
-            cv.put("comentario", tipo.getComentario());
-            cv.put("fecha_movimiento", tipo.getFecha());
-            cv2.put("id_documento_movimiento_detalle", tipo.getIdMovDocDetalle());
-            cv2.put("isbn", tipo.getIsbn());
-            cv2.put("id_documento_movimiento", tipo.getIdDocMov());
-            sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO, cv, "id_documento_movimiento = ?", id);
-            sqLiteDatabase.update(ConstantesDB.TABLA_DOCUMENTO_MOVIMIENTO_DETALLE, cv2, "id_documento_movimiento = ?", id);
-            return "Registro Actualizado Correctamente";
-        }
-        catch (SQLException e ){
-            return e.toString();
-        }
-    }
-
-    private boolean exiUnidadO(DocumentoMovimiento tipo) throws SQLException{
-
-        String[] idTipo = {String.valueOf(tipo.getIdUnidadAdmOrigen())};
-
-        Cursor c = sqLiteDatabase.query("unidad_administrativa",null,"id_unidad_administrativa = ?",
-                idTipo,null,null,null);
-
-        if (c.moveToFirst()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    private boolean exiUnidadD(DocumentoMovimiento tipo) throws SQLException{
-
-        String[] idTipo = {String.valueOf(tipo.getIdUnidadAdmDestino())};
-
-        Cursor c = sqLiteDatabase.query("unidad_administrativa",null,"id_unidad_administrativa = ?",
-                idTipo,null,null,null);
-
-        if (c.moveToFirst()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    private boolean exiUnidad(DocumentoExistencia tipo) throws SQLException{
-
-        String[] idTipo = {String.valueOf(tipo.getIdUnidadAdministrativa())};
-
-        Cursor c = sqLiteDatabase.query("unidad_administrativa",null,"id_unidad_administrativa = ?",
-                idTipo,null,null,null);
-
-        if (c.moveToFirst()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    private boolean exiDocente(DocumentoExistencia tipo) throws SQLException{
-
-        String[] idTipo = {String.valueOf(tipo.getIdDocente())};
-
-        Cursor c = sqLiteDatabase.query("docente",null,"idDocente = ?",
-                idTipo,null,null,null);
-
-        if (c.moveToFirst()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    private boolean exiIsbn(DocumentoExistencia tipo) throws SQLException{
-
-        String[] idTipo = {String.valueOf(tipo.getIsbn())};
-
-        Cursor c = sqLiteDatabase.query("documento",null,"ISBN = ?",
-                idTipo,null,null,null);
-
-        if (c.moveToFirst()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    private boolean exiIsbn(DocumentoMovimiento tipo) throws SQLException{
-
-        String[] idTipo = {String.valueOf(tipo.getIsbn())};
-
-        Cursor c = sqLiteDatabase.query("documento",null,"ISBN = ?",
-                idTipo,null,null,null);
-
-        if (c.moveToFirst()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    private boolean exiIdDetalle(DocumentoMovimiento tipo) throws SQLException{
-
-        String[] idTipo = {String.valueOf(tipo.getIdMovDocDetalle())};
-
-        Cursor c = sqLiteDatabase.query("movimiento_documento_detalle",null,"id_documento_movimiento_detalle = ?",
-                idTipo,null,null,null);
-
-        if (c.moveToFirst()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public boolean exiDocMov(DocumentoMovimiento tipo) throws SQLException{
-
-        String[] idTipo = {String.valueOf(tipo.getIdDocMov())};
-
-        Cursor c = sqLiteDatabase.query("movimiento_documento",null,"id_documento_movimiento = ?",
-                idTipo,null,null,null);
-
-        if (c.moveToFirst()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public boolean exiTipoDocMov(TiposDeMovimientoParaDocumento tipo) throws SQLException{
-
-        String[] idTipo = {String.valueOf(tipo.getIdTiposDeMovimientoParaDocumento())};
-
-        Cursor c = sqLiteDatabase.query("tipo_movimiento_para_documento",null,"id_tipo_de_movimiento_para_documento = ?",
-                idTipo,null,null,null);
-
-        if (c.moveToFirst()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-
-}
-//***************************************************FIN CRUD DE TS14004**********************************************************************

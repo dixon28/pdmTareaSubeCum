@@ -1,7 +1,9 @@
 package com.pdmsubecum.pm15007.unidad_administrativa;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +23,8 @@ public class DeleteUnidadAdministrativa extends AppCompatActivity implements Vie
     DataBase dataBase;
 
     UnidadAdministrativa unidadAdministrativa;
+
+    AlertDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,24 @@ public class DeleteUnidadAdministrativa extends AppCompatActivity implements Vie
 
         btn_limpiar.setOnClickListener(this);
         btn_delete_unidad_administrativa.setOnClickListener(this);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.mensaje_eliminar) + "tabla 1, etc")
+                .setTitle(R.string.titulo_dialogo);
+
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                eliminar();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                cancelar();
+            }
+        });
+
+        dialog = builder.create();
     }
 
     @Override
@@ -48,28 +70,34 @@ public class DeleteUnidadAdministrativa extends AppCompatActivity implements Vie
                 if(til_id_unidad_administrativa.getEditText().getText().toString().isEmpty()){
                     Toast.makeText(this, "Por favor indique el ID", Toast.LENGTH_SHORT).show();
                 }else{
-                    try{
-                        int id = Integer.parseInt(til_id_unidad_administrativa.getEditText().getText().toString());
-                        dataBase.abrir();
-                        unidadAdministrativa = dataBase.getUnidadAdministrativa(id);
-                        dataBase.cerrar();
-                    }catch (Exception e){
-                        Toast.makeText(this,"El valor ingresado no es un numero", Toast.LENGTH_SHORT).show();
-                        limpiar();
-                    }
-                    if(unidadAdministrativa != null){
-                        dataBase.abrir();
-                        dataBase.eliminar(unidadAdministrativa);
-                        dataBase.cerrar();
-                        Toast.makeText(this,"Unidad Administrativa ha sido Eliminado", Toast.LENGTH_SHORT).show();
-                        limpiar();
-                    }else{
-                        Toast.makeText(this,"No existe Unidad Administrativa con ese ID", Toast.LENGTH_SHORT).show();
-                    }
+                    dialog.show();
                 }
                 break;
         }
 
+    }
+    public void eliminar(){
+        try{
+            int id = Integer.parseInt(til_id_unidad_administrativa.getEditText().getText().toString());
+            dataBase.abrir();
+            unidadAdministrativa = dataBase.getUnidadAdministrativa(id);
+            dataBase.cerrar();
+        }catch (Exception e){
+            Toast.makeText(this,"El valor ingresado no es un numero", Toast.LENGTH_SHORT).show();
+            limpiar();
+        }
+        if(unidadAdministrativa != null){
+            dataBase.abrir();
+            dataBase.eliminar(unidadAdministrativa);
+            dataBase.cerrar();
+            Toast.makeText(this,"Unidad Administrativa ha sido Eliminado", Toast.LENGTH_SHORT).show();
+            limpiar();
+        }else{
+            Toast.makeText(this,"No existe Unidad Administrativa con ese ID", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void cancelar(){
+        Toast.makeText(this, "Cancelado",Toast.LENGTH_SHORT).show();
     }
     public void limpiar() {
         til_id_unidad_administrativa.getEditText().setText("");

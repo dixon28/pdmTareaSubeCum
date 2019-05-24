@@ -18,6 +18,7 @@
         android:maxLength="7" />
 
     <Button
+        android:id="@+id/eliminarDocente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F84234"

@@ -13,7 +13,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
-    public static final int DB_VERSION = 18;
+
+    public static final int DB_VERSION = 19;
+
 
 
 
@@ -52,6 +54,21 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_EQUIPO);
 
+        //Triggers
+
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_MARCA);
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_DOCUMENTO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_DOCUMENTO2);
+
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_EQUIPO);
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_EQUIPO2);
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_EQUIPO3);
+
+
+
+
+        //
+
         //Tablas MM
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DIA);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_AULA);
@@ -70,7 +87,21 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO_DETALLE);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_EXISTENCIA);
-        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_ELIMINATIPOMOVDOC);
+
+
+
+        //Tiggers am15005
+
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_DOCUMENTO4);
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_DOCUMENTO3);
+        db.execSQL(ConstantesDB.SQL_UPDATE_TRIGGER_DOCUMENTO);
+        db.execSQL(ConstantesDB.SQL_UPDATE_TRIGGER_DOCUMENTO2);
+        db.execSQL(ConstantesDB.SQL_UPDATE_TRIGGER_EQUIPOUPDATE);
+        db.execSQL(ConstantesDB.SQL_UPDATE_TRIGGER_EQUIPOUPDATE3);
+
+
+
+
     }
 
     @Override
@@ -107,6 +138,27 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO);
         db.execSQL(ConstantesDB.SQL_DELETE_EQUIPO);
 
+        //triggers
+
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_MARCA);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_DOCUMENTO);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_EQUIPO);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_DOCUMENTO2);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_EQUIPO2);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_DOCUMENTO3);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_EQUIPO3);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_DOCUMENTO4);
+
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_EQUIPOUPDATE);
+
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_DOCUMENTOUPDATE2);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_DOCUMENTOUPDATE);
+
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_EQUIPOUPDATE3);
+
+
+        //
+
 
         //Tablas MM
         db.execSQL(ConstantesDB.SQL_DELETE_DIA);
@@ -128,7 +180,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_MOVIMIENTO);
         db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_MOVIMIENTO_DETALLE);
         db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_EXISTENCIA);
-        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_ELIMINATIPOMOVDOC);
+
 
         onCreate(db);
     }

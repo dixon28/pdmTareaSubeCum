@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PdmSubeCum</string>
+    <string name="login_usuario">User</string>
+    <string name="login_password">Password</string>
+    <string name="title_activity_menu_carnet">Menu Card</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="am15005">AM15005</string>
+    <string name="nombre_sistema">INVENTORY SYSTEM</string>
+    <string name="grupo">Group 01</string>
+    <string name="pm15007">PM15007</string>
+    <string name="mm14031">MM14031</string>
+    <string name="rl08017">RL08017</string>
+    <string name="ts14004">TS14004</string>
+
+
+    <!-- TITULOS DE PANTALLA -->
+    <string name="crud_am15005">AM15005</string>
+    <string name="crud_pm15007">PM15007</string>
+    <string name="crud_mm14031">MM14031</string>
+    <string name="crud_rl08017">RL08017</string>
+    <string name="crud_ts14004">TS14004</string>
+    <string name="title_activity_materia_eliminar">DeleteSubjectActivity</string>
+
+    <!-- Titulos de botones de CRUD -->
+    <string name="opciones">Options to make</string>
+    <!--
+   <string name="insertar">INSERTAR</string>
+   <string name="consultar">CONSULTAR</string>
+   <string name="actualizar">ACTUALIZAR</string>
+   <string name="eliminar">ELIMINAR</string>
+   -->
+    <string name="limpiarTexto">CLEAN</string>
+
+
+    <!-- VALORES PARA MATERIA, HORARIO Y GRUPO -->
+
+    <string name="codigoMateria">Subject code</string>
+    <string name="nombreMateria">Name</string>
+    <string name="UV">UV</string>
+    <string name="idCiclo">ID Ciclo</string>
+
+    <string name="idHorario">ID Schedule</string>
+    <string name="idDia">ID Day</string>
+    <string name="idAula">ID Classroom</string>
+    <string name="hora">Hour</string>
+
+    <string name="idGrupo">ID Group</string>
+    <string name="idDocente">ID Teacher</string>
+    <string name="descripcion">Description</string>
+
+    <!--- FIN -->
+
+    <!-- *************************** -->
+    <!-- * STRING USADOS POR RAUL **-->
+    <!-- *************************** -->
+    <string name="title_activity_docente_menu">TeacherMenuActivity</string>
+    <string name="title_activity_asignacionEquipo_menu">AssignmentTeamMenuActivity</string>
+    <string name="title_activity_documentoAsignacion_menu">DocumentAssignmentMenuActivity</string>
+    <string name="title_activity_docente_insertar">TeacherInsertActivity</string>
+    <string name="title_activity_docente_eliminar">TeacherDeleteActivity</string>
+    <string name="title_activity_docente_actualizar">TeacherUpdateActivity</string>
+    <string name="title_activity_docente_consultar">TeacherConsultActivity</string>
+    <string name="title_activity_documentoAsignacion_insertar">DocumentAssignmentInsertActivity</string>
+    <string name="title_activity_documentoAsignacion_eliminar">DocumentAsignationDeleteActivity</string>
+    <string name="title_activity_documentoAsignacion_actualizar">DocumentAsignationUpdateActivity</string>
+    <string name="title_activity_documentoAsignacion_consultar">DocumentAsignationConsultActivity</string>
+    <string name="title_activity_asignacionEquipo_insertar">AssignmentTeamInsertActivity</string>
+    <string name="title_activity_asignacionEquipo_eliminar">AssignmentEquipmentRemoveActivity</string>
+    <string name="title_activity_asignacionEquipo_actualizar">AssignmentEquipmentUpdateActivity</string>
+    <string name="title_activity_asignacionEquipo_consultar">AssignmentComputerConsultActivity</string>
+    <string name="docente_menu">Function to Execute Teacher</string>
+    <string name="asignacionEquipo_menu">Function to Execute Assignment Equipment</string>
+    <string name="documentoAsignacion_menu">Function to Execute DocumentAssignment</string>
+    <string name="insertar_registro">Insert Record</string>
+    <string name="eliminar_registro">Delete Record</string>
+    <string name="consultar_registro">Check Register</string>
+    <string name="actualizar_registro">Update Registration</string>
+    <string name="codDocente">Teaching Code</string>
+    <string name="codUnidad">Administrative unit</string>
+    <string name="nombre_docente"> Name</string>
+    <string name="apellido_docente"> Las Name</string>
+    <string name="email_docente"> Email</string>
+    <string name="insertar"> Insert</string>
+    <string name="limpiar">Clean</string>
+    <string name="eliminar">Delete</string>
+    <string name="consultar">Consult</string>
+    <string name="actualizar">Update</string>
+    <string name="codDocuAsignacion">ID DocumentAssignment</string>
+    <string name="motivo_DocuAsignacion">Reason</string>
+    <string name="fecha_DocuAsignacion">Date of assignment</string>
+    <string name="codAsignacionEquipo">Equipment Assignment Code</string>
+    <string name="fecha_AsignacionEquipo">Date of assignment</string>
+    <string name="actualAsignado">Current Assignment</string>
+
+
+    <!--PM15007-->
+    <string name="crud_unidad_administrativa">Administrative unit</string>
+    <string name="crud_equipo_existencia">Equipment Existence</string>
+    <string name="crud_equipo_movimiento">Movement Equipment</string>
+    <string name="crud_equipo_movimiento_detalle">Equipment Movement Detail</string>
+    <string name="crud_tipo_movimiento_equipo">Type Movement</string>
+    <string name="marca">brand</string>
+    <string name="equipo">equipment</string>
+    <string name="tipo_equipo">type equipment</string>
+    <string name="mas">more</string>
+    <string name="idmarca">brand id</string>
+    <string name="descripcionMarca">description</string>
+    <string name="insertar_PM15007">enter</string>
+    <string name="Id_de_marca">enter the id of the brand to be deleted</string>
+    <string name="eliminar_marca">delete</string>
+
+
+    <!--STRING DE LOS CRUD-->
+    <string name="crud_create">Create</string>
+    <string name="crud_retrieve">Consult</string>
+    <string name="crud_update">Update</string>
+    <string name="crud_delete">Delete</string>
+    <string name="crear_equipo_existencia">Create Equipment Existence</string>
+    <string name="id_clase">ID (int)</string>
+    <string name="existencia_actual">Current Existence (int)</string>
+    <string name="limpiar_formulario">clean</string>
+    <string name="consultar_equipo_existencia">Consult Equipment Existence</string>
+    <string name="equipo_existencia">Equipment Existence</string>
+    <string name="consultar_marca">consult</string>
+    <string name="con_descripcion">Description</string>
+    <string name="delete_equipo_existencia">Remove Equipment Existence</string>
+    <string name="actualizar_equipo_existencia">Update Equipment Existence</string>
+    <string name="actualizar_marca">update</string>
+    <string name="crear_unidad_administrativa">Create Administrative Unit</string>
+    <string name="unidad_administrativa">Administrative Unit</string>
+    <string name="consultar_unidad_administrativa">Consult Administrative Unit</string>
+    <string name="update_unidad_administrativa">Update Administrative Unit</string>
+    <string name="delete_unidad_administrativa">Delete Administrative Unit</string>
+    <string name="idTipos_Equipo">Equipment types</string>
+    <string name="id_del_Equipo">Equipment id</string>
+    <string name="serie_equipo">Equipment series</string>
+    <string name="Caracteristicas_equipo">equipment features</string>
+    <string name="Modelo">equipment model</string>
+    <string name="Fecha_ingreso">date of admission</string>
+    <string name="equipodisponible">Equipment available</string>
+    <string name="ingreseFecha">Enter the date</string>
+
+    <string name="crear_tipo_movimiento_equipo">Create Type Movement Equipment</string>
+    <string name="tipo_movimiento_equipo">Type Movement Equipment</string>
+    <string name="consultar_tipo_movimiento_equipo">Consult Type Movement Equipment</string>
+    <string name="actualizar_tipo_movimiento_equipo">Update Type Movement Equipment</string>
+    <string name="eliminar_tipo_movimiento_equipo">Remove Type Movement Equipment</string>
+
+    <!-- * STRING USADOS POR JOEL **-->
+    <string name="idTipo">type id</string>
+    <string name="descTipoM">description</string>
+    <string name="opcionesTM">options</string>
+    <string name="idDocExi">id Doc Existence</string>
+    <string name="isbnDoc">Document ISBN</string>
+    <string name="descIdDocente">ID Teacher</string>
+    <string name="descUnidasAdm">Administrative unit</string>
+    <string name="descActual"> Current </string>
+    <string name="idDocMov"> id Movement document </string>
+    <string name="idUnOrigen"> Origin Unit </string>
+    <string name="idUniDestino"> Destination Unit </string>
+    <string name="fecha"> date </string>
+    <string name="idMovDetalle"> id Movement details </string>
+    <string name="ingreseidequipo">enter the Equipment id</string>
+    <string name="eliminar_equipo">Delete Equipment</string>
+    <string name="documento">Document</string>
+    <string name="idTipos_De_Doc">Document type</string>
+    <string name="nombredoc">Name of the document</string>
+    <string name="Idioma">Document language</string>
+    <string name="isbnDelDoc">ISBN</string>
+    <string name="documentodisponible">Available document</string>
+
+    <string name="nombre_app">Inventory system</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="mensaje_eliminar">Tables Affected: </string>
+    <string name="titulo_dialogo">Are you sure to delete?</string>
+    <string name="tablas_ts14004">Teacher / AssignmentTeam / DocumentAssignment</string>
+    <string name="tablas_rl08017">TypeMovDoc / DocumentMov / DocumentMovDetail</string>
+    <string name="tablas_pm15007">Administrative Unit / Team Existence / TypeMovementEquipment</string>
+    <string name="tablas_mm14031">Tables: Subject, Schedule and Group</string>
+    <string name="tablas_am15005">Author / Author Details / Document / Equipment / Brand / TypesEquipment / TypesDocument</string>
+    <string name="btn_login">Login</string>
+    <string name="txt_descripcion_tipo_mov_equipo">Description (string)</string>
+    <string name="txt_id_unidad_admin_equipo_existencia">Administrative Unit ID(int)</string>
+    <string name="txt_id_equipo_equipo_existencia">Equipment ID (int)</string>
+    <string name="txt_id_docente_equipo_existencia">Teacher ID (int)</string>
+    <string name="txt_nombre_unidad_administrativa">nombre (string)</string>
+
+</resources>
