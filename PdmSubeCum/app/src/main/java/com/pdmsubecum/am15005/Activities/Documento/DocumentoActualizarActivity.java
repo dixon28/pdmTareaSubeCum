@@ -1,5 +1,7 @@
 package com.pdmsubecum.am15005.Activities.Documento;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import com.pdmsubecum.DB.DataBase;
 import com.pdmsubecum.DB.modelo.am15005.Documento;
+import com.pdmsubecum.DB.modelo.am15005.Equipo;
 import com.pdmsubecum.DB.modelo.am15005.TiposDeDocumento;
 import com.pdmsubecum.R;
 
@@ -57,6 +60,7 @@ public class DocumentoActualizarActivity extends AppCompatActivity implements Ad
     private EditText idioma;
     private EditText descripcion;
     EditText connid;
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,11 +117,34 @@ public class DocumentoActualizarActivity extends AppCompatActivity implements Ad
         spinner.setAdapter(comboAdapter);
 
 
+        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.mensaje_eliminar)+" " + getString(R.string.mensaje_eliminar) +" "+ getString(R.string.autorDetalle)+" "+ getString(R.string.DocumentoAsignacionDetalle)+" "+ getString(R.string.DocumentoMovimientoDetalle))
+                .setTitle(R.string.titulo_dialogo_update);
+
+        builder.setPositiveButton(getString(R.string.confirmar), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                actualizarDocumento();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                cancelar();
+            }
+        });
+
+        dialog = builder.create();
+
+
 
 
     }
 
-    public void actualizararDocumento(View view) {
+    public void actualizarDocumento() {
+
+        try {
+
+
 
 
         Documento documento = new Documento();
@@ -158,6 +185,16 @@ public class DocumentoActualizarActivity extends AppCompatActivity implements Ad
             Toast.makeText(this, documento.getIsbn(), Toast.LENGTH_SHORT).show();
 
         }
+
+        }catch (Exception e)
+        {
+
+            Toast.makeText(this,getString(R.string.nulo),Toast.LENGTH_SHORT).show();
+
+
+
+
+        }
     }
 
 
@@ -176,9 +213,7 @@ public class DocumentoActualizarActivity extends AppCompatActivity implements Ad
 
 
         if (doc == null)
-            Toast.makeText(this, "documento con id  " +
-                    connid.getText().toString() +
-                    " no encontrado", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,  getString(R.string.rellenarid), Toast.LENGTH_LONG).show();
         else {
 
 
@@ -240,6 +275,56 @@ public class DocumentoActualizarActivity extends AppCompatActivity implements Ad
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+
+
+
+    public void cancelar(){
+        Toast.makeText(this,R.string.cancelar,Toast.LENGTH_SHORT).show();
+    }
+
+
+    public  void ActualizarDocumento( View view)
+    {
+        switch (view.getId()){
+
+            case R.id.ActualizarDocumento:
+                if(isbn.getText().toString().isEmpty()||nombredoc.getText().toString().isEmpty()
+
+
+                        ||descripcion.getText().toString().isEmpty()||idioma.getText().toString().isEmpty()
+
+
+
+                ){
+                    Toast.makeText(this,R.string.rellenarid, Toast.LENGTH_SHORT).show();
+                }
+
+                else{
+                    // Create the AlertDialog
+
+                    db.abrir();
+                    Documento d =db.consultarD(connid.getText().toString());
+                    db.cerrar();
+                    if (d==null)
+                    {
+
+                        Toast.makeText(this,R.string.verificar,Toast.LENGTH_SHORT).show();
+
+                    }else {
+                        // Create the AlertDialog
+                        dialog.show();
+                    }
+                }
+                break;
+
+
+        }
+
+
+
 
     }
 }

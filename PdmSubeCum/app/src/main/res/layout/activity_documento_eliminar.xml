@@ -19,8 +19,9 @@
         android:inputType="number"
         android:maxLength="10"/>
     <Button
+        android:id="@+id/eliminarDocumento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/eliminar_equipo"
-        android:onClick="eliminarDoc"/>
+        android:text="@string/eliminar"
+        android:onClick="eliminar"/>
 </LinearLayout>

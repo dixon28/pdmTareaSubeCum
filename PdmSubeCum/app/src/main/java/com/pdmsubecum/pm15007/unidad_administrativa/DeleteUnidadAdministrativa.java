@@ -68,7 +68,7 @@ public class DeleteUnidadAdministrativa extends AppCompatActivity implements Vie
                 break;
             case R.id.btn_delete_unidad_administrativa:
                 if(til_id_unidad_administrativa.getEditText().getText().toString().isEmpty()){
-                    Toast.makeText(this, "Por favor indique el ID", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.please_id) , Toast.LENGTH_SHORT).show();
                 }else{
                     dialog.show();
                 }
@@ -83,21 +83,21 @@ public class DeleteUnidadAdministrativa extends AppCompatActivity implements Vie
             unidadAdministrativa = dataBase.getUnidadAdministrativa(id);
             dataBase.cerrar();
         }catch (Exception e){
-            Toast.makeText(this,"El valor ingresado no es un numero", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.not_number), Toast.LENGTH_SHORT).show();
             limpiar();
         }
         if(unidadAdministrativa != null){
             dataBase.abrir();
             dataBase.eliminar(unidadAdministrativa);
             dataBase.cerrar();
-            Toast.makeText(this,"Unidad Administrativa ha sido Eliminado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.unidad_administrativa)+" "+getString(R.string.deleted), Toast.LENGTH_SHORT).show();
             limpiar();
         }else{
-            Toast.makeText(this,"No existe Unidad Administrativa con ese ID", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.unidad_administrativa)+" "+getString(R.string.not_exists), Toast.LENGTH_SHORT).show();
         }
     }
     public void cancelar(){
-        Toast.makeText(this, "Cancelado",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.canceled),Toast.LENGTH_SHORT).show();
     }
     public void limpiar() {
         til_id_unidad_administrativa.getEditText().setText("");

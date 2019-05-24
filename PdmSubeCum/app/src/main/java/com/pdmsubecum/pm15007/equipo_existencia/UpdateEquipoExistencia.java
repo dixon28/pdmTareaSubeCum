@@ -57,7 +57,7 @@ public class UpdateEquipoExistencia extends AppCompatActivity implements View.On
                         til_id_docente.getEditText().getText().toString().isEmpty() ||
                         til_id_unidad_administrativa.getEditText().getText().toString().isEmpty() ||
                         til_actual.getEditText().getText().toString().isEmpty()){
-                    Toast.makeText(this,"Por Favor rellene todos los campos",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.please_fill),Toast.LENGTH_SHORT).show();
                 }else{
                     try{
                         equipoExistencia = new EquipoExistencia();
@@ -69,7 +69,7 @@ public class UpdateEquipoExistencia extends AppCompatActivity implements View.On
                                 til_id_unidad_administrativa.getEditText().getText().toString()));
                         equipoExistencia.setActual(Integer.parseInt(til_actual.getEditText().getText().toString()));
                     }catch (Exception e){
-                        Toast.makeText(this,"Uno o mas Campos no son del tipo solicitado",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.bad_fields),Toast.LENGTH_SHORT).show();
                     }
                     dataBase.abrir();
                     integridad = dataBase.verificarEquipoExistencia(equipoExistencia);
@@ -78,10 +78,10 @@ public class UpdateEquipoExistencia extends AppCompatActivity implements View.On
                         if(dataBase.getEquipoExistencia(equipoExistencia.getId_equipo_existencia()) != null){
                             dataBase.actualizar(equipoExistencia);
                             dataBase.cerrar();
-                            Toast.makeText(this,"Equipo Existencia ha sido actualizado",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this,getString(R.string.equipo_existencia)+" "+getString(R.string.updated),Toast.LENGTH_SHORT).show();
                             limpiar();
                         }else{
-                            Toast.makeText(this,"No Existe Equipo Existencia con el ID ingresado",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this,getString(R.string.equipo_existencia)+" "+getString(R.string.not_exists),Toast.LENGTH_SHORT).show();
                             limpiar();
                         }
                     }else{

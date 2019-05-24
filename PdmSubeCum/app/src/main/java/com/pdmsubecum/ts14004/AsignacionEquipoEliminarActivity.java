@@ -27,6 +27,19 @@ public class AsignacionEquipoEliminarActivity extends AppCompatActivity {
 
 
     public void eliminarAsignacionEquipo(View v){
+        try {
+            AsignacionEquipo asignacionEquipo1 = new AsignacionEquipo();
+            asignacionEquipo1.setIdAsignacionEquipo(Integer.parseInt(edt_CodAsignaEquipo.getText().toString()));
+            boolean existe;
+            controlhelper.abrir();
+            if (controlhelper.verificarIntegridadTS14004(asignacionEquipo1, 4)) {
+                existe = true;
+            } else {
+                existe = false;
+            }
+            controlhelper.cerrar();
+
+            if (existe) {
         AlertDialog.Builder dialogo = new AlertDialog.Builder(AsignacionEquipoEliminarActivity.this);
         dialogo.setIcon(R.mipmap.ic_launcher).
         setMessage("Importante").
@@ -43,8 +56,13 @@ public class AsignacionEquipoEliminarActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-        dialogo.create();
+        //dialogo.create();
         dialogo.show();
+            } else {
+                Toast.makeText(this, "Registro No Existe", Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception e){
+            Toast.makeText(this,"Por favor rellene el ID ", Toast.LENGTH_SHORT).show();}
 
     }
 

@@ -213,6 +213,7 @@
 
 
             <Button
+                android:id="@+id/actualizaEquipo"
                 android:onClick="ActualizarEquipo"
                 android:text="@string/actualizar"
                 android:layout_width="match_parent"

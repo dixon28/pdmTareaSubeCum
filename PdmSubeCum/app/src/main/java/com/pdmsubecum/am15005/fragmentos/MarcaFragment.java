@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,12 +25,33 @@ public class MarcaFragment extends Fragment {
 
     ListView lista;
 
+    String actualizar;
+
+
     List<String> tablasCrud;
     private EquipoFragment equipoFragment;
-    String[] menu={"Actualizar Registro","Consultar Registro","Eliminar Registro",
-            "Ingresar Registro"};
+    String[] menu;
     String[]
             activities={"ActualizarMarcaActivity","ConsultarMarcaActivity","EliminarMarcaActivity","InsertarMarcaActivity"};
+    private String insertar;
+    private String eliminar;
+    private String consultar;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+         actualizar=getString(R.string.actualizar_registro);
+        insertar=getString(R.string.insertar_registro);
+        eliminar=getString(R.string.eliminar_registro);
+        consultar=getString(R.string.consultar_registro);
+        menu= new String[4];
+        menu[0]=actualizar;
+        menu[3]=insertar;
+        menu[2]=eliminar;
+        menu[1]=consultar;
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater,

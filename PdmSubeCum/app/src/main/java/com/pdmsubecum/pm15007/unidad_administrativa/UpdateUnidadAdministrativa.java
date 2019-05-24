@@ -50,7 +50,7 @@ public class UpdateUnidadAdministrativa extends AppCompatActivity implements Vie
                 if(til_id_unidad_administrativa.getEditText().getText().toString().isEmpty() ||
                         til_nombre.getEditText().getText().toString().isEmpty() ||
                         til_descripcion.getEditText().getText().toString().isEmpty()){
-                    Toast.makeText(this, "Por favor rellene todo los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.please_fill), Toast.LENGTH_SHORT).show();
                 }else{
                     try{
                         unidadAdministrativa = new UnidadAdministrativa();
@@ -60,16 +60,16 @@ public class UpdateUnidadAdministrativa extends AppCompatActivity implements Vie
                         unidadAdministrativa.setDescripcion(til_descripcion.getEditText().getText().toString());
 
                     }catch (Exception e){
-                        Toast.makeText(this,"Uno o mas Campos no son del tipo solicitado",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.bad_fields),Toast.LENGTH_SHORT).show();
                     }
                     dataBase.abrir();
                     if(dataBase.getUnidadAdministrativa(unidadAdministrativa.getId_unidad_administrativa()) != null){
                         dataBase.actualizar(unidadAdministrativa);
                         dataBase.cerrar();
-                        Toast.makeText(this,"Unidad Administrativa ha sido actualizado",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.unidad_administrativa)+" "+getString(R.string.updated),Toast.LENGTH_SHORT).show();
                         limpiar();
                     }else{
-                        Toast.makeText(this,"No Existe Unidad Administrativa con el ID ingresado",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.unidad_administrativa)+" "+getString(R.string.not_exists),Toast.LENGTH_SHORT).show();
                         limpiar();
                     }
                 }

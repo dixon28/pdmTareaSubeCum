@@ -89,6 +89,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO_DETALLE);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_MOVIMIENTO);
         db.execSQL(ConstantesDB.SQL_CREATE_TABLE_DOCUMENTO_EXISTENCIA);
+        db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_ELIMINATIPOMOVDOC);
 
 
 
@@ -96,6 +97,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_DOCUMENTO4);
         db.execSQL(ConstantesDB.SQL_CREATE_TRIGGER_DOCUMENTO3);
+        db.execSQL(ConstantesDB.SQL_UPDATE_TRIGGER_MARCA);
         db.execSQL(ConstantesDB.SQL_UPDATE_TRIGGER_DOCUMENTO);
         db.execSQL(ConstantesDB.SQL_UPDATE_TRIGGER_DOCUMENTO2);
         db.execSQL(ConstantesDB.SQL_UPDATE_TRIGGER_EQUIPOUPDATE);
@@ -152,6 +154,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_DOCUMENTO3);
         db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_EQUIPO3);
         db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_DOCUMENTO4);
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_MARCAUPDATE);
 
         db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_EQUIPOUPDATE);
 
@@ -184,7 +187,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_MOVIMIENTO);
         db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_MOVIMIENTO_DETALLE);
         db.execSQL(ConstantesDB.SQL_DELETE_DOCUMENTO_EXISTENCIA);
-
+        db.execSQL(ConstantesDB.SQL_DELETE_TRIGGER_ELIMINATIPOMOVDOC);
 
         onCreate(db);
     }

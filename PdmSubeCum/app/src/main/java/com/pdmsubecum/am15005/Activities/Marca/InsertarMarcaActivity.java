@@ -32,6 +32,8 @@ public class InsertarMarcaActivity extends AppCompatActivity {
 
     public void insertarMarca(View v) {
 
+        try{
+
         String Idmarca= editIdMarca.getText().toString();
 
         int id=Integer.parseInt(Idmarca);
@@ -53,6 +55,15 @@ public class InsertarMarcaActivity extends AppCompatActivity {
             db.insertar(marca);
             db.cerrar();
             Toast.makeText(this,Idmarca , Toast.LENGTH_SHORT).show();
+        }
+        }catch (Exception e)
+        {
+
+            Toast.makeText(this,getString(R.string.nulo),Toast.LENGTH_SHORT).show();
+
+
+
+
         }
 
 
