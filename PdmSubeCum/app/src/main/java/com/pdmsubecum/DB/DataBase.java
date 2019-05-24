@@ -629,6 +629,30 @@ public class DataBase {
 
     }
 
+    //Verificando integridad
+    public List<String> verificarEquipoExistencia(EquipoExistencia equipoExistencia){
+        List<String> mensaje = new ArrayList<>();
+
+        if(consultarE(String.valueOf(equipoExistencia.getId_equipo())) == null){
+            mensaje.add("NO existe Equipo con ese ID");
+            mensaje.add("false");
+            return mensaje;
+        }
+        if(consultarDocente(equipoExistencia.getId_docente()) == null){
+            mensaje.add("NO existe Docente con ese ID");
+            mensaje.add("false");
+            return mensaje;
+        }
+        if(getUnidadAdministrativa(equipoExistencia.getId_unidad_administrativa()) == null){
+            mensaje.add("NO existe Unidad Administrativa con ese ID");
+            mensaje.add("false");
+            return mensaje;
+        }
+        mensaje.add("Exito");
+        mensaje.add("true");
+        return mensaje;
+    }
+
 
     //    insertar Datos
     public void llenarMarca(List<Marca> marcas) {

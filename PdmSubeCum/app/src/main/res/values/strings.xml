@@ -194,6 +194,11 @@
     <string name="tablas_mm14031">Tablas: Materia, Horario y Grupo</string>
     <string name="tablas_am15005">Autor/AutorDetalle/Documento/Equipo/Marca/TiposEquipo/TiposDocumento</string>
     <string name="btn_login">Iniciar Sesión</string>
+    <string name="txt_descripcion_tipo_mov_equipo">Descripcion (string)</string>
+    <string name="txt_id_equipo_equipo_existencia">ID Equipo (int)</string>
+    <string name="txt_id_docente_equipo_existencia">ID Docente (int)</string>
+    <string name="txt_id_unidad_admin_equipo_existencia">ID Unidad Administrativa (int)</string>
+    <string name="txt_nombre_unidad_administrativa">nombre (string)</string>
 
 
 </resources>

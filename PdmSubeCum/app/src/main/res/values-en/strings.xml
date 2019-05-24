@@ -195,5 +195,10 @@
     <string name="tablas_mm14031">Tables: Subject, Schedule and Group</string>
     <string name="tablas_am15005">Author / Author Details / Document / Equipment / Brand / TypesEquipment / TypesDocument</string>
     <string name="btn_login">Login</string>
+    <string name="txt_descripcion_tipo_mov_equipo">Description (string)</string>
+    <string name="txt_id_unidad_admin_equipo_existencia">Administrative Unit ID(int)</string>
+    <string name="txt_id_equipo_equipo_existencia">Equipment ID (int)</string>
+    <string name="txt_id_docente_equipo_existencia">Teacher ID (int)</string>
+    <string name="txt_nombre_unidad_administrativa">nombre (string)</string>
 
 </resources>
