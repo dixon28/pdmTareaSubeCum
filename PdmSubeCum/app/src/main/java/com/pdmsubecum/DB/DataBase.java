@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.view.View;
 
 import com.pdmsubecum.DB.modelo.AsignacionEquipo;
 import com.pdmsubecum.DB.modelo.AsignacionEquipoDetalle;
@@ -1738,7 +1739,7 @@ public class DataBase {
 
     //******************************************INTEGRIDAD REFERENCIAL TS14004*****************************************************************
 
-    private boolean verificarIntegridadTS14004(Object dato, int relacion) throws SQLException {
+    public boolean verificarIntegridadTS14004(Object dato, int relacion) throws SQLException {
         switch (relacion) {
 
             case 1: {     //verificar que exista docente
@@ -1819,7 +1820,7 @@ public class DataBase {
         //METODOS INSERTAR <--TS14004-->
         public String insertar (Docente docente){
 
-            String regInsertados = "Registro Insertado Nº= ";
+            String regInsertados = "Registro Insertado ID=";
             long contador = 0;
             if(verificarIntegridadTS14004(docente,1)==false) {
                 if (verificarIntegridadTS14004(docente, 2)) {
@@ -1844,7 +1845,7 @@ public class DataBase {
         }
 
         public String insertar (AsignacionEquipo asignacionEquipo){
-            String regInsertados = "Registro Insertado Nº= ";
+            String regInsertados = "Registro Insertado ID=";
             long contador = 0;
             if(verificarIntegridadTS14004(asignacionEquipo,4)==false){
             if(verificarIntegridadTS14004(asignacionEquipo,3)) {
@@ -1867,7 +1868,7 @@ public class DataBase {
 
 
         public String insertar (DocumentoAsignacion documentoAsignacion){
-            String regInsertados = "Registro Insertado Nº= ";
+            String regInsertados = "Registro Insertado ID=";
             long contador = 0;
             if(verificarIntegridadTS14004(documentoAsignacion,5)==false){
                 if(verificarIntegridadTS14004(documentoAsignacion,6)) {
@@ -1986,31 +1987,35 @@ public class DataBase {
             sqLiteDatabase.update(ConstantesDB.TABLA_Docente, cv, "idDocente = ?", id);
                     return "Registro Actualizado Correctamente";
             }else{
-                    return "Error al Insertar, Unidad administrativa " + docente.getIdUnidadAdministrativa() + " No existe";
+                    return "Error al Actualizar, Unidad administrativa con Codigo " + docente.getIdUnidadAdministrativa() + " NO EXISTE ";
                 }
 
             } else {
-                return "El codigo " + docente.getIdDocente() + " NO EXISTE";
+                return "El Docente con Codigo " + docente.getIdDocente() + " NO EXISTE";
             }
 
         }
         public String actualizar (AsignacionEquipo asignacionEquipo){
-            //if (verificarIntegridad(alumno, 5)) {
-
+            if (verificarIntegridadTS14004(asignacionEquipo, 4)) {
+                if(verificarIntegridadTS14004(asignacionEquipo,3)){
             String[] id = {String.valueOf(asignacionEquipo.getIdAsignacionEquipo())};
             ContentValues cv = new ContentValues();
             cv.put("idDocente", asignacionEquipo.getIdDocente());
             cv.put("fechaAsignacionEquipo", asignacionEquipo.getFechaAsignacionEquipo());
             sqLiteDatabase.update(ConstantesDB.TABLA_AsignacionEquipo, cv, "idAsignacionEquipo = ?", id);
             return "Registro Actualizado Correctamente";
-            // } else {
-            //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
-            //}
+            }else{
+                return "Error al Actualizar, Docente con Codigo " + asignacionEquipo.getIdDocente() + " NO EXISTE ";
+            }
+
+        } else {
+        return "La Asignacion de Equipo con Codigo " + asignacionEquipo.getIdAsignacionEquipo() + " NO EXISTE";
+    }
         }
 
         public String actualizar (DocumentoAsignacion documentoAsignacion){
-            //if (verificarIntegridad(alumno, 5)) {
-
+            if (verificarIntegridadTS14004(documentoAsignacion, 5)) {
+                if(verificarIntegridadTS14004(documentoAsignacion,6)){
             String[] id = {String.valueOf(documentoAsignacion.getIdDocumentoAsignacion())};
             ContentValues cv = new ContentValues();
             cv.put("idDocente", documentoAsignacion.getIdDocente());
@@ -2018,9 +2023,13 @@ public class DataBase {
             cv.put("fechaAsignacionDoc", documentoAsignacion.getFechaAsignacionDoc());
             sqLiteDatabase.update(ConstantesDB.TABLA_DocumentoAsignacion, cv, "idDocumentoAsignacion = ?", id);
             return "Registro Actualizado Correctamente";
-            // } else {
-            //  return "Registro con carnet " + alumno.getCarnet() + " no existe";
-            //}
+            }else{
+                return "Error al Actualizar, Docente con Codigo " + documentoAsignacion.getIdDocente() + " NO EXISTE ";
+            }
+
+        } else {
+        return "La Asignacion de Documento con Codigo " + documentoAsignacion.getIdDocumentoAsignacion() + " NO EXISTE";
+    }
         }
 
 
@@ -2028,20 +2037,18 @@ public class DataBase {
         public String eliminar (Docente docente){
             String regAfectados = "filas afectadas= ";
             int contador = 0;
-        /*if (verificarIntegridad(alumno, 3)) {
-            contador += db.delete("nota", "carnet='" + alumno.getCarnet() + "'", null);
-        }*/
-            contador += sqLiteDatabase.delete(ConstantesDB.TABLA_Docente, "idDocente='" + docente.getIdDocente() + "'", null);
-            regAfectados += contador;
-            return regAfectados;
+            if(verificarIntegridadTS14004(docente,1)) {
+                contador += sqLiteDatabase.delete(ConstantesDB.TABLA_Docente, "idDocente='" + docente.getIdDocente() + "'", null);
+                regAfectados += contador;
+                return regAfectados;
+            }else{
+                return "El ID No Existe";
+            }
         }
 
         public String eliminar (AsignacionEquipo asignacionEquipo){
             String regAfectados = "filas afectadas= ";
             int contador = 0;
-        /*if (verificarIntegridad(alumno, 3)) {
-            contador += db.delete("nota", "carnet='" + alumno.getCarnet() + "'", null);
-        }*/
             contador += sqLiteDatabase.delete(ConstantesDB.TABLA_AsignacionEquipo, "idAsignacionEquipo='" + asignacionEquipo.getIdAsignacionEquipo() + "'", null);
             regAfectados += contador;
             return regAfectados;
@@ -2050,9 +2057,6 @@ public class DataBase {
         public String eliminar (DocumentoAsignacion documentoAsignacion){
             String regAfectados = "filas afectadas= ";
             int contador = 0;
-        /*if (verificarIntegridad(alumno, 3)) {
-            contador += db.delete("nota", "carnet='" + alumno.getCarnet() + "'", null);
-        }*/
             contador += sqLiteDatabase.delete(ConstantesDB.TABLA_DocumentoAsignacion, "idDocumentoAsignacion='" + documentoAsignacion.getIdDocumentoAsignacion() + "'", null);
             regAfectados += contador;
             return regAfectados;
