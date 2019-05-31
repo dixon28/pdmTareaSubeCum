@@ -156,7 +156,7 @@ public class DocumentoInsertarActivity extends AppCompatActivity implements Adap
         try {
 
             if (isbn.getText().toString().isEmpty()||idioma.getText().toString().isEmpty()||nombredoc.getText().toString().isEmpty()||descripcion.getText().toString().isEmpty()){
-                Toast.makeText(this,getText(R.string.nulo),Toast.LENGTH_SHORT);
+                Toast.makeText(this,getText(R.string.nulo),Toast.LENGTH_SHORT).show();
 
             }else{
 
@@ -188,7 +188,7 @@ public class DocumentoInsertarActivity extends AppCompatActivity implements Adap
 
                 if (db.verificarIntegridadAM15005(documento, 3)) {
 
-                    Toast.makeText(this, "Ya existe un registro con el isbn " + isbn, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Ya existe un registro con el isbn " + isbn.getText().toString(), Toast.LENGTH_SHORT).show();
                 } else {
 
                     db.abrir();

@@ -49,9 +49,7 @@ public class DocumentoConsultarActivity extends AppCompatActivity {
 
 
         if (doc == null)
-            Toast.makeText(this, "documento con id  " +
-                    connid.getText().toString() +
-                    " no encontrado", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getText(R.string.rellenarid), Toast.LENGTH_LONG).show();
         else {
 
 

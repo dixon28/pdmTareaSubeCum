@@ -51,9 +51,7 @@ public class ConsultarEquipoActivity extends AppCompatActivity {
         helper.cerrar();
        // id=Integer.toString(equipo.getIdequipo());
         if(equipo == null)
-            Toast.makeText(this, "Marca con id  " +
-                    edtEq.getText().toString() +
-                    " no encontrado", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getText(R.string.rellenarid), Toast.LENGTH_LONG).show();
         else{
             edtmarca.setText(String.valueOf(equipo.getIdmarca()));
             edtTipoEquipo.setText(String.valueOf(equipo.getIdtiposdeequipo()));

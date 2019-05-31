@@ -113,7 +113,7 @@
     <string name="crud_equipo_movimiento_detalle">Equipo Movimiento Detalle</string>
     <string name="crud_tipo_movimiento_equipo">Tipo Movimiento</string>
     <string name="marca">marca</string>
-    <string name="equipo">equipo</string>
+    <string name="equipo"> equipo</string>
     <string name="tipo_equipo">tipo equipo</string>
     <string name="mas">mas</string>
     <string name="idmarca">id de marca</string>
@@ -214,9 +214,9 @@
     <string name="mensaje_actualizar">los siguientes registros se actualizaran en la tabla :</string>
     <string name="titulo_dialogo_update">¿Esta seguro de actualizar?</string>
     <string name="marcaconid">Marca con id</string>
-    <string name="nulo">por favor llene todos los campos</string>
+    <string name="nulo">por favor llene todos los campos o el id ingresado ya existe</string>
     <string name="verificarintegridad">ya existe un registro con el id</string>
-    <string name="actualizado">registros actualizados</string>
+    <string name="actualizado">cantidad de registros actualizados </string>
     <string name="noactualizado">no se actualizo el registro</string>
     <string name="please_fill">Por Favor rellene todos los campos</string>
     <string name="bad_fields">Uno o mas Campos no son del tipo solicitado</string>
@@ -229,6 +229,7 @@
     <string name="showRecord">Se muestran los datos del registro</string>
     <string name="updated">ha sido actualizado</string>
     <string name="ingreseisbndocumento">ingrese isbn</string>
+    <string name="isbn_del_documento">Isbn del documento</string>
 
 
 </resources>

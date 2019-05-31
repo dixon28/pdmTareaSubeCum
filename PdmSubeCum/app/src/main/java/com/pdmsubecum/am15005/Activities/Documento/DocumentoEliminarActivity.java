@@ -82,7 +82,7 @@ public class DocumentoEliminarActivity extends AppCompatActivity {
                     if (documento==null)
                     {
 
-                        Toast.makeText(this,R.string.verificarISBN,Toast.LENGTH_SHORT);
+                        Toast.makeText(this,R.string.verificarISBN,Toast.LENGTH_SHORT).show();
 
                     }else {
                         controlhelper.abrir();

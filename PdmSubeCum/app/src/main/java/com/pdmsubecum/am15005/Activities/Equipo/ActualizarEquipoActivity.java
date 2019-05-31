@@ -285,8 +285,10 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
             helper.cerrar();
             Log.d("Llego Aqui","Terminar");
             id = Integer.toString(equipo.getIdequipo());
-            if (equipo == null)
+            if (equipo == null) {
                 Toast.makeText(this, getString(R.string.rellenarid), Toast.LENGTH_LONG).show();
+                Log.d("Llego Aqui","Terminar");
+            }
             else {
                 edtmarca.setText(String.valueOf(equipo.getIdmarca()));
                 edtTipoEquipo.setText(String.valueOf(equipo.getIdtiposdeequipo()));
@@ -309,9 +311,7 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
             }
         }catch (Exception e)
             {
-
-                Toast.makeText(this,getString(R.string.nulo),Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(this, getString(R.string.rellenarid), Toast.LENGTH_LONG).show();
 
 
 
@@ -432,7 +432,7 @@ public class ActualizarEquipoActivity extends AppCompatActivity implements Adapt
             helper.cerrar();
 
             conid.setText(String.valueOf(equipo.getIdequipo()));
-            Toast.makeText(this,getString(R.string.actualizado) +String.valueOf(s), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.actualizado) +" : "+String.valueOf(s), Toast.LENGTH_SHORT).show();
 
 
 

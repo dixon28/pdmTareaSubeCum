@@ -37,7 +37,7 @@ public class InsertarMarcaActivity extends AppCompatActivity {
             if (editIdMarca.getText().toString().isEmpty()||editDescripcionMarca.getText().toString().isEmpty())
             {
 
-                Toast.makeText(this,getString(R.string.nulo),Toast.LENGTH_SHORT);
+                Toast.makeText(this,getString(R.string.nulo),Toast.LENGTH_SHORT).show();
 
 
             }

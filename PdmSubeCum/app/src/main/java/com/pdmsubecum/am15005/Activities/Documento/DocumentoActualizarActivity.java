@@ -299,7 +299,7 @@ public class DocumentoActualizarActivity extends AppCompatActivity implements Ad
 
 
                 ){
-                    Toast.makeText(this,R.string.rellenarid, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,R.string.nulo, Toast.LENGTH_SHORT).show();
                 }
 
                 else{

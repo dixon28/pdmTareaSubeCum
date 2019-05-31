@@ -292,7 +292,8 @@ public class InsertarEquipoActivity extends AppCompatActivity implements Adapter
 
     public void insertarEquipo(View view) {
         try {
-            if (edtEq.getText().toString().isEmpty() || serie.getText().toString().isEmpty() || modelo.getText().toString().isEmpty() || carac.getText().toString().isEmpty()) {
+            if (edtEq.getText().toString().isEmpty() || serie.getText().toString().isEmpty() || modelo.getText().toString().isEmpty() || carac.getText().toString().isEmpty()||fechaingreso.getText().toString().isEmpty()) {
+                Toast.makeText(this,getText(R.string.nulo),Toast.LENGTH_SHORT).show();
 
             } else {
 

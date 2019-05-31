@@ -32,7 +32,7 @@ public class ActualizarMarcaActivity extends AppCompatActivity {
         desmarca=findViewById(R.id.conDesMarca);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(getString(R.string.mensaje_actualizar)+getString(R.string.equipo))
-                .setTitle(R.string.titulo_dialogo);
+                .setTitle(R.string.titulo_dialogo_update);
 
         builder.setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
             @Override
@@ -64,6 +64,7 @@ public class ActualizarMarcaActivity extends AppCompatActivity {
 
             conidmarca.setText(id);
             desmarca.setText(marca.getDescripcionmarca());
+            idmarca.setEnabled(false);
 
         }
     }
@@ -80,10 +81,6 @@ public class ActualizarMarcaActivity extends AppCompatActivity {
             Marca marca = new Marca();
             marca.setIdmarca(Integer.parseInt(conidmarca.getText().toString()));
             marca.setDescripcionmarca(desmarca.getText().toString());
-            if (helper.verificarIntegridadAM15005(marca, 1)) {
-
-                Toast.makeText(this, getString(R.string.verificarintegridad)+ conidmarca.getText().toString(), Toast.LENGTH_SHORT).show();
-            } else {
                 helper.abrir();
 
                 int estado = helper.actualizar(marca, id);
@@ -94,7 +91,7 @@ public class ActualizarMarcaActivity extends AppCompatActivity {
 
                 }
                 Toast.makeText(this, getString(R.string.actualizado), Toast.LENGTH_SHORT).show();
-            }
+
 
         }catch (Exception e)
         {
