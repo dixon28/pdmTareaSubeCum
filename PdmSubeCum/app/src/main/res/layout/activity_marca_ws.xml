@@ -10,16 +10,7 @@
     <TextView android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:id="@+id/textView1"
-        android:text="@string/Fecha_ingreso"/>
-
-    <EditText android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/editText_fecha"
-        android:inputType="date"
-        android:hint="dd/mm/aaaa"
-        android:ems="10">
-        <requestFocus/>
-    </EditText>
+        android:text="MARCAS DE BD MYSQL"/>
 
     <LinearLayout android:orientation="vertical"
         android:layout_height="wrap_content"

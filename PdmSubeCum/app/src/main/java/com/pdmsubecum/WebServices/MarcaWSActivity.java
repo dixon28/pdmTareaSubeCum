@@ -25,7 +25,6 @@ public class MarcaWSActivity extends AppCompatActivity {
     DataBase db;
     static List<Marca> listaMarcas;
     static List<String> nombreMarcas;
-    EditText fechaTxt;
     ListView listViewMarcas;
     private String urlPublicoUES = "https://eisi.fia.ues.edu.sv/GPO01/WS/";
 
@@ -39,13 +38,11 @@ public class MarcaWSActivity extends AppCompatActivity {
         db = new DataBase(this);
         listaMarcas = new ArrayList<Marca>();
         nombreMarcas = new ArrayList<String>();
-        fechaTxt = (EditText) findViewById(R.id.editText_fecha);
         listViewMarcas = (ListView) findViewById(R.id.listView1);
     }
 
     public void servicioPHP(View v) {
 
-        String[] fecha = fechaTxt.getText().toString().split("/");
         String url = "";
         switch(v.getId()) {
             case R.id.button_Servicio:

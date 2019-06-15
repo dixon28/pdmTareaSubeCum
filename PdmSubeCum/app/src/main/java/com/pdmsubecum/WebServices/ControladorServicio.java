@@ -100,13 +100,13 @@ public class ControladorServicio {
             for (int i = 0; i < marcasJSON.length(); i++) {
                 JSONObject obj = marcasJSON.getJSONObject(i);
                 Marca marca = new Marca();
-                marca.setIdmarca(obj.getInt("idmarca"));
+                marca.setIdmarca(Integer.parseInt(obj.getString("idmarca")));
                 marca.setDescripcionmarca(obj.getString("descripcionmarca"));
                 listaMarcas.add(marca);
             }
             return listaMarcas;
         } catch (Exception e) {
-            Toast.makeText(ctx, "Error en parseo de JSON", Toast.LENGTH_LONG)
+            Toast.makeText(ctx, "Error en parseo de JSON" + e.getMessage(), Toast.LENGTH_LONG)
                     .show();
             return null;
         }
@@ -122,13 +122,15 @@ public class ControladorServicio {
             for (int i = 0; i < marcasJSON.length(); i++) {
                 JSONObject obj = marcasJSON.getJSONObject(i);
                 Marca marca = new Marca();
-                marca.setIdmarca(obj.getInt("IDMARCA"));
+                String id = obj.getString("IDMARCA");
+                Log.d("IDMARCA","MARCA" + id);
+                marca.setIdmarca(Integer.parseInt(obj.getString("IDMARCA")));
                 marca.setDescripcionmarca(obj.getString("DESCRIPCIONMARCA"));
                 listaMarcas.add(marca);
             }
             return listaMarcas;
-        } catch (Exception e) {
-            Toast.makeText(ctx, "Error en parseo de JSON", Toast.LENGTH_LONG)
+        } catch (JSONException e) {
+            Toast.makeText(ctx, "Error en parseo de JSON" + e.getMessage(), Toast.LENGTH_LONG)
                     .show();
             return null;
         }
