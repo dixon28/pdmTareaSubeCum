@@ -2652,5 +2652,21 @@ public class DataBase {
         }
     }
 
+    public String insertarMarca(Marca marca) {
+        String regInsertados = "Registro Insertado No= ";
+        long contador = 0;
 
+        ContentValues mat = new ContentValues();
+        mat.put("idmarca", marca.getIdmarca());
+        mat.put("descripcionmarca", marca.getDescripcionmarca());
+        contador = sqLiteDatabase.insert("marca", null, mat);
+
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro Duplicado.";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
     }
+
+}

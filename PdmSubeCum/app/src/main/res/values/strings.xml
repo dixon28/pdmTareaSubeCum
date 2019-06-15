@@ -237,5 +237,6 @@
     <string name="ws_existencia">Servicios Web Existencia</string>
     <string name="ws_equipoAsignacion">Servicios Web Equipo Asignado</string>
     <string name="ws_documentoAsignacion">Servicios Web Documento Asignado</string>
+    <string name="ws_marca">Servicios Web Marca</string>
 
 </resources>

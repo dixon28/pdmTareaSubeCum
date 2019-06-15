@@ -238,5 +238,6 @@
     <string name="ws_existencia">Web Services Existence </string>
     <string name="ws_equipoAsignacion">Web Services Equipment Assigned</string>
     <string name="ws_documentoAsignacion">Web Services Document Assigned</string>
+    <string name="ws_marca">Web Services Brand</string>
 
 </resources>

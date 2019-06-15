@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout tools:context=".WebServices.MarcaWSActivity"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/LinearLayout1"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/textView1"
+        android:text="@string/Fecha_ingreso"/>
+
+    <EditText android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/editText_fecha"
+        android:inputType="date"
+        android:hint="dd/mm/aaaa"
+        android:ems="10">
+        <requestFocus/>
+    </EditText>
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <Button android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/button_Servicio"
+            android:text="SERVICIO UES"
+            android:onClick="servicioPHP"/>
+
+    </LinearLayout>
+
+    <Button android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/button3"
+        android:text="Guardar"
+        android:onClick="guardar"/>
+
+    <ListView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/listView1">
+    </ListView>
+
+</LinearLayout>

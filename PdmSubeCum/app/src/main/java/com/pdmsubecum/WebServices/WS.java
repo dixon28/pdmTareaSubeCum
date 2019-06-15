@@ -31,6 +31,10 @@ public class WS extends AppCompatActivity {
                 break;
             case R.id.button_documentoAsignacion:
                 i = new Intent(this,DocumentoAsignacionWSActivity.class);
+                break;
+            case R.id.button_marca:
+                i = new Intent(this,MarcaWSActivity.class);
+                break;
         }
 
         if(i!=null){
