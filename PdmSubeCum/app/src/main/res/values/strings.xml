@@ -232,4 +232,10 @@
     <string name="isbn_del_documento">Isbn del documento</string>
 
 
+    //WEB SERVICES
+    <string name="ws_equipo">Servicios Web Equipo</string>
+    <string name="ws_existencia">Servicios Web Existencia</string>
+    <string name="ws_equipoAsignacion">Servicios Web Equipo Asignado</string>
+    <string name="ws_documentoAsignacion">Servicios Web Documento Asignado</string>
+
 </resources>

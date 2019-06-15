@@ -71,10 +71,10 @@ public class IntegranteFragment extends Fragment {
                 case "admin":
                     integranteList.add(new Integrante("Edilson Argueta Medina","AM15005",getString(R.string.tablas_am15005), R.drawable.f1));
                     integranteList.add(new Integrante("Nelson Miranda Miranda","MM14031",getString(R.string.tablas_mm14031),R.drawable.mm14031));
-                    integranteList.add(new Integrante("Rodrigo Presa Mariona","PM15007",
-                            getString(R.string.tablas_pm15007),R.drawable.pm15007));
+                    integranteList.add(new Integrante("Rodrigo Presa Mariona","PM15007",getString(R.string.tablas_pm15007),R.drawable.pm15007));
                     integranteList.add(new Integrante("Joel Ramos Lopez","RL08017",getString(R.string.tablas_rl08017),R.drawable.joel));
                     integranteList.add(new Integrante("Raul Trigueros Santamaria","TS14004",getString(R.string.tablas_ts14004),R.drawable.ts14004));
+                    integranteList.add(new Integrante("SERVICIOS WEB", "WS","Web Services",R.drawable.ws));
                     break;
                 case "usuario":
                     switch (rolUsuario.getUsuario()){
@@ -94,6 +94,9 @@ public class IntegranteFragment extends Fragment {
                         case "ts14004":
                             integranteList.add(new Integrante("Raul Trigueros Santamaria","TS14004",
                                     getString(R.string.tablas_ts14004),R.drawable.ts14004));
+                            break;
+                        case "WS":
+                            integranteList.add(new Integrante("SERVICIOS WEB", "WS","Web Services",R.drawable.ws));
                             break;
                     }
                     break;

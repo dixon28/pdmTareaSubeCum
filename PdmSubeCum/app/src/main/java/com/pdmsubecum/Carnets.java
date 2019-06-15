@@ -3,11 +3,9 @@ package com.pdmsubecum;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 
+import com.pdmsubecum.WebServices.WS;
 import com.pdmsubecum.am15005.AM15005;
 import com.pdmsubecum.mm14031.MM14031;
 import com.pdmsubecum.pm15007.PM15007;
@@ -50,6 +48,10 @@ public class Carnets extends AppCompatActivity implements IntegranteFragment.OnL
                 break;
             case "TS14004":
                 intent = new Intent(this, TS14004.class);
+                startActivity(intent);
+                break;
+            case "WS":
+                intent = new Intent(this, WS.class);
                 startActivity(intent);
                 break;
         }
