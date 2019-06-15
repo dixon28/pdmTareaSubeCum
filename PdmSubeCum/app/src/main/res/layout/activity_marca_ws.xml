@@ -10,7 +10,44 @@
     <TextView android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:id="@+id/textView1"
-        android:text="MARCAS DE BD MYSQL"/>
+        android:text="ID MARCA"/>
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/editIdMarca"
+        android:ems="10">
+
+        <requestFocus/>
+
+    </EditText>
+
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/textView2"
+        android:text="MARCA"/>
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/editMarca"
+        android:ems="10">
+
+        <requestFocus/>
+
+    </EditText>
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <Button android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/button_IngresarMarca"
+            android:text="AGREGAR MARCA WS"
+            android:onClick="insertarMarca"/>
+
+    </LinearLayout>
 
     <LinearLayout android:orientation="vertical"
         android:layout_height="wrap_content"
@@ -19,16 +56,15 @@
         <Button android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/button_Servicio"
-            android:text="SERVICIO UES"
+            android:text="CONSULTAR MARCAS WS"
             android:onClick="servicioPHP"/>
 
     </LinearLayout>
 
-    <Button android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/button3"
-        android:text="Guardar"
-        android:onClick="guardar"/>
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/textView3"
+        android:text="LISTA DE MARCAS"/>
 
     <ListView
         android:layout_height="wrap_content"

@@ -130,8 +130,7 @@ public class ControladorServicio {
             }
             return listaMarcas;
         } catch (JSONException e) {
-            Toast.makeText(ctx, "Error en parseo de JSON" + e.getMessage(), Toast.LENGTH_LONG)
-                    .show();
+            Toast.makeText(ctx, "Error en parseo de JSON" + e.getMessage(), Toast.LENGTH_LONG).show();
             return null;
         }
     }
@@ -154,7 +153,6 @@ public class ControladorServicio {
         String json = obtenerRespuestaPeticion(peticion, ctx);
         try {
             JSONObject resultado = new JSONObject(json);
-
             Toast.makeText(ctx, "Registro ingresado"+ resultado.getJSONArray("resultado").toString(), Toast.LENGTH_LONG)
                     .show();
             int respuesta = resultado.getInt("resultado");
@@ -169,4 +167,67 @@ public class ControladorServicio {
         }
     }
 
+
+    public static List<Equipo> obtenerEquiposLocal(String json, Context ctx) {
+
+        List<Equipo> listaEquipos = new ArrayList<Equipo>();
+
+        try {
+            JSONArray equiposJSON = new JSONArray(json);
+            for (int i = 0; i < equiposJSON.length(); i++) {
+                JSONObject obj = equiposJSON.getJSONObject(i);
+                Equipo equipo = new Equipo();
+                equipo.setIdequipo(Integer.parseInt(obj.getString("idequipo")));
+                equipo.setModelo(obj.getString("modelo"));
+                equipo.setSerie(obj.getString("serie"));
+                equipo.setCaracteristicas(obj.getString("caracteristicas"));
+                listaEquipos.add(equipo);
+            }
+            return listaEquipos;
+        } catch (Exception e) {
+            Toast.makeText(ctx, "Error en parseo de JSON" + e.getMessage(), Toast.LENGTH_LONG).show();
+            return null;
+        }
+
+    }
+
+    public static List<Equipo> obtenerEquiposExterno(String json, Context ctx) {
+
+        List<Equipo> listaEquipos = new ArrayList<Equipo>();
+
+        try {
+            JSONArray equiposJSON = new JSONArray(json);
+            for (int i = 0; i < equiposJSON.length(); i++) {
+                JSONObject obj = equiposJSON.getJSONObject(i);
+                Equipo equipo = new Equipo();
+                equipo.setIdequipo(Integer.parseInt(obj.getString("IDEQUIPO")));
+                equipo.setModelo(obj.getString("MODELO"));
+                equipo.setSerie(obj.getString("SERIE"));
+                equipo.setCaracteristicas(obj.getString("CARACTERISTICAS"));
+                listaEquipos.add(equipo);
+            }
+            return listaEquipos;
+        } catch (JSONException e) {
+            Toast.makeText(ctx, "Error en parseo de JSON" + e.getMessage(), Toast.LENGTH_LONG).show();
+            return null;
+        }
+    }
+
+    public static void insertarEntidadExterno(String peticion, Context ctx) {
+
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+        try {
+            JSONObject resultado = new JSONObject(json);
+            String result = resultado.getString("resultado");
+            Toast.makeText(ctx, "Registro ingresado"+ result, Toast.LENGTH_LONG).show();
+            int respuesta = Integer.parseInt(result);
+            if (respuesta == 1)
+                Toast.makeText(ctx, "Registro ingresado", Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(ctx, "Error registro duplicado",
+                        Toast.LENGTH_LONG).show();
+        } catch (JSONException e) {
+            Toast.makeText(ctx, "Registro ingresado", Toast.LENGTH_LONG).show();
+        }
+    }
 }

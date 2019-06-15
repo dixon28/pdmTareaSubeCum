@@ -16,6 +16,8 @@ import com.pdmsubecum.DB.modelo.am15005.Marca;
 import com.pdmsubecum.R;
 import com.pdmsubecum.mm14031.Materia;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -27,6 +29,8 @@ public class MarcaWSActivity extends AppCompatActivity {
     static List<String> nombreMarcas;
     ListView listViewMarcas;
     private String urlPublicoUES = "https://eisi.fia.ues.edu.sv/GPO01/WS/";
+    EditText editIdMarca;
+    EditText editMarca;
 
     @SuppressLint("NewApi")
     @Override
@@ -39,16 +43,37 @@ public class MarcaWSActivity extends AppCompatActivity {
         listaMarcas = new ArrayList<Marca>();
         nombreMarcas = new ArrayList<String>();
         listViewMarcas = (ListView) findViewById(R.id.listView1);
+        editIdMarca = (EditText) findViewById(R.id.editIdMarca);
+        editMarca = (EditText) findViewById(R.id.editMarca);
+    }
+
+    public void insertarMarca(View v) {
+
+        int idMarca = Integer.parseInt(editIdMarca.getText().toString());
+        String descripcion = editMarca.getText().toString();
+
+        String url = "";
+        JSONObject datosMarca = new JSONObject();
+        JSONObject marca = new JSONObject();
+
+        switch(v.getId()) {
+            case R.id.button_IngresarMarca:
+                url = urlPublicoUES + "ws_marca_insertar.php" + "?idmarca=" + idMarca + "&descripcion=" + descripcion;
+                ControladorServicio.insertarEntidadExterno(url,this);
+                break;
+        }
     }
 
     public void servicioPHP(View v) {
 
+        nombreMarcas.clear();
         String url = "";
         switch(v.getId()) {
             case R.id.button_Servicio:
                 url = urlPublicoUES + "ws_marca_consulta.php";
                 break;
         }
+
         String marcasExternas = ControladorServicio.obtenerRespuestaPeticion(url, this);
         try {
             listaMarcas.addAll(ControladorServicio.obtenerMarcasExterno(marcasExternas,this));
@@ -70,6 +95,7 @@ public class MarcaWSActivity extends AppCompatActivity {
     }
 
     private void actualizarListView() {
+        listViewMarcas.setAdapter(null);
         String dato = "";
         nombreMarcas.clear();
         for (int i = 0; i < listaMarcas.size(); i++) {
