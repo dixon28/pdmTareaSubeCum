@@ -1,9 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/linearLayout1"
     tools:context=".WebServices.ExistenciaWSActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/textView1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Modelo"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/editModelo"
+            android:layout_weight="1"
+            android:ems="9">
+
+            <requestFocus/>
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/textView2"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="NombreDoc"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/editNombreDoc"
+            android:layout_weight="1"
+            android:ems="9">
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/button_equipo"
+            android:text="EXISTENCIA DE EQUIPOS"
+            android:onClick="consultarExistenciaEquipo"/>
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/button_documento"
+            android:text="EXISTENCIA DE DOCUMENTO"
+            android:onClick="consultarExistenciaDocumento"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/textView_existencia"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_weight="0.08"/>
+
+</LinearLayout>

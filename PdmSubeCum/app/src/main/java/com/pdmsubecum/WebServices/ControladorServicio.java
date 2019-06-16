@@ -230,4 +230,38 @@ public class ControladorServicio {
             Toast.makeText(ctx, "Registro ingresado", Toast.LENGTH_LONG).show();
         }
     }
+
+    public static String obtenerExistenciaEquipoJSON(String json, Context ctx) {
+        try {
+            JSONArray objs = new JSONArray(json);
+            if (objs.length() != 0){
+                String mod = objs.getJSONObject(0).getString("MODELO");
+                String exis = objs.getJSONObject(0).getString("EXISTENCIA");
+                return "Modelo: " + mod + "  Existencia: " + exis;
+             }else {
+                Toast.makeText(ctx, "Error modelo no existe", Toast.LENGTH_LONG).show();
+                return " ";
+            }
+        } catch (JSONException e) {
+            Toast.makeText(ctx, "Error con la respuesta JSON",Toast.LENGTH_LONG).show();
+            return " ";
+        }
+    }
+
+    public static String obtenerExistenciaDocumentoJSON(String json, Context ctx) {
+        try {
+            JSONArray objs = new JSONArray(json);
+            if (objs.length() != 0){
+                String mod = objs.getJSONObject(0).getString("NOMBREDOC");
+                String exis = objs.getJSONObject(0).getString("EXISTENCIA");
+                return "DOC: " + mod + "  Existencia: " + exis;
+            }else {
+                Toast.makeText(ctx, "Error modelo no existe", Toast.LENGTH_LONG).show();
+                return " ";
+            }
+        } catch (JSONException e) {
+            Toast.makeText(ctx, "Error con la respuesta JSON",Toast.LENGTH_LONG).show();
+            return " ";
+        }
+    }
 }
