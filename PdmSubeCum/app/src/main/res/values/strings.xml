@@ -239,4 +239,6 @@
     <string name="ws_documentoAsignacion">Servicios Web Documento Asignado</string>
     <string name="ws_marca">Servicios Web Marca</string>
 
+    <item name="editNombreDoc" type="id" />
+    <item name="textView_existencia" type="id" />
 </resources>
