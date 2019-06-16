@@ -23,6 +23,8 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -201,9 +203,13 @@ public class ControladorServicio {
                 JSONObject obj = equiposJSON.getJSONObject(i);
                 Equipo equipo = new Equipo();
                 equipo.setIdequipo(Integer.parseInt(obj.getString("IDEQUIPO")));
-                equipo.setModelo(obj.getString("MODELO"));
+                equipo.setIdmarca(Integer.parseInt(obj.getString("IDMARCA")));
+                equipo.setIdtiposdeequipo(Integer.parseInt(obj.getString("IDTIPOSDEEQUIPO")));
                 equipo.setSerie(obj.getString("SERIE"));
                 equipo.setCaracteristicas(obj.getString("CARACTERISTICAS"));
+                equipo.setModelo(obj.getString("MODELO"));
+                equipo.setFechaingreso(obj.getString("FECHAINGRESO"));
+                equipo.setEquipodisponible(Boolean.parseBoolean(obj.getString("EQUIPODISPONIBLE")));
                 listaEquipos.add(equipo);
             }
             return listaEquipos;

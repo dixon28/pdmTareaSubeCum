@@ -61,12 +61,22 @@ public class EquipoWSActivity extends AppCompatActivity {
     }
 
     public void guardar(View v) {
+
+        int numSincro = 0;
+
         db.abrir();
         for(int i=0; i < listaEquipo.size();i++){
-            db.insertar(listaEquipo.get(i));
+            if (db.sincronizarEquipo(listaEquipo.get(i)) == true){
+                numSincro = numSincro + 1;
+            }
         }
         db.cerrar();
-        Toast.makeText(this, "Guardado con exito", Toast.LENGTH_LONG).show();
+
+        if (numSincro > 0){
+            Toast.makeText(this, "Equipos Agregados: " + numSincro, Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this, "No equipos nuevos que agregar", Toast.LENGTH_LONG).show();
+        }
         listaEquipo.removeAll(listaEquipo);
         actualizarListView();
     }
