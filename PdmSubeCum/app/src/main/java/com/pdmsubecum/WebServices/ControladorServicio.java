@@ -264,4 +264,22 @@ public class ControladorServicio {
             return " ";
         }
     }
+
+    public static String obtenerCantidadAsignadoJSON(String json, Context ctx) {
+        try {
+            JSONArray objs = new JSONArray(json);
+            if (objs.length() != 0){
+                String mod = objs.getJSONObject(0).getString("MODELO");
+                String exis = objs.getJSONObject(0).getString("TOTAL");
+                return "MODELO: " + mod + "  N° veces asignado: " + exis;
+            }else {
+                Toast.makeText(ctx, "Error modelo no existe", Toast.LENGTH_LONG).show();
+                return " ";
+            }
+        } catch (JSONException e) {
+            Toast.makeText(ctx, "Error con la respuesta JSON",Toast.LENGTH_LONG).show();
+            return " ";
+        }
+    }
+
 }
