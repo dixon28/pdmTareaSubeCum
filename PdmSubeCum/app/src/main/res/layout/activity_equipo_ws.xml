@@ -36,6 +36,12 @@ xmlns:android="http://schemas.android.com/apk/res/android">
 
 </LinearLayout>
 
+    <Button android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/button_local"
+        android:text="SINCRONIZAR BASES"
+        android:onClick="guardar"/>
+
 <ListView
     android:layout_height="wrap_content"
     android:layout_width="match_parent"

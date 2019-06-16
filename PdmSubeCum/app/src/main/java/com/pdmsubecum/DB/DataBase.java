@@ -2463,10 +2463,7 @@ public class DataBase {
             return false;
         }
 
-
-
     }
-
 
     public DocumentoMovimiento consultarDocMov(String idExis){
         String[] id = {idExis};
@@ -2667,6 +2664,17 @@ public class DataBase {
             regInsertados = regInsertados + contador;
         }
         return regInsertados;
+    }
+
+    public boolean sincronizarEquipo(Equipo equipo) {
+
+        if (verificarIntegridadAM15005(equipo,2) == false){
+            ContentValues contentValues = equipo.toValues();
+            sqLiteDatabase.insert(ConstantesDB.TABLA_EQUIPO, null, contentValues);
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }
