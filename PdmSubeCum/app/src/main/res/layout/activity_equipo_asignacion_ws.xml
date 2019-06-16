@@ -1,9 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/linearLayout1"
     tools:context=".WebServices.EquipoAsignacionWSActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/textView1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Modelo Equipo"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/editModelo"
+            android:layout_weight="1"
+            android:ems="9">
+
+            <requestFocus/>
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/button_equipo"
+            android:text="CANTIDAD ASIGNADO"
+            android:onClick="consultarCantidadAsignado"/>
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/button_documento"
+            android:text="MODELO MÁS ASIGNADO"
+            android:onClick="consultarMaximoAsignado"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/textView_Cantidad"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_weight="0.08"/>
+
+</LinearLayout>
