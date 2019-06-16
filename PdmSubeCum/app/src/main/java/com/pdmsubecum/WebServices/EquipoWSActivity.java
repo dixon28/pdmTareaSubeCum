@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -13,9 +12,7 @@ import android.widget.Toast;
 
 import com.pdmsubecum.DB.DataBase;
 import com.pdmsubecum.DB.modelo.am15005.Equipo;
-import com.pdmsubecum.DB.modelo.am15005.Marca;
 import com.pdmsubecum.R;
-import com.pdmsubecum.mm14031.Materia;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -40,7 +37,7 @@ public class EquipoWSActivity extends AppCompatActivity {
         listaEquipo = new ArrayList<Equipo>();
         nombreEquipo = new ArrayList<String>();
         fechaTxt = (EditText) findViewById(R.id.editText_fecha);
-        listViewEquipos = (ListView) findViewById(R.id.listView1);
+        listViewEquipos = (ListView) findViewById(R.id.listView3);
     }
 
     public void servicioPHP(View v) {
@@ -49,7 +46,7 @@ public class EquipoWSActivity extends AppCompatActivity {
         String[] fecha = fechaTxt.getText().toString().split("/");
         String url = "";
         switch(v.getId()) {
-            case R.id.button_Servicio:
+            case R.id.button_documentoAsignacion:
                 url = urlPublicoUES + "ws_equipo_consultaPorFecha.php" + "?day=" + fecha[0] +
                         "&month="+ fecha[1] + "&year=" + fecha[2];;
                 break;

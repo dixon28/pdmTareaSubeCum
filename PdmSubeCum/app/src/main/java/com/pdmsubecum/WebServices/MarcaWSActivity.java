@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.pdmsubecum.DB.DataBase;
 import com.pdmsubecum.DB.modelo.am15005.Marca;
 import com.pdmsubecum.R;
-import com.pdmsubecum.mm14031.Materia;
 
 import org.json.JSONObject;
 
@@ -42,7 +41,7 @@ public class MarcaWSActivity extends AppCompatActivity {
         db = new DataBase(this);
         listaMarcas = new ArrayList<Marca>();
         nombreMarcas = new ArrayList<String>();
-        listViewMarcas = (ListView) findViewById(R.id.listView1);
+        listViewMarcas = (ListView) findViewById(R.id.listView3);
         editIdMarca = (EditText) findViewById(R.id.editIdMarca);
         editMarca = (EditText) findViewById(R.id.editMarca);
     }
@@ -69,7 +68,7 @@ public class MarcaWSActivity extends AppCompatActivity {
         nombreMarcas.clear();
         String url = "";
         switch(v.getId()) {
-            case R.id.button_Servicio:
+            case R.id.button_documentoAsignacion:
                 url = urlPublicoUES + "ws_marca_consulta.php";
                 break;
         }

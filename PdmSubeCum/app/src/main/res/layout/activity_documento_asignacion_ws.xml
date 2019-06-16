@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout tools:context=".WebServices.MarcaWSActivity"
+<LinearLayout tools:context=".WebServices.DocumentoAsignacionWSActivity"
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -12,23 +12,26 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
 
-        <Button android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/button_documentoAsignacion"
             android:layout_width="wrap_content"
-            android:id="@+id/button_Servicio"
-            android:text="DOCUMENTO ASIGNADO MAS VECES WS"
-            android:onClick="servicioPHP"/>
+            android:layout_height="wrap_content"
+            android:onClick="consultarMaximaAsignacion"
+            android:text="DOCUMENTO ASIGNADO MAS VECES WS" />
 
     </LinearLayout>
 
     <TextView android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:id="@+id/textView3"
+        android:id="@+id/textView_cantidad"
         android:text="DOCUMENTO ASIGNADO MAS VECES"/>
 
-    <ListView
+    <TextView
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:id="@+id/listView1">
-    </ListView>
+        android:id="@+id/textView3"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_weight="0.08"/>
+
 
 </LinearLayout>

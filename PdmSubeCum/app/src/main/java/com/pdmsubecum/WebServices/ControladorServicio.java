@@ -283,4 +283,22 @@ public class ControladorServicio {
     }
 
 
+    public static String obtenerCantidadAsignacionesJSON(String json, Context ctx) {
+        try {
+            JSONArray objs = new JSONArray(json);
+            if (objs.length() != 0){
+                String id = objs.getJSONObject(0).getString("IDDOCUMENTOASIGNACION");
+                String exis = objs.getJSONObject(0).getString("MAX(contador)");
+                return "Codigo: " + id + "  N° veces asignado: " + exis;
+            }else {
+                Toast.makeText(ctx, "Error modelo no existe", Toast.LENGTH_LONG).show();
+                return " ";
+            }
+        } catch (JSONException e) {
+            Toast.makeText(ctx, "Error con la respuesta JSON",Toast.LENGTH_LONG).show();
+            return " ";
+        }
+    }
+
+
 }
