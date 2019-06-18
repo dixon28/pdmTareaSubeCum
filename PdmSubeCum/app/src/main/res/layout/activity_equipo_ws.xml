@@ -10,7 +10,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
 <TextView android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     android:id="@+id/textView1"
-    android:text="FECHA DE INGRESO BD MYSQL"/>
+    android:text="@string/fecha_ingreso_mysql"/>
 
     <EditText
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
     <Button android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:id="@+id/button_documentoAsignacion"
-        android:text="SERVICIO UES"
+        android:text="@string/servicio_ues"
         android:onClick="servicioPHP"/>
 
 </LinearLayout>
@@ -39,7 +39,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
     <Button android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/button_local"
-        android:text="SINCRONIZAR BASES"
+        android:text="@string/sincronizar_bases"
         android:onClick="guardar"/>
 
 <ListView

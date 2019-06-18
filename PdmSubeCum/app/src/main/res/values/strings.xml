@@ -238,6 +238,18 @@
     <string name="ws_equipoAsignacion">Servicios Web Equipo Asignado</string>
     <string name="ws_documentoAsignacion">Servicios Web Documento Asignado</string>
     <string name="ws_marca">Servicios Web Marca</string>
+    <string name="documento_asignacion">DOCUMENTO ASIGNADO MAS VECES WS</string>
+    <string name="documento_asignacion_mas">DOCUMENTO ASIGNADO MAS VECES</string>
+    <string name="fecha_ingreso_mysql">FECHA DE INGRESO BD MYSQL</string>
+    <string name="servicio_ues">SERVICIO UES</string>
+    <string name="sincronizar_bases">SINCRONIZAR BASES</string>
+    <string name="modelo_ws">Modelo</string>
+    <string name="nombre_doc">NombreDoc</string>
+    <string name="existencia_equipo">EXISTENCIA DE EQUIPOS</string>
+    <string name="existencia_documento">EXISTENCIA DE DOCUMENTO</string>
+    <string name="agregar_ws">AGREGAR MARCA WS</string>
+    <string name="consultar_marcas_ws">CONSULTAR MARCAS WS</string>
+    <string name="lista_marca">LISTA DE MARCAS</string>
 
     <item name="editNombreDoc" type="id" />
     <item name="textView_existencia" type="id" />

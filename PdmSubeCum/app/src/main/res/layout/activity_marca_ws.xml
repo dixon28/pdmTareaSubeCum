@@ -44,7 +44,7 @@
         <Button android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/button_IngresarMarca"
-            android:text="AGREGAR MARCA WS"
+            android:text="@string/agregar_ws"
             android:onClick="insertarMarca"/>
 
     </LinearLayout>
@@ -56,7 +56,7 @@
         <Button android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/button_documentoAsignacion"
-            android:text="CONSULTAR MARCAS WS"
+            android:text="@string/consultar_marcas_ws"
             android:onClick="servicioPHP"/>
 
     </LinearLayout>
@@ -64,7 +64,7 @@
     <TextView android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:id="@+id/textView3"
-        android:text="LISTA DE MARCAS"/>
+        android:text="@string/lista_marca"/>
 
     <ListView
         android:layout_height="wrap_content"

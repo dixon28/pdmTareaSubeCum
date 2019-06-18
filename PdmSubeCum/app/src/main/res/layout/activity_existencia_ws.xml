@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:id="@+id/textView1"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Modelo"
+            android:text="@string/modelo_ws"
             android:layout_weight="1"/>
 
         <EditText
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:id="@+id/textView2"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="NombreDoc"
+            android:text="@string/nombre_doc"
             android:layout_weight="1"/>
 
         <EditText
@@ -65,14 +65,14 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/button_equipo"
-            android:text="EXISTENCIA DE EQUIPOS"
+            android:text="@string/existencia_equipo"
             android:onClick="consultarExistenciaEquipo"/>
 
         <Button
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/button_documento"
-            android:text="EXISTENCIA DE DOCUMENTO"
+            android:text="@string/existencia_documento"
             android:onClick="consultarExistenciaDocumento"/>
 
     </LinearLayout>

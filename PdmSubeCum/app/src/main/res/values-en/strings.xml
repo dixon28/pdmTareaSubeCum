@@ -239,5 +239,17 @@
     <string name="ws_equipoAsignacion">Web Services Equipment Assigned</string>
     <string name="ws_documentoAsignacion">Web Services Document Assigned</string>
     <string name="ws_marca">Web Services Brand</string>
+    <string name="documento_asignacion">DOCUMENT ASSIGNED MORE TIMES WS</string>
+    <string name="documento_asignacion_mas">DOCUMENT ASSIGNED MORE TIMES</string>
+    <string name="fecha_ingreso_mysql">DATE OF ADMISSION BD MYSQL</string>
+    <string name="servicio_ues">UES SERVICE</string>
+    <string name="sincronizar_bases">SYNCHRONIZE BASES</string>
+    <string name="modelo_ws">Model</string>
+    <string name="nombre_doc">NameDoc</string>
+    <string name="existencia_equipo">EXISTENCE OF EQUIPMENT</string>
+    <string name="existencia_documento">EXISTENCE OF DOCUMENT</string>
+    <string name="agregar_ws">ADD BRAND WS</string>
+    <string name="consultar_marcas_ws">CONSULT MARKS WS</string>
+    <string name="lista_marca">LIST OF BRANDS</string>
 
 </resources>

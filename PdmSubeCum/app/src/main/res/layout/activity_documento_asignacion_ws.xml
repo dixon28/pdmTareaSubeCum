@@ -17,14 +17,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="consultarMaximaAsignacion"
-            android:text="DOCUMENTO ASIGNADO MAS VECES WS" />
+            android:text="@string/documento_asignacion" />
 
     </LinearLayout>
 
     <TextView android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:id="@+id/textView_cantidad"
-        android:text="DOCUMENTO ASIGNADO MAS VECES"/>
+        android:text="@string/documento_asignacion_mas"/>
 
     <TextView
         android:layout_height="wrap_content"
